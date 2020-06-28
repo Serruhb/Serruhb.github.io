@@ -114,11 +114,6 @@
                 <h3>Realize Your Goal</h3>
                 <p>We want to collaborate with you set a goal and achieve it.</p>
             </div>
-
-            <!-- <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
-                <h3>Promises</h3>
-                <p>You will have fun and you will meet new friends.</p>
-            </div> -->
         </div>
 
         <!-- Grid -->
@@ -135,13 +130,6 @@
                     <li class="w3-padding-16">Outlook</li>
                     <li class="w3-padding-16">Google Docs</li>
                     <li class="w3-padding-16">Microsoft Office</li>
-                    <!-- <li class="w3-padding-16">
-                        <h2 class="w3-wide"</h2>
-                        <span class="w3-opacity">per month</span>
-                    </li> -->
-                    <li class="w3-light-grey w3-padding-24">
-                        <!-- <button class="w3-button w3-green w3-padding-large">Email</button> -->
-                    </li>
                 </ul>
             </div>
 
@@ -152,13 +140,6 @@
                     <li class="w3-padding-16">Preparedness</li>
                     <li class="w3-padding-16">Presentation</li>
                     <li class="w3-padding-16">Sell yourself</li>
-                    <!-- <li class="w3-padding-16">
-                        <h2 class="w3-wide">$ 25</h2>
-                        <span class="w3-opacity">per month</span>
-                    </li> -->
-                    <li class="w3-light-grey w3-padding-24">
-                        <!-- <button class="w3-button w3-green w3-padding-large">Sign Up</button> -->
-                    </li>
                 </ul>
             </div>
 
@@ -169,13 +150,6 @@
                     <li class="w3-padding-16">Grammar</li>
                     <li class="w3-padding-16">Key words</li>
                     <li class="w3-padding-16">Sell yourself</li>
-                    <!-- <li class="w3-padding-16">
-                        <h2 class="w3-wide">Let's build a resume that gets you hired today.</h2>
-                        <span class="w3-opacity">per month</span>
-                    </li> -->
-                    <li class="w3-light-grey w3-padding-24">
-                        <!-- <button class="w3-button w3-green w3-padding-large">Email</button> -->
-                    </li>
                 </ul>
             </div>
         </div>
@@ -229,7 +203,7 @@
             <span class="w3-xxlarge"><br>Contact Us</span>
         </div>
 
-        <form class="w3-container" action="/action_page.php" target="_blank">
+        <form class="w3-container" action="mailto:serruhb@gmail.com" target="_blank">
             <div class="w3-section">
                 <label>Name</label>
                 <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Name" required>
@@ -273,7 +247,6 @@
         // establising variables setting the start slide at 1 and calls a funtion defined below
         var slideIndex = 1;
         showDivs(slideIndex);
-
         //function for right arrow
         function plusDivs(n) {
             showDivs(slideIndex += n);
@@ -282,11 +255,10 @@
         function currentDiv(n) {
             showDivs(slideIndex = n);
         }
-
+        // function for slide display and dot color
         function showDivs(n) {
-            // establish variables
+            //estab;ish variables & getElementsByClassName assigns the variable to a class within the HTML code
             var i;
-            // getElementsByClassName assigns the variable to a class within the HTML code
             var x = document.getElementsByClassName("mySlides");
             var dots = document.getElementsByClassName("demodots");
             // first 2 if statments allows for the carousel effect (looping through continously)
