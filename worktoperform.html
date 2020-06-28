@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<title>Today</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: "Lato", sans-serif
+    }
+    
+    .mySlides {
+        display: none
+    }
+    
+    .w3-tag,
+    .fa {
+        cursor: pointer
+    }
+    
+    .w3-tag {
+        height: 15px;
+        width: 15px;
+        padding: 0;
+        margin-top: 6px
+    }
+</style>
+
+<body>
+
+    <!-- Links (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-row w3-large w3-light-grey">
+            <div class="w3-col s3">
+                <a href="#contact" class="w3-button w3-block">Join Our Team</a>
+            </div>
+            <div class="w3-col s3">
+                <a href="#plans" class="w3-button w3-block">Learn</a>
+            </div>
+            <div class="w3-col s3">
+                <a href="#about" class="w3-button w3-block">About</a>
+            </div>
+            <div class="w3-col s3">
+                <a href="#contact" class="w3-button w3-block">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+
+        <div class="w3-panel">
+            <h1><b>Let's Do Something Together!</b></h1>
+
+        </div>
+
+        <!-- Slideshow -->
+        <div class="w3-container w3-text-blue-gray w3-xlarge">
+            <div class="w3-display-container mySlides">
+                <img src="images/silhouette-of-four-people-against-sun-background-862848 (2).jpg" style="width:100%">
+                <div class="w3-display-topleft w3-container w3-padding-32">
+                    <span class="w3-transparent w3-padding-large w3-animate-bottom">Dream Big</span>
+                </div>
+            </div>
+            <div class="w3-display-container mySlides">
+                <img src="images/beach-woman-sunrise-silhouette-40192.jpg" style="width:100%">
+                <div class="w3-display-middle w3-container w3-padding-32">
+                    <span class="w3-transparent w3-padding-large w3-animate-bottom">Today</span>
+                </div>
+            </div>
+            <div class="w3-display-container w3-text-white mySlides">
+                <img src="images/light-nature-sky-sunset-53364.jpg" style="width:100%">
+                <div class="w3-display-bottomright w3-container w3-padding-32">
+                    <span class="w3-transparent w3-padding-large w3-animate-bottom">Build Skills</span>
+                </div>
+            </div>
+
+            <!-- Slideshow next/previous buttons -->
+            <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
+                <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+                <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+
+                <div class="w3-center">
+                    <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                    <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                    <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid -->
+        <div class="w3-row w3-container">
+            <div class="w3-center w3-padding-64">
+                <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Our Mission</span>
+            </div>
+            <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
+                <h3>Guide Your Learning</h3>
+                <p>Depending on your learning style we are here for you.</p>
+            </div>
+
+            <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+                <h3>Get You Prepared</h3>
+                <p>Change is not easy, however if you are prepared it's easier.</p>
+            </div>
+
+            <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
+                <h3>Realize Your Goal</h3>
+                <p>We want to collaborate with you set a goal and achieve it.</p>
+            </div>
+
+            <!-- <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
+                <h3>Promises</h3>
+                <p>You will have fun and you will meet new friends.</p>
+            </div> -->
+        </div>
+
+        <!-- Grid -->
+        <div class="w3-row-padding" id="plans">
+            <div class="w3-center w3-padding-64">
+                <h3>Fundamental Skills are Key</h3>
+                <p>Learn what you need!</p>
+            </div>
+
+            <div class="w3-third w3-margin-bottom">
+                <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+                    <li class="w3-black w3-xlarge w3-padding-32">Basic Skills</li>
+                    <li class="w3-padding-16">Excel</li>
+                    <li class="w3-padding-16">Outlook</li>
+                    <li class="w3-padding-16">Google Docs</li>
+                    <li class="w3-padding-16">Microsoft Office</li>
+                    <!-- <li class="w3-padding-16">
+                        <h2 class="w3-wide"</h2>
+                        <span class="w3-opacity">per month</span>
+                    </li> -->
+                    <li class="w3-light-grey w3-padding-24">
+                        <!-- <button class="w3-button w3-green w3-padding-large">Email</button> -->
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w3-third w3-margin-bottom">
+                <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+                    <li class="w3-dark-grey w3-xlarge w3-padding-32">Interview and Networking</li>
+                    <li class="w3-padding-16">Mock interviews</li>
+                    <li class="w3-padding-16">Preparedness</li>
+                    <li class="w3-padding-16">Presentation</li>
+                    <li class="w3-padding-16">Sell yourself</li>
+                    <!-- <li class="w3-padding-16">
+                        <h2 class="w3-wide">$ 25</h2>
+                        <span class="w3-opacity">per month</span>
+                    </li> -->
+                    <li class="w3-light-grey w3-padding-24">
+                        <!-- <button class="w3-button w3-green w3-padding-large">Sign Up</button> -->
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w3-third w3-margin-bottom">
+                <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+                    <li class="w3-black w3-xlarge w3-padding-32">Resume Building</li>
+                    <li class="w3-padding-16">Structure</li>
+                    <li class="w3-padding-16">Grammar</li>
+                    <li class="w3-padding-16">Key words</li>
+                    <li class="w3-padding-16">Sell yourself</li>
+                    <!-- <li class="w3-padding-16">
+                        <h2 class="w3-wide">Let's build a resume that gets you hired today.</h2>
+                        <span class="w3-opacity">per month</span>
+                    </li> -->
+                    <li class="w3-light-grey w3-padding-24">
+                        <!-- <button class="w3-button w3-green w3-padding-large">Email</button> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Grid -->
+        <div class="w3-row-padding" id="about">
+            <div class="w3-center w3-padding-64">
+                <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Who We Are</span>
+            </div>
+
+            <div class="w3-third w3-margin-bottom">
+                <div class="w3-card-4">
+                    <img src="images/bawdandelion.jpg" alt="John" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Sarah Brown</h3>
+                        <p class="w3-opacity">Tutor</p>
+                        <p>My only goal is to teach you what you need to know.</p>
+                        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w3-third w3-margin-bottom">
+                <div class="w3-card-4">
+                    <img src="images/bawrose.jpg" alt="Mike" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Lauren Brown</h3>
+                        <p class="w3-opacity">Resume Builder</p>
+                        <p>I will help you present your best self with your own classy resume.</p>
+                        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w3-third w3-margin-bottom">
+                <div class="w3-card-4">
+                    <img src="images/bawdaisey.jpg" alt="Jane" style="width:100%">
+                    <div class="w3-container">
+                        <h3>Someone Else</h3>
+                        <p class="w3-opacity">Tutor</p>
+                        <p>The skills that you learn can be used in and out of a workspace.</p>
+                        <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="w3-center w3-padding-64" id="contact">
+            <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Not sure where to begin?<br></span>
+            <span class="w3-xxlarge"><br>Contact Us</span>
+        </div>
+
+        <form class="w3-container" action="/action_page.php" target="_blank">
+            <div class="w3-section">
+                <label>Name</label>
+                <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Name" required>
+            </div>
+            <div class="w3-section">
+                <label>Email</label>
+                <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Email" required>
+            </div>
+            <div class="w3-section">
+                <label>Subject</label>
+                <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Subject" required>
+            </div>
+            <div class="w3-section">
+                <label>Message</label>
+                <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Message" required>
+            </div>
+            <button type="submit" class="w3-button w3-block w3-black">Send</button>
+        </form>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="w3-container w3-padding-32 w3-light-grey w3-center">
+        <h4>Thanks for Visiting!</h4>
+        <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+        <div class="w3-xlarge w3-section">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+    </footer>
+
+
+    <script>
+        // Slideshow
+        // establising variables setting the start slide at 1 and calls a funtion defined below
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        //function for right arrow
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+        // function for left arrow
+        function currentDiv(n) {
+            showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+            // establish variables
+            var i;
+            // getElementsByClassName assigns the variable to a class within the HTML code
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demodots");
+            // first 2 if statments allows for the carousel effect (looping through continously)
+            // n is the current slide index
+            // the if statement says if the current slide is greater than the amount of slides set the index to 1(restart)
+            if (n > x.length) {
+                slideIndex = 1
+            }
+            // the if statement says if the current slide is less than the first slide set the index to the length of the slide (the last slide)
+            if (n < 1) {
+                slideIndex = x.length
+            };
+            // these for loops establish which picture should show and what action the dot at the bottom should display
+            // javascripts condenses code you will see below
+            // i will equal the iteration, if i is less than the amount of slides, add 1 to the next iteration
+            // displays slide at index i
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            //i will equal iteration, if i is less than the amount of dots, add 1 to the next iteration
+            //colors dot at index i white
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" w3-white", "");
+            }
+            //
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " w3-white";
+        }
+    </script>
+
+</body>
+
+</html>
