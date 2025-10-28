@@ -10,17 +10,52 @@
     rel="icon" type="image/x-icon" />
 <script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
 <style>
-    html,
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: "Roboto", sans-serif
-    }
+  /* ===== Brand palette (variations of #00CDAC) ===== */
+  :root{
+    --brand-100:#E8FCF8;  /* very light bg */
+    --brand-200:#C9F7EE;
+    --brand-300:#9FEBDD;
+    --brand-400:#6FE0CC;
+    --brand-500:#00CDAC;  /* base */
+    --brand-600:#00B396;  /* hover */
+    --brand-700:#009E87;  /* active/darker */
+    --brand-800:#017D6C;  /* darkest */
+    --on-brand:#FFFFFF;
+  }
+
+  /* Override W3CSS pink utilities to your brand color */
+  .w3-pink{ color:var(--on-brand)!important; background-color:var(--brand-500)!important; }
+  .w3-hover-pink:hover{ color:var(--on-brand)!important; background-color:var(--brand-600)!important; }
+  .w3-text-pink{ color:var(--brand-600)!important; }
+  .w3-border-pink{ border-color:var(--brand-500)!important; }
+
+  /* Optional: nicer focus/active states for buttons with w3-pink */
+  .w3-button.w3-pink:active{ background-color:var(--brand-700)!important; }
+  .w3-button.w3-pink:focus{ outline:2px solid var(--brand-300); outline-offset:2px; }
+
+  /* ===== Your existing styles (kept) ===== */
+  body,h1,h2,h3,h4,h5,h6{ font-family:"Raleway",sans-serif }
+  body,html{ height:100%; line-height:1.8; }
+
+  /* Full height image header */
+  .bgimg-1{
+    background-position:center;
+    background-size:cover;
+    background-image:url("flamingos.jpg");
+    min-height:100%;
+  }
+
+  .jumbo{ font-weight:bolder; }
+  .xxlarge{ font-weight:bolder; }
+  .large{ font-weight:bolder; }
+  .w3-bar .w3-button{ padding:16px; }
+  img{ height:200px; width:250px; }
+
+  /* Optional: links inside your green areas look better slightly lighter */
+  .w3-pink a{ color:var(--on-brand)!important; text-decoration:underline; }
+  .w3-text-pink a{ color:var(--brand-700)!important; }
 </style>
+
 
 <body class="w3-light-grey">
     <!-- Nav bar sit on top -->
