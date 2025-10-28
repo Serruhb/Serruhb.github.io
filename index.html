@@ -1,244 +1,259 @@
 <!DOCTYPE html>
-<html>
-<title>Sarah M. Brown</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAGAAAAFgAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAJ1lP2f9ZT9n/AAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAFlP2f8AAAAFWU/Z/wAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAABWTdK9AAAAL1lP2f8AAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAFJJyXxZT9n/AAAAEwAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAdWU/Z/1JIx8EAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAHUUjGzzs0j2lYTtbtAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAA8AAAA0AAAASFZM1/9COqOlRj6uhgAAAAsAAAAFAAAABAAAAAD///8A////AP///wD///8A////AAAAABVuaNzDk4f//6GT//+jmP//lY7//4B9//5hX8KmOjl2bE9OnWQAAAAA////AP///wD///8A////AP///wBnYM+h29P//52P//+fkf//kYj//3p3/v97ef7/gn/+/8vG//92dfG0AAAAAP///wD///8A////AP///wD///8Af3b//3Bo5KOim///h33//5+T//+dk///m5L//8bB//+Fg/7/AAAAAgAAAAD///8A////AP///wD///8A////AH5198dRTJ5ncWvlYbm0///c1v//4Nv//7m1//96d/35AAAAAQAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAf3f5zgAAACoAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAIQAAAAqBev//AAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AGBgX/9LS0nDh4D48wAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAnJyUUfHXf6rCq//8AAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A//8AAP5/AAD9fwAA/X8AAP9/AAD/PwAA/r8AAP4/AADwHwAA4AcAAOAPAADsHwAA9/8AAPv/AADj/wAA8/8AAA=="
-    rel="icon" type="image/x-icon" />
-<script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
-<style>
-  /* ===== Brand palette (variations of #00CDAC) ===== */
-  :root{
-    --brand-100:#E8FCF8;  /* very light bg */
-    --brand-200:#C9F7EE;
-    --brand-300:#9FEBDD;
-    --brand-400:#6FE0CC;
-    --brand-500:#00CDAC;  /* base */
-    --brand-600:#00B396;  /* hover */
-    --brand-700:#009E87;  /* active/darker */
-    --brand-800:#017D6C;  /* darkest */
-    --on-brand:#FFFFFF;
-  }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sarah M. Brown</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link
+    href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAGAAAAFgAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAJ1lP2f9ZT9n/AAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAFlP2f8AAAAFWU/Z/wAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAABWTdK9AAAAL1lP2f8AAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAFJJyXxZT9n/AAAAEwAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAdWU/Z/1JIx8EAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAHUUjGzzs0j2lYTtbtAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAA8AAAA0AAAASFZM1/9COqOlRj6uhgAAAAsAAAAFAAAABAAAAAD///8A////AP///wD///8A////AAAAABVuaNzDk4f//6GT//+jmP//lY7//4B9//5hX8KmOjl2bE9OnWQAAAAA////AP///wD///8A////AP///wBnYM+h29P//52P//+fkf//kYj//3p3/v97ef7/gn/+/8vG//92dfG0AAAAAP///wD///8A////AP///wD///8Af3b//3Bo5KOim///h33//5+T//+dk///m5L//8bB//+Fg/7/AAAAAgAAAAD///8A////AP///wD///8A////AH5198dRTJ5ncWvlYbm0///c1v//4Nv//7m1//96d/35AAAAAQAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAf3f5zgAAACoAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAIQAAAAqBev//AAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AGBgX/9LS0nDh4D48wAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAnJyUUfHXf6rCq//8AAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A//8AAP5/AAD9fwAA/X8AAP9/AAD/PwAA/r8AAP4/AADwHwAA4AcAAOAPAADsHwAA9/8AAPv/AADj/wAA8/8AAA=="
+    rel="icon" type="image/x-icon"
+  />
+  <script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
+  <!-- Brand the browser UI on mobile -->
+  <meta name="theme-color" content="#00CDAC" />
 
-  /* Override W3CSS pink utilities to your brand color */
-  .w3-pink{ color:var(--on-brand)!important; background-color:var(--brand-500)!important; }
-  .w3-hover-pink:hover{ color:var(--on-brand)!important; background-color:var(--brand-600)!important; }
-  .w3-text-pink{ color:var(--brand-600)!important; }
-  .w3-border-pink{ border-color:var(--brand-500)!important; }
+  <style>
+    /* ===== Brand palette (variations of #00CDAC) ===== */
+    :root{
+      --brand-100:#E8FCF8;  /* very light bg */
+      --brand-200:#C9F7EE;
+      --brand-300:#9FEBDD;
+      --brand-400:#6FE0CC;
+      --brand-500:#00CDAC;  /* base */
+      --brand-600:#00B396;  /* hover */
+      --brand-700:#009E87;  /* active/darker */
+      --brand-800:#017D6C;  /* darkest */
+      --on-brand:#FFFFFF;
+      --ink-900:#102A26;   /* dark text for light bg */
+    }
 
-  /* Optional: nicer focus/active states for buttons with w3-pink */
-  .w3-button.w3-pink:active{ background-color:var(--brand-700)!important; }
-  .w3-button.w3-pink:focus{ outline:2px solid var(--brand-300); outline-offset:2px; }
+    /* Override W3CSS pink utilities to your brand color */
+    .w3-pink{ color:var(--on-brand)!important; background-color:var(--brand-500)!important; }
+    .w3-hover-pink:hover{ color:var(--on-brand)!important; background-color:var(--brand-600)!important; }
+    .w3-text-pink{ color:var(--brand-600)!important; }
+    .w3-border-pink{ border-color:var(--brand-500)!important; }
 
-  /* ===== Your existing styles (kept) ===== */
-  body,h1,h2,h3,h4,h5,h6{ font-family:"Raleway",sans-serif }
-  body,html{ height:100%; line-height:1.8; }
+    /* Optional: nicer focus/active states for buttons with w3-pink */
+    .w3-button.w3-pink:active{ background-color:var(--brand-700)!important; }
+    .w3-button.w3-pink:focus{ outline:2px solid var(--brand-300); outline-offset:2px; }
 
-  /* Full height image header */
-  .bgimg-1{
-    background-position:center;
-    background-size:cover;
-    background-image:url("flamingos.jpg");
-    min-height:100%;
-  }
+    /* ===== Global typography & rhythm ===== */
+    body,h1,h2,h3,h4,h5,h6{ font-family:"Raleway",sans-serif }
+    body,html{ height:100%; line-height:1.8; color:var(--ink-900); }
 
-  .jumbo{ font-weight:bolder; }
-  .xxlarge{ font-weight:bolder; }
-  .large{ font-weight:bolder; }
-  .w3-bar .w3-button{ padding:16px; }
-  img{ height:200px; width:250px; }
+    /* Header image */
+    .bgimg-1{
+      background-position:center;
+      background-size:cover;
+      background-image:url("flamingos.jpg");
+      min-height:100%;
+    }
 
-  /* Optional: links inside your green areas look better slightly lighter */
-  .w3-pink a{ color:var(--on-brand)!important; text-decoration:underline; }
-  .w3-text-pink a{ color:var(--brand-700)!important; }
-</style>
+    /* Reusable helper classes */
+    .brand-card{ background:rgba(0,205,172,.82); color:var(--on-brand); border-radius:14px; padding:24px 28px; }
+    .brand-link{ color:var(--on-brand)!important; text-decoration:underline; }
+    .section-pad{ padding:128px 16px; }
 
+    .jumbo{ font-weight:bolder; }
+    .xxlarge{ font-weight:bolder; }
+    .large{ font-weight:bolder; }
+
+    .w3-bar .w3-button{ padding:16px; }
+
+    /* Icon tiles (consistent sizing & hover) */
+    .icon-tile{ display:inline-flex; align-items:center; justify-content:center; width:100%; padding:12px; border-radius:12px; transition:transform .12s ease; }
+    .icon-tile:hover{ transform:translateY(-2px); }
+
+    /* Cards & sections */
+    .w3-card{ border-radius:12px; }
+    .section-subtle{ background:var(--brand-100); }
+
+    /* Links inside brand blocks */
+    .w3-pink a{ color:var(--on-brand)!important; text-decoration:underline; }
+    .w3-text-pink a{ color:var(--brand-700)!important; }
+
+    /* Minor polish */
+    .divider{ height:1px; background:linear-gradient(90deg,transparent,var(--brand-200),transparent); margin:48px auto; max-width:960px; }
+
+    /* Images */
+    img.project-thumb{ height:200px; width:250px; object-fit:cover; border-radius:8px; }
+
+    /* Make sidebar full-bleed on mobile */
+    #mySidebar a{ border-bottom:1px solid rgba(0,0,0,.08); }
+  </style>
+</head>
 
 <body>
+  <!-- Navbar (sit on top) -->
+  <div class="w3-top">
+    <div class="w3-bar w3-pink w3-card" id="myNavbar">
+      <a href="about.html" class="w3-bar-item w3-button w3-wide">MY STORY</a>
+      <!-- Right-sided navbar links -->
+      <div class="w3-right w3-hide-small">
+        <a href="#brief" class="w3-bar-item w3-button"><i class="fas fa-comment"></i> BRIEF</a>
+        <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJECTS</a>
+        <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="resume.html" target="_blank" class="w3-bar-item w3-button"><i class="fa fa-user"></i> RESUME</a>
+      </div>
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
 
-    <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-        <div class="w3-bar w3-pink w3-card" id="myNavbar">
-            <a href="about.html" class="w3-bar-item w3-button w3-wide">MY STORY</a>
-            <!-- Right-sided navbar links -->
-            <div class="w3-right w3-hide-small">
-                <a href="#brief" class="w3-bar-item w3-button"><i class="fas fa-comment"></i> BRIEF</a>
-                <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJECTS</a>
-                <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
-                <a href="resume.html" target="_blank" class="w3-bar-item w3-button"><i class="fa fa-user"></i> RESUME</a>
-            </div>
-            <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+  <!-- Sidebar on small screens when clicking the menu icon -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Menu</a>
+    <a href="#brief" onclick="w3_close()" class="w3-bar-item w3-button">BRIEF</a>
+    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">PROJECTS</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button">RESUME</a>
+    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button">MY STORY</a>
+  </nav>
 
-            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-                <i class="fa fa-bars"></i>
-            </a>
+  <!-- Header with full-height image -->
+  <header class="bgimg-1 w3-display-container" id="home">
+    <div class="w3-col m6 l6 w3-display-middle w3-center">
+      <div class="brand-card w3-card">
+        <span class="jumbo w3-jumbo w3-text-white">Sarah M. Brown</span><br />
+        <span class="xxlarge w3-xxlarge w3-text-white"><a class="brand-link" href="#about">• Creative Philomath •</a></span>
+        <span class="large w3-large w3-text-white"><br />512•884•1220 - serruhb@gmail.com</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <div class="w3-container w3-card section-pad" id="brief">
+    <div class="w3-centered">
+      <h1 class="large w3-text-pink w3-center"><a href="#brief">BRIEF</a></h1>
+      <p class="w3-center w3-large">An Introduction</p>
+      <div class="w3-row-padding w3-left" style="margin-top:64px">
+        I was born in Franklin, Louisiana on February 11, 1986. While completing primary education I moved with family and ended up attending schools in New Hampshire, South Carolina and Florida. Growing up and moving around gave me an advantage on learning how
+        to network and meet people. I am incredibly social and rarely meet a stranger.
+        <br /><br />
+        My passion for numbers and data began while attending college at Columbia College in South Carolina I studied Mathematics and Chemistry. Going to a smaller college allowed professors to notice my natural inclination towards computer
+        science. I recently graduated from the University of Texas for Data Analytics, this program has only made my fondness for math and data grow. I am excited for the future and ready to be your next asset!
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Work Section -->
+  <div class="w3-container section-pad" id="work">
+    <h1 class="large w3-center w3-text-pink"><a href="https://github.com/Serruhb" target="_blank" rel="noopener">Projects</a></h1>
+    <p class="w3-center w3-large">Passionate about numbers and with an eye for detail.</p>
+
+    <div class="w3-row">
+      <div class="w3-col s4 w3-center"><p></p></div>
+      <div class="w3-col l3 m6 w3-center">
+        <h2 class="large w3-center w3-text-pink">Most Recent Projects</h2>
+      </div>
+
+      <div class="w3-row-padding" style="margin-top:64px">
+        <div class="w3-container w3-half">
+          <a href="https://github.com/Serruhb/InvoicingProcessImprovementWithAirtable/blob/main/README.md" target="_blank" rel="noopener">
+            <i class="fas fa-file-invoice-dollar w3-pink w3-jumbo w3-hover-pink icon-tile"></i>
+          </a>
+          <p class="w3-center">Invoicing SaaS and it's related services is complex and tedious. I was able to design and implement a straight-forward consept to an outdated invoicing process. On a high-level break down the change in process went from manual entry to complex Excel VBScripts to the straight-forward Airtable.</p>
         </div>
+        <div class="w3-container w3-half">
+          <a href="https://github.com/Serruhb/SYNTRA" target="_blank" rel="noopener">
+            <i class="fas fa-file-alt w3-pink w3-jumbo w3-hover-pink icon-tile"></i>
+          </a>
+          <p class="w3-center">An AI-powered triage and context engine that accelerates case resolution and empowers Customer Success teams with actionable insight.</p>
+        </div>
+      </div>
     </div>
 
-    <!-- Sidebar on small screens when clicking the menu icon -->
-    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Menu</a>
-        <a href="#brief" onclick="w3_close()" class="w3-bar-item w3-button">BRIEF</a>
-        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">PROJECTS</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
-        <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button">RESUME</a>
-        <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button">MY STORY</a>
-    </nav>
-
-    <!-- Header with full-height image -->
-    <header class="bgimg-1 w3-display-container " id="home">
-        <meta name="theme-color" content="#00CDAC">
-
-
-        <div class="w3-col m6 l6 w3-display-middle w3-center">
-            <div class="w3-pink w3-card" style="opacity:0.7">
-                <span class="jumbo w3-jumbo w3-text-white" style="opacity:10">Sarah M. Brown</span><br>
-                <span class="xxlarge w3-xxlarge w3-text-white" style="opacity:10"><a href="#about">• Creative Philomath •</a></span>
-                <span class="large w3-large w3-text-white" style="opacity:10"><br>512•884•1220 - serruhb@gmail.com</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- About Section -->
-    <div class="w3-container w3-card" style="padding:128px 16px" id="brief">
-
-        <div class="w3-centered">
-            <h1 class="large w3-text-pink w3-center"><a href="#brief">BRIEF</a></h1>
-            <p class="w3-center w3-large">An Introduction</p>
-            <div class="w3-row-padding w3-left" style="margin-top:64px">
-                I’m a Senior AI & Automation Engineer with a passion for building intelligent systems that streamline operations, reduce inefficiency, and empower teams through smart technology.
-                Throughout my career, I’ve led transformative initiatives, from Salesforce CPQ and Jira automation to enhancing manufacturing BOM workflows  and AI agent development across customer service, 
-                finance, accounting, and operations. My approach blends creativity, problem-solving, and data fluency to engineer scalable solutions that make work faster, clearer, and more connected.
-                <br>
-                I’ve helped organizations bridge gaps between complex systems, automate manual processes, and uncover insights through platforms like Tableau, Power BI, and Salesforce. Whether I’m 
-                reducing tech debt, mentoring teams, or designing automation that saves hours of repetitive effort, my mission remains the same: to make technology feel seamless and impactful.
-                <br>
-                Curious by nature and driven by innovation, I thrive where AI meets real-world process improvement, turning automation, data, and workflow design into engines 
-                of smarter business growth.
-            </div>
-        </div>
-
-
+    <div class="w3-row-padding" style="margin-top:64px">
+      <div class="w3-col l3 m6">
+        <a href="https://github.com/Serruhb/InvoicingProcessImprovementWithAirtable/blob/main/README.md" target="_blank" rel="noopener">
+          <i class="fas fa-file-invoice-dollar w3-pink w3-jumbo w3-hover-pink icon-tile"></i>
+        </a>
+        <p class="w3-center">Invoicing SaaS and it's related services is complex and tedious. I was able to design and implement a straight-forward consept to an outdated invoicing process. On a high-level break down the change in process went from manual entry to complex Excel VBScripts to the straight-forward Airtable.</p>
+      </div>
+      <div class="w3-col l3 m6">
+        <a href="https://github.com/Serruhb/Matplotlib_Pymaceutical" target="_blank" rel="noopener">
+          <i class="fas fa-capsules w3-pink w3-jumbo w3-hover-pink icon-tile"></i>
+        </a>
+        <p class="w3-center">The object was to use Matplotlib in Python to demonstrate with visuals the most effective cancer treatment pill. With clear and beautifully designed visuals you are able to clearly distingush which was the more effective drug.</p>
+      </div>
+      <div class="w3-col l3 m6">
+        <a href="https://github.com/Serruhb/SQLalchemy" target="_blank" rel="noopener">
+          <i class="fas fa-cloud-sun-rain w3-pink w3-jumbo w3-hover-pink icon-tile"></i>
+        </a>
+        <p>In the midst of planning a trip, I decided to use SQLalchemy to aid in my research of weather. Using live generated information from weatherAPI I was able to compare the past, present and future weather patterns of my destintation.</p>
+      </div>
+      <div class="w3-col l3 m6">
+        <a href="https://github.com/Serruhb/ETL-Project" target="_blank" rel="noopener">
+          <i class="fas fa-dog w3-pink w3-jumbo w3-hover-pink icon-tile"></i>
+        </a>
+        <p>Ever wonder what happens to a pet that get picked by animal control? Well I did, and I decided to use data from the local Austin ASPCA to see the frequencies of picks-up that were reunited with their owners.</p>
+      </div>
     </div>
+  </div>
 
+  <div class="divider"></div>
 
-    <!-- Work Section -->
-    <div class="w3-container" style="padding:128px 16px" id="work">
-        <h1 class="large w3-center w3-text-pink"><a href="https://github.com/Serruhb " target="_blank">Projects</a></h1>
-        <p class="w3-center w3-large">Passionate about numbers and with an eye for detail.</p>
-
-        <div class="w3-row">
-            <div class="w3-col s4 w3-center">
-            <p></p>
-            </div>
-                    
-            <div class="w3-col l3 m6 w3-center">
-                <h2 class="large w3-center w3-text-pink">Most Recent Projects</h2>
-            </div>
-            <div class="w3-row-padding" style="margin-top:64px">
-                <div class="w3-container w3-half">
-                    <a href="https://github.com/Serruhb/InvoicingProcessImprovementWithAirtable/blob/main/README.md" target="_blank"><i class="fas fa-file-invoice-dollar w3-pink w3-jumbo w3-hover-opacity w3-center" style = width:100%  ></i></a>
-                    <p class="w3-center">Invoicing SaaS and it's related services is complex and tedious. I was able to design and implement a straight-forward consept to an outdated invoicing process. On a high-level break down the change in process went from manual entry to complex Excel VBScripts to the straight-forward Airtable.</p>
-                </div>
-                <div class="w3-container w3-half">
-                    <a href="https://github.com/Serruhb/SYNTRA" target="_blank"><i class="fas fa-file-alt w3-pink w3-jumbo w3-hover-opacity w3-center" style = width:100%></i></a>
-                    <p class="w3-center">An AI-powered triage and context engine that accelerates case resolution and empowers Customer Success teams with actionable insight.</p>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="w3-row-padding" style="margin-top:64px">
-            <div class="w3-col l3 m6">
-                 <a href="https://github.com/Serruhb/InvoicingProcessImprovementWithAirtable/blob/main/README.md" target="_blank"><i class="fas fa-file-invoice-dollar w3-pink w3-jumbo w3-hover-opacity w3-center" style = width:100%  ></i></a>
-                 <p class="w3-center">Invoicing SaaS and it's related services is complex and tedious. I was able to design and implement a straight-forward consept to an outdated invoicing process. On a high-level break down the change in process went from manual entry to complex Excel VBScripts to the straight-forward Airtable.</p>
-            </div>
-            <div class="w3-col l3 m6">
-                <a href="https://github.com/Serruhb/Matplotlib_Pymaceutical" target="_blank"><i class="fas fa-capsules w3-pink w3-jumbo w3-hover-opacity w3-center" style = width:100%  ></i></a>
-                <p class="w3-center">The object was to use Matplotlib in Python to demonstrate with visuals the most effective cancer treatment pill. With clear and beautifully designed visuals you are able to clearly distingush which was the more effective drug.
-                </p>
-            </div>
-            <div class="w3-col l3 m6">
-                <a href="https://github.com/Serruhb/SQLalchemy " target="_blank"><i class="fas fa-cloud-sun-rain w3-pink w3-jumbo w3-hover-opacity w3-center" style = width:100%  ></i></a>
-                <p>In the midst of planning a trip, I decided to use SQLalchemy to aid in my research of weather. Using live generated information from weatherAPI I was able to compare the past, present and future weather patterns of my destintation.
-                </p>
-            </div>
-            <div class="w3-col l3 m6">
-                <a href="https://github.com/Serruhb/ETL-Project" target="_blank"><i class="fas fa-dog w3-pink w3-jumbo w3-hover-opacity w3-center" style = width:100%  ></i></a>
-                <p>Ever wonder what happens to a pet that get picked by animal control? Well I did, and I decided to use data from the local Austin ASPCA to see the frequencies of picks-up that were reunited with their owners. </p>
-            </div>
-            <!-- <div class="w3-col l3 m6">
-                <a href="worktoperform.html" target="_blank"><i class="fas fa-star-o w3-pink w3-jumbo w3-hover-opacity w3-center" style = width:100%  ></i></a>
-                <p>Here is a link to my philanthropic work. </p>
-            </div> -->
-        </div>
-
-
+  <!-- Contact Section -->
+  <div class="w3-container section-pad section-subtle" id="contact">
+    <h1 class="large w3-center w3-text-pink"><a href="#contact">CONTACT</a></h1>
+    <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
+    <div style="margin-top:48px">
+      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right w3-text-pink"></i> Amesbury, NH</p>
+      <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right w3-text-pink"></i> Phone: (512) 884-1220</p>
+      <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right w3-text-pink"></i> Email: serruhb@gmail.com</p>
+      <br />
+      <form action="mailto:serruhb@gmail.com" target="_blank">
+        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name" /></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email" /></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject" /></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message" /></p>
+        <p>
+          <button class="w3-button w3-pink" type="submit">
+            <i class="fa fa-paper-plane w3-text-white"></i> SEND MESSAGE
+          </button>
+        </p>
+      </form>
     </div>
+  </div>
 
-    <!-- Contact Section -->
-    <div class="w3-container " style="padding:128px 16px" id="contact">
-        <h1 class="large w3-center w3-text-pink"><a href="#contact">CONTACT</a></h1>
-        <p class="w3-center w3-large">Lets get in touch. Send me a message:</p>
-        <div style="margin-top:48px ">
-            <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right w3-text-pink"></i> Amesbury, NH</p>
-            <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right w3-text-pink"></i> Phone: (512) 884-1220</p>
-            <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right w3-text-pink"> </i> Email: serruhb@gmail.com</p>
-            <br>
-            <form action="mailto:serruhb@gmail.com " target="_blank ">
-                <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-                <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-                <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-                <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
-                <p>
-                    <button class="w3-button w3-pink" type="submit">
-          <i class="fa fa-paper-plane w3-text-white"></i> SEND MESSAGE
-        </button>
-                </p>
-            </form>
+  <!-- Footer / Social -->
+  <div class="w3-xlarge w3-pink w3-section w3-center">
+    <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener"><i class="fab fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/in/sarah-brown-686078188/" target="_blank" rel="noopener"><i class="fab fa-linkedin w3-hover-opacity"></i></a>
+  </div>
+  <p class="w3-center">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green" rel="noopener">w3.css</a></p>
 
-        </div>
-    </div>
+  <script>
+    // Modal Image Gallery
+    function onClick(element) {
+      document.getElementById("img01").src = element.src;
+      document.getElementById("modal01").style.display = "block";
+      var captionText = document.getElementById("caption");
+      captionText.innerHTML = element.alt;
+    }
 
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
 
-    <div class="w3-xlarge w3-pink w3-section w3-center">
-        <a href="https://www.instagram.com/serruhb/" target="_blank"><i class="fab fa-instagram w3-hover-opacity"></i></a>
-        <a href="https://www.linkedin.com/in/sarah-brown-686078188/" target="_blank"><i class="fab fa-linkedin w3-hover-opacity"></i></a>
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+      } else {
+        mySidebar.style.display = 'block';
+      }
+    }
 
-    </div>
-    <p class="w3-center">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-
-
-    <script>
-        // Modal Image Gallery
-        function onClick(element) {
-            document.getElementById("img01").src = element.src;
-            document.getElementById("modal01").style.display = "block";
-            var captionText = document.getElementById("caption");
-            captionText.innerHTML = element.alt;
-        }
-
-
-        // Toggle between showing and hiding the sidebar when clicking the menu icon
-        var mySidebar = document.getElementById("mySidebar");
-
-        function w3_open() {
-            if (mySidebar.style.display === 'block') {
-                mySidebar.style.display = 'none';
-            } else {
-                mySidebar.style.display = 'block';
-            }
-        }
-
-        // Close the sidebar with the close button
-        function w3_close() {
-            mySidebar.style.display = "none";
-        }
-    </script>
-
+    // Close the sidebar with the close button
+    function w3_close() {
+      mySidebar.style.display = "none";
+    }
+  </script>
 </body>
-
 </html>
