@@ -1,0 +1,312 @@
+import React, { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronRight, Search, ExternalLink, FileText, Filter, CheckCircle2, AlertTriangle, Code2 } from "lucide-react";
+
+// --- Data -------------------------------------------------------------------
+const recipes = [
+  {
+    id: "search-account",
+    title: "Search for Account Id with Account Name",
+    link: "./recipes/SearchforAccountIdwithName.md",
+    summary:
+      "If an account name is provided, search part or all of the customer name to retrieve an Account Id. If no name is provided, this step is skipped.",
+    trigger: "Invoked by parent triage flow when customer name is present.",
+    inputs: [
+      { name: "account_name", desc: "Full or partial customer name string" },
+    ],
+    connections: ["Salesforce (SOQL via connector)"],
+    outputs: [
+      { name: "account_id", desc: "Resolved Salesforce Account Id" },
+    ],
+    flow: [
+      "Normalize incoming name (trim, case-fold)",
+      "SOQL fuzzy search on Account.Name with LIMIT & ORDER BY relevance",
+      "If multiple matches, return top candidate(s) and confidence score",
+      "If no match, bubble a 'not found' status to parent flow",
+    ],
+    notes: [
+      "Skips entirely when no name is supplied by the parent flow.",
+      "Use guarded LIKE queries and field allowlist to avoid wide scans.",
+    ],
+  },
+  {
+    id: "current-contract",
+    title: "Getting Customer's Current Contract Information",
+    link: "./recipes/GetttingCasesRelatedtoCustomer.md",
+    summary:
+      "Retrieves contact information and active subscriptions for the resolved Account Id.",
+    trigger: "Runs after Account Id is resolved.",
+    inputs: [
+      { name: "account_id", desc: "Salesforce Account Id" },
+    ],
+    connections: ["Salesforce (SOQL via connector)", "Snowflake (SQL optional)"],
+    outputs: [
+      { name: "contracts", desc: "Active contract records" },
+      { name: "subscriptions", desc: "Plan, term, MRR if applicable" },
+    ],
+    flow: [
+      "Query Account, related Contracts/Subscriptions",
+      "Shape a minimal profile for downstream steps",
+    ],
+    notes: [
+      "Redact PII fields before logging or exporting.",
+      "Validate effective dates and status fields.",
+    ],
+  },
+  {
+    id: "cases-related",
+    title: "Getting Cases Related to Customer",
+    link: "./recipes/GetttingCasesRelatedtoCustomer.md",
+    summary:
+      "Queries Salesforce for Cases linked to the Account using the provided identifier.",
+    trigger: "Runs after Account Id is resolved (or account is directly provided).",
+    inputs: [
+      { name: "account_id", desc: "Salesforce Account Id" },
+      { name: "lookback_days", desc: "Window for recent cases (default 180)" },
+    ],
+    connections: ["Salesforce (SOQL via connector)"],
+    outputs: [
+      { name: "cases", desc: "Recent or relevant cases for triage" },
+    ],
+    flow: [
+      "Parameterized SOQL with WHERE AccountId = :account_id",
+      "ORDER BY CreatedDate DESC LIMIT n",
+    ],
+    notes: [
+      "Avoid SELECT *; project only the fields you need.",
+      "Consider case sensitivity and locale in text fields.",
+    ],
+  },
+  {
+    id: "search-cases-keywords",
+    title: "Search Cases for Keywords",
+    link: "./recipes/SearchCasesforKeywords.md",
+    summary:
+      "Full-text style keyword search across recent Cases based on the issue description.",
+    trigger: "Runs when user supplies an issue description.",
+    inputs: [
+      { name: "issue_text", desc: "Short free-text description" },
+      { name: "account_id", desc: "Optional scoping to customer" },
+    ],
+    connections: ["Salesforce (SOQL; optional SOSL)"],
+    outputs: [
+      { name: "case_hits", desc: "Ranked list of matching cases" },
+    ],
+    flow: [
+      "Tokenize/normalize issue_text",
+      "Construct SOSL/SOQL match query",
+      "Score and rank results; return top k",
+    ],
+    notes: [
+      "Favor indexed fields and SOSL for broader text search.",
+      "Throttle queries to respect API limits.",
+    ],
+  },
+  {
+    id: "search-tickets-keywords",
+    title: "Search Tickets for Keywords",
+    link: "./recipes/SearchTicketsforKeywords.md",
+    summary:
+      "Keyword search over Jira tickets to find prior engineering resolutions.",
+    trigger: "Runs in parallel with case keyword search.",
+    inputs: [
+      { name: "issue_text", desc: "Short free-text description" },
+      { name: "project_keys", desc: "Optional Jira projects to scope" },
+    ],
+    connections: ["Jira (JQL via connector)"],
+    outputs: [
+      { name: "ticket_hits", desc: "Ranked list of matching Jira issues" },
+    ],
+    flow: [
+      "Normalize text; build JQL with contains and labels",
+      "Order by updated DESC; limit to safe page size",
+    ],
+    notes: [
+      "Redact issue keys and URLs in public screenshots.",
+      "Cache results by hash(issue_text) when appropriate.",
+    ],
+  },
+];
+
+// --- UI helpers -------------------------------------------------------------
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <div className="space-y-3">
+    <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
+    <div className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">{children}</div>
+  </div>
+);
+
+const Pill = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs bg-white/70 dark:bg-white/5 shadow-sm">
+    {children}
+  </span>
+);
+
+function Accordion({ item }: { item: (typeof recipes)[number] }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="rounded-2xl border shadow-sm bg-white/70 dark:bg-neutral-900 overflow-hidden">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between p-4 text-left"
+      >
+        <div className="flex items-start gap-3">
+          <FileText className="h-5 w-5 mt-0.5" />
+          <div>
+            <h4 className="font-semibold leading-tight">{item.title}</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{item.summary}</p>
+          </div>
+        </div>
+        {open ? <ChevronDown className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="px-4 pb-4"
+          >
+            <div className="grid gap-6 md:grid-cols-2">
+              <Section title="Trigger">
+                <p>{item.trigger}</p>
+              </Section>
+
+              <Section title="Connections">
+                <div className="flex flex-wrap gap-2">
+                  {item.connections.map((c) => (
+                    <Pill key={c}>{c}</Pill>
+                  ))}
+                </div>
+              </Section>
+
+              <Section title="Inputs">
+                <ul className="list-disc pl-5 space-y-1">{
+                  item.inputs.map((i) => (
+                    <li key={i.name}><strong>{i.name}</strong>: {i.desc}</li>
+                  ))
+                }</ul>
+              </Section>
+
+              <Section title="Outputs">
+                <ul className="list-disc pl-5 space-y-1">{
+                  item.outputs.map((o) => (
+                    <li key={o.name}><strong>{o.name}</strong>: {o.desc}</li>
+                  ))
+                }</ul>
+              </Section>
+
+              <Section title="Flow">
+                <ol className="list-decimal pl-5 space-y-1">{
+                  item.flow.map((step, idx) => (
+                    <li key={idx}>{step}</li>
+                  ))
+                }</ol>
+              </Section>
+
+              <Section title="Notes">
+                <ul className="list-disc pl-5 space-y-1">{
+                  item.notes.map((n, idx) => (
+                    <li key={idx}>{n}</li>
+                  ))
+                }</ul>
+              </Section>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={item.link}
+                className="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:shadow bg-white/90 dark:bg-white/10"
+              >
+                <ExternalLink className="h-4 w-4" />
+                View recipe README
+              </a>
+              <span className="inline-flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+                <CheckCircle2 className="h-4 w-4" />
+                Redaction and PII guardrails applied
+              </span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+// --- Main component ----------------------------------------------------------
+export default function SyntraRecipesPortfolio() {
+  const [query, setQuery] = useState("");
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return recipes;
+    return recipes.filter((r) =>
+      [r.title, r.summary, r.trigger, ...r.connections].some((t) =>
+        t.toLowerCase().includes(q)
+      )
+    );
+  }, [query]);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-neutral-950 dark:to-neutral-950">
+      <header className="sticky top-0 z-10 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/80 dark:bg-neutral-950/70 border-b">
+        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Code2 className="h-6 w-6" />
+            <div>
+              <h1 className="text-xl font-bold tracking-tight">SYNaTRA Automation Recipes</h1>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Workato orchestration for Customer Success triage</p>
+            </div>
+          </div>
+
+          <div className="relative w-full max-w-md">
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search recipes, connections, or notes"
+              className="w-full rounded-xl border px-10 py-2 text-sm bg-white dark:bg-neutral-900"
+            />
+            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-500" />
+          </div>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-6xl px-4 py-8 space-y-6">
+        <div className="rounded-2xl border bg-white/70 dark:bg-neutral-900 p-6 shadow-sm">
+          <h2 className="text-lg font-semibold mb-2">Overview</h2>
+          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+            This page summarizes the SYNaTRA Workato recipes included in the portfolio repository. Each card below documents
+            purpose, triggers, connections, inputs/outputs, and the operational flow. Links point to the corresponding
+            markdown files with deeper details, redaction notes, and example queries.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2 text-xs">
+            <Pill>Salesforce</Pill>
+            <Pill>Jira</Pill>
+            <Pill>Snowflake</Pill>
+            <Pill>SOQL</Pill>
+            <Pill>JQL</Pill>
+            <Pill>SQL</Pill>
+          </div>
+        </div>
+
+        <div className="grid gap-4">
+          {filtered.map((item) => (
+            <Accordion key={item.id} item={item} />
+          ))}
+          {filtered.length === 0 && (
+            <div className="rounded-2xl border p-8 text-center text-sm text-gray-600 dark:text-gray-400">
+              <AlertTriangle className="mx-auto h-6 w-6 mb-2" />
+              No recipes matched your search. Try a different keyword.
+            </div>
+          )}
+        </div>
+
+        <footer className="pt-8 pb-12 text-center text-xs text-gray-500">
+          © {new Date().getFullYear()} SYNaTRA. Portfolio excerpt for demonstration; operational details redacted.
+        </footer>
+      </main>
+    </div>
+  );
+}
