@@ -210,28 +210,64 @@
     </div>
   </div>
 
-  <!-- Contact Section (keeps page background; brand only on button/icon accents) -->
-  <div class="w3-container" style="padding:128px 16px" id="contact">
-    <h1 class="large w3-center brand-heading"><a href="#contact" style="color:inherit;text-decoration:none;">CONTACT</a></h1>
-    <p class="w3-center w3-large" style="color:var(--ink-muted);">Lets get in touch. Send me a message:</p>
-    <div style="margin-top:48px">
-      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Amesbury, NH</p>
-      <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Phone: (512) 884-1220</p>
-      <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Email: serruhb@gmail.com</p>
-      <br>
-      <form action="mailto:serruhb@gmail.com" target="_blank">
-        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-        <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="Email"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-        <p><textarea class="w3-input w3-border" placeholder="Message" required name="Message" rows="4"></textarea></p>
-        <p>
-          <button class="w3-button brand-btn" type="submit">
-            <i class="fa fa-paper-plane" style="color:#fff;"></i> SEND MESSAGE
-          </button>
-        </p>
-      </form>
-    </div>
+<!-- Contact Section -->
+<div class="w3-container" style="padding:128px 16px" id="contact">
+  <h1 class="large w3-center brand-heading">
+    <a href="#contact" style="color:inherit;text-decoration:none;">CONTACT</a>
+  </h1>
+  <p class="w3-center w3-large" style="color:var(--ink-muted);">
+    Let's get in touch. Send me a message:
+  </p>
+
+  <div style="margin-top:48px">
+    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Amesbury, NH</p>
+    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Phone: (512) 884-1220</p>
+    <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Email: serruhb@gmail.com</p>
+    <br>
+
+    <!-- Updated form -->
+    <form id="contactForm" onsubmit="return sendMail(event)">
+      <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+      <p><textarea class="w3-input w3-border" placeholder="Message" required name="Message" rows="4"></textarea></p>
+      <p>
+        <button class="w3-button brand-btn" type="submit" style="background-color:var(--brand);color:#fff;">
+          <i class="fa fa-paper-plane" style="color:#fff;"></i> SEND MESSAGE
+        </button>
+      </p>
+    </form>
   </div>
+</div>
+
+<!-- JS for building the mailto -->
+<script>
+function sendMail(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const name = form.Name.value.trim();
+  const email = form.Email.value.trim();
+  const subject = form.Subject.value.trim() || 'Website Contact';
+  const message = form.Message.value.trim();
+
+  // Construct message body
+  const body = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    '',
+    message
+  ].join('\\n');
+
+  // Build mailto link safely
+  const mailtoLink = `mailto:serruhb@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Open default mail client
+  window.location.href = mailtoLink;
+  return false;
+}
+</script>
+
 
   <!-- Footer / Social (kept as a single strong brand accent section) -->
   <div class="w3-xlarge w3-section w3-center" style="background-color:var(--brand);color:#fff;">
