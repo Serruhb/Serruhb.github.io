@@ -19,18 +19,19 @@
 </head>
 
 <body class="w3-light-grey">
-  <!-- Top Nav -->
-  <div class="w3-top">
-    <div class="w3-bar w3-card" id="myNavbar" style="background-color:#00CDAC;color:#fff;">
-      <a href="index.html" class="w3-bar-item w3-button w3-wide" style="color:#fff;">HOME</a>
-      <div class="w3-right w3-hide-small">
-        <a href="https://github.com/Serruhb?tab=repositories" target="_blank" class="w3-bar-item w3-button" style="color:#fff;">PROJECTS</a>
-      </div>
-      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()" style="color:#fff;">
-        <i class="fa fa-bars"></i>
-      </a>
+ <!-- Top Nav -->
+ <div class="w3-top">
+  <div class="w3-bar w3-card" id="myNavbar" style="background-color:#00CDAC;color:#fff;">
+    <a href="index.html" class="w3-bar-item w3-button w3-wide" style="color:#fff;">HOME</a>
+    <div class="w3-right w3-hide-small">
+      <a href="https://github.com/Serruhb?tab=repositories" target="_blank" class="w3-bar-item w3-button" style="color:#fff;">PROJECTS</a>
+      <button class="w3-bar-item btn" onclick="window.print()"><i class="fa fa-download"></i> Download / Print</button>
     </div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()" style="color:#fff;">
+      <i class="fa fa-bars"></i>
+    </a>
   </div>
+</div>
 
   <!-- Sidebar (mobile) -->
   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
@@ -62,7 +63,7 @@
             <hr>
              <!-- Executive Summary (compact) -->
              <p class="w3-large"><b><i class="fa fa-lightbulb-o fa-fw w3-margin-right brand"></i>Executive Summary</b></p>
-             <p>Senior AI & Automation leader shaping enterprise roadmaps, orchestrating programs across Salesforce/ERP stacks, and translating business challenges into scalable, data-driven solutions that unlock efficiency, accelerate growth, and drive innovation.</p>
+             <p>Senior AI &amp; Automation leader shaping enterprise roadmaps, orchestrating programs across Salesforce/ERP stacks, and translating business challenges into scalable, data-driven solutions that unlock efficiency, accelerate growth, and drive innovation.</p>
              <hr>
            <!-- SKILLS SECTION -->
 <p class="w3-large">
@@ -71,7 +72,7 @@
 
 <!-- Programming & Scripting Languages -->
 <p class="w3-medium">
-  <b><i class="fa fa-star fa-fw w3-margin-right" style="color:#00B396;"></i>Programming & Scripting Languages</b>
+  <b><i class="fa fa-star fa-fw w3-margin-right" style="color:#00B396;"></i>Programming &amp; Scripting Languages</b>
 </p>
 
 <p>Languages:</p>
@@ -194,112 +195,164 @@
 
       <!-- Right Column (2/3) -->
       <div class="w3-twothird">
-
-        <!-- Work Experience -->
+        <!-- Header / Callouts -->
+        <div class="w3-container w3-card w3-white w3-margin-bottom">
+          <div class="w3-row-padding w3-padding-16">
+            <div class="w3-half">
+              <h2 class="w3-text-grey" style="margin:0;">
+                <i class="fa fa-user-circle fa-fw w3-margin-right w3-xxlarge brand"></i>Professional Summary
+              </h2>
+              <p>Operating at the intersection of technology strategy, architecture, and intelligent transformation. Architect of enterprise AI roadmaps; leader of cross-functional programs spanning Salesforce, NetSuite, and ERP ecosystems; and translator of complex business needs into measurable, scalable automation.</p>
+            </div>
+            <div class="w3-half">
+              <h2 class="w3-text-grey" style="margin:0;">
+                <i class="fa fa-trophy fa-fw w3-margin-right w3-xxlarge brand"></i>Strategic Highlights
+              </h2>
+              <ul class="w3-ul w3-small">
+                <li>Defined and executed enterprise AI and automation strategies across Salesforce, NetSuite, and Workato, driving visibility, scalability, and measurable growth.</li>
+                <li>Developed an automated validation system for 180 kV and 360 kV substation creation, ensuring accurate naming, assignment, and configuration across transmission infrastructure.</li>
+                <li>Engineered intelligent automation frameworks that accelerated operations, reducing research and reconciliation times by up to 90%.</li>
+                <li>Built document lifecycle automation for manufacturing, improving compliance, version control, and content governance.</li>
+                <li>Led and mentored hybrid teams across business and technical functions, embedding AI governance and process excellence into daily operations.</li>
+                <li>Directed automation across CS/Finance/Ops for 17K+ customers.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Professional Experience -->
         <div class="w3-container w3-card w3-white w3-margin-bottom">
           <h2 class="w3-padding-16" style="color:#555;">
-            <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge" style="color:#00B396;"></i>Work Experience
+            <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge" style="color:#00B396;"></i>Professional Experience
           </h2>
 
-          <div class="w3-container w3-margin-bottom">
-            <h3 class="w3-opacity">Tebra</h3>
-            <h5 class="w3-opacity"><b>Senior AI &amp; Automation Engineer</b></h5>
-            <h6 style="color:#00B396;"><i class="fa fa-calendar fa-fw w3-margin-right"></i>July 2024 - Present</h6>
-            <p><em>Driving AI and automation strategy across Customer Success, Finance, and Operations to streamline enterprise workflows, enhance coaching capabilities, and integrate intelligence into the Salesforce ecosystem.</em></p>
-            <div class="w3-row-padding">
-              <div class="w3-half">
-                <ul>
-                  <li>Led Salesforce CPQ migration to streamline invoicing and improve financial visibility</li>
-                  <li>Architected an AI agent for automated finance reporting, accelerating month-end close</li>
-                  <li>Developed a contract reconciliation agent to enhance audit accuracy and reduce manual review</li>
-                  <li>Automated integration of critical business systems within the Salesforce ecosystem</li>
-                </ul>
-              </div>
-              <div class="w3-half">
-                <ul>
-                  <li>Implemented a phased rollout for Customer Success in-call coaching using an AI triage assistant</li>
-                  <li>Established cross-functional swim lanes for strategic alignment between CS, Finance, and Operations</li>
-                  <li>Championed Tableau hygiene and data validation dashboards to improve decision-making</li>
-                  <li>Mentored teams on automation best practices, data governance, and AI adoption strategies</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div class="w3-container w3-margin-bottom">
-            <h3 class="w3-opacity">Allegro MicroSystems</h3>
-            <h5 class="w3-opacity"><b>Senior Business Systems Analyst</b></h5>
-            <h6 style="color:#00B396;"><i class="fa fa-calendar fa-fw w3-margin-right"></i>January 2023 - July 2024</h6>
-            <p><em>Partnered with executive leadership to modernize enterprise systems, unify analytics, and lay the groundwork for scalable automation through robust data governance and integrated reporting frameworks.</em></p>
-            <div class="w3-row-padding">
-              <div class="w3-half">
-                <ul>
-                  <li>Led cross-functional operational process improvement initiatives that enhanced system efficiency and visibility</li>
-                  <li>Designed and implemented Oracle-to-Salesforce integrations, enabling unified data flow and real-time reporting</li>
-                  <li>Developed and standardized SOPs and documentation for development and end-user training</li>
-                  <li>Partnered with engineering teams to streamline workflows and reduce delivery friction</li>
-                </ul>
-              </div>
-              <div class="w3-half">
-                <ul>
-                  <li>Identified and defined new performance KPIs in collaboration with Finance and Operations leadership</li>
-                  <li>Developed advanced analytics dashboards using Tableau and Power BI to enhance executive decision-making</li>
-                  <li>Executed rigorous data validation and integrity checks across systems</li>
-                  <li>Diagnosed and resolved complex data and automation issues across the enterprise environment</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div class="w3-container w3-margin-bottom">
-            <h3 class="w3-opacity">Wind Energy Transmission Texas</h3>
-            <h5 class="w3-opacity"><b>Operations Special Projects Lead</b></h5>
-            <h6 style="color:#00B396;"><i class="fa fa-calendar fa-fw w3-margin-right"></i>July 2021 - December 2022</h6>
-            <p><em>Directed operational technology modernization initiatives integrating data, automation, and knowledge systems to improve reliability, transparency, and cross-departmental collaboration.</em></p>
-            <div class="w3-row-padding">
-              <div class="w3-half">
-                <ul>
-                  <li>Led database integration and automation projects to improve data reliability across SCADA and RTAC systems</li>
-                  <li>Drove process optimization and continuous improvement initiatives across operational workflows</li>
-                  <li>Enhanced real-time monitoring through SCADA integration and RTAC system automation</li>
-                  <li>Collaborated with engineering and IT teams to strengthen data pipelines and system resiliency</li>
-                </ul>
-              </div>
-              <div class="w3-half">
-                <ul>
-                  <li>Analyzed performance data to identify root causes and propose data-driven solutions</li>
-                  <li>Authored a centralized knowledge base to preserve institutional knowledge and onboarding efficiency</li>
-                  <li>Designed and implemented standardized procedures for system operations and escalation management</li>
-                  <li>Championed cross-team communication and troubleshooting practices to accelerate incident resolution</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div class="w3-container w3-margin-bottom">
-            <h3 class="w3-opacity">SHI</h3>
-            <h5 class="w3-opacity"><b>Operations Analyst</b></h5>
-            <h6 style="color:#00B396;"><i class="fa fa-calendar fa-fw w3-margin-right"></i>March 2020 - July 2021</h6>
-            <p><em>Supported enterprise operations through process automation, data integrity management, and cross-team reporting initiatives that laid the groundwork for scalable analytics and workflow optimization.</em></p>
-            <div class="w3-row-padding">
-              <div class="w3-half">
-                <ul>
-                  <li>Managed and optimized operational databases to ensure accuracy and data availability</li>
-                  <li>Streamlined key business processes through ETL automation and system alignment</li>
-                  <li>Led process improvement initiatives to reduce cycle times and improve data quality</li>
-                  <li>Reconciled complex financial invoices across multiple data sources to ensure reporting integrity</li>
-                </ul>
-              </div>
-              <div class="w3-half">
-                <ul>
-                  <li>Analyzed data trends and anomalies to identify root causes and drive continuous improvement</li>
-                  <li>Created a centralized knowledge base for operational support and onboarding efficiency</li>
-                  <li>Designed and implemented standardized procedures for data handling and reporting</li>
-                  <li>Collaborated with stakeholders to develop sustainable data and workflow governance practices</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <!-- TEBRA -->
+<div class="w3-container w3-margin-bottom">
+  <h3 class="w3-opacity">Tebra</h3>
+  <h5 class="w3-opacity"><b>Senior AI &amp; Automation Engineer</b></h5>
+  <h6 style="color:#00B396;">
+    <i class="fa fa-calendar fa-fw w3-margin-right"></i>July 2024 - Present
+  </h6>
+  <p>
+    <em>
+      Driving AI and automation strategy across Customer Success, Finance, and Operations to streamline enterprise workflows, enhance coaching capabilities, and integrate intelligence into the Snowflake, Salesforce, and NetSuite ecosystem.
+    </em>
+  </p>
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <ul>
+        <li>Defined and executed enterprise AI strategy, integrating automation into core operational and customer engagement processes.</li>
+        <li>Deployed the Workato GO Genie chatbot, achieving a 20% reduction in support case volume.</li>
+        <li>Automated Salesforce CPQ and contract amendment workflows, creating enterprise-wide data visibility and unlocking previously untapped metrics and forecasting capabilities.</li>
+        <li>Designed and implemented a customer profile providing customer-specific context, reducing research time from 15–20 minutes to under 2 minutes and enabling faster, data-driven customer interactions.</li>
+      </ul>
+    </div>
+    <div class="w3-half">
+      <ul>
+        <li>Drove initiatives in data modeling, process engineering, and automation across Salesforce and NetSuite environments, aligning AI strategy and enterprise workflows with organizational growth goals.</li>
+        <li>Partnered with leadership to align automation and AI initiatives with business growth objectives and long-term data governance goals.</li>
+        <li>Led Salesforce CPQ migration to streamline contract workflows and improve financial visibility.</li>
+        <li>Mentored teams on automation best practices, data governance, and AI adoption strategies.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ALLEGRO -->
+<div class="w3-container w3-margin-bottom">
+  <h3 class="w3-opacity">Allegro MicroSystems</h3>
+  <h5 class="w3-opacity"><b>Business Systems Analyst (Contract)</b></h5>
+  <h6 style="color:#00B396;">
+    <i class="fa fa-calendar fa-fw w3-margin-right"></i>January 2023 - January 2025
+  </h6>
+  <p>
+    <em>
+      Partnered with executive leadership to modernize enterprise systems, unify analytics, and lay the groundwork for scalable automation through robust data governance and integrated reporting frameworks.
+    </em>
+  </p>
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <ul>
+        <li>Championed KPI-driven reporting and adoption tracking, enabling clearer data ownership, faster deployments, and improved cross-team collaboration.</li>
+        <li>Implemented a Salesforce change management process, accelerating request handling and improving governance for system enhancements.</li>
+        <li>Built first-of-its-kind reporting capabilities across teams, giving leadership visibility into productivity and role alignment.</li>
+        <li>Developed a document lifecycle automation system for manufacturing operations, enabling real-time content updates, version control, and streamlined review cycles.</li>
+      </ul>
+    </div>
+    <div class="w3-half">
+      <ul>
+        <li>Created the company’s first modular enablement content framework, allowing for continuous content revision, up-to-date documentation, and scalable templates for future training and onboarding.</li>
+        <li>Partnered with business units to align initiatives with strategic objectives, ensuring measurable impact.</li>
+        <li>Collaborated with engineering teams to streamline workflows, reduce delivery friction, and enforce consistent governance.</li>
+        <li>Diagnosed and resolved complex data and automation issues across the enterprise environment.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- WETT -->
+<div class="w3-container w3-margin-bottom">
+  <h3 class="w3-opacity">Wind Energy Transmission Texas (WETT)</h3>
+  <h5 class="w3-opacity"><b>Operations Project Lead</b></h5>
+  <h6 style="color:#00B396;">
+    <i class="fa fa-calendar fa-fw w3-margin-right"></i>July 2021 - December 2022
+  </h6>
+  <p>
+    <em>
+      Directed operational technology modernization initiatives integrating data, automation, and knowledge systems to improve reliability, transparency, and cross-departmental collaboration.
+    </em>
+  </p>
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <ul>
+        <li>Delivered operational improvements generating an estimated $700K in cost savings through automation, tracking, and process streamlining of vendor engagement and analysis.</li>
+        <li>Automated RTAC and SCADA functions, enhancing system reliability, reducing downtime, and mitigating operational risks.</li>
+        <li>Engineered a substation validation automation process to ensure accurate naming and assignment for breakers, buses, and substations, improving data integrity and reducing commissioning errors.</li>
+        <li>Developed an automated validation system for 180 kV and 360 kV substation creation, standardizing configuration, naming conventions, and asset assignments across transmission infrastructure.</li>
+      </ul>
+    </div>
+    <div class="w3-half">
+      <ul>
+        <li>Maintained Oracle asset management systems and standardized commissioning processes to ensure compliance and efficiency.</li>
+        <li>Partnered with Finance to reconcile ledgers, improving financial accuracy across multiple divisions.</li>
+        <li>Created documentation, playbooks, and training to scale operational best practices across teams.</li>
+        <li>Championed cross-team collaboration to accelerate incident resolution and improve operational visibility.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SHI -->
+<div class="w3-container w3-margin-bottom">
+  <h3 class="w3-opacity">SHI</h3>
+  <h5 class="w3-opacity"><b>Operations Analyst</b></h5>
+  <h6 style="color:#00B396;">
+    <i class="fa fa-calendar fa-fw w3-margin-right"></i>March 2020 - July 2021
+  </h6>
+  <p>
+    <em>
+      Supported enterprise operations through process automation, data integrity management, and cross-team reporting initiatives that laid the groundwork for scalable analytics and workflow optimization.
+    </em>
+  </p>
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <ul>
+        <li>Consolidated two teams performing manual invoicing (five FTEs) by developing an automated invoicing workflow, shifting focus from data entry to data integrity.</li>
+        <li>Spearheaded automation and process redesign efforts, improving invoice turnaround time and reducing operational errors.</li>
+        <li>Designed Power BI dashboards to deliver actionable insights, enabling leadership to make data-driven decisions faster.</li>
+        <li>Managed database ETL processes and compliance documentation, ensuring secure, accurate reporting.</li>
+      </ul>
+    </div>
+    <div class="w3-half">
+      <ul>
+        <li>Established scalable documentation standards, enhancing knowledge sharing and team efficiency.</li>
+        <li>Analyzed data trends and anomalies to identify root causes and drive continuous improvement.</li>
+        <li>Collaborated with stakeholders to develop sustainable data and workflow governance practices.</li>
+        <li>Led operational training initiatives to enhance adoption of automated processes across departments.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
           
 
           
