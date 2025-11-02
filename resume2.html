@@ -20,6 +20,18 @@
     .btn:hover { filter:brightness(0.95) }
     .pill { background:#E9FFFB;color:#007e73;padding:4px 10px;border-radius:999px;font-size:.8rem;display:inline-block }
     .w3-container p em { color:#555; }
+
+    /* Reserve space for the fixed top bar so content doesn't tuck underneath */
+    body { padding-top: 72px; }
+    @media (max-width: 600px) {
+      body { padding-top: 60px; } /* slightly shorter bar on small screens */
+    }
+
+    /* Cleaner print layout */
+    @media print {
+      body { padding-top: 0; }
+      .w3-top, .w3-sidebar, footer { display: none !important; }
+    }
   </style>
 </head>
 
@@ -46,7 +58,7 @@
   </nav>
 
   <!-- Page Container -->
-  <div class="w3-content w3-margin-top">
+  <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
     <!-- The Grid -->
     <div class="w3-row-padding">
@@ -80,7 +92,7 @@
 
             <!-- Programming & Scripting Languages -->
             <p class="w3-medium">
-              <b><i class="fa fa-star fa-fw w3-margin-right brand"></i>Programming & Scripting</b>
+              <b><i class="fa fa-star fa-fw w3-margin-right brand"></i>Programming &amp; Scripting</b>
             </p>
             <div class="w3-light-grey w3-round-xlarge w3-small w3-padding">
               <ul class="w3-ul w3-small">
@@ -93,7 +105,7 @@
 
             <!-- Integration & Automation Platforms -->
             <p class="w3-medium">
-              <b><i class="fa fa-cogs fa-fw w3-margin-right brand"></i>Integration & Automation</b>
+              <b><i class="fa fa-cogs fa-fw w3-margin-right brand"></i>Integration &amp; Automation</b>
             </p>
             <div class="w3-light-grey w3-round-xlarge w3-small w3-padding">
               <ul class="w3-ul w3-small">
@@ -116,7 +128,7 @@
 
             <!-- Analytics & Business Intelligence -->
             <p class="w3-medium">
-              <b><i class="fa fa-line-chart fa-fw w3-margin-right brand"></i>Analytics & BI</b>
+              <b><i class="fa fa-line-chart fa-fw w3-margin-right brand"></i>Analytics &amp; BI</b>
             </p>
             <div class="w3-light-grey w3-round-xlarge w3-small w3-padding">
               <ul class="w3-ul w3-small">
@@ -127,7 +139,7 @@
 
             <!-- Cloud & Collaboration Platforms -->
             <p class="w3-medium">
-              <b><i class="fa fa-cloud fa-fw w3-margin-right brand"></i>Cloud & Collaboration</b>
+              <b><i class="fa fa-cloud fa-fw w3-margin-right brand"></i>Cloud &amp; Collaboration</b>
             </p>
             <div class="w3-light-grey w3-round-xlarge w3-small w3-padding">
               <ul class="w3-ul w3-small">
@@ -139,7 +151,7 @@
 
             <!-- Software & Tools -->
             <p class="w3-medium">
-              <b><i class="fa fa-wrench fa-fw w3-margin-right brand"></i>Software & Tools</b>
+              <b><i class="fa fa-wrench fa-fw w3-margin-right brand"></i>Software &amp; Tools</b>
             </p>
             <div class="w3-light-grey w3-round-xlarge w3-small w3-padding">
               <ul class="w3-ul w3-small">
@@ -174,7 +186,9 @@
               <h2 class="w3-text-grey" style="margin:0;">
                 <i class="fa fa-user-circle fa-fw w3-margin-right w3-xxlarge brand"></i>Professional Summary
               </h2>
-              <p>Operating at the intersection of technology strategy, architecture, and intelligent transformation. Architect of enterprise AI roadmaps; leader of cross-functional programs spanning Salesforce, NetSuite, and ERP ecosystems; and translator of complex business needs into measurable, scalable automation.</p>
+              <p>Operating at the intersection of technology strategy, architecture, and intelligent transformation. 
+                Architect of enterprise AI roadmaps; leader of cross-functional programs spanning Salesforce, NetSuite, and ERP ecosystems; 
+                and translator of complex business needs into measurable, scalable automation.</p>
             </div>
             <div class="w3-half">
               <h2 class="w3-text-grey" style="margin:0;">
@@ -183,7 +197,7 @@
               <ul class="w3-ul w3-small">
                 <li>Built Tebra’s first AI roadmap; reduced support cases 20% and saved ~$1M.</li>
                 <li>Deployed Workato GO Genie chatbot → 50 qualified leads in month one.</li>
-                <li>Designed AI-driven reconciliation & exception handling standard.</li>
+                <li>Designed AI-driven reconciliation &amp; exception handling standard.</li>
                 <li>Multi-phase AI Agent framework for finance, contracts, reporting.</li>
                 <li>Directed automation across CS/Finance/Ops for 17K+ customers.</li>
               </ul>
@@ -207,7 +221,7 @@
               <div class="w3-half">
                 <ul>
                   <li>Deployed Workato GO Genie chatbot → 50 qualified leads in first month; 20% support reduction.</li>
-                  <li>Automated Salesforce CPQ & contract amendments for enterprise-wide visibility and forecasting.</li>
+                  <li>Automated Salesforce CPQ &amp; contract amendments for enterprise-wide visibility and forecasting.</li>
                   <li>Implemented customer context profiles cutting research time from 15–20 mins to &lt;2 mins.</li>
                 </ul>
               </div>
