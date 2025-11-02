@@ -8,13 +8,30 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
   <link
     href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAGAAAAFgAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAJ1lP2f9ZT9n/AAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAFlP2f8AAAAFWU/Z/wAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAABWTdK9AAAAL1lP2f8AAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAFJJyXxZT9n/AAAAEwAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAdWU/Z/1JIx8EAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAHUUjGzzs0j2lYTtbtAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAA8AAAA0AAAASFZM1/9COqOlRj6uhgAAAAsAAAAFAAAABAAAAAD///8A////AP///wD///8A////AAAAABVuaNzDk4f//6GT//+jmP//lY7//4B9//5hX8KmOjl2bE9OnWQAAAAA////AP///wD///8A////AP///wBnYM+h29P//52P//+fkf//kYj//3p3/v97ef7/gn/+/8vG//92dfG0AAAAAP///wD///8A////AP///wD///8Af3b//3Bo5KOim///h33//5+T//+dk///m5L//8bB//+Fg/7/AAAAAgAAAAD///8A////AP///wD///8A////AH5198dRTJ5ncWvlYbm0///c1v//4Nv//7m1//96d/35AAAAAQAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAf3f5zgAAACoAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAIQAAAAqBev//AAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AGBgX/9LS0nDh4D48wAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAnJyUUfHXf6rCq//8AAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A//8AAP5/AAD9fwAA/X8AAP9/AAD/PwAA/r8AAP4/AADwHwAA4AcAAOAPAADsHwAA9/8AAPv/AADj/wAA8/8AAA=="
     rel="icon" type="image/x-icon"
   />
-  <script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
   <style>
     html, body, h1, h2, h3, h4, h5, h6 { font-family:"Roboto", sans-serif }
+    .brand { color:#00B396; }
+    .btn { background:#00CDAC;color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer }
+    .btn:hover { filter:brightness(0.95) }
+    .pill { background:#E9FFFB;color:#007e73;padding:4px 10px;border-radius:999px;font-size:.8rem;display:inline-block }
+    .w3-container p em { color:#555; }
+
+    /* Reserve space for the fixed top bar so content doesn't tuck underneath */
+    body { padding-top: 72px; }
+    @media (max-width: 600px) {
+      body { padding-top: 60px; } /* slightly shorter bar on small screens */
+    }
+
+    /* Cleaner print layout */
+    @media print {
+      body { padding-top: 0; }
+      .w3-top, .w3-sidebar, footer { display: none !important; }
+    }
   </style>
 </head>
 
@@ -55,12 +72,13 @@
           <div class="w3-container">
             <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large" style="color:#00B396;"></i>Senior AI &amp; Automation Engineer</p>
             <p><i class="fa fa-home fa-fw w3-margin-right w3-large" style="color:#00B396;"></i>Amesbury, Ma</p>
-            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large" style="color:#00B396;"></i>serruhb@gmail.com</p>
+            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large" style="color:#00B396;"></i>SerruhB@gmail.com</p>
             <p><i class="fa fa-phone fa-fw w3-margin-right w3-large" style="color:#00B396;"></i>(512) 884-1220</p>
             <hr>
              <!-- Executive Summary (compact) -->
              <p class="w3-large"><b><i class="fa fa-lightbulb-o fa-fw w3-margin-right brand"></i>Executive Summary</b></p>
-             <p>Senior AI &amp; Automation leader shaping enterprise roadmaps, orchestrating programs across Salesforce/ERP stacks, and translating business challenges into scalable, data-driven solutions that unlock efficiency, accelerate growth, and drive innovation.</p>
+             <p>Senior AI &amp; Automation leader shaping enterprise roadmaps, orchestrating programs across CRM &amp; ERP stacks, and translating 
+              business challenges into scalable, data-driven solutions that unlock efficiency, accelerate growth, and drive innovation.</p>
              <hr>
            <!-- SKILLS SECTION -->
 <p class="w3-large">
@@ -440,14 +458,11 @@
 
   <footer class="w3-container w3-center w3-margin-top" style="background-color:#00CDAC;color:#fff;">
     <p>Socials</p>
-    <a href="https://www.instagram.com/battyintheusa/" target="_blank" rel="noopener">
-      <i class="fab fa-instagram w3-hover-opacity w3-xxlarge w3-margin-right" style="color:#fff;"></i>
-    </a>
-    <a href="https://twitter.com/SerruhB" target="_blank" rel="noopener">
-      <i class="fab fa-twitter w3-hover-opacity w3-xxlarge w3-margin-right" style="color:#fff;"></i>
-    </a>
     <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">
       <i class="fab fa-linkedin w3-hover-opacity w3-xxlarge w3-margin-right" style="color:#fff;"></i>
+    </a>
+    <a href="https://www.instagram.com/battyintheusa/" target="_blank" rel="noopener">
+      <i class="fab fa-instagram w3-hover-opacity w3-xxlarge w3-margin-right" style="color:#fff;"></i>
     </a>
   </footer>
 
