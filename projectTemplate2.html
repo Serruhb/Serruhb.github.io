@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>AI & Automation Project</title>
+    <title>SYNaTRA — Synthetic Triage Assistant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
@@ -34,6 +34,15 @@
         margin-bottom: 12px;
       }
 
+      .hero p {
+        margin: 4px 0;
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+        color: #555;
+      }
+
       /* Sections */
       .section {
         padding: 60px 20px;
@@ -53,7 +62,7 @@
 
       .grid-features,
       .grid-usecases {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       }
 
       /* Cards */
@@ -64,6 +73,18 @@
         background: #ffffff;
         transition: transform 0.2s ease, box-shadow 0.2s ease,
           border-color 0.2s ease;
+      }
+
+      .card h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+
+      .card small {
+        display: block;
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: #666;
       }
 
       .card:hover {
@@ -106,10 +127,25 @@
         margin-bottom: 4px;
       }
 
+      .metric p {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
       .metric:hover {
         transform: translateY(-4px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
         background: #ffffff;
+      }
+
+      .impact-notes {
+        margin-top: 20px;
+        font-size: 0.95rem;
+        color: #444;
+      }
+
+      .impact-notes p {
+        margin: 6px 0;
       }
 
       /* Footer */
@@ -118,6 +154,12 @@
         text-align: center;
         background: #f5f5f5;
         margin-top: 40px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      .footer p {
+        margin: 4px 0;
       }
 
       /* Scroll reveal base */
@@ -150,83 +192,133 @@
     <div class="page">
       <!-- HERO -->
       <header class="hero hero-intro">
-        <h1>AI &amp; Automation Project</h1>
-        <p>Transforming workflows with intelligent automation.</p>
+        <h1>SYNaTRA — Synthetic Triage Assistant</h1>
+        <p>Workato-orchestrated Customer Success triage across Salesforce, Jira, and Snowflake.</p>
+        <p class="hero-subtitle">
+          Primary users: CS Ops, CSMs, and Customer Success Representatives (internal Tebra only).
+        </p>
       </header>
 
       <!-- PROBLEM / SOLUTION -->
       <section class="section reveal">
         <h2>The Problem</h2>
         <p>
-          Manual processes introduce delays, inconsistencies, and unnecessary
-          workload.
+          Customer Success teams lose valuable time piecing together context across Salesforce, Jira,
+          and subscription systems. Manual searches, inconsistent summaries, and scattered historical
+          resolutions increase time-to-context and slow first-contact resolution. Critical information
+          such as active contracts, product mix, and prior fixes is often buried across tools, making
+          live customer conversations harder than they need to be.
         </p>
 
         <h2>Our Solution</h2>
         <p>
-          This AI automation engine optimizes decision-making by analyzing data
-          in real time and triggering smart, automated workflows.
+          SYNaTRA is a synthetic triage assistant that retrieves and summarizes customer history from
+          Salesforce Cases, Jira Tickets, and Snowflake subscription data into a single, concise view.
+          It parses an issue description, searches across systems using SOQL, JQL, and SQL, scores the
+          similarity and confidence of matches, and returns an actionable, formatted triage summary
+          ready to use in real time during Slack, MS Teams, or Workbot conversations.
         </p>
       </section>
 
-      <!-- FEATURES -->
+      <!-- KEY FEATURES -->
       <section class="section reveal">
         <h2>Key Features</h2>
         <div class="grid grid-features">
           <div class="card">
-            <h3>Real-time AI Decisions</h3>
-            <p>Processes data instantly to provide rapid insights.</p>
-          </div>
-          <div class="card">
-            <h3>Workflow Automation</h3>
+            <h3>Unified Customer Context</h3>
             <p>
-              Eliminates repetitive manual tasks through rule-based automation.
+              Searches Salesforce for Accounts, Cases, Contracts, and Subscriptions, and Snowflake for
+              subscription details, then builds a concise customer overview with active plans, status,
+              and total MRR.
+            </p>
+            <small>
+              Data sources: Salesforce (Case, Contract, Account), Snowflake subscription tables.
+            </small>
+          </div>
+
+          <div class="card">
+            <h3>Issue-Aware Search Across Systems</h3>
+            <p>
+              Converts short issue descriptions into keyword strings and constructs SOQL and JQL queries.
+              Searches Salesforce Cases and Jira issues (DSSD, DS, COPS) for relevant historical tickets
+              within a 12-month window.
+            </p>
+            <small>Tech: SOQL, JQL, optional SOSL.</small>
+          </div>
+
+          <div class="card">
+            <h3>Summaries, Scores, and Next Steps</h3>
+            <p>
+              For each Salesforce Case and Jira issue, SYNaTRA generates ≤150-word summaries of historical
+              resolutions, adds confidence and similarity scores, and labels records with source references
+              (e.g., SF-Case-12345, JIRA-6789). It then proposes the next best action in friendly,
+              live-usable language.
             </p>
           </div>
+
           <div class="card">
-            <h3>Predictive Insights</h3>
+            <h3>Guardrails, Access Rules, and Safety</h3>
             <p>
-              Uses machine learning to forecast trends and optimize operations.
+              Uses integration-user credentials for Salesforce and Jira, masks PII (emails, phone numbers,
+              tokens) in summaries, and avoids any persistent storage beyond the current response. Designed
+              for internal Tebra use only.
             </p>
-          </div>
-          <div class="card">
-            <h3>Monitoring Dashboard</h3>
-            <p>Visualizes key performance metrics and system activity.</p>
           </div>
         </div>
       </section>
 
-      <!-- ARCHITECTURE OVERVIEW -->
+      <!-- SYSTEM ARCHITECTURE -->
       <section class="section reveal">
         <h2>System Architecture</h2>
-        <p>A simple diagram or illustration could be placed here.</p>
+        <p>
+          SYNaTRA orchestrates multiple connectors and skills to transform a short issue description into
+          a structured triage report:
+        </p>
         <ul class="architecture-list">
-          <li>Data Sources →</li>
-          <li>AI Processing Engine →</li>
-          <li>Automation Logic →</li>
-          <li>Dashboard &amp; Reports</li>
+          <li><strong>Inputs:</strong> <code>issue_description</code> (free text) and optional
+            <code>customer_identifier</code> (AccountId, ContractId, Kareo CustomerId).</li>
+          <li><strong>Customer Identification:</strong> Salesforce account search skill with fuzzy matching and
+            top-5 candidates when only a name is provided.</li>
+          <li><strong>Keyword &amp; Query Builder:</strong> Tokenizes issue text and builds JQL and SOQL/SOSL
+            keyword queries.</li>
+          <li><strong>Record Fetching:</strong> Salesforce Cases &amp; Contracts, Jira tickets, Snowflake
+            subscription data (12-month lookback).</li>
+          <li><strong>Summarization &amp; Scoring:</strong> Resolution summaries with similarity and confidence
+            metrics at record and overall result levels.</li>
+          <li><strong>Insight Assembly:</strong> Final message composed into a readable chat response for Slack,
+            MS Teams, or Workbot.</li>
         </ul>
+        <p>
+          If Salesforce or Jira are unavailable, SYNaTRA responds with a user-friendly error:
+          <em>“I couldn’t reach Salesforce or Jira right now — please try again shortly or check your connection
+          settings.”</em>
+        </p>
       </section>
 
-      <!-- METRICS -->
+      <!-- IMPACT & RESULTS -->
       <section class="section reveal">
         <h2>Impact &amp; Results</h2>
+        <p>
+          SYNaTRA is designed to optimize time-to-context and resolution quality for Customer Success teams.
+          Key outcome targets include:
+        </p>
+
         <div class="metrics">
           <div class="metric">
-            <h3>85%</h3>
-            <p>Less manual work</p>
+            <h3>50%</h3>
+            <p>Reduction in average time-to-context for CS Ops and CSMs.</p>
           </div>
           <div class="metric">
-            <h3>97%</h3>
-            <p>Accuracy improvement</p>
+            <h3>↗</h3>
+            <p>Improved first-contact resolution rate by surfacing prior fixes faster.</p>
           </div>
           <div class="metric">
-            <h3>12 sec</h3>
-            <p>Processing time</p>
+            <h3>10 + 10</h3>
+            <p>Up to 10 SF cases and 10 Jira issues summarized per request.</p>
           </div>
           <div class="metric">
-            <h3>400+ hrs</h3>
-            <p>Saved monthly</p>
+            <h3>&le; 5 min</h3>
+            <p>Maximum runtime for full triage execution, with no data persisted.</p>
           </div>
         </div>
       </section>
@@ -236,31 +328,51 @@
         <h2>Use Cases</h2>
         <div class="grid grid-usecases">
           <div class="card">
-            <h3>Fraud Detection</h3>
-            <p>Detects anomalies in real time with AI models.</p>
+            <h3>Account + Issue Triage</h3>
+            <p>
+              A CSM provides an issue description and an AccountId. SYNaTRA identifies recent Salesforce
+              Cases and Jira tickets, summarizes resolutions, retrieves active contracts and products, and
+              returns a complete context package for live customer calls.
+            </p>
           </div>
+
           <div class="card">
-            <h3>Email Classification</h3>
-            <p>Automatically routes messages to the right workflows.</p>
+            <h3>Issue-Only Research</h3>
+            <p>
+              When only a short issue description is available, SYNaTRA searches Jira and historical Salesforce
+              Cases using keyword-based queries. It ranks and summarizes likely matches and proposes next steps,
+              even before a specific customer is identified.
+            </p>
           </div>
+
           <div class="card">
-            <h3>Predictive Maintenance</h3>
-            <p>Anticipates hardware failures before they occur.</p>
+            <h3>CS Ops Coaching &amp; Playbooks</h3>
+            <p>
+              CS Ops teams use SYNaTRA’s structured outputs—customer overview, case list, Jira issue list, and
+              suggested actions—to design standard playbooks and improve coaching for handling recurring issue
+              patterns.
+            </p>
           </div>
         </div>
       </section>
 
-      <!-- CALL TO ACTION -->
+      <!-- GET IN TOUCH -->
       <section class="section reveal">
         <h2>Get in Touch</h2>
         <p>
-          Interested in learning more or using this system? Contact us for a
-          demo.
+          Interested in using SYNaTRA for internal Customer Success triage, or extending it with new data
+          sources and skills? Reach out to the CS Ops / Workato automation team to request access, review
+          recipes, or see a live demo.
+        </p>
+        <p>
+          <strong>Note:</strong> Access is restricted to internal Tebra employees; operational details and PII
+          are guarded and not persisted.
         </p>
       </section>
 
       <footer class="footer">
-        <p>© 2025 AI &amp; Automation Project Demo</p>
+        <p>© 2025 SYNaTRA – Synthetic Triage Assistant.</p>
+        <p>Portfolio excerpt for demonstration; operational details redacted.</p>
       </footer>
     </div>
 
