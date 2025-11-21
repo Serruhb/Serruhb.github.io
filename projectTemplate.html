@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI & Automation Project</title>
+  <title>SYNaTRA – Synthetic Triage Assistant</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; color: #222; }
     header { padding: 80px 20px; text-align: center; background: #f5f5f5; }
@@ -19,50 +19,118 @@
 <body>
   <!-- HERO -->
   <header>
-    <h1>AI & Automation Project</h1>
-    <p>Transforming workflows with intelligent automation.</p>
+    <h1>SYNaTRA — Synthetic Triage Assistant</h1>
+    <p>Workato-orchestrated Customer Success triage across Salesforce, Jira, and Snowflake.</p>
+    <p><strong>Primary users:</strong> CS Ops, CSMs, and Customer Success Representatives (internal Tebra only).</p>
   </header>
 
   <!-- PROBLEM / SOLUTION -->
   <section>
     <h2>The Problem</h2>
-    <p>Manual processes introduce delays, inconsistencies, and unnecessary workload.</p>
+    <p>
+      Customer Success teams lose valuable time piecing together context across Salesforce, Jira, and subscription systems. 
+      Manual searches, inconsistent summaries, and scattered historical resolutions increase time-to-context and slow first-contact 
+      resolution. Critical information such as active contracts, product mix, and prior fixes is often buried across tools, 
+      making live customer conversations harder than they need to be.
+    </p>
 
     <h2>Our Solution</h2>
-    <p>This AI automation engine optimizes decision-making by analyzing data in real-time and triggering smart, automated workflows.</p>
+    <p>
+      SYNaTRA is a synthetic triage assistant that retrieves and summarizes customer history from Salesforce Cases, Jira Tickets, 
+      and Snowflake subscription data into a single, concise view. It parses an issue description, searches across systems using 
+      SOQL, JQL, and SQL, scores the similarity and confidence of matches, and returns an actionable, formatted triage summary 
+      ready to use in real time during Slack, MS Teams, or Workbot conversations.
+    </p>
   </section>
 
   <!-- FEATURES -->
   <section>
     <h2>Key Features</h2>
     <div class="features">
-      <div class="card"><h3>Real-time AI Decisions</h3><p>Processes data instantly to provide rapid insights.</p></div>
-      <div class="card"><h3>Workflow Automation</h3><p>Eliminates repetitive manual tasks through rule-based automation.</p></div>
-      <div class="card"><h3>Predictive Insights</h3><p>Uses machine learning to forecast trends and optimize operations.</p></div>
-      <div class="card"><h3>Monitoring Dashboard</h3><p>Visualizes key performance metrics and system activity.</p></div>
+      <div class="card">
+        <h3>Unified Customer Context</h3>
+        <p>
+          Searches Salesforce for Accounts, Cases, Contracts, and Subscriptions, and Snowflake for subscription details, 
+          then builds a concise customer overview with active plans, status, and total MRR.
+        </p>
+        <p><strong>Data sources:</strong> Salesforce (Case, Contract, Account), Snowflake subscription tables.</p>
+      </div>
+
+      <div class="card">
+        <h3>Issue-Aware Search Across Systems</h3>
+        <p>
+          Converts short issue descriptions into keyword strings and constructs SOQL and JQL queries. 
+          Searches Salesforce Cases and Jira issues (DSSD, DS, COPS) for relevant historical tickets within a 
+          12-month window.
+        </p>
+        <p><strong>Tech:</strong> SOQL, JQL, optional SOSL.</p>
+      </div>
+
+      <div class="card">
+        <h3>Summaries, Scores, and Next Steps</h3>
+        <p>
+          For each Salesforce Case and Jira issue, SYNaTRA generates ≤150-word summaries of historical resolutions, 
+          adds confidence and similarity scores, and labels records with source references 
+          (e.g., <em>SF-Case-12345</em>, <em>JIRA-6789</em>). It then proposes the next best action in friendly, 
+          live-usable language.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Guardrails, Access Rules, and Safety</h3>
+        <p>
+          Uses integration-user credentials for Salesforce and Jira, masks PII (emails, phone numbers, tokens) in 
+          summaries, and avoids any persistent storage beyond the current response. Designed for internal Tebra use only.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- ARCHITECTURE OVERVIEW -->
   <section>
     <h2>System Architecture</h2>
-    <p>A simple diagram or illustration could be placed here.</p>
+    <p>
+      SYNaTRA orchestrates multiple connectors and skills to transform a short issue description into a structured 
+      triage report:
+    </p>
     <ul>
-      <li>Data Sources →</li>
-      <li>AI Processing Engine →</li>
-      <li>Automation Logic →</li>
-      <li>Dashboard & Reports</li>
+      <li><strong>Inputs:</strong> <em>issue_description</em> (free text) and optional <em>customer_identifier</em> (AccountId, ContractId, Kareo CustomerId).</li>
+      <li><strong>Customer Identification:</strong> Salesforce account search skill with fuzzy matching and top-5 candidates when only a name is provided.</li>
+      <li><strong>Keyword & Query Builder:</strong> Tokenizes issue text and builds JQL and SOQL/SOSL keyword queries.</li>
+      <li><strong>Record Fetching:</strong> Salesforce Cases & Contracts, Jira tickets, Snowflake subscription data (12-month lookback).</li>
+      <li><strong>Summarization & Scoring:</strong> Resolution summaries with similarity and confidence metrics at record and overall result levels.</li>
+      <li><strong>Insight Assembly:</strong> Final message composed into a readable chat response for Slack, MS Teams, or Workbot.</li>
     </ul>
+    <p>
+      If Salesforce or Jira are unavailable, SYNaTRA responds with a user-friendly error: 
+      <em>“I couldn’t reach Salesforce or Jira right now — please try again shortly or check your connection settings.”</em>
+    </p>
   </section>
 
   <!-- METRICS -->
   <section>
     <h2>Impact & Results</h2>
+    <p>
+      SYNaTRA is designed to optimize time-to-context and resolution quality for Customer Success teams. 
+      Key outcome targets include:
+    </p>
     <div class="metrics">
-      <div class="metric"><h3>85%</h3><p>Less manual work</p></div>
-      <div class="metric"><h3>97%</h3><p>Accuracy improvement</p></div>
-      <div class="metric"><h3>12 sec</h3><p>Processing time</p></div>
-      <div class="metric"><h3>400+ hrs</h3><p>Saved monthly</p></div>
+      <div class="metric">
+        <h3>50%</h3>
+        <p>Reduction in average time-to-context for CS Ops and CSMs.</p>
+      </div>
+      <div class="metric">
+        <h3>↗</h3>
+        <p>Improved first-contact resolution rate by surfacing prior fixes faster.</p>
+      </div>
+      <div class="metric">
+        <h3>10 + 10</h3>
+        <p>Up to 10 Salesforce cases and 10 Jira issues summarized per request.</p>
+      </div>
+      <div class="metric">
+        <h3>≤ 5 min</h3>
+        <p>Maximum runtime for full triage execution, with no data persisted.</p>
+      </div>
     </div>
   </section>
 
@@ -70,20 +138,44 @@
   <section>
     <h2>Use Cases</h2>
     <div class="use-cases">
-      <div class="card"><h3>Fraud Detection</h3><p>Detects anomalies in real-time with AI models.</p></div>
-      <div class="card"><h3>Email Classification</h3><p>Automatically routes messages to the right workflows.</p></div>
-      <div class="card"><h3>Predictive Maintenance</h3><p>Anticipates hardware failures before they occur.</p></div>
+      <div class="card">
+        <h3>Account + Issue Triage</h3>
+        <p>
+          A CSM provides an issue description and an AccountId. SYNaTRA identifies recent Salesforce Cases and Jira 
+          tickets, summarizes resolutions, retrieves active contracts and products, and returns a complete context 
+          package for live customer calls.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Issue-Only Research</h3>
+        <p>
+          When only a short issue description is available, SYNaTRA searches Jira and historical Salesforce Cases 
+          using keyword-based queries. It ranks and summarizes likely matches and proposes next steps, even before a 
+          specific customer is identified.
+        </p>
+      </div>
+      <div class="card">
+        <h3>CS Ops Coaching & Playbooks</h3>
+        <p>
+          CS Ops teams use SYNaTRA’s structured outputs—customer overview, case list, Jira issue list, and suggested 
+          actions—to design standard playbooks and improve coaching for handling recurring issue patterns.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- CALL TO ACTION -->
   <section>
     <h2>Get in Touch</h2>
-    <p>Interested in learning more or using this system? Contact us for a demo.</p>
+    <p>
+      Interested in using SYNaTRA for internal Customer Success triage, or extending it with new data sources and 
+      skills? Reach out to the CS Ops / Workato automation team to request access, review recipes, or see a live demo.
+    </p>
+    <p><em>Note: Access is restricted to internal Tebra employees; operational details and PII are guarded and not persisted.</em></p>
   </section>
 
   <footer>
-    <p>© 2025 AI & Automation Project Demo</p>
+    <p>© 2025 SYNaTRA – Synthetic Triage Assistant. Portfolio excerpt for demonstration; operational details redacted.</p>
   </footer>
 </body>
 </html>
