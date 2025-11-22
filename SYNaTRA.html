@@ -1,441 +1,635 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SYNaTRA – Synthetic Triage Assistant</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap" rel="stylesheet" />
-<style>
-  /* ===== Site tokens aligned with index page ===== */
-  :root {
-    --brand:#00CDAC;                 /* main brand (matches index) */
-    --ink:#1e1e1e;                   /* body text */
-    --muted:#5a5a5a;                 /* secondary text */
-    --border:#e2e8f0;                /* subtle border */
-    --callout:#e6fffb;               /* soft callout */
-    --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
-    --bg-soft: color-mix(in srgb, var(--brand) 6%, white); /* light wash across page */
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <title>SYNaTRA — Synthetic Triage Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  *{box-sizing:border-box}
-  html,body{margin:0;height:100%}
-  body{
-    font-family: "Raleway", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    color:var(--ink);
-    background:#f3fbf9;          /* fallback */
-    background:var(--bg-soft);   /* preferred */
-    line-height:1.7;
-  }
-  a{color:var(--brand);text-decoration:none}
-  a:hover{text-decoration:underline}
+    <!-- Optional: match primary page font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  /* ===== Top bar to match index bar style ===== */
-  header{
-    position:sticky;top:0;z-index:10;
-    background:var(--brand);
-    color:#fff;
-    border-bottom:1px solid color-mix(in srgb, var(--brand) 40%, white);
-  }
-  .bar{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .mast{display:flex;align-items:center;gap:12px}
-  .logo{width:28px;height:28px;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 6px var(--brand)}
-  h1{font-size:22px;margin:0;color:#fff}
-  .sub{margin:2px 0 0;font-size:12px;color:#eafaf7}
-  .nav a{color:#fff;padding:8px 10px;border-radius:8px}
-  .nav a:hover{background:rgba(255,255,255,.12);text-decoration:none}
+    <!-- Favicon -->
+    <link
+  rel="icon"
+  type="image/svg+xml"
+  href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5TPC90ZXh0Pgo8L3N2Zz4="
+/>
 
-  /* ===== Layout ===== */
-  main{padding:24px 0 56px}
-  .container{max-width:1100px;margin:0 auto;padding:0 16px}
-  .grid{display:grid;gap:16px}
-  @media(min-width:980px){.grid{grid-template-columns: 2fr 1.2fr}}
+    <style>
+      /* ===== Design tokens ===== */
+      :root {
+        --brand: #00cdac; /* main brand */
+        --ink: #1e1e1e; /* body text */
+        --ink-muted: #5a5a5a; /* secondary text */
+        --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
+        /* Very light brand tint for full-page background */
+        --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
+      }
 
-  /* ===== Cards ===== */
-  .card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:0 1px 3px rgba(15,23,42,.06)}
-  .pad{padding:20px}
-  h2{font-size:20px;margin:0 0 10px;color:var(--brand-strong)}
-  h3{font-size:16px;margin:16px 0 6px;color:var(--ink)}
-  p,li{font-size:14px;line-height:1.65;color:var(--ink)}
-  .muted{color:var(--muted)}
+      /* ===== Base ===== */
+      html,
+      body {
+        height: 100%;
+      }
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Raleway", sans-serif;
+      }
+      body {
+        line-height: 1.8;
+        color: var(--ink);
+        background: #f3fbf9; /* fallback */
+        background: var(--bg-soft); /* preferred */
+        margin: 0;
+      }
 
-  /* ===== Hero ===== */
-  .hero{display:grid;gap:16px}
-  @media(min-width:720px){.hero{grid-template-columns: 1.7fr 1fr}}
-  .heroimg{aspect-ratio: 16/10; width:100%; border-radius:12px; border:1px solid var(--border); background: url('hero-placeholder.png') center/cover, linear-gradient(45deg,#f1f5f9,#e2e8f0)}
-  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-  .pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;border:1px solid var(--border);background:#fff;font-size:12px}
+      img {
+        max-width: 100%;
+        height: auto;
+      }
 
-  /* ===== Accordion for recipes ===== */
-  .acc{overflow:hidden}
-  .acc button{all:unset;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;width:100%;padding:16px;cursor:pointer}
-  .acc h4{margin:0;font-size:16px}
-  .acc p{margin:4px 0 0;color:var(--muted);font-size:13px}
-  .chev{transition:transform .2s ease;margin-left:8px}
-  .acc.open .chev{transform:rotate(90deg)}
-  .panel{padding:0 16px 16px;display:none}
-  .acc.open .panel{display:block}
-  .row{display:grid;gap:12px}
-  @media(min-width:860px){.row{grid-template-columns: repeat(2,minmax(0,1fr))}}
-  .list{margin:0;padding-left:18px}
-  .linkbtn{display:inline-block;padding:8px 10px;border:1px solid var(--brand);border-radius:10px;background:#fff;font-size:13px;color:var(--brand)}
-  .linkbtn:hover{background:color-mix(in srgb, var(--brand) 8%, white)}
-  .callout{background:var(--callout);border:1px solid color-mix(in srgb, var(--brand) 30%, white);border-radius:12px;padding:12px;font-size:13px;color:#025e52}
+      .brand-heading {
+        color: var(--brand-strong);
+      }
 
-  /* ===== Right-side sticky nav ===== */
-  nav.sticky{position:sticky; top:84px}
-  nav .navcard{position:relative}
-  nav a{display:block;padding:8px 10px;border-radius:8px;color:var(--ink);border:1px solid transparent}
-  nav a:hover{background:rgba(255,255,255,.6);border-color:#e5e7eb}
+      .brand-card {
+        background-color: var(--brand);
+        color: #fff;
+        opacity: 0.94;
+        border-radius: 14px;
+        padding: 24px 28px;
+      }
 
-  /* ===== Footer (brand bar like index) ===== */
-  footer.site{margin-top:32px;text-align:center;color:#fff;font-size:12px;padding:16px;background:var(--brand)}
-</style>
-</head>
-<body>
-  <header>
-    <div class="bar">
-      <div class="mast">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1>SYNaTRA — Synthetic Triage Assistant</h1>
-          <p class="sub">Workato orchestration for Customer Success triage with Salesforce, Jira, and Snowflake</p>
-        </div>
+      .brand-btn {
+        background-color: var(--brand);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+      .brand-btn:hover {
+        filter: brightness(0.95);
+      }
+      .icon-only {
+        color: var(--brand);
+        display: inline-flex;
+        width: 48px;
+        height: 48px;
+        border-radius: 6px;
+        align-items: center;
+        justify-content: center;
+      }
+      .icon-only i {
+        font-size: 1.55rem;
+      }
+      
+
+      .tile-icon {
+        background-color: var(--brand);
+        color: #fff;
+        display: inline-block;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      /* ===== Layout for this page ===== */
+      .syn-page {
+        min-height: 100vh;
+      }
+
+      .syn-shell {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 16px 60px;
+      }
+
+      /* Hero */
+      .syn-hero {
+        padding-top: 40px;
+        padding-bottom: 24px;
+      }
+
+      .syn-hero-inner {
+        display: grid;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .syn-hero-title {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        color: rgba(255, 255, 255, 0.9)
+      }
+
+      .syn-hero-sub {
+        margin: 0;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .syn-hero-meta {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Sections */
+      .section {
+        padding: 40px 0 20px;
+      }
+
+      .section-header {
+        margin-bottom: 16px;
+      }
+
+      .section-header h2 {
+        margin: 0 0 6px;
+        font-size: 1.2rem;
+      }
+
+      .section-header p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+      }
+
+      .section-body p {
+        margin-top: 0;
+        font-size: 0.95rem;
+        color: var(--ink);
+      }
+
+      /* Simple divider using brand tint */
+      .section + .section {
+        border-top: 1px solid rgba(0, 0, 0, 0.04);
+      }
+
+      /* Grid layouts */
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .grid-features,
+      .grid-usecases {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      /* Cards */
+      .card {
+        padding: 18px 18px 20px;
+        border-radius: 14px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .card h3 {
+        margin-top: 0;
+        margin-bottom: 6px;
+        font-size: 1.02rem;
+        color: var(--brand-strong);
+      }
+
+      .card p {
+        margin: 4px 0;
+        font-size: 0.93rem;
+      }
+
+      .card small {
+        display: block;
+        margin-top: 8px;
+        font-size: 0.82rem;
+        color: var(--ink-muted);
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 205, 172, 0.2);
+        border-color: rgba(0, 205, 172, 0.45);
+      }
+
+      /* Architecture list */
+      .architecture-list {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 10px;
+      }
+
+      .architecture-list li {
+        margin-bottom: 6px;
+        font-size: 0.93rem;
+        color: var(--ink-muted);
+      }
+
+      .architecture-list strong {
+        color: var(--brand-strong);
+      }
+
+      .architecture-list code {
+        font-size: 0.85rem;
+        background: rgba(0, 0, 0, 0.04);
+        padding: 1px 4px;
+        border-radius: 4px;
+      }
+
+      /* Metrics */
+      .metrics {
+        display: flex;
+        justify-content: space-around;
+        gap: 16px;
+        flex-wrap: wrap;
+        text-align: left;
+      }
+
+      .metric {
+        flex: 1;
+        min-width: 180px;
+        padding: 14px 14px 16px;
+        border-radius: 14px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .metric-main {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--brand-strong);
+      }
+
+      .metric-text {
+        font-size: 0.9rem;
+        color: var(--ink);
+      }
+
+      .metric:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 18px rgba(0, 205, 172, 0.18);
+        border-color: rgba(0, 205, 172, 0.4);
+      }
+
+      /* Get in touch note */
+      .note {
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+      }
+
+      /* Footer */
+      .footer {
+        padding: 22px 16px 32px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--ink-muted);
+      }
+
+      .footer p {
+        margin: 3px 0;
+      }
+
+      /* Scroll reveal base */
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  </head>
+
+  <body>
+    <div class="syn-page">
+      <div class="syn-shell">
+        <!-- HERO -->
+        <section class="syn-hero">
+          <div class="brand-card syn-hero-inner">
+            <div>
+              <h1 class="syn-hero-title brand-heading">
+                SYNaTRA — Synthetic Triage Assistant
+              </h1>
+              <p class="syn-hero-sub">
+                Workato-orchestrated Customer Success triage across Salesforce, Jira, and Snowflake.
+              </p>
+              <p class="syn-hero-meta">
+                Primary users: CS Ops, CSMs, and Customer Success Representatives (internal Tebra only).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROBLEM / SOLUTION -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">The Problem</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Customer Success teams lose valuable time piecing together context across Salesforce, Jira,
+              and subscription systems. Manual searches, inconsistent summaries, and scattered historical
+              resolutions increase time-to-context and slow first-contact resolution. Critical information
+              such as active contracts, product mix, and prior fixes is often buried across tools, making
+              live customer conversations harder than they need to be.
+            </p>
+          </div>
+
+          <div class="section-header" style="margin-top: 20px;">
+            <h2 class="brand-heading">Our Solution</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              SYNaTRA is a synthetic triage assistant that retrieves and summarizes customer history from
+              Salesforce Cases, Jira Tickets, and Snowflake subscription data into a single, concise view.
+              It parses an issue description, searches across systems using SOQL, JQL, and SQL, scores the
+              similarity and confidence of matches, and returns an actionable, formatted triage summary
+              ready to use in real time during Slack, MS Teams, or Workbot conversations.
+            </p>
+          </div>
+        </section>
+
+        <!-- KEY FEATURES -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">Key Features</h2>
+            <p>How SYNaTRA assembles context, searches systems, and keeps data safe.</p>
+          </div>
+          <div class="section-body">
+            <div class="grid grid-features">
+              <div class="card">
+                <span class="tile-icon">UC</span>
+                <h3>Unified Customer Context</h3>
+                <p>
+                  Searches Salesforce for Accounts, Cases, Contracts, and Subscriptions, and Snowflake for
+                  subscription details, then builds a concise customer overview with active plans, status,
+                  and total MRR.
+                </p>
+                <small>Data sources: Salesforce (Case, Contract, Account), Snowflake subscription tables.</small>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">IS</span>
+                <h3>Issue-Aware Search Across Systems</h3>
+                <p>
+                  Converts short issue descriptions into keyword strings and constructs SOQL and JQL queries.
+                  Searches Salesforce Cases and Jira issues (DSSD, DS, COPS) for relevant historical tickets
+                  within a 12-month window.
+                </p>
+                <small>Tech: SOQL, JQL, optional SOSL.</small>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">SS</span>
+                <h3>Summaries, Scores, and Next Steps</h3>
+                <p>
+                  For each Salesforce Case and Jira issue, SYNaTRA generates ≤150-word summaries of historical
+                  resolutions, adds confidence and similarity scores, and labels records with source references
+                  (e.g., SF-Case-12345, JIRA-6789). It then proposes the next best action in friendly,
+                  live-usable language.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">GR</span>
+                <h3>Guardrails, Access Rules, and Safety</h3>
+                <p>
+                  Uses integration-user credentials for Salesforce and Jira, masks PII (emails, phone numbers,
+                  tokens) in summaries, and avoids any persistent storage beyond the current response. Designed
+                  for internal use only.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SYSTEM ARCHITECTURE -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">System Architecture</h2>
+            <p>How SYNaTRA orchestrates connectors and skills into a triage report.</p>
+          </div>
+          <div class="section-body">
+            <p>
+              SYNaTRA orchestrates multiple connectors and skills to transform a short issue description into
+              a structured triage report:
+            </p>
+            <ul class="architecture-list">
+              <li>
+                <strong>Inputs:</strong>
+                <code>issue_description</code> (free text) and optional
+                <code>customer_identifier</code> (AccountId, ContractId, Kareo CustomerId).
+              </li>
+              <li>
+                <strong>Customer Identification:</strong> Salesforce account search skill with fuzzy matching
+                and top-5 candidates when only a name is provided.
+              </li>
+              <li>
+                <strong>Keyword &amp; Query Builder:</strong> Tokenizes issue text and builds JQL and SOQL/SOSL
+                keyword queries.
+              </li>
+              <li>
+                <strong>Record Fetching:</strong> Salesforce Cases &amp; Contracts, Jira tickets, Snowflake
+                subscription data (12-month lookback).
+              </li>
+              <li>
+                <strong>Summarization &amp; Scoring:</strong> Resolution summaries with similarity and confidence
+                metrics at record and overall result levels.
+              </li>
+              <li>
+                <strong>Insight Assembly:</strong> Final message composed into a readable chat response for
+                Slack, MS Teams, or Workbot.
+              </li>
+            </ul>
+            <p>
+              If Salesforce or Jira are unavailable, SYNaTRA responds with a user-friendly error:
+              <em>“I couldn’t reach Salesforce or Jira right now — please try again shortly or check your
+              connection settings.”</em>
+            </p>
+          </div>
+        </section>
+
+        <!-- IMPACT & RESULTS -->
+        <section class="section reveal">
+            <div class="section-header">
+              <h2 class="brand-heading">Impact &amp; Results</h2>
+              <p>Targeted outcomes for Customer Success teams.</p>
+            </div>
+          
+            <div class="section-body">
+              <div class="metrics">
+                <div class="metric">
+                  <span class="icon-only"><i class="fa fa-clock"></i></span>
+                  <div>
+                    <div class="metric-main">Time-to-context</div>
+                    <div class="metric-text">
+                      50% reduction in average time-to-context for CS Ops and CSMs.
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="metric">
+                  <span class="icon-only"><i class="fa fa-chart-line"></i></span>
+                  <div>
+                    <div class="metric-main">FCR uplift</div>
+                    <div class="metric-text">
+                      Improved first-contact resolution rate by surfacing prior fixes faster.
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="metric">
+                  <span class="icon-only"><i class="fa fa-database"></i></span>
+                  <div>
+                    <div class="metric-main">Breadth of context</div>
+                    <div class="metric-text">
+                      Up to 100 Salesforce cases and 100 Jira issues summarized per request.
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="metric">
+                  <span class="icon-only"><i class="fa fa-bolt"></i></span>
+                  <div>
+                    <div class="metric-main">Execution window</div>
+                    <div class="metric-text">
+                      Maximum runtime ≤ 5 minutes for full triage execution, with no data persisted.
+                    </div>
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+          </section>
+          
+
+        <!-- USE CASES -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">Use Cases</h2>
+            <p>Where SYNaTRA fits day-to-day CS workflows.</p>
+          </div>
+          <div class="section-body">
+            <div class="grid grid-usecases">
+              <div class="card">
+                <span class="tile-icon">AT</span>
+                <h3>Account + Issue Triage</h3>
+                <p>
+                  A CSM provides an issue description and an AccountId. SYNaTRA identifies recent Salesforce
+                  Cases and Jira tickets, summarizes resolutions, retrieves active contracts and products, and
+                  returns a complete context package for live customer calls.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">IR</span>
+                <h3>Issue-Only Research</h3>
+                <p>
+                  When only a short issue description is available, SYNaTRA searches Jira and historical
+                  Salesforce Cases using keyword-based queries. It ranks and summarizes likely matches and
+                  proposes next steps, even before a specific customer is identified.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">CP</span>
+                <h3>CS Ops Coaching &amp; Playbooks</h3>
+                <p>
+                  CS Ops teams use SYNaTRA’s structured outputs—customer overview, case list, Jira issue list,
+                  and suggested actions—to design standard playbooks and improve coaching for handling recurring
+                  issue patterns.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- GET IN TOUCH -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">Get in Touch</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Interested in using SYNaTRA for internal Customer Success triage, or extending it with new data
+              sources and skills? Reach out to the CS Ops / Workato automation team to request access, review
+              recipes, or see a live demo.
+            </p>
+            <p class="note">
+              <strong>Note:</strong> Access is restricted to internal Tebra employees; operational details and
+              PII are guarded and not persisted.
+            </p>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>© 2025 SYNaTRA – Synthetic Triage Assistant.</p>
+          <p>Portfolio excerpt for demonstration; operational details redacted.</p>
+        </footer>
       </div>
-      <nav class="nav" aria-label="Primary">
-        <a href="#overview">Overview</a>
-        <a href="#recipes">Recipes</a>
-        <a href="#output">Output</a>
-      </nav>
     </div>
-  </header>
 
-  <main class="container grid">
-    <!-- LEFT column: README content -->
-    <section class="grid gap-4">
-      <div class="card pad hero">
-        <div>
-          <h2 id="overview">Genie Purpose</h2>
-          <p>Assist Customer Success Operations (CS Ops) and Customer Success Managers (CSMs) in quickly understanding a customer’s historical and technical context by retrieving and summarizing related Salesforce Cases, Jira Tickets, and active subscription details. SYNaTRA reduces time-to-context and improves first-contact resolution through concise, data-driven summaries and next-step guidance.</p>
-          <div class="badges">
-            <span class="pill">Salesforce</span>
-            <span class="pill">Jira</span>
-            <span class="pill">Snowflake</span>
-            <span class="pill">SOQL</span>
-            <span class="pill">JQL</span>
-            <span class="pill">SQL</span>
-          </div>
-        </div>
-        <div>
-          <!-- Replace src with your actual hero image path -->
-          <img class="heroimg" src="hero-placeholder.png" alt="SYNaTRA architecture/assistant visualization" />
-        </div>
-      </div>
+    <script>
+      // Simple scroll-reveal using IntersectionObserver
+      document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".reveal");
 
-      <div class="card pad">
-        <h2>Function</h2>
-        <p>When a user provides a short issue description and a customer identifier, SYNaTRA:</p>
-        <ol class="list">
-          <li>Searches Salesforce to create a summary of the account and retrieves active subscription and contract details from Snowflake, as well as pertinent Account information.</li>
-          <li>Uses the AccountId to search for cases. Lists all open cases, then the top five most recently created with a short summary.</li>
-          <li>Queries Jira for relevant issues.</li>
-          <li>Summarizes historical resolutions (≤150 words each).</li>
-          <li>Generates confidence and similarity scores for each result.</li>
-          <li>Searches Cases using the Search Cases for Keywords skill and constructs SOQL keywords.</li>
-          <li>Generates confidence and similarity scores for the overall result.</li>
-          <li>Provides a friendly, actionable recommendation as a next step.</li>
-          <li>Returns all insights in a formatted chat message suitable for real-time use.</li>
-        </ol>
-        <p>When a user only provides the short issue description, SYNaTRA:</p>
-        <ol class="list">
-          <li>Queries Jira for relevant issues.</li>
-          <li>Summarizes historical resolutions (≤150 words each).</li>
-          <li>Generates confidence and similarity scores for each result.</li>
-          <li>Searches Cases using the Search Cases for Keywords skill and constructs SOQL keywords.</li>
-          <li>Generates confidence and similarity scores for the overall result.</li>
-          <li>Provides a friendly, actionable recommendation as a next step.</li>
-          <li>Returns all insights in a formatted chat message suitable for real-time use.</li>
-        </ol>
-      </div>
+        if (!("IntersectionObserver" in window)) {
+          elements.forEach((el) => el.classList.add("visible"));
+          return;
+        }
 
-      <div class="card pad">
-        <h2>Primary Users</h2>
-        <ul class="list">
-          <li>Customer Success Operations (CS Ops)</li>
-          <li>Customer Success Managers (CSMs)</li>
-          <li>Customer Success Representatives</li>
-        </ul>
-        <p class="callout">Access restricted to internal Tebra employees.</p>
-      </div>
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
 
-      <div class="card pad">
-        <h2>Data Sources and Access</h2>
-        <h3>Salesforce</h3>
-        <p>Objects: Case, Contract (Subscription), Account</p>
-        <p>Key Fields: subject, description, product, status, severity, resolution, closed_date, Contract status, start_date, end_date, plan, renewal_date</p>
-        <h3>Jira</h3>
-        <p>Projects: DSSD, DS, COPS</p>
-        <p>Key Fields: summary, description, labels, status, component, resolution, resolution_notes, closed_date, RCA_link</p>
-        <h3>Snowflake</h3>
-        <p>Subscription info (EditionSet/PricingFamily, ProductId, Simplified Product Name, Quantity, Total MRR)</p>
-        <h3>Access Rules</h3>
-        <ul class="list">
-          <li>Internal-only; uses integration-user credentials for Salesforce and Jira.</li>
-          <li>Automatically masks PII (emails, phone numbers, tokens) in summaries.</li>
-          <li>No data persistence beyond the current response.</li>
-        </ul>
-      </div>
-
-      <div class="card pad" id="execution">
-        <h2>Invocation and Execution</h2>
-        <h3>Trigger</h3>
-        <p>On-demand, invoked in chat (Slack, MS Teams, or Workbot) when a user requests help understanding a customer issue.</p>
-        <h3>Inputs</h3>
-        <ul class="list">
-          <li><strong>issue_description</strong> (string) – free-text summary of the issue.</li>
-          <li><strong>customer_identifier</strong> (string) – Salesforce Account ID, Contract ID, or Kareo CustomerId.</li>
-        </ul>
-        <h3>Flow</h3>
-        <ol class="list">
-          <li><strong>Identify Customer</strong><br/>
-            If an account name is provided, use the Searching Salesforce for Account skill. Return up to five matches labeled (1–5) and prompt the user to confirm selection. If no matches, display: “I couldn’t find any Salesforce accounts with that name. Please double-check and try again.” If a valid AccountId, ContractId, or CustomerId is provided, skip to the next step.
-          </li>
-          <li><strong>Create Keyword String</strong><br/>
-            Parse issue_description into keywords. Construct JQL for Jira using Summary ~ "Keyword" OR patterns. Construct SOQL LIKE patterns for Salesforce when searching cases.
-          </li>
-          <li><strong>Fetch Related Records</strong><br/>
-            Query Salesforce for cases related to the identifier. Query Jira for issues matching JQL. Query Salesforce again for keyword-matched cases. Limit to the past 12 months.
-          </li>
-          <li><strong>Summarize Findings</strong><br/>
-            Create summaries (≤150 words) per record including resolution highlights, confidence, similarity, and a source reference (e.g., SF-Case-12345, JIRA-6789).
-          </li>
-          <li><strong>Retrieve Subscription Details</strong><br/>
-            Pull active contract/subscription data from Snowflake. Display Kareo Provider License first, followed by other active products with quantities. Calculate and display total MRR.
-          </li>
-          <li><strong>Assemble Insight Report</strong></li>
-          <li><strong>Deliver Output</strong><br/>
-            Present a formatted message in chat for easy reading during live customer interactions.
-          </li>
-        </ol>
-        <h3>Error Handling</h3>
-        <p class="callout">“I couldn’t reach Salesforce or Jira right now — please try again shortly or check your connection settings.”</p>
-      </div>
-
-      <div class="card pad" id="output">
-        <h2>Output Structure</h2>
-        <h3>Customer Overview</h3>
-        <ul class="list">
-          <li>Active Contracts and Subscriptions: Status (Pending Activation, Activated, or Suspending) and Total MRR</li>
-        </ul>
-        <h3>Relevant Salesforce Cases (up to 10)</h3>
-        <ul class="list">
-          <li>Case ID, subject, status, 150-word summary, and source link</li>
-        </ul>
-        <h3>Similar Jira Issues (up to 10)</h3>
-        <ul class="list">
-          <li>Issue key, summary, similarity %, confidence %, resolution summary (≤150 words), and source link</li>
-        </ul>
-        <h3>Suggested Next Step</h3>
-        <p>Actionable recommendation generated by the LLM based on observed patterns.</p>
-      </div>
-
-      <div class="card pad" id="ops">
-        <h2>Operational Constraints</h2>
-        <ul class="list">
-          <li>Invoked manually only</li>
-          <li>Default search range: 12 months</li>
-          <li>Max results: 10 Salesforce cases, 10 Jira issues</li>
-          <li>Max runtime: 5 minutes</li>
-          <li>No persistent data storage</li>
-        </ul>
-        <h2>Metrics of Success</h2>
-        <ul class="list">
-          <li>At least 50% reduction in average time-to-context</li>
-          <li>Improved first-contact resolution rate</li>
-          <li>Positive feedback on clarity and usefulness of insights</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- RIGHT column: Automation recipe cards -->
-    <aside>
-      <nav class="card pad sticky navcard" aria-label="On this page">
-        <h2>On this page</h2>
-        <a href="#overview">Genie Purpose</a>
-        <a href="#execution">Invocation & Execution</a>
-        <a href="#output">Output Structure</a>
-        <a href="#ops">Operational Constraints</a>
-        <a href="#recipes">Automation Recipes</a>
-      </nav>
-
-      <section class="card pad" id="recipes">
-        <h2>Automation Recipes</h2>
-        <div id="cards" class="grid" style="gap:12px"></div>
-      </section>
-    </aside>
-  </main>
-
-  <footer class="site">© <span id="year"></span> SYNaTRA. Portfolio excerpt for demonstration; operational details redacted.</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const data = [
-    {
-      id: "search-account",
-      title: "Search for Account Id with Account Name",
-      link: "./recipes/SearchforAccountIdwithName.md",
-      summary: "If an account name is provided, search part or all of the customer name to retrieve an Account Id. If no name is provided, this step is skipped.",
-      trigger: "Invoked by parent triage flow when customer name is present.",
-      inputs: [{ name: "account_name", desc: "Full or partial customer name string" }],
-      connections: ["Salesforce (SOQL via connector)"],
-      outputs: [{ name: "account_id", desc: "Resolved Salesforce Account Id" }],
-      flow: [
-        "Normalize incoming name (trim, case-fold)",
-        "SOQL fuzzy search on Account.Name with LIMIT and ORDER BY relevance",
-        "If multiple matches, return top candidate(s) and confidence score",
-        "If no match, return not found status to parent flow"
-      ],
-      notes: [
-        "Skips when no name is supplied by the parent flow",
-        "Use guarded LIKE queries and field allowlist to avoid wide scans"
-      ]
-    },
-    {
-      id: "current-contract",
-      title: "Getting Customer's Current Contract Information",
-      link: "./recipes/GetttingCasesRelatedtoCustomer.md",
-      summary: "Retrieves contact information and active subscriptions for the resolved Account Id.",
-      trigger: "Runs after Account Id is resolved.",
-      inputs: [{ name: "account_id", desc: "Salesforce Account Id" }],
-      connections: ["Salesforce (SOQL via connector)", "Snowflake (SQL optional)" ],
-      outputs: [
-        { name: "contracts", desc: "Active contract records" },
-        { name: "subscriptions", desc: "Plan, term, and MRR if applicable" }
-      ],
-      flow: ["Query Account, related Contracts and Subscriptions", "Shape a minimal profile for downstream steps"],
-      notes: ["Redact PII fields before logging or exporting", "Validate effective dates and status fields"]
-    },
-    {
-      id: "cases-related",
-      title: "Getting Cases Related to Customer",
-      link: "./recipes/GetttingCasesRelatedtoCustomer.md",
-      summary: "Queries Salesforce for Cases linked to the Account using the provided identifier.",
-      trigger: "Runs after Account Id is resolved or when account is directly provided.",
-      inputs: [
-        { name: "account_id", desc: "Salesforce Account Id" },
-        { name: "lookback_days", desc: "Window for recent cases (default 180)" }
-      ],
-      connections: ["Salesforce (SOQL via connector)" ],
-      outputs: [{ name: "cases", desc: "Recent or relevant cases for triage" }],
-      flow: [
-        "Parameterized SOQL with WHERE AccountId = :account_id",
-        "ORDER BY CreatedDate DESC LIMIT n"
-      ],
-      notes: ["Avoid SELECT *; project only needed fields", "Consider locale in text fields"]
-    },
-    {
-      id: "search-cases-keywords",
-      title: "Search Cases for Keywords",
-      link: "./recipes/SearchCasesforKeywords.md",
-      summary: "Full-text style keyword search across recent Cases based on the issue description.",
-      trigger: "Runs when user supplies an issue description.",
-      inputs: [
-        { name: "issue_text", desc: "Short free-text description" },
-        { name: "account_id", desc: "Optional scoping to customer" }
-      ],
-      connections: ["Salesforce (SOQL; optional SOSL)" ],
-      outputs: [{ name: "case_hits", desc: "Ranked list of matching cases" }],
-      flow: [
-        "Tokenize and normalize issue_text",
-        "Construct SOSL or SOQL match query",
-        "Score and rank results and return top k"
-      ],
-      notes: ["Favor indexed fields and SOSL for broader text search", "Throttle queries to respect API limits"]
-    },
-    {
-      id: "search-tickets-keywords",
-      title: "Search Tickets for Keywords",
-      link: "./recipes/SearchTicketsforKeywords.md",
-      summary: "Keyword search over Jira tickets to find prior engineering resolutions.",
-      trigger: "Runs in parallel with case keyword search.",
-      inputs: [
-        { name: "issue_text", desc: "Short free-text description" },
-        { name: "project_keys", desc: "Optional Jira projects to scope" }
-      ],
-      connections: ["Jira (JQL via connector)" ],
-      outputs: [{ name: "ticket_hits", desc: "Ranked list of matching Jira issues" }],
-      flow: [
-        "Normalize text and build JQL with contains and labels",
-        "Order by updated DESC; limit to safe page size"
-      ],
-      notes: ["Redact issue keys and URLs in public screenshots", "Cache results by hash(issue_text) when appropriate"]
-    }
-  ];
-
-  const cards = document.getElementById('cards');
-
-  function render(recipes){
-    cards.innerHTML = '';
-    recipes.forEach(r => {
-      const acc = document.createElement('div');
-      acc.className = 'card acc';
-      const btn = document.createElement('button');
-      btn.setAttribute('aria-expanded','false');
-      btn.innerHTML = `
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-          <div style="width:18px;height:18px;border-radius:6px;background:var(--brand);margin-top:2px;"></div>
-          <div>
-            <h4>${r.title}</h4>
-            <p class="muted">${r.summary}</p>
-          </div>
-        </div>
-        <div class="chev" aria-hidden>›</div>`;
-      btn.addEventListener('click', ()=> {
-        const open = acc.classList.toggle('open');
-        btn.setAttribute('aria-expanded', String(open));
+        elements.forEach((el) => observer.observe(el));
       });
-
-      const panel = document.createElement('div');
-      panel.className = 'panel';
-      panel.innerHTML = `
-        <div class="row">
-          <div>
-            <h3>Trigger</h3>
-            <p>${r.trigger}</p>
-          </div>
-          <div>
-            <h3>Connections</h3>
-            <div class="badges">${r.connections.map(c=>`<span class='pill'>${c}</span>`).join('')}</div>
-          </div>
-          <div>
-            <h3>Inputs</h3>
-            <ul class="list">${r.inputs.map(i=>`<li><strong>${i.name}</strong>: ${i.desc}</li>`).join('')}</ul>
-          </div>
-          <div>
-            <h3>Outputs</h3>
-            <ul class="list">${r.outputs.map(o=>`<li><strong>${o.name}</strong>: ${o.desc}</li>`).join('')}</ul>
-          </div>
-          <div>
-            <h3>Flow</h3>
-            <ol class="list">${r.flow.map(step=>`<li>${step}</li>`).join('')}</ol>
-          </div>
-          <div>
-            <h3>Notes</h3>
-            <ul class="list">${r.notes.map(n=>`<li>${n}</li>`).join('')}</ul>
-          </div>
-        </div>
-        <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-          <a class="linkbtn" href="${r.link}">View recipe README</a>
-          <span class="muted" style="font-size:12px;">Redaction and PII guardrails applied</span>
-        </div>`;
-
-      acc.appendChild(btn); acc.appendChild(panel); cards.appendChild(acc);
-    });
-  }
-
-  render(data);
-</script>
-</body>
+    </script>
+  </body>
 </html>
