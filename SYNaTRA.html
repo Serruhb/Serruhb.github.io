@@ -149,6 +149,32 @@
         font-size: 0.85rem;
         color: rgba(255, 255, 255, 0.9);
       }
+      /* Hero grid layout (1/3 image + 2/3 text) */
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        gap: 20px;
+      }
+
+      /* Image styling */
+      .hero-image img {
+        width: 100%;
+        max-width: 240px;
+        display: block;
+      }
+
+      /* Mobile: stack vertically */
+      @media (max-width: 700px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-image img {
+          margin: 0 auto;
+        }
+      }
+
 
       /* Sections */
       .section {
@@ -342,11 +368,13 @@
       <div class="syn-shell">
         <!-- HERO -->
         <section class="syn-hero">
-          <div class="brand-card syn-hero-inner">
-            <div>
-              <h1 class="syn-hero-title brand-heading">
-                SYNaTRA — Synthetic Triage Assistant
-              </h1>
+          <div class="brand-card syn-hero-inner hero-grid">
+            <div class="hero-image">
+              <img src="/Images/synatralogo.jpg" alt="SYNaTRA Logo" />
+            </div>
+          
+            <div class="hero-text">
+              <h1 class="syn-hero-title brand-heading">SYNaTRA — Synthetic Triage Assistant</h1>
               <p class="syn-hero-sub">
                 Workato-orchestrated Customer Success triage across Salesforce, Jira, and Snowflake.
               </p>
@@ -355,6 +383,7 @@
               </p>
             </div>
           </div>
+          
         </section>
 
         <!-- PROBLEM / SOLUTION -->
