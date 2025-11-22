@@ -82,17 +82,17 @@
       }
       .icon-only {
         color: var(--brand);
-        display: inline-block;
-        width: 42px;
-        height: 42px;
-        border-radius: 5px;
-        display: flex;
+        display: inline-flex;
+        width: 48px;
+        height: 48px;
+        border-radius: 6px;
         align-items: center;
         justify-content: center;
-        font-weight: 700;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
       }
+      .icon-only i {
+        font-size: 1.55rem;
+      }
+      
 
       .tile-icon {
         background-color: var(--brand);
@@ -433,7 +433,7 @@
                 <p>
                   Uses integration-user credentials for Salesforce and Jira, masks PII (emails, phone numbers,
                   tokens) in summaries, and avoids any persistent storage beyond the current response. Designed
-                  for internal Tebra use only.
+                  for internal use only.
                 </p>
               </div>
             </div>
@@ -497,7 +497,7 @@
               <div class="metrics">
           
                 <div class="metric">
-                  <span class="tile-icon"><i class="fas fa-robot"></i></span>
+                  <span class="icon-only"><i class="fas fa-robot"></i></span>
                   <div>
                     <div class="metric-main">Time-to-context</div>
                     <div class="metric-text">
@@ -507,7 +507,7 @@
                 </div>
           
                 <div class="metric">
-                  <span class="tile-icon"><i class="fas fa-robot"></i></span>
+                  <span class="icon-only"><i class="fas fa-robot"></i></span>
                   <div>
                     <div class="metric-main">FCR uplift</div>
                     <div class="metric-text">
@@ -517,7 +517,7 @@
                 </div>
           
                 <div class="metric">
-                  <span class="tile-icon"><i class="fas fa-robot"></i></span>
+                  <span class="icon-only"><i class="fas fa-robot"></i></span>
                   <div>
                     <div class="metric-main">Breadth of context</div>
                     <div class="metric-text">
