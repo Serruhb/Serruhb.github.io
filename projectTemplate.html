@@ -5,7 +5,7 @@
     <title>SYNaTRA — Synthetic Triage Assistant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Optional: match primary page font -->
+    <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -25,7 +25,6 @@
         --ink: #1e1e1e; /* body text */
         --ink-muted: #5a5a5a; /* secondary text */
         --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
-        /* Very light brand tint for full-page background */
         --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
       }
 
@@ -56,6 +55,14 @@
         height: auto;
       }
 
+      a {
+        color: var(--brand-strong);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
       .brand-heading {
         color: var(--brand-strong);
       }
@@ -80,6 +87,7 @@
       .brand-btn:hover {
         filter: brightness(0.95);
       }
+
       .icon-only {
         color: var(--brand);
         display: inline-flex;
@@ -96,11 +104,10 @@
       .tile-icon {
         background-color: var(--brand);
         color: #fff;
-        display: inline-block;
+        display: inline-flex;
         width: 42px;
         height: 42px;
         border-radius: 12px;
-        display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 700;
@@ -108,7 +115,31 @@
         font-size: 0.9rem;
       }
 
-      /* ===== Layout for this page ===== */
+      .pill {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 6px;
+      }
+
+      .phase-pill {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        background: rgba(0, 205, 172, 0.1);
+        color: var(--brand-strong);
+        margin-bottom: 6px;
+      }
+
+      /* ===== Layout ===== */
       .syn-page {
         min-height: 100vh;
       }
@@ -134,7 +165,7 @@
       .syn-hero-title {
         margin: 0 0 8px;
         font-size: 2rem;
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(255, 255, 255, 0.98);
       }
 
       .syn-hero-sub {
@@ -148,6 +179,7 @@
         font-size: 0.85rem;
         color: rgba(255, 255, 255, 0.9);
       }
+
       /* Hero grid layout (1/3 image + 2/3 text) */
       .hero-grid {
         display: grid;
@@ -156,14 +188,12 @@
         gap: 20px;
       }
 
-      /* Image styling */
       .hero-image img {
         width: 100%;
         max-width: 240px;
         display: block;
       }
 
-      /* Mobile: stack vertically */
       @media (max-width: 700px) {
         .hero-grid {
           grid-template-columns: 1fr;
@@ -200,12 +230,11 @@
         color: var(--ink);
       }
 
-      /* Simple divider using brand tint */
       .section + .section {
         border-top: 1px solid rgba(0, 0, 0, 0.04);
       }
 
-      /* Grid layouts */
+      /* Grids & cards */
       .grid {
         display: grid;
         gap: 20px;
@@ -216,7 +245,6 @@
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       }
 
-      /* Cards */
       .card {
         padding: 18px 18px 20px;
         border-radius: 14px;
@@ -276,7 +304,7 @@
         border-radius: 4px;
       }
 
-      /* Diagram figure (for all diagrams) */
+      /* Diagrams */
       .diagram-figure {
         margin: 24px 0 0;
         text-align: center;
@@ -288,7 +316,7 @@
         border-radius: 14px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
         border: 1px solid rgba(0, 0, 0, 0.04);
-        cursor: zoom-in; /* hint it's clickable */
+        cursor: zoom-in;
       }
 
       .diagram-figure figcaption {
@@ -297,7 +325,6 @@
         color: var(--ink-muted);
       }
 
-      /* Diagram modal / lightbox */
       .diagram-modal {
         position: fixed;
         inset: 0;
@@ -398,13 +425,12 @@
         border-color: rgba(0, 205, 172, 0.4);
       }
 
-      /* Get in touch note */
+      /* Notes & footer */
       .note {
         font-size: 0.9rem;
         color: var(--ink-muted);
       }
 
-      /* Footer */
       .footer {
         padding: 22px 16px 32px;
         text-align: center;
@@ -439,6 +465,7 @@
         }
       }
     </style>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -456,17 +483,75 @@
             </div>
 
             <div class="hero-text">
+              <span class="pill">Phase 1 · In production / pilot</span>
               <h1 class="syn-hero-title brand-heading">
                 SYNaTRA — Synthetic Triage Assistant
               </h1>
               <p class="syn-hero-sub">
                 Workato-orchestrated Customer Success triage across Salesforce,
-                Jira, and Snowflake.
+                Jira, and Snowflake, designed as the foundation for in-call AI coaching.
               </p>
               <p class="syn-hero-meta">
-                Primary users: CS Ops, CSMs, and Customer Success
-                Representatives (internal use only).
+                Primary users: CS Ops, CSMs, and Customer Success Representatives
+                (internal use only).
               </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECT SNAPSHOT & MY ROLE -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">Project Snapshot</h2>
+            <p>
+              Phase 1 of a multi-phase AI coaching strategy to make resolution paths
+              visible, repeatable, and eventually coachable in real time.
+            </p>
+          </div>
+
+          <div class="section-body">
+            <div
+              class="grid"
+              style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));"
+            >
+              <div class="card">
+                <h3>At a Glance</h3>
+                <p><strong>Role:</strong> Senior AI &amp; Automation Engineer</p>
+                <p>
+                  <strong>Scope:</strong> Customer Success, Finance, Operations
+                </p>
+                <p>
+                  <strong>Stack:</strong> Workato, GO Genie, Salesforce, Jira,
+                  Snowflake, SOQL, JQL, SQL
+                </p>
+                <p>
+                  <strong>Goal:</strong> Capture and grade resolution paths so they
+                  can be reused, expanded into a knowledge base, and ultimately
+                  drive in-call AI coaching.
+                </p>
+              </div>
+
+              <div class="card">
+                <h3>My Role</h3>
+                <ul style="padding-left: 18px; margin: 0;">
+                  <li>
+                    Defined phased AI coaching roadmap (triage &rarr; deep search
+                    &rarr; training agent &rarr; in-call coaching).
+                  </li>
+                  <li>
+                    Designed data contracts and orchestration across Salesforce, Jira,
+                    and Snowflake using Workato and GO Genie.
+                  </li>
+                  <li>
+                    Implemented Phase 1 triage assistant to generate, grade, and
+                    capture resolution paths and feedback.
+                  </li>
+                  <li>
+                    Authored guardrails, prompt patterns, and documentation so
+                    non-technical teams can understand and adopt the system.
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -478,54 +563,65 @@
           </div>
           <div class="section-body">
             <p>
-              Customer Success teams lose valuable time piecing together context
-              across Salesforce, Jira, and subscription systems. Manual
-              searches, inconsistent summaries, and scattered historical
-              resolutions increase time-to-context and slow first-contact
-              resolution. Critical information such as active contracts, product
-              mix, and prior fixes is often buried across tools, making live
-              customer conversations harder than they need to be.
+              The company’s biggest blocker to AI-assisted coaching wasn’t a lack of
+              data—it was a lack of <em>reliable resolution paths</em>. Customer
+              issues were solved every day, but the “how” was rarely documented in a
+              structured way. Resolutions lived in scattered case comments, Jira
+              threads, and one-off conversations.
             </p>
-          </div>
-          <div class="section-header">
-            <p></p>
+            <p>
+              As a result, Customer Success teams spent significant time re-discovering
+              answers. Time-to-context was high, first-contact resolution was inconsistent,
+              and there was no clean foundation to build deep search, sentiment-aware
+              suggestions, or in-call coaching on top of.
+            </p>
           </div>
 
           <div class="section-header" style="margin-top: 20px;">
-            <h2 class="brand-heading">The Solution</h2>
+            <h2 class="brand-heading">Phase 1: The SYNaTRA Solution</h2>
+            <p>
+              Capture, grade, and refine resolution paths so they can become the backbone
+              of future coaching and training.
+            </p>
           </div>
           <div class="section-body">
             <p>
-              SYNaTRA is a synthetic triage assistant that retrieves and
-              summarizes customer history from Salesforce Cases, Jira Tickets,
-              and Snowflake subscription data into a single, concise view. It
-              parses an issue description, searches across systems using SOQL,
-              JQL, and SQL, scores the similarity and confidence of matches, and
-              returns an actionable, formatted triage summary ready to use in
-              real time during Slack, MS Teams, or Workbot conversations.
+              SYNaTRA is a synthetic triage assistant that retrieves and summarizes
+              customer history from Salesforce Cases, Jira tickets, and Snowflake
+              subscription data into a single, concise view. It parses an issue
+              description, searches across systems using SOQL, JQL, and SQL, and returns
+              an actionable triage summary with recommended resolution paths.
+            </p>
+            <p>
+              Crucially, SYNaTRA also creates a feedback loop: agents can compare the
+              assistant’s recommendations to the resolution they actually executed.
+              That feedback is captured and scored, turning each interaction into a
+              data point that refines future recommendations and prepares the
+              organization for deeper AI coaching in later phases.
             </p>
           </div>
           <div class="section-body">
             <figure class="diagram-figure">
               <img
                 src="diagrams/workatoWorkflow.svg"
-                alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
+                alt="Workato workflow diagram of SYNaTRA the Synthetic Triage Assistant"
               />
               <figcaption>
-                Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant Salesforce, Jira,
-                Snowflake, and LLM skills into a single triage response.
+                Workato workflow diagram showing how SYNaTRA orchestrates Salesforce,
+                Jira, Snowflake, and LLM skills into a single triage response and
+                feedback loop.
               </figcaption>
             </figure>
           </div>
         </section>
 
-        <!-- KEY FEATURES -->
+        <!-- KEY FEATURES (PHASE 1) -->
         <section class="section reveal">
           <div class="section-header">
-            <h2 class="brand-heading">Key Features</h2>
+            <h2 class="brand-heading">Key Features · Phase 1</h2>
             <p>
-              How SYNaTRA assembles context, searches systems, and keeps data
-              safe.
+              How SYNaTRA assembles context, proposes resolution paths, and captures
+              feedback for future coaching.
             </p>
           </div>
           <div class="section-body">
@@ -535,37 +631,45 @@
                 <h3>Unified Customer Context</h3>
                 <p>
                   Searches Salesforce for Accounts, Cases, Contracts, and
-                  Subscriptions, and Snowflake for subscription details, then
-                  builds a concise customer overview with active plans, status,
-                  and total MRR.
+                  Subscriptions, and Snowflake for subscription details, then builds
+                  a concise customer overview with active plans, status, and total MRR.
                 </p>
-                <small
-                  >Data sources: Salesforce (Case, Contract, Account),
-                  Snowflake subscription tables.</small
-                >
+                <small>
+                  Data sources: Salesforce (Case, Contract, Account), Snowflake
+                  subscription tables.
+                </small>
               </div>
 
               <div class="card">
                 <span class="tile-icon">IS</span>
-                <h3>Issue-Aware Search Across Systems</h3>
+                <h3>Issue-Aware Deep Search</h3>
                 <p>
-                  Converts short issue descriptions into keyword strings and
-                  constructs SOQL and JQL queries. Searches Salesforce Cases and
-                  Jira issues (DSSD, DS, COPS) for relevant historical tickets
-                  within a 12-month window.
+                  Converts short issue descriptions into keyword strings and constructs
+                  SOQL and JQL queries. Searches Salesforce Cases and Jira issues for
+                  relevant historical tickets within a 12-month window to discover
+                  prior resolutions.
                 </p>
                 <small>Tech: SOQL, JQL, optional SOSL.</small>
               </div>
 
               <div class="card">
-                <span class="tile-icon">SS</span>
-                <h3>Summaries, Scores, and Next Steps</h3>
+                <span class="tile-icon">RP</span>
+                <h3>Resolution Path Recommendations</h3>
                 <p>
-                  For each Salesforce Case and Jira issue, SYNaTRA generates
-                  ≤150-word summaries of historical resolutions, adds confidence
-                  and similarity scores, and labels records with source
-                  references (e.g., SF-Case-12345, JIRA-6789). It then proposes
-                  the next best action in friendly, live-usable language.
+                  Generates ≤150-word summaries of historical resolutions, promotes the
+                  strongest patterns into recommended resolution paths, and labels
+                  each with confidence and similarity scores plus source references
+                  (e.g., SF-Case-12345, JIRA-6789).
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">GF</span>
+                <h3>Grading &amp; Feedback Loop</h3>
+                <p>
+                  Allows agents to rate whether SYNaTRA’s recommended path matched the
+                  resolution they actually performed, capturing variance, gaps, and
+                  “better than suggested” outcomes to refine future recommendations.
                 </p>
               </div>
 
@@ -573,10 +677,60 @@
                 <span class="tile-icon">GR</span>
                 <h3>Guardrails, Access Rules, and Safety</h3>
                 <p>
-                  Uses integration-user credentials for Salesforce and Jira,
-                  masks PII (emails, phone numbers, tokens) in summaries, and
-                  avoids any persistent storage beyond the current response.
-                  Designed for internal use only.
+                  Uses integration-user credentials for Salesforce and Jira, masks PII
+                  (emails, phone numbers, tokens) in summaries, and avoids persistent
+                  storage beyond the current response. Designed for internal use only
+                  with role-aware visibility.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BUILT ON WORKATO GO GENIE -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">Built on Workato GO Genie</h2>
+            <p>
+              Turning a general-purpose automation assistant into a domain-specific
+              triage and coaching engine.
+            </p>
+          </div>
+          <div class="section-body">
+            <div
+              class="grid"
+              style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));"
+            >
+              <div class="card">
+                <h3>Custom Skills &amp; Tools</h3>
+                <p>
+                  Implemented GO Genie skills that let CS teams ask natural-language
+                  questions while SYNaTRA handles SOQL, JQL, and SQL queries behind
+                  the scenes.
+                </p>
+                <p>
+                  Encapsulated common workflows such as
+                  <em>“triage this account,”</em>
+                  <em>“find similar issues,”</em> and
+                  <em>“summarize prior fixes.”</em>
+                </p>
+              </div>
+
+              <div class="card">
+                <h3>Grounded, Explainable Responses</h3>
+                <p>
+                  Ensured Genie responses stay grounded in Salesforce, Jira, and
+                  Snowflake data, with explicit links back to systems of record and
+                  a clear breakdown of why a particular resolution path was suggested.
+                </p>
+              </div>
+
+              <div class="card">
+                <h3>Governance &amp; Guardrails</h3>
+                <p>
+                  Added guardrails for PII masking, role-aware data access, and
+                  resilient error handling when upstream systems are unavailable, so
+                  SYNaTRA remains safe and reliable as adoption scales.
                 </p>
               </div>
             </div>
@@ -588,53 +742,61 @@
           <div class="section-header">
             <h2 class="brand-heading">System Architecture</h2>
             <p>
-              How SYNaTRA orchestrates connectors and skills into a triage
+              How SYNaTRA orchestrates connectors, skills, and feedback into a triage
               report.
             </p>
           </div>
           <div class="section-body">
             <p>
-              SYNaTRA orchestrates multiple connectors and skills to transform a
-              short issue description into a structured triage report:
+              SYNaTRA orchestrates multiple connectors and skills to transform a short
+              issue description into a structured triage report and feedback signal:
             </p>
             <ul class="architecture-list">
               <li>
                 <strong>Inputs:</strong>
                 <code>issue_description</code> (free text) and optional
-                <code>customer_identifier</code> (AccountId, ContractId, Kareo
-                CustomerId).
+                <code>customer_identifier</code>
+                (AccountId, ContractId, internal CustomerId).
               </li>
               <li>
-                <strong>Customer Identification:</strong> Salesforce account
-                search skill with fuzzy matching and top-5 candidates when only
-                a name is provided.
+                <strong>Customer Identification:</strong>
+                Salesforce account search skill with fuzzy matching and top-5
+                candidates when only a name is provided.
               </li>
               <li>
-                <strong>Keyword &amp; Query Builder:</strong> Tokenizes issue
-                text and builds JQL and SOQL/SOSL keyword queries.
+                <strong>Keyword &amp; Query Builder:</strong>
+                Tokenizes issue text and builds JQL and SOQL/SOSL keyword queries to
+                search Jira and Salesforce history.
               </li>
               <li>
-                <strong>Record Fetching:</strong> Salesforce Cases &amp;
-                Contracts, Jira tickets, Snowflake subscription data (12-month
-                lookback).
+                <strong>Record Fetching:</strong>
+                Salesforce Cases &amp; Contracts, Jira tickets, and Snowflake
+                subscription data (12-month lookback).
               </li>
               <li>
-                <strong>Summarization &amp; Scoring:</strong> Resolution
-                summaries with similarity and confidence metrics at record and
-                overall result levels.
+                <strong>Summarization &amp; Scoring:</strong>
+                Resolution summaries plus similarity and confidence scores at both
+                record and overall result levels.
               </li>
               <li>
-                <strong>Insight Assembly:</strong> Final message composed into a
-                readable chat response for Slack, MS Teams, or Workbot.
+                <strong>Insight Assembly:</strong>
+                Final message composed into a readable chat response for Slack, MS
+                Teams, or Workbot, including recommended resolution path(s) and quick
+                links.
+              </li>
+              <li>
+                <strong>Feedback Capture:</strong>
+                Lightweight interface for agents to rate recommendation quality and
+                indicate the actual resolution path taken.
               </li>
             </ul>
             <p>
               If Salesforce or Jira are unavailable, SYNaTRA responds with a
-              user-friendly error:
-              <em
-                >“I couldn’t reach Salesforce or Jira right now — please try
-                again shortly or check your connection settings.”</em
-              >
+              user-friendly message:
+              <em>
+                “I couldn’t reach Salesforce or Jira right now — please try again
+                shortly or check your connection settings.”
+              </em>
             </p>
           </div>
           <div class="section-body">
@@ -645,17 +807,20 @@
               />
               <figcaption>
                 High-level view of how SYNaTRA orchestrates Salesforce, Jira,
-                Snowflake, and LLM skills into a single triage response.
+                Snowflake, and LLM skills into a single triage response and
+                feedback loop.
               </figcaption>
             </figure>
           </div>
         </section>
 
-        <!-- IMPACT & RESULTS -->
+        <!-- IMPACT & RESULTS (PHASE 1) -->
         <section class="section reveal">
           <div class="section-header">
-            <h2 class="brand-heading">Impact &amp; Results</h2>
-            <p>Targeted outcomes for Customer Success teams.</p>
+            <h2 class="brand-heading">Impact &amp; Results · Phase 1</h2>
+            <p>
+              Initial outcomes and targets as the foundation for deeper AI coaching.
+            </p>
           </div>
 
           <div class="section-body">
@@ -666,8 +831,9 @@
                   <div class="metric-main">Time-to-context</div>
                   <div class="metric-text">
                     <p>
-                      50% reduction in average time-to-context for CS Ops and
-                      CSMs.
+                      Reduced research time for CSMs and CS Ops from ~15–20 minutes
+                      per customer down to under 2 minutes by aggregating context into
+                      a single triage view.
                     </p>
                   </div>
                 </div>
@@ -676,11 +842,12 @@
               <div class="metric">
                 <span class="icon-only"><i class="fa fa-chart-line"></i></span>
                 <div>
-                  <div class="metric-main">FCR uplift</div>
+                  <div class="metric-main">Case volume impact</div>
                   <div class="metric-text">
                     <p>
-                      Improved first-contact resolution rate by surfacing prior
-                      fixes faster.
+                      Contributed to a ~20% reduction in support case volume by
+                      enabling faster resolution and better internal triage through
+                      Workato GO Genie.
                     </p>
                   </div>
                 </div>
@@ -689,11 +856,12 @@
               <div class="metric">
                 <span class="icon-only"><i class="fa fa-database"></i></span>
                 <div>
-                  <div class="metric-main">Breadth of context</div>
+                  <div class="metric-main">Context breadth</div>
                   <div class="metric-text">
                     <p>
-                      Up to 100 Salesforce cases and 100 Jira issues summarized
-                      per request.
+                      Summarizes up to 100 Salesforce cases and 100 Jira issues per
+                      request, highlighting the most relevant resolutions and patterns
+                      for the current issue.
                     </p>
                   </div>
                 </div>
@@ -705,8 +873,9 @@
                   <div class="metric-main">Execution window</div>
                   <div class="metric-text">
                     <p>
-                      Maximum runtime ≤ 5 minutes for full triage execution,
-                      with no data persisted.
+                      End-to-end triage executed in ≤ 5 minutes with no data
+                      persisted, designed to fit within live customer calls and
+                      coaching workflows.
                     </p>
                   </div>
                 </div>
@@ -715,11 +884,84 @@
           </div>
         </section>
 
-        <!-- USE CASES -->
+        <!-- ROADMAP: PHASED AI COACHING STRATEGY -->
         <section class="section reveal">
           <div class="section-header">
-            <h2 class="brand-heading">Use Cases</h2>
-            <p>Where SYNaTRA fits day-to-day CS workflows.</p>
+            <h2 class="brand-heading">Roadmap: Phased AI Coaching Strategy</h2>
+            <p>
+              SYNaTRA is Phase 1 of a multi-phase initiative to move from “better triage”
+              to “in-call AI coaching.”
+            </p>
+          </div>
+          <div class="section-body">
+            <div
+              class="grid"
+              style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));"
+            >
+              <div class="card">
+                <span class="phase-pill">Phase 1 · SYNaTRA</span>
+                <h3>Capture &amp; Grade Resolution Paths</h3>
+                <p>
+                  Aggregate customer context, recommend resolution paths, and capture
+                  feedback on what agents actually did. The goal is to transform messy,
+                  undocumented resolutions into structured, graded paths that can fuel
+                  future search, training, and coaching.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="phase-pill">Phase 2</span>
+                <h3>Deep Search &amp; Sentiment-Aware Suggestions</h3>
+                <p>
+                  Expand from triage to true deep search: use the captured resolution
+                  paths as a knowledge base, layer in richer customer context, and
+                  begin modeling basic sentiment and risk indicators.
+                </p>
+                <p>
+                  SYNaTRA and Genie collaboratively suggest tailored resolution paths
+                  based not just on the issue type, but on customer history, tone,
+                  and likelihood of satisfaction.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="phase-pill">Phase 3</span>
+                <h3>Training Agent &amp; Simulated Calls</h3>
+                <p>
+                  Use transcribed calls where recommended resolutions led to satisfied
+                  customers to train a “coach-in-training” agent. The Genie can mock
+                  customer scenarios, listen to reps, and simulate calls around common
+                  issues and successful resolution patterns.
+                </p>
+                <p>
+                  At the end of each training session, targeted questions collect rep
+                  feedback so the training agent can be actively tuned and improved.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="phase-pill">Phase 4</span>
+                <h3>In-Call Coaching</h3>
+                <p>
+                  Deploy in-call coaching informed by the refined resolution data and
+                  Phase 3 training. Start with the most common, best-understood call
+                  types, then expand coverage as the model and knowledge base mature.
+                </p>
+                <p>
+                  During live calls, Genie surfaces suggested paths, risk signals, and
+                  next best actions in real time, grounded in the proven resolution
+                  patterns established in earlier phases.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- USE CASES (PHASE 1) -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">Use Cases · Today</h2>
+            <p>Where SYNaTRA already fits into day-to-day CS workflows.</p>
           </div>
           <div class="section-body">
             <div class="grid grid-usecases">
@@ -727,11 +969,10 @@
                 <span class="tile-icon">AT</span>
                 <h3>Account + Issue Triage</h3>
                 <p>
-                  A CSM provides an issue description and an AccountId. SYNaTRA
-                  identifies recent Salesforce Cases and Jira tickets,
-                  summarizes resolutions, retrieves active contracts and
-                  products, and returns a complete context package for live
-                  customer calls.
+                  A CSM provides an issue description and an AccountId. SYNaTRA identifies
+                  recent Salesforce Cases and Jira tickets, summarizes resolutions,
+                  retrieves active contracts and products, and returns a complete context
+                  package for live customer calls.
                 </p>
               </div>
 
@@ -739,11 +980,10 @@
                 <span class="tile-icon">IR</span>
                 <h3>Issue-Only Research</h3>
                 <p>
-                  When only a short issue description is available, SYNaTRA
-                  searches Jira and historical Salesforce Cases using
-                  keyword-based queries. It ranks and summarizes likely matches
-                  and proposes next steps, even before a specific customer is
-                  identified.
+                  When only a short issue description is available, SYNaTRA searches Jira
+                  and historical Salesforce Cases using keyword-based queries. It ranks
+                  and summarizes likely matches and proposes next steps, even before a
+                  specific customer is identified.
                 </p>
               </div>
 
@@ -751,10 +991,10 @@
                 <span class="tile-icon">CP</span>
                 <h3>CS Ops Coaching &amp; Playbooks</h3>
                 <p>
-                  CS Ops teams use SYNaTRA’s structured outputs—customer
-                  overview, case list, Jira issue list, and suggested
-                  actions—to design standard playbooks and improve coaching for
-                  handling recurring issue patterns.
+                  CS Ops teams use SYNaTRA’s structured outputs—customer overview, case
+                  list, Jira issue list, recommended resolution paths, and feedback
+                  signals—to design standard playbooks and improve coaching around
+                  recurring issue patterns.
                 </p>
               </div>
             </div>
@@ -768,20 +1008,24 @@
           </div>
           <div class="section-body">
             <p>
-              Interested in using SYNaTRA for internal Customer Success triage,
-              or extending it with new data sources and skills? Email Sarah at
-              Serruhb@gmail.com
+              Interested in using SYNaTRA for internal Customer Success triage, or in
+              exploring the full phased roadmap up to in-call coaching?
+              Email Sarah at
+              <a href="mailto:Serruhb@gmail.com">Serruhb@gmail.com</a>.
             </p>
             <p class="note">
-              <strong>Note:</strong> Access is restricted to internal employees;
-              operational details and PII are guarded and not persisted.
+              <strong>Note:</strong> Access is restricted to internal employees; operational
+              details and PII are guarded and not persisted outside of core systems.
             </p>
           </div>
         </section>
 
         <footer class="footer">
           <p>© 2025 SYNaTRA – Synthetic Triage Assistant.</p>
-          <p>Portfolio excerpt for demonstration; operational details redacted.</p>
+          <p>
+            Portfolio excerpt for demonstration; operational details and sensitive data
+            redacted.
+          </p>
         </footer>
       </div>
     </div>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sarah M. Brown</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00CDAC" />
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700&display=swap" />
+  <!-- Old FA (fa fa-...) support -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <!-- Newer kit (fab/fas, etc.) -->
+  <script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAGAAAAFgAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAJ1lP2f9ZT9n/AAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAFlP2f8AAAAFWU/Z/wAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAABWTdK9AAAAL1lP2f8AAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAFJJyXxZT9n/AAAAEwAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAdWU/Z/1JIx8EAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAHUUjGzzs0j2lYTtbtAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAA8AAAA0AAAASFZM1/9COqOlRj6uhgAAAAsAAAAFAAAABAAAAAD///8A////AP///wD///8A////AAAAABVuaNzDk4f//6GT//+jmP//lY7//4B9//5hX8KmOjl2bE9OnWQAAAAA////AP///wD///8A////AP///wBnYM+h29P//52P//+fkf//kYj//3p3/v97ef7/gn/+/8vG//92dfG0AAAAAP///wD///8A////AP///wD///8Af3b//3Bo5KOim///h33//5+T//+dk///m5L//8bB//+Fg/7/AAAAAgAAAAD///8A////AP///wD///8A////AH5198dRTJ5ncWvlYbm0///c1v//4Nv//7m1//96d/35AAAAAQAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAf3f5zgAAACoAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAIQAAAAqBev//AAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AGBgX/9LS0nDh4D48wAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAnJyUUfHXf6rCq//8AAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A//8AAP5/AAD9fwAA/X8AAP9/AAD/PwAA/r8AAP4/AADwHwAA4AcAAOAPAADsHwAA9/8AAPv/AADj/wAA8/8AAA=="
+  />
+
+  <style>
+    /* ===== Design Tokens ===== */
+    :root {
+      --brand: #00cdac;
+      --brand-strong: #00a88c;
+      --ink: #1e1e1e;
+      --ink-muted: #5a5a5a;
+      --bg-soft: #f3fbf9;
+      --max-width: 1100px;
+      --radius-lg: 14px;
+      --radius-md: 12px;
+      --shadow-soft: 0 14px 30px rgba(0, 0, 0, 0.12);
+      --nav-height: 64px;
+    }
+
+    /* ===== Base ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Raleway", sans-serif;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--bg-soft);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ===== Layout Helpers ===== */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .section {
+      padding: 128px 0;
+    }
+
+    .section--compact {
+      padding: 64px 0;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--ink-muted);
+    }
+
+    .brand-heading {
+      color: var(--brand-strong);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      margin-bottom: 0.35rem;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background-color: var(--brand);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      z-index: 1000;
+    }
+
+    .navbar {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-left,
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .nav-link i {
+      margin-right: 6px;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      border: none;
+      background: none;
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* Mobile menu panel */
+    .mobile-menu {
+      position: fixed;
+      top: var(--nav-height);
+      right: 0;
+      left: 0;
+      background: #111;
+      color: #fff;
+      display: none;
+      flex-direction: column;
+      padding: 16px 20px 24px;
+      gap: 10px;
+      z-index: 999;
+    }
+
+    .mobile-menu a {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 4px;
+    }
+
+    .mobile-menu a:hover {
+      text-decoration: underline;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      background-image: url("Images/flamingos.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-height) + 32px) 16px 48px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 32px;
+      width: 100%;
+      max-width: var(--max-width);
+      align-items: flex-end;
+    }
+
+    .brand-card {
+      background-color: var(--brand);
+      color: #fff;
+      opacity: 0.9;
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-name {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .hero-tagline {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero-tagline a {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+    }
+
+    .hero-contact {
+      display: block;
+      font-size: 1rem;
+      margin-top: 14px;
+    }
+
+    .hero-resume-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .hero-resume-title a {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+    }
+
+    .hero-resume-sub {
+      font-size: 1rem;
+    }
+
+    /* ===== Intro Section ===== */
+    .intro-text {
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    .intro-text p + p {
+      margin-top: 1rem;
+    }
+
+    /* ===== Projects Section ===== */
+    .projects-header {
+      margin-bottom: 0.8rem;
+    }
+
+    .projects-grid {
+      margin-top: 48px;
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      align-items: stretch;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 18px 18px 20px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-icon-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background-color: var(--brand);
+      color: #fff;
+      margin: 0 auto 6px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    }
+
+    .project-icon-wrapper i {
+      font-size: 2rem;
+    }
+
+    .project-card a.project-icon-link:hover .project-icon-wrapper {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .project-text {
+      font-size: 0.96rem;
+      color: var(--ink);
+      text-align: left;
+    }
+
+    .project-card p {
+      margin: 0;
+    }
+
+    /* ===== Contact Section ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: flex-start;
+      margin-top: 40px;
+    }
+
+    .contact-details p {
+      margin: 0 0 8px;
+      font-size: 0.98rem;
+    }
+
+    .contact-details i {
+      color: var(--brand-strong);
+      margin-right: 10px;
+      font-size: 1.3rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #cfd7dc;
+      font-family: inherit;
+      font-size: 0.96rem;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 2px rgba(0, 205, 172, 0.2);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background-color: var(--brand);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn i {
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      filter: brightness(0.95);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    /* ===== Footer ===== */
+    .site-footer {
+      background-color: var(--brand);
+      color: #fff;
+      padding: 18px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      font-size: 1.4rem;
+    }
+
+    .footer-inner a {
+      color: #fff;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .footer-inner a:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: center;
+      }
+
+      .hero-inner > .brand-card:last-child {
+        justify-self: center;
+        max-width: 380px;
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-left {
+        gap: 10px;
+      }
+
+      .navbar-right {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .hero-name {
+        font-size: 2.2rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.25rem;
+      }
+
+      .section {
+        padding: 96px 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero {
+        padding-top: calc(var(--nav-height) + 16px);
+      }
+
+      .brand-card {
+        padding: 18px 18px 20px;
+      }
+
+      .hero-name {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Navbar ===== -->
+  <header class="navbar-wrapper">
+    <div class="container navbar" aria-label="Primary navigation">
+      <div class="navbar-left">
+        <a href="resume.html" target="_blank" class="nav-link">
+          <i class="fa fa-user"></i> Resume
+        </a>
+        <a
+          href="https://www.linkedin.com/in/serruhb/"
+          target="_blank"
+          rel="noopener"
+          class="nav-link"
+        >
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+
+      <div class="navbar-right">
+        <a href="#Intro" class="nav-link">
+          <i class="fas fa-comment"></i> Intro
+        </a>
+        <a href="#work" class="nav-link">
+          <i class="fa fa-github"></i> Projects
+        </a>
+        <a href="#contact" class="nav-link">
+          <i class="fa fa-envelope"></i> Contact
+        </a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation menu" id="navToggle">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobileMenu">
+      <a href="#Intro">Intro</a>
+      <a href="#work">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="resume.html" target="_blank" rel="noopener">Resume</a>
+      <a href="about.html">My Story</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="hero-inner">
+      <!-- Left card: name + tagline -->
+      <div class="brand-card">
+        <span class="hero-name">Sarah M. Brown</span>
+        <span class="hero-tagline">
+          <a href="#Intro">• Creative Philomath •</a>
+        </span>
+        <span class="hero-contact">
+          512•884•1220 — <a href="mailto:serruhb@gmail.com" style="color:#fff;">serruhb@gmail.com</a>
+        </span>
+      </div>
+
+      <!-- Right card: resume CTA -->
+      <div class="brand-card">
+        <span class="hero-resume-title">
+          <a href="resume.html" target="_blank" rel="noopener">• Resume •</a>
+        </span>
+        <span class="hero-resume-sub">Check it out!</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- ===== Intro Section ===== -->
+    <section class="section" id="Intro">
+      <div class="container">
+        <div class="text-center">
+          <h1 class="brand-heading">
+            <a href="#Intro">Intro</a>
+          </h1>
+          <p class="lead">Me in a nutshell.</p>
+        </div>
+
+        <div class="intro-text" style="margin-top: 40px;">
+          <p>
+            I was born in Franklin, Louisiana, and grew up across several east coast states, from New Hampshire to South
+            Carolina to Florida. Moving often taught me adaptability and connection; I learned how to communicate with many
+            different people, from varying backgrounds, which to shaped how I collaborate and lead today.
+          </p>
+          <p>
+            At Columbia College in South Carolina, I pursued Mathematics and Chemistry, drawn to the logic and structure
+            behind how things work. It was during those studies that I took my first programming course and discovered how
+            seamlessly problem-solving and creativity could merge. My professors recognized my strength for debugging and
+            development, and together we replaced several math courses with programming, one of the best and most exciting
+            decisions of my life.
+          </p>
+          <p>
+            While in college, I worked as a tutor, using code to track my students’ progress and manage finances; an early
+            hint of how I’d combine automation with real-world problem-solving. After graduation, I founded a small
+            business, applying data-driven systems to operations and client experience. It was successful, but it also made
+            me realize that my true passion was in creating tools that make people’s work simpler, smarter, and more
+            meaningful.
+          </p>
+          <p>
+            Today, as a Senior AI and Automation Engineer, that same passion drives everything I do, designing intelligent
+            systems that bridge technology and human insight, helping teams focus on impact instead of inefficiency. I
+            believe great automation doesn’t replace people, it empowers them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projects Section ===== -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="text-center">
+          <h1 class="brand-heading projects-header">
+            <a
+              href="https://github.com/Serruhb"
+              target="_blank"
+              rel="noopener"
+            >
+              Projects
+            </a>
+          </h1>
+          <p class="lead">Merging Math, Mind, and Machine.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- SYNaTRA -->
+          <article class="project-card">
+            <a
+              href="https://github.com/Serruhb/SYNTRA"
+              target="_blank"
+              rel="noopener"
+              class="project-icon-link"
+              aria-label="View SYNaTRA project on GitHub"
+            >
+              <div class="project-icon-wrapper">
+                <i class="fas fa-robot"></i>
+              </div>
+            </a>
+            <p class="project-text">
+              An AI-powered triage and context engine that accelerates case resolution and empowers Customer Success teams
+              with actionable insight. By helping users quickly understanding a customer’s historical and technical context
+              by retrieving and summarizing related Salesforce Cases, Jira Tickets, and active subscription details. SYNaTRA
+              reduces time-to-context and improves first-contact resolution through concise, data-driven summaries and
+              next-step guidance.
+            </p>
+          </article>
+
+          <!-- Request Form / Process Engineering -->
+          <article class="project-card">
+            <a
+              href="https://github.com/Serruhb/RequestForm"
+              target="_blank"
+              rel="noopener"
+              class="project-icon-link"
+              aria-label="View RequestForm project on GitHub"
+            >
+              <div class="project-icon-wrapper">
+                <i class="fa fa-wpforms"></i>
+              </div>
+            </a>
+            <p class="project-text">
+              A process-engineering initiative to streamline a request workflow that became unmanageable during rapid
+              growth. By documenting and analyzing the existing Oracle-based process, then rebuilding it within Salesforce
+              using Visualforce, Apex, and reusable plug-and-play code modules, this project improved efficiency,
+              transparency, and adoption. Deliverables included interactive process documentation, automated form
+              generation (PDF rendering via Visualforce), and user-friendly dashboards and training guides to empower both
+              end-users and developers.
+            </p>
+          </article>
+
+          <!-- Dat-a-Mate -->
+          <article class="project-card">
+            <a
+              href="https://github.com/jazminhicks/pof-machine-learning"
+              target="_blank"
+              rel="noopener"
+              class="project-icon-link"
+              aria-label="View Dat-a-Mate project on GitHub"
+            >
+              <div class="project-icon-wrapper">
+                <i class="fas fa-fish"></i>
+              </div>
+            </a>
+            <p class="project-text">
+              Main goal of Dat-a-Mate was to reduce the amount of search results by predicting the users physical match
+              based on facial recognition. Group project using machine learning, python, API interacting, web scrapping,
+              D3.js.
+            </p>
+          </article>
+
+          <!-- SQLAlchemy Weather Trip -->
+          <article class="project-card">
+            <a
+              href="https://github.com/Serruhb/SQLalchemy"
+              target="_blank"
+              rel="noopener"
+              class="project-icon-link"
+              aria-label="View SQLAlchemy weather project on GitHub"
+            >
+              <div class="project-icon-wrapper">
+                <i class="fas fa-cloud-sun-rain"></i>
+              </div>
+            </a>
+            <p class="project-text">
+              In the midst of planning a trip, I decided to use SQLalchemy to aid in my research of weather. Using live
+              generated information from weatherAPI I was able to compare the past, present and future weather patterns of
+              my destintation.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact Section ===== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="text-center">
+          <h1 class="brand-heading">
+            <a href="#contact">Contact</a>
+          </h1>
+          <p class="lead">Let's get in touch. Send me a message:</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact details -->
+          <div class="contact-details">
+            <p>
+              <i class="fa fa-map-marker"></i>
+              Amesbury, MA
+            </p>
+            <p>
+              <i class="fa fa-phone"></i>
+              Phone: (512) 884-1220
+            </p>
+            <p>
+              <i class="fa fa-envelope"></i>
+              Email: <a href="mailto:serruhb@gmail.com">SerruhB@gmail.com</a>
+            </p>
+          </div>
+
+          <!-- Contact form -->
+          <form id="contactForm" class="contact-form" onsubmit="return sendMail(event)">
+            <input type="text" name="Name" placeholder="Name" required />
+            <input type="email" name="Email" placeholder="Email" required />
+            <input type="text" name="Subject" placeholder="Subject" required />
+            <textarea name="Message" rows="4" placeholder="Message" required></textarea>
+            <button type="submit" class="btn">
+              <i class="fa fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+  <script>
+    // Contact form mailto builder
+    function sendMail(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const name = form.Name.value.trim();
+      const email = form.Email.value.trim();
+      const subject = form.Subject.value.trim() || "Website Contact";
+      const message = form.Message.value.trim();
+
+      const body = [
+        "Name: " + name,
+        "Email: " + email,
+        "",
+        message
+      ].join("\\n");
+
+      const mailtoLink =
+        "mailto:serruhb@gmail.com?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
+
+      window.location.href = mailtoLink;
+      return false;
+    }
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    navToggle.addEventListener("click", function () {
+      mobileMenu.classList.toggle("open");
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileMenu.classList.remove("open");
+      });
+    });
+  </script>
+</body>
+</html>
