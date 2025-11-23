@@ -13,10 +13,10 @@
 
     <!-- Favicon -->
     <link
-  rel="icon"
-  type="image/svg+xml"
-  href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5TPC90ZXh0Pgo8L3N2Zz4="
-/>
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5TPC90ZXh0Pgo8L3N2Zz4="
+    />
 
     <style>
       /* ===== Design tokens ===== */
@@ -92,7 +92,6 @@
       .icon-only i {
         font-size: 1.55rem;
       }
-      
 
       .tile-icon {
         background-color: var(--brand);
@@ -135,7 +134,7 @@
       .syn-hero-title {
         margin: 0 0 8px;
         font-size: 2rem;
-        color: rgba(255, 255, 255, 0.9)
+        color: rgba(255, 255, 255, 0.9);
       }
 
       .syn-hero-sub {
@@ -174,7 +173,6 @@
           margin: 0 auto;
         }
       }
-
 
       /* Sections */
       .section {
@@ -278,6 +276,87 @@
         border-radius: 4px;
       }
 
+      /* Diagram figure (for all diagrams) */
+      .diagram-figure {
+        margin: 24px 0 0;
+        text-align: center;
+      }
+
+      .diagram-figure img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        cursor: zoom-in; /* hint it's clickable */
+      }
+
+      .diagram-figure figcaption {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: var(--ink-muted);
+      }
+
+      /* Diagram modal / lightbox */
+      .diagram-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+
+      .diagram-modal.open {
+        display: flex;
+      }
+
+      .diagram-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .diagram-modal-content {
+        position: relative;
+        max-width: min(1000px, 100vw - 32px);
+        max-height: 90vh;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        z-index: 2001;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .diagram-modal-content img {
+        max-width: 100%;
+        max-height: 70vh;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .diagram-modal-caption {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+        text-align: center;
+      }
+
+      .diagram-modal-close {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        border: none;
+        background: transparent;
+        font-size: 1.8rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--ink-muted);
+      }
+
       /* Metrics */
       .metrics {
         display: flex;
@@ -360,7 +439,10 @@
         }
       }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -372,18 +454,21 @@
             <div class="hero-image">
               <img src="/Images/synatralogo.jpg" alt="SYNaTRA Logo" />
             </div>
-          
+
             <div class="hero-text">
-              <h1 class="syn-hero-title brand-heading">SYNaTRA — Synthetic Triage Assistant</h1>
+              <h1 class="syn-hero-title brand-heading">
+                SYNaTRA — Synthetic Triage Assistant
+              </h1>
               <p class="syn-hero-sub">
-                Workato-orchestrated Customer Success triage across Salesforce, Jira, and Snowflake.
+                Workato-orchestrated Customer Success triage across Salesforce,
+                Jira, and Snowflake.
               </p>
               <p class="syn-hero-meta">
-                Primary users: CS Ops, CSMs, and Customer Success Representatives (internal use only).
+                Primary users: CS Ops, CSMs, and Customer Success
+                Representatives (internal use only).
               </p>
             </div>
           </div>
-          
         </section>
 
         <!-- PROBLEM / SOLUTION -->
@@ -393,25 +478,44 @@
           </div>
           <div class="section-body">
             <p>
-              Customer Success teams lose valuable time piecing together context across Salesforce, Jira,
-              and subscription systems. Manual searches, inconsistent summaries, and scattered historical
-              resolutions increase time-to-context and slow first-contact resolution. Critical information
-              such as active contracts, product mix, and prior fixes is often buried across tools, making
-              live customer conversations harder than they need to be.
+              Customer Success teams lose valuable time piecing together context
+              across Salesforce, Jira, and subscription systems. Manual
+              searches, inconsistent summaries, and scattered historical
+              resolutions increase time-to-context and slow first-contact
+              resolution. Critical information such as active contracts, product
+              mix, and prior fixes is often buried across tools, making live
+              customer conversations harder than they need to be.
             </p>
+          </div>
+          <div class="section-header">
+            <p></p>
           </div>
 
           <div class="section-header" style="margin-top: 20px;">
-            <h2 class="brand-heading">Our Solution</h2>
+            <h2 class="brand-heading">The Solution</h2>
           </div>
           <div class="section-body">
             <p>
-              SYNaTRA is a synthetic triage assistant that retrieves and summarizes customer history from
-              Salesforce Cases, Jira Tickets, and Snowflake subscription data into a single, concise view.
-              It parses an issue description, searches across systems using SOQL, JQL, and SQL, scores the
-              similarity and confidence of matches, and returns an actionable, formatted triage summary
-              ready to use in real time during Slack, MS Teams, or Workbot conversations.
+              SYNaTRA is a synthetic triage assistant that retrieves and
+              summarizes customer history from Salesforce Cases, Jira Tickets,
+              and Snowflake subscription data into a single, concise view. It
+              parses an issue description, searches across systems using SOQL,
+              JQL, and SQL, scores the similarity and confidence of matches, and
+              returns an actionable, formatted triage summary ready to use in
+              real time during Slack, MS Teams, or Workbot conversations.
             </p>
+          </div>
+          <div class="section-body">
+            <figure class="diagram-figure">
+              <img
+                src="diagrams/workatoWorkflow.svg"
+                alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
+              />
+              <figcaption>
+                Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant Salesforce, Jira,
+                Snowflake, and LLM skills into a single triage response.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -419,7 +523,10 @@
         <section class="section reveal">
           <div class="section-header">
             <h2 class="brand-heading">Key Features</h2>
-            <p>How SYNaTRA assembles context, searches systems, and keeps data safe.</p>
+            <p>
+              How SYNaTRA assembles context, searches systems, and keeps data
+              safe.
+            </p>
           </div>
           <div class="section-body">
             <div class="grid grid-features">
@@ -427,19 +534,24 @@
                 <span class="tile-icon">UC</span>
                 <h3>Unified Customer Context</h3>
                 <p>
-                  Searches Salesforce for Accounts, Cases, Contracts, and Subscriptions, and Snowflake for
-                  subscription details, then builds a concise customer overview with active plans, status,
+                  Searches Salesforce for Accounts, Cases, Contracts, and
+                  Subscriptions, and Snowflake for subscription details, then
+                  builds a concise customer overview with active plans, status,
                   and total MRR.
                 </p>
-                <small>Data sources: Salesforce (Case, Contract, Account), Snowflake subscription tables.</small>
+                <small
+                  >Data sources: Salesforce (Case, Contract, Account),
+                  Snowflake subscription tables.</small
+                >
               </div>
 
               <div class="card">
                 <span class="tile-icon">IS</span>
                 <h3>Issue-Aware Search Across Systems</h3>
                 <p>
-                  Converts short issue descriptions into keyword strings and constructs SOQL and JQL queries.
-                  Searches Salesforce Cases and Jira issues (DSSD, DS, COPS) for relevant historical tickets
+                  Converts short issue descriptions into keyword strings and
+                  constructs SOQL and JQL queries. Searches Salesforce Cases and
+                  Jira issues (DSSD, DS, COPS) for relevant historical tickets
                   within a 12-month window.
                 </p>
                 <small>Tech: SOQL, JQL, optional SOSL.</small>
@@ -449,10 +561,11 @@
                 <span class="tile-icon">SS</span>
                 <h3>Summaries, Scores, and Next Steps</h3>
                 <p>
-                  For each Salesforce Case and Jira issue, SYNaTRA generates ≤150-word summaries of historical
-                  resolutions, adds confidence and similarity scores, and labels records with source references
-                  (e.g., SF-Case-12345, JIRA-6789). It then proposes the next best action in friendly,
-                  live-usable language.
+                  For each Salesforce Case and Jira issue, SYNaTRA generates
+                  ≤150-word summaries of historical resolutions, adds confidence
+                  and similarity scores, and labels records with source
+                  references (e.g., SF-Case-12345, JIRA-6789). It then proposes
+                  the next best action in friendly, live-usable language.
                 </p>
               </div>
 
@@ -460,9 +573,10 @@
                 <span class="tile-icon">GR</span>
                 <h3>Guardrails, Access Rules, and Safety</h3>
                 <p>
-                  Uses integration-user credentials for Salesforce and Jira, masks PII (emails, phone numbers,
-                  tokens) in summaries, and avoids any persistent storage beyond the current response. Designed
-                  for internal use only.
+                  Uses integration-user credentials for Salesforce and Jira,
+                  masks PII (emails, phone numbers, tokens) in summaries, and
+                  avoids any persistent storage beyond the current response.
+                  Designed for internal use only.
                 </p>
               </div>
             </div>
@@ -473,109 +587,133 @@
         <section class="section reveal">
           <div class="section-header">
             <h2 class="brand-heading">System Architecture</h2>
-            <p>How SYNaTRA orchestrates connectors and skills into a triage report.</p>
+            <p>
+              How SYNaTRA orchestrates connectors and skills into a triage
+              report.
+            </p>
           </div>
           <div class="section-body">
             <p>
-              SYNaTRA orchestrates multiple connectors and skills to transform a short issue description into
-              a structured triage report:
+              SYNaTRA orchestrates multiple connectors and skills to transform a
+              short issue description into a structured triage report:
             </p>
             <ul class="architecture-list">
               <li>
                 <strong>Inputs:</strong>
                 <code>issue_description</code> (free text) and optional
-                <code>customer_identifier</code> (AccountId, ContractId, Kareo CustomerId).
+                <code>customer_identifier</code> (AccountId, ContractId, Kareo
+                CustomerId).
               </li>
               <li>
-                <strong>Customer Identification:</strong> Salesforce account search skill with fuzzy matching
-                and top-5 candidates when only a name is provided.
+                <strong>Customer Identification:</strong> Salesforce account
+                search skill with fuzzy matching and top-5 candidates when only
+                a name is provided.
               </li>
               <li>
-                <strong>Keyword &amp; Query Builder:</strong> Tokenizes issue text and builds JQL and SOQL/SOSL
-                keyword queries.
+                <strong>Keyword &amp; Query Builder:</strong> Tokenizes issue
+                text and builds JQL and SOQL/SOSL keyword queries.
               </li>
               <li>
-                <strong>Record Fetching:</strong> Salesforce Cases &amp; Contracts, Jira tickets, Snowflake
-                subscription data (12-month lookback).
+                <strong>Record Fetching:</strong> Salesforce Cases &amp;
+                Contracts, Jira tickets, Snowflake subscription data (12-month
+                lookback).
               </li>
               <li>
-                <strong>Summarization &amp; Scoring:</strong> Resolution summaries with similarity and confidence
-                metrics at record and overall result levels.
+                <strong>Summarization &amp; Scoring:</strong> Resolution
+                summaries with similarity and confidence metrics at record and
+                overall result levels.
               </li>
               <li>
-                <strong>Insight Assembly:</strong> Final message composed into a readable chat response for
-                Slack, MS Teams, or Workbot.
+                <strong>Insight Assembly:</strong> Final message composed into a
+                readable chat response for Slack, MS Teams, or Workbot.
               </li>
             </ul>
             <p>
-              If Salesforce or Jira are unavailable, SYNaTRA responds with a user-friendly error:
-              <em>“I couldn’t reach Salesforce or Jira right now — please try again shortly or check your
-              connection settings.”</em>
+              If Salesforce or Jira are unavailable, SYNaTRA responds with a
+              user-friendly error:
+              <em
+                >“I couldn’t reach Salesforce or Jira right now — please try
+                again shortly or check your connection settings.”</em
+              >
             </p>
+          </div>
+          <div class="section-body">
+            <figure class="diagram-figure">
+              <img
+                src="diagrams/syntra-architecture.svg"
+                alt="High-level architecture diagram of the SYNaTRA synthetic triage assistant"
+              />
+              <figcaption>
+                High-level view of how SYNaTRA orchestrates Salesforce, Jira,
+                Snowflake, and LLM skills into a single triage response.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
         <!-- IMPACT & RESULTS -->
         <section class="section reveal">
-            <div class="section-header">
-              <h2 class="brand-heading">Impact &amp; Results</h2>
-              <p>Targeted outcomes for Customer Success teams.</p>
-            </div>
-          
-            <div class="section-body">
-              <div class="metrics">
-                <div class="metric">
-                  <span class="icon-only"><i class="fa fa-clock"></i></span>
-                  <div>
-                    <div class="metric-main">Time-to-context</div>
-                    <div class="metric-text">
-                      <p>
-                      50% reduction in average time-to-context for CS Ops and CSMs.
-                      </p>
-                    </div>
+          <div class="section-header">
+            <h2 class="brand-heading">Impact &amp; Results</h2>
+            <p>Targeted outcomes for Customer Success teams.</p>
+          </div>
+
+          <div class="section-body">
+            <div class="metrics">
+              <div class="metric">
+                <span class="icon-only"><i class="fa fa-clock"></i></span>
+                <div>
+                  <div class="metric-main">Time-to-context</div>
+                  <div class="metric-text">
+                    <p>
+                      50% reduction in average time-to-context for CS Ops and
+                      CSMs.
+                    </p>
                   </div>
                 </div>
-          
-                <div class="metric">
-                  <span class="icon-only"><i class="fa fa-chart-line"></i></span>
-                  <div>
-                    <div class="metric-main">FCR uplift</div>
-                    <div class="metric-text">
-                      <p>
-                      Improved first-contact resolution rate by surfacing prior fixes faster.
-                      </p>
-                    </div>
+              </div>
+
+              <div class="metric">
+                <span class="icon-only"><i class="fa fa-chart-line"></i></span>
+                <div>
+                  <div class="metric-main">FCR uplift</div>
+                  <div class="metric-text">
+                    <p>
+                      Improved first-contact resolution rate by surfacing prior
+                      fixes faster.
+                    </p>
                   </div>
                 </div>
-          
-                <div class="metric">
-                  <span class="icon-only"><i class="fa fa-database"></i></span>
-                  <div>
-                    <div class="metric-main">Breadth of context</div>
-                    <div class="metric-text">
-                      <p>
-                      Up to 100 Salesforce cases and 100 Jira issues summarized per request.
-                      </p>
-                    </div>
+              </div>
+
+              <div class="metric">
+                <span class="icon-only"><i class="fa fa-database"></i></span>
+                <div>
+                  <div class="metric-main">Breadth of context</div>
+                  <div class="metric-text">
+                    <p>
+                      Up to 100 Salesforce cases and 100 Jira issues summarized
+                      per request.
+                    </p>
                   </div>
                 </div>
-          
-                <div class="metric">
-                  <span class="icon-only"><i class="fa fa-bolt"></i></span>
-                  <div>
-                    <div class="metric-main">Execution window</div>
-                    <div class="metric-text">
-                      <p>
-                      Maximum runtime ≤ 5 minutes for full triage execution, with no data persisted.
-                      </p>
-                    </div>
+              </div>
+
+              <div class="metric">
+                <span class="icon-only"><i class="fa fa-bolt"></i></span>
+                <div>
+                  <div class="metric-main">Execution window</div>
+                  <div class="metric-text">
+                    <p>
+                      Maximum runtime ≤ 5 minutes for full triage execution,
+                      with no data persisted.
+                    </p>
                   </div>
                 </div>
-          
               </div>
             </div>
-          </section>
-          
+          </div>
+        </section>
 
         <!-- USE CASES -->
         <section class="section reveal">
@@ -589,9 +727,11 @@
                 <span class="tile-icon">AT</span>
                 <h3>Account + Issue Triage</h3>
                 <p>
-                  A CSM provides an issue description and an AccountId. SYNaTRA identifies recent Salesforce
-                  Cases and Jira tickets, summarizes resolutions, retrieves active contracts and products, and
-                  returns a complete context package for live customer calls.
+                  A CSM provides an issue description and an AccountId. SYNaTRA
+                  identifies recent Salesforce Cases and Jira tickets,
+                  summarizes resolutions, retrieves active contracts and
+                  products, and returns a complete context package for live
+                  customer calls.
                 </p>
               </div>
 
@@ -599,9 +739,11 @@
                 <span class="tile-icon">IR</span>
                 <h3>Issue-Only Research</h3>
                 <p>
-                  When only a short issue description is available, SYNaTRA searches Jira and historical
-                  Salesforce Cases using keyword-based queries. It ranks and summarizes likely matches and
-                  proposes next steps, even before a specific customer is identified.
+                  When only a short issue description is available, SYNaTRA
+                  searches Jira and historical Salesforce Cases using
+                  keyword-based queries. It ranks and summarizes likely matches
+                  and proposes next steps, even before a specific customer is
+                  identified.
                 </p>
               </div>
 
@@ -609,9 +751,10 @@
                 <span class="tile-icon">CP</span>
                 <h3>CS Ops Coaching &amp; Playbooks</h3>
                 <p>
-                  CS Ops teams use SYNaTRA’s structured outputs—customer overview, case list, Jira issue list,
-                  and suggested actions—to design standard playbooks and improve coaching for handling recurring
-                  issue patterns.
+                  CS Ops teams use SYNaTRA’s structured outputs—customer
+                  overview, case list, Jira issue list, and suggested
+                  actions—to design standard playbooks and improve coaching for
+                  handling recurring issue patterns.
                 </p>
               </div>
             </div>
@@ -620,17 +763,18 @@
 
         <!-- GET IN TOUCH -->
         <section class="section reveal">
-          <div class="section-header">e
+          <div class="section-header">
             <h2 class="brand-heading">Get in Touch</h2>
           </div>
           <div class="section-body">
             <p>
-              Interested in using SYNaTRA for internal Customer Success triage, or extending it with new data
-              sources and skills? Email Sarah at Serruhb@gmail.com
+              Interested in using SYNaTRA for internal Customer Success triage,
+              or extending it with new data sources and skills? Email Sarah at
+              Serruhb@gmail.com
             </p>
             <p class="note">
-              <strong>Note:</strong> Access is restricted to internal employees; operational details and
-              PII are guarded and not persisted.
+              <strong>Note:</strong> Access is restricted to internal employees;
+              operational details and PII are guarded and not persisted.
             </p>
           </div>
         </section>
@@ -642,6 +786,18 @@
       </div>
     </div>
 
+    <!-- Diagram modal (reusable for all .diagram-figure images) -->
+    <div id="diagram-modal" class="diagram-modal" aria-hidden="true">
+      <div class="diagram-modal-backdrop"></div>
+      <div class="diagram-modal-content" role="dialog" aria-modal="true">
+        <button class="diagram-modal-close" aria-label="Close diagram">
+          &times;
+        </button>
+        <img src="" alt="" />
+        <p class="diagram-modal-caption"></p>
+      </div>
+    </div>
+
     <script>
       // Simple scroll-reveal using IntersectionObserver
       document.addEventListener("DOMContentLoaded", function () {
@@ -649,22 +805,65 @@
 
         if (!("IntersectionObserver" in window)) {
           elements.forEach((el) => el.classList.add("visible"));
-          return;
+        } else {
+          const observer = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 }
+          );
+
+          elements.forEach((el) => observer.observe(el));
         }
 
-        const observer = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                obs.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.15 }
-        );
+        // === Diagram click-to-zoom modal ===
+        const diagramImages = document.querySelectorAll(".diagram-figure img");
+        const modal = document.getElementById("diagram-modal");
+        if (!modal) return;
 
-        elements.forEach((el) => observer.observe(el));
+        const modalImg = modal.querySelector("img");
+        const modalCaption = modal.querySelector(".diagram-modal-caption");
+        const closeBtn = modal.querySelector(".diagram-modal-close");
+        const backdrop = modal.querySelector(".diagram-modal-backdrop");
+
+        function openModal(src, alt, caption) {
+          modalImg.src = src;
+          modalImg.alt = alt || "";
+          modalCaption.textContent = caption || "";
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+        }
+
+        function closeModal() {
+          modal.classList.remove("open");
+          modal.setAttribute("aria-hidden", "true");
+          modalImg.src = "";
+          modalImg.alt = "";
+          modalCaption.textContent = "";
+        }
+
+        diagramImages.forEach((img) => {
+          img.addEventListener("click", () => {
+            const figure = img.closest("figure");
+            const captionEl = figure ? figure.querySelector("figcaption") : null;
+            const captionText = captionEl ? captionEl.innerText : "";
+            openModal(img.src, img.alt, captionText);
+          });
+        });
+
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+        if (backdrop) backdrop.addEventListener("click", closeModal);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeModal();
+          }
+        });
       });
     </script>
   </body>
