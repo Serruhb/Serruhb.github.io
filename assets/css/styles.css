@@ -170,7 +170,7 @@
   /* ===== Hero ===== */
   .hero {
     min-height: 100vh;
-    background-image: url("Images/flamingos.jpg");
+    background-image: url("../../Images/flamingos.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
