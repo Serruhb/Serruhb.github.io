@@ -113,7 +113,7 @@
       .syn-page {
         min-height: 100vh;
       }
-
+      
       .syn-shell {
         max-width: 1100px;
         margin: 0 auto;
@@ -277,6 +277,25 @@
         padding: 1px 4px;
         border-radius: 4px;
       }
+      .architecture-figure {
+        margin: 24px 0 0;
+        text-align: center;
+      }
+      
+      .architecture-figure img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+      }
+      
+      .architecture-figure figcaption {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: var(--ink-muted);
+      }
+      
 
       /* Metrics */
       .metrics {
@@ -400,6 +419,11 @@
               live customer conversations harder than they need to be.
             </p>
           </div>
+          <div class="section-header">
+            <p>
+
+            </p>
+          </div>
 
           <div class="section-header" style="margin-top: 20px;">
             <h2 class="brand-heading">Our Solution</h2>
@@ -413,6 +437,18 @@
               ready to use in real time during Slack, MS Teams, or Workbot conversations.
             </p>
           </div>
+          <div class="section-body">
+            <figure class="architecture-figure">
+              <img
+                src="/diagrams/syntra-arcitecture.svg"
+                alt="High-level architecture diagram of the SYNaTRA synthetic triage assistant"
+              />
+              <figcaption>
+                High-level view of how SYNaTRA orchestrates Salesforce, Jira, Snowflake, and LLM skills into a single triage response.
+              </figcaption>
+            </figure>
+          </div>
+          
         </section>
 
         <!-- KEY FEATURES -->
