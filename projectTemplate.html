@@ -277,24 +277,68 @@
         padding: 1px 4px;
         border-radius: 4px;
       }
-      .architecture-figure {
+      .diagram-figure {
         margin: 24px 0 0;
         text-align: center;
+        position: relative;
       }
       
-      .architecture-figure img {
+      /* Base state */
+      .diagram-figure img {
         max-width: 100%;
         height: auto;
         border-radius: 14px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
         border: 1px solid rgba(0, 0, 0, 0.04);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: zoom-in;
       }
       
-      .architecture-figure figcaption {
+      .diagram-figure figcaption {
         margin-top: 8px;
         font-size: 0.85rem;
         color: var(--ink-muted);
       }
+      
+      /* Overlay background when hovering */
+      .diagram-figure:hover::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 1000;
+      }
+      
+      /* Full-width “blown up” image on hover */
+      .diagram-figure:hover img {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(100vw - 40px, 1100px);
+        max-height: 90vh;
+        border-radius: 16px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        z-index: 1001;
+        cursor: zoom-out;
+      }
+      
+      /* Caption overlay when expanded */
+      .diagram-figure:hover figcaption {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        font-size: 0.8rem;
+        max-width: min(100vw - 40px, 700px);
+        z-index: 1002;
+      }
+      
       
 
       /* Metrics */
@@ -438,13 +482,13 @@
             </p>
           </div>
           <div class="section-body">
-            <figure class="architecture-figure">
+            <figure class="diagram-figure">
               <img
-                src="diagrams/syntra-architecture.svg"
-                alt="High-level architecture diagram of the SYNaTRA synthetic triage assistant"
+                src="diagrams/workatoWorkflow.svg"
+                alt="High-level workflow diagram of the SYNaTRA synthetic triage assistant"
               />
               <figcaption>
-                High-level view of how SYNaTRA orchestrates Salesforce, Jira, Snowflake, and LLM skills into a single triage response.
+                High-level view of how Workato orchestrates Salesforce, Jira, Snowflake, and LLM skills into a single triage response.
               </figcaption>
             </figure>
           </div>
@@ -548,6 +592,17 @@
               <em>“I couldn’t reach Salesforce or Jira right now — please try again shortly or check your
               connection settings.”</em>
             </p>
+          </div>
+          <div class="section-body">
+            <figure class="diagram-figure">
+              <img
+                src="diagrams/syntra-architecture.svg"
+                alt="High-level architecture diagram of the SYNaTRA synthetic triage assistant"
+              />
+              <figcaption>
+                High-level view of how SYNaTRA orchestrates Salesforce, Jira, Snowflake, and LLM skills into a single triage response.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
