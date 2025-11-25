@@ -197,6 +197,7 @@
     padding: 24px 28px;
     box-shadow: var(--shadow-soft);
     backdrop-filter: blur(4px);
+    width: 100%;
   }
   
   .hero-name {
