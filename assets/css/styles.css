@@ -5,7 +5,7 @@
     --ink: #1e1e1e;
     --ink-muted: #5a5a5a;
     --bg-soft: #f3fbf9;
-    --max-width: 2000px;
+    --max-width: 1100px;
     --radius-lg: 14px;
     --radius-md: 12px;
     --shadow-soft: 0 14px 30px rgba(0, 0, 0, 0.12);
@@ -182,11 +182,11 @@
   
   .hero-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: 32px;
     width: 100%;
     max-width: var(--max-width);
-    align-items: flex-end;
+    align-items: center;
   }
   
   .brand-card {
