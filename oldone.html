@@ -1,345 +1,1001 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Sarah M. Brown</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Theme color matches brand -->
-  <meta name="theme-color" content="#00CDAC" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>SYNaTRA — Synthetic Triage Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- CSS + Icons -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link
-    href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAGAAAAFgAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAJ1lP2f9ZT9n/AAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAFlP2f8AAAAFWU/Z/wAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAABWTdK9AAAAL1lP2f8AAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAFJJyXxZT9n/AAAAEwAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAdWU/Z/1JIx8EAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAHUUjGzzs0j2lYTtbtAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAA8AAAA0AAAASFZM1/9COqOlRj6uhgAAAAsAAAAFAAAABAAAAAD///8A////AP///wD///8A////AAAAABVuaNzDk4f//6GT//+jmP//lY7//4B9//5hX8KmOjl2bE9OnWQAAAAA////AP///wD///8A////AP///wBnYM+h29P//52P//+fkf//kYj//3p3/v97ef7/gn/+/8vG//92dfG0AAAAAP///wD///8A////AP///wD///8Af3b//3Bo5KOim///h33//5+T//+dk///m5L//8bB//+Fg/7/AAAAAgAAAAD///8A////AP///wD///8A////AH5198dRTJ5ncWvlYbm0///c1v//4Nv//7m1//96d/35AAAAAQAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAf3f5zgAAACoAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAIQAAAAqBev//AAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AGBgX/9LS0nDh4D48wAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAnJyUUfHXf6rCq//8AAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A//8AAP5/AAD9fwAA/X8AAP9/AAD/PwAA/r8AAP4/AADwHwAA4AcAAOAPAADsHwAA9/8AAPv/AADj/wAA8/8AAA=="
-    rel="icon" type="image/x-icon"
-  />
-  <script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
+    <!-- Optional: match primary page font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    /* ===== Design tokens ===== */
-    :root{
-      --brand: #00CDAC;                 /* main brand */
-      --ink: #1e1e1e;                   /* body text */
-      --ink-muted: #5a5a5a;             /* secondary text */
-      --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
-      /* Very light brand tint for full-page background */
-      --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
-    }
+    <!-- W3CSS + Font Awesome (for navbar, same as main page) -->
+    <link
+      rel="stylesheet"
+      href="https://www.w3schools.com/w3css/4/w3.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/c79cc71819.js"
+      crossorigin="anonymous"
+    ></script>
 
-    /* ===== Base ===== */
-    html, body{ height:100%; }
-    body,h1,h2,h3,h4,h5,h6{ font-family:"Raleway",sans-serif }
-    body{
-      line-height:1.8;
-      color:var(--ink);
-      background: #f3fbf9;        /* fallback */
-      background: var(--bg-soft); /* preferred */
-    }
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5TPC90ZXh0Pgo8L3N2Zz4="
+    />
 
-    /* Full height image header */
-    .bgimg-1{
-      background-position:center;
-      background-size:cover;
-      background-image:url("Images/flamingos.jpg");
-      min-height:100%;
-    }
+    <!-- Existing Font Awesome 6 (fine to keep) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-    .jumbo,.xxlarge,.large{ font-weight:bolder; }
-    .w3-bar .w3-button{ padding:16px; }
+    <style>
+      /* ===== Design tokens ===== */
+      :root {
+        --brand: #00cdac; /* main brand */
+        --ink: #1e1e1e; /* body text */
+        --ink-muted: #5a5a5a; /* secondary text */
+        --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
+        /* Very light brand tint for full-page background */
+        --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
+      }
 
-    /* Avoid global fixed img size to prevent layout conflicts */
-    img{ max-width:100%; height:auto; }
+      /* ===== Base ===== */
+      html,
+      body {
+        height: 100%;
+      }
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Raleway", sans-serif;
+      }
+      body {
+        line-height: 1.8;
+        color: var(--ink);
+        background: #f3fbf9; /* fallback */
+        background: var(--bg-soft); /* preferred */
+        margin: 0;
+      }
 
-    /* Headings using consistent brand variant */
-    .brand-heading{ color:var(--brand-strong); }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
 
-    /* Accent cards (hero + CTA) keep solid brand backgrounds */
-    .brand-card{
-      background-color:var(--brand);
-      color:#fff;
-      opacity:0.82;
-      border-radius:14px;
-      padding:24px 28px;
-    }
+      .brand-heading {
+        color: var(--brand-strong);
+      }
 
-    /* Buttons */
-    .brand-btn{
-      background-color:var(--brand);
-      color:#fff;
-    }
-    .brand-btn:hover{ filter:brightness(0.95); }
+      .brand-card {
+        background-color: var(--brand);
+        color: #fff;
+        opacity: 0.94;
+        border-radius: 14px;
+        padding: 24px 28px;
+      }
 
-    /* Tile icons use brand as accent, not section background */
-    .tile-icon{
-      background-color:var(--brand);
-      color:#fff;
-      display:inline-block;
-      width:100%;
-      padding:12px;
-      border-radius:12px;
-    }
-  </style>
-</head>
+      .brand-btn {
+        background-color: var(--brand);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+      .brand-btn:hover {
+        filter: brightness(0.95);
+      }
+      .icon-only {
+        color: var(--brand);
+        display: inline-flex;
+        width: 48px;
+        height: 48px;
+        border-radius: 6px;
+        align-items: center;
+        justify-content: center;
+      }
+      .icon-only i {
+        font-size: 1.55rem;
+      }
 
-<body>
+      .tile-icon {
+        background-color: var(--brand);
+        color: #fff;
+        display: inline-block;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
 
-<!-- Navbar (accent stays solid brand) -->
-<div class="w3-top">
-  <div class="w3-bar w3-card" id="myNavbar" style="background-color:var(--brand);color:#fff;">
-    <a href="resume.html" target="_blank" class="w3-bar-item w3-button" style="color:#fff;">
-      <i class="fa fa-user"></i> RESUME
-    </a>
-    <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
-      <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
-    </a>
-    <!-- Right-sided navbar links -->
-    <div class="w3-right w3-hide-small">
-      <a href="#Intro" class="w3-bar-item w3-button" style="color:#fff;">
-        <i class="fas fa-comment"></i> INTRO
-      </a>
-      <a href="#work" class="w3-bar-item w3-button" style="color:#fff;">
-        <i class="fa fa-github"></i> PROJECTS
-      </a>
-      <a href="#contact" class="w3-bar-item w3-button" style="color:#fff;">
-        <i class="fa fa-envelope"></i> CONTACT
-      </a>
-    </div>
+      /* ===== Layout for this page ===== */
+      .syn-page {
+        min-height: 100vh;
+        /* offset for fixed navbar */
+        padding-top: 64px;
+      }
 
-    <!-- Mobile menu -->
-    <a href="javascript:void(0)" 
-       class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" 
-       onclick="w3_open()" 
-       style="color:#fff;">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
-</div>
+      .syn-shell {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 16px 60px;
+      }
 
+      /* Hero */
+      .syn-hero {
+        padding-top: 40px;
+        padding-bottom: 24px;
+      }
 
-  <!-- Sidebar on small screens -->
-  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Menu</a>
-    <a href="#Intro" onclick="w3_close()" class="w3-bar-item w3-button">INTRO</a>
-    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">PROJECTS</a>
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
-    <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button">RESUME</a>
-    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button">MY STORY</a>
-  </nav>
+      .syn-hero-inner {
+        display: grid;
+        gap: 20px;
+        align-items: center;
+      }
 
-  <!-- Header with full-height image -->
-  <header class="bgimg-1 w3-display-container" id="home">
-    <div class="w3-col m6 l6 w3-display-middle w3-center">
-      <div class="w3-card brand-card">
-        <span class="jumbo w3-jumbo" style="color:#fff;">Sarah M. Brown</span><br>
-        <span class="xxlarge w3-xxlarge" style="color:#fff;">
-          <a href="#about" style="color:#fff;text-decoration:underline;">• Creative Philomath •</a>
-        </span>
-        <span class="large w3-large" style="color:#fff;"><br>512•884•1220 - serruhb@gmail.com</span>
-      </div>
-    </div>
-    <div class="w3-col m6 l6 w3-display-bottommiddle w3-center">
-      <div class="w3-card brand-card">
-        <span class="xxlarge w3-xxlarge" style="color:#fff;">
-          <a href="resume.html" style="color:#fff;text-decoration:underline;">• Resume •</a>
-        </span>
-        <span class="large w3-large" style="color:#fff;"><br>Check it out!</span>
-      </div>
-    </div>
-  </header>
+      .syn-hero-title {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
 
-  <!-- Intro Section (removed competing card background) -->
-  <div class="w3-container" style="padding:128px 50px" id="Intro">
-    <div class="w3-centered">
-      <h1 class="large w3-center brand-heading"><a href="#Intro" style="color:inherit;text-decoration:none;">INTRO</a></h1>
-      <p class="w3-center w3-large" style="color:var(--ink-muted)">Me in a nutshell.</p>
-      <div class="w3-row-padding w3-left" style="margin-top:64px;color:var(--ink);">
-        <p>
-          I was born in Franklin, Louisiana, and grew up across several east coast states, from New Hampshire to South Carolina to Florida. Moving often 
-          taught me adaptability and connection; I learned how to communicate with many different people, from varying backgrounds, which to shaped how I collaborate 
-          and lead today.
-        </p>      
-        <p>
-          At Columbia College in South Carolina, I pursued Mathematics and Chemistry, drawn to the logic and structure behind how things work. 
-          It was during those studies that I took my first programming course and discovered how seamlessly problem-solving and creativity could 
-          merge. My professors recognized my strength for debugging and development, and together we replaced several math courses with programming, 
-          one of the best and most exciting decisions of my life.
-        </p>      
-        <p>
-          While in college, I worked as a tutor, using code to track my students’ progress and manage finances; an early hint of how I’d combine 
-          automation with real-world problem-solving. After graduation, I founded a small business, applying data-driven systems to operations and client 
-          experience. It was successful, but it also made me realize that my true passion was in creating tools that make people’s work simpler, smarter, 
-          and more meaningful.
-        </p>
-      
-        <p>
-          Today, as a Senior AI and Automation Engineer, that same passion drives everything I do, designing intelligent systems that bridge 
-          technology and human insight, helping teams focus on impact instead of inefficiency. I believe great automation doesn’t replace people, it 
-          empowers them.
-        </p>
-      </div>
-    </div>
-  </div>
-  <!-- Portfolio -->
-  <div class="w3-container w3-card w3-white w3-margin-bottom">
-    <h2 class="w3-padding-16" style="color:#555;">
-      <i class="fa fa-cogs fa-fw w3-margin-right w3-xxlarge" style="color:#00B396;"></i>Innvotion Portfolio
-    </h2>
-    
-    <div class="w3-container w3-center">
-      <h2>SYNaTRA - a SYNthetic TRiage Assistant</h2>
-      <a href="https://github.com/Serruhb/syntra" target="_blank" rel="noopener">
-        <i class="fas fa-robot w3-jumbo w3-hover-opacity" style="color:#00B396;display:inline-block;"></i>
-      </a>
-      <p>Assist Customer Success Operations (CS Ops) and Customer Success Managers (CSMs) in quickly understanding a customer’s historical and technical context by retrieving and summarizing related Salesforce Cases, Jira Tickets, and active subscription details. SYNaTRA reduces time-to-context and improves first-contact resolution through concise, data-driven summaries and next-step guidance.</p>
-    </div>
-    <div class="w3-container w3-center">
-      <h2>Manufacturing Request Form</h2>
-      <a href="https://github.com/Serruhb/RequestForm/" target="_blank" rel="noopener">
-        <i class="fa-solid fab fa-wpforms w3-jumbo w3-hover-opacity" style="color:#00B396;display:inline-block;"></i>
-      </a>
-      <p> A process-engineering initiative to streamline a request workflow that became unmanageable during rapid growth. 
-        By documenting and analyzing the existing Oracle-based process, then rebuilding it within Salesforce using Visualforce, Apex, and reusable plug-and-play code modules, 
-        this project improved efficiency, transparency, and adoption.  
-        Deliverables included interactive process documentation, automated form generation (PDF rendering via Visualforce), and user-friendly dashboards and training guides to empower both end-users and developers.</p>
-    </div>
+      .syn-hero-sub {
+        margin: 0;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
 
-    <div class="w3-container w3-center">
-      <h2>Dat-a-Mate</h2>
-      <a href="https://github.com/jazminhicks/pof-machine-learning" target="_blank" rel="noopener">
-        <i class="fas fa-fish w3-jumbo w3-hover-opacity" style="color:#00B396;display:inline-block;"></i>
-      </a>
-      <p>Main goal of Dat-a-Mate was to reduce the amount of search results by predicting the users physical match based on facial recognition. Group project using machine learning, python, API interacting, web scrapping, D3.js</p>
-    </div>       
+      .syn-hero-meta {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      /* Hero grid layout (1/3 image + 2/3 text) */
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        gap: 20px;
+      }
 
-    <div class="w3-container w3-center">
-      <h2>Planning my trip with &amp; AWS</h2>
-      <a href="https://github.com/Serruhb/SQLalchemy" target="_blank" rel="noopener">
-        <i class="fas fa-cloud-sun-rain w3-jumbo w3-hover-opacity" style="color:#00B396;display:inline-block;"></i>
-      </a>
-      <p>In the midst of planning a trip, I decided to use SQLalchemy to aid in my research of weather. Using live generated information from weatherAPI I was able to compare the past, present and future weather patterns of my destintation.</p>
-    </div>
+      /* Image styling */
+      .hero-image img {
+        width: 100%;
+        max-width: 240px;
+        display: block;
+      }
 
-   
-  </div>
-  <!-- End Portfolio -->
-  <!-- Work Section (no w3-light-grey; tiles use brand accent only) -->
-  <div class="w3-container" style="padding:128px 16px" id="work">
-    <h1 class="large w3-center brand-heading">
-      <a href="https://github.com/Serruhb" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Projects</a>
-    </h1>
-    <p class="w3-center w3-large" style="color:var(--ink-muted)">Merging Math, Mind, and Machine.</p>
+      /* Mobile: stack vertically */
+      @media (max-width: 700px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-image img {
+          margin: 0 auto;
+        }
+      }
 
-    <div class="w3-row">
-      <div class="w3-row-padding" style="margin-top:64px">
-        <div class="w3-col l3 m6">
-          <a href="https://github.com/Serruhb/SYNTRA" target="_blank" rel="noopener">
-            <i class="fas fa-robot w3-jumbo w3-hover-opacity w3-center tile-icon"></i>
+      /* Sections */
+      .section {
+        padding: 40px 0 20px;
+      }
+
+      .section-header {
+        margin-bottom: 16px;
+      }
+
+      .section-header h2 {
+        margin: 0 0 6px;
+        font-size: 1.2rem;
+      }
+
+      .section-header p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+      }
+
+      .section-body p {
+        margin-top: 0;
+        font-size: 0.95rem;
+        color: var(--ink);
+      }
+
+      /* Simple divider using brand tint */
+      .section + .section {
+        border-top: 1px solid rgba(0, 0, 0, 0.04);
+      }
+
+      /* Grid layouts */
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .grid-features,
+      .grid-usecases {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      /* Cards */
+      .card {
+        padding: 18px 18px 20px;
+        border-radius: 14px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .card h3 {
+        margin-top: 0;
+        margin-bottom: 6px;
+        font-size: 1.02rem;
+        color: var(--brand-strong);
+      }
+
+      .card p {
+        margin: 4px 0;
+        font-size: 0.93rem;
+      }
+
+      .card small {
+        display: block;
+        margin-top: 8px;
+        font-size: 0.82rem;
+        color: var(--ink-muted);
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+        border-color: rgba(0, 205, 172, 0.45);
+      }
+
+      /* Architecture list */
+      .architecture-list {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 10px;
+      }
+
+      .architecture-list li {
+        margin-bottom: 6px;
+        font-size: 0.93rem;
+        color: var(--ink-muted);
+      }
+
+      .architecture-list strong {
+        color: var(--brand-strong);
+      }
+
+      .architecture-list code {
+        font-size: 0.85rem;
+        background: rgba(0, 0, 0, 0.04);
+        padding: 1px 4px;
+        border-radius: 4px;
+      }
+
+      /* Diagram figure (for all diagrams) */
+      .diagram-figure {
+        margin: 24px 0 0;
+        text-align: center;
+      }
+
+      .diagram-figure img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        cursor: zoom-in; /* hint it's clickable */
+      }
+
+      .diagram-figure figcaption {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: var(--ink-muted);
+      }
+
+      /* Diagram modal / lightbox */
+      .diagram-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+
+      .diagram-modal.open {
+        display: flex;
+      }
+
+      .diagram-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .diagram-modal-content {
+        position: relative;
+        max-width: min(1000px, 100vw - 32px);
+        max-height: 90vh;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        z-index: 2001;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .diagram-modal-content img {
+        max-width: 100%;
+        max-height: 70vh;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .diagram-modal-caption {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+        text-align: center;
+      }
+
+      .diagram-modal-close {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        border: none;
+        background: transparent;
+        font-size: 1.8rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--ink-muted);
+      }
+
+      /* Metrics */
+      .metrics {
+        display: flex;
+        justify-content: space-around;
+        gap: 16px;
+        flex-wrap: wrap;
+        text-align: left;
+      }
+
+      .metric {
+        flex: 1;
+        min-width: 180px;
+        padding: 14px 14px 16px;
+        border-radius: 14px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .metric-main {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--brand-strong);
+      }
+
+      .metric-text {
+        font-size: 0.9rem;
+        color: var(--ink);
+      }
+
+      .metric:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 18px rgba(0, 205, 172, 0.18);
+        border-color: rgba(0, 205, 172, 0.4);
+      }
+
+      /* Get in touch note */
+      .note {
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+      }
+
+      /* Footer */
+      .footer {
+        padding: 22px 16px 32px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--ink-muted);
+      }
+
+      .footer p {
+        margin: 3px 0;
+      }
+
+      /* Scroll reveal base */
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =================== NAVBAR FROM MAIN PAGE =================== -->
+    <div class="w3-top">
+      <div
+        class="w3-bar w3-card"
+        id="myNavbar"
+        style="background-color:var(--brand);color:#fff;"
+      >
+        <a
+          href="resume.html"
+          target="_blank"
+          class="w3-bar-item w3-button"
+          style="color:#fff;"
+        >
+          <i class="fa fa-user"></i> RESUME
+        </a>
+        <a
+          href="https://www.linkedin.com/in/serruhb/"
+          target="_blank"
+          rel="noopener"
+          class="w3-bar-item w3-button w3-hide-small"
+          style="color:#fff;"
+        >
+          <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
+        </a>
+        <a
+          href="SYNaTRA.html"
+          target="_blank"
+          rel="noopener"
+          class="w3-bar-item w3-button w3-hide-small"
+          style="color:#fff;"
+        >
+          <i class="fas fa-robot fa-lg w3-hover-opacity"></i> SYNaTRA
+        </a>
+
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+          <a href="#Intro" class="w3-bar-item w3-button" style="color:#fff;">
+            <i class="fas fa-comment"></i> INTRO
           </a>
-          <p class="w3-center" style="color:var(--ink);">An AI-powered triage and context engine that accelerates case resolution and empowers Customer Success teams with actionable insight. 
-            By helping users quickly understanding a customer’s historical and technical context by retrieving and summarizing related Salesforce Cases, Jira Tickets, and active subscription details. 
-            SYNaTRA reduces time-to-context and improves first-contact resolution through concise, data-driven summaries and next-step guidance.</p>
+          <a href="#work" class="w3-bar-item w3-button" style="color:#fff;">
+            <i class="fa fa-github"></i> PROJECTS
+          </a>
+          <a href="#contact" class="w3-bar-item w3-button" style="color:#fff;">
+            <i class="fa fa-envelope"></i> CONTACT
+          </a>
         </div>
-        <div class="w3-col l3 m6">
-          <a href="https://github.com/Serruhb/RequestForm" target="_blank" rel="noopener">
-            <i class="fa fa-wpforms w3-jumbo w3-hover-opacity w3-center tile-icon"></i>
-          </a>
-          <p class="w3-center" style="color:var(--ink);">
-            A process-engineering initiative to streamline a request workflow that became unmanageable during rapid growth. 
-            By documenting and analyzing the existing Oracle-based process, then rebuilding it within Salesforce using Visualforce, Apex, and reusable plug-and-play code modules, 
-            this project improved efficiency, transparency, and adoption.  
-            Deliverables included interactive process documentation, automated form generation (PDF rendering via Visualforce), and user-friendly dashboards and training guides to empower both end-users and developers.
+
+        <!-- Mobile menu -->
+        <a
+          href="javascript:void(0)"
+          class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+          onclick="w3_open()"
+          style="color:#fff;"
+        >
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Sidebar on small screens -->
+    <nav
+      class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+      style="display:none"
+      id="mySidebar"
+    >
+      <a
+        href="javascript:void(0)"
+        onclick="w3_close()"
+        class="w3-bar-item w3-button w3-large w3-padding-16"
+        >Close Menu</a
+      >
+      <a href="#Intro" onclick="w3_close()" class="w3-bar-item w3-button"
+        >INTRO</a
+      >
+      <a href="SYNaTRA.html" onclick="w3_close()" class="w3-bar-item w3-button"
+        >RECENTLY DEPLOYED</a
+      >
+      <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button"
+        >PORTFOLIO</a
+      >
+      <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button"
+        >CONTACT</a
+      >
+      <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button"
+        >RESUME</a
+      >
+      <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button"
+        >MY STORY</a
+      >
+    </nav>
+    <!-- =================== END NAVBAR =================== -->
+
+    <div class="syn-page">
+      <div class="syn-shell">
+        <!-- HERO -->
+        <section class="syn-hero" id="Intro">
+          <div class="brand-card syn-hero-inner hero-grid">
+            <div class="hero-image">
+              <img src="/Images/synatralogo.jpg" alt="SYNaTRA Logo" />
+            </div>
+
+            <div class="hero-text">
+              <h1 class="syn-hero-title brand-heading">
+                SYNaTRA — Synthetic Triage Assistant
+              </h1>
+              <p class="syn-hero-sub">
+                Workato-orchestrated Customer Success triage across Salesforce,
+                Jira, and Snowflake.
+              </p>
+              <p class="syn-hero-meta">
+                Primary users: CS Ops, CSMs, and Customer Success
+                Representatives (internal use only).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROBLEM / SOLUTION -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">The Problem</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Customer Success teams lose valuable time piecing together context
+              across Salesforce, Jira, and subscription systems. Manual
+              searches, inconsistent summaries, and scattered historical
+              resolutions increase time-to-context and slow first-contact
+              resolution. Critical information such as active contracts, product
+              mix, and prior fixes is often buried across tools, making live
+              customer conversations harder than they need to be.
+            </p>
+          </div>
+          <div class="section-header">
+            <p></p>
+          </div>
+
+          <div class="section-header" style="margin-top: 20px;">
+            <h2 class="brand-heading">The Solution</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              SYNaTRA is a synthetic triage assistant that retrieves and
+              summarizes customer history from Salesforce Cases, Jira Tickets,
+              and Snowflake subscription data into a single, concise view. It
+              parses an issue description, searches across systems using SOQL,
+              JQL, and SQL, scores the similarity and confidence of matches, and
+              returns an actionable, formatted triage summary ready to use in
+              real time during Slack, MS Teams, or Workbot conversations.
+            </p>
+          </div>
+          <div class="section-body">
+            <figure class="diagram-figure">
+              <img
+                src="diagrams/workatoWorkflow.svg"
+                alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
+              />
+              <figcaption>
+                Workato Workflow diagram of SYNaTRA the SYNthetic TRiage
+                Assistant Salesforce, Jira, Snowflake, and LLM skills into a
+                single triage response.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- KEY FEATURES -->
+        <section class="section reveal" id="work">
+          <div class="section-header">
+            <h2 class="brand-heading">Key Features</h2>
+            <p>
+              How SYNaTRA assembles context, searches systems, and keeps data
+              safe.
+            </p>
+          </div>
+          <div class="section-body">
+            <div class="grid grid-features">
+              <div class="card">
+                <span class="tile-icon">UC</span>
+                <h3>Unified Customer Context</h3>
+                <p>
+                  Searches Salesforce for Accounts, Cases, Contracts, and
+                  Subscriptions, and Snowflake for subscription details, then
+                  builds a concise customer overview with active plans, status,
+                  and total MRR.
+                </p>
+                <small
+                  >Data sources: Salesforce (Case, Contract, Account),
+                  Snowflake subscription tables.</small
+                >
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">IS</span>
+                <h3>Issue-Aware Search Across Systems</h3>
+                <p>
+                  Converts short issue descriptions into keyword strings and
+                  constructs SOQL and JQL queries. Searches Salesforce Cases and
+                  Jira issues (DSSD, DS, COPS) for relevant historical tickets
+                  within a 12-month window.
+                </p>
+                <small>Tech: SOQL, JQL, optional SOSL.</small>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">SS</span>
+                <h3>Summaries, Scores, and Next Steps</h3>
+                <p>
+                  For each Salesforce Case and Jira issue, SYNaTRA generates
+                  ≤150-word summaries of historical resolutions, adds confidence
+                  and similarity scores, and labels records with source
+                  references (e.g., SF-Case-12345, JIRA-6789). It then proposes
+                  the next best action in friendly, live-usable language.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">GR</span>
+                <h3>Guardrails, Access Rules, and Safety</h3>
+                <p>
+                  Uses integration-user credentials for Salesforce and Jira,
+                  masks PII (emails, phone numbers, tokens) in summaries, and
+                  avoids any persistent storage beyond the current response.
+                  Designed for internal use only.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SYSTEM ARCHITECTURE -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">System Architecture</h2>
+            <p>
+              How SYNaTRA orchestrates connectors and skills into a triage
+              report.
+            </p>
+          </div>
+          <div class="section-body">
+            <p>
+              SYNaTRA orchestrates multiple connectors and skills to transform a
+              short issue description into a structured triage report:
+            </p>
+            <ul class="architecture-list">
+              <li>
+                <strong>Inputs:</strong>
+                <code>issue_description</code> (free text) and optional
+                <code>customer_identifier</code> (AccountId, ContractId,
+                CustomerId).
+              </li>
+              <li>
+                <strong>Customer Identification:</strong> Salesforce account
+                search skill with fuzzy matching and top-5 candidates when only
+                a name is provided.
+              </li>
+              <li>
+                <strong>Keyword &amp; Query Builder:</strong> Tokenizes issue
+                text and builds JQL and SOQL/SOSL keyword queries.
+              </li>
+              <li>
+                <strong>Record Fetching:</strong> Salesforce Cases &amp;
+                Contracts, Jira tickets, Snowflake subscription data (12-month
+                lookback).
+              </li>
+              <li>
+                <strong>Summarization &amp; Scoring:</strong> Resolution
+                summaries with similarity and confidence metrics at record and
+                overall result levels.
+              </li>
+              <li>
+                <strong>Insight Assembly:</strong> Final message composed into a
+                readable chat response for Slack, MS Teams, or Workbot.
+              </li>
+            </ul>
+            <p>
+              If Salesforce or Jira are unavailable, SYNaTRA responds with a
+              user-friendly error:
+              <em
+                >“I couldn’t reach Salesforce or Jira right now — please try
+                again shortly or check your connection settings.”</em
+              >
+            </p>
+          </div>
+          <div class="section-body">
+            <figure class="diagram-figure">
+              <img
+                src="diagrams/syntra-architecture.svg"
+                alt="High-level architecture diagram of the SYNaTRA synthetic triage assistant"
+              />
+              <figcaption>
+                High-level view of how SYNaTRA orchestrates Salesforce, Jira,
+                Snowflake, and LLM skills into a single triage response.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- IMPACT & RESULTS -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">Impact &amp; Results</h2>
+            <p>Targeted outcomes for Customer Success teams.</p>
+          </div>
+
+          <div class="section-body">
+            <div class="metrics">
+              <div class="metric">
+                <span class="icon-only"><i class="fa fa-clock"></i></span>
+                <div>
+                  <div class="metric-main">Time-to-context</div>
+                  <div class="metric-text">
+                    <p>
+                      50% reduction in average time-to-context for CS Ops and
+                      CSMs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric">
+                <span class="icon-only"
+                  ><i class="fa fa-chart-line"></i
+                ></span>
+                <div>
+                  <div class="metric-main">FCR uplift</div>
+                  <div class="metric-text">
+                    <p>
+                      Improved first-contact resolution rate by surfacing prior
+                      fixes faster.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric">
+                <span class="icon-only"><i class="fa fa-database"></i></span>
+                <div>
+                  <div class="metric-main">Breadth of context</div>
+                  <div class="metric-text">
+                    <p>
+                      Up to 100 Salesforce cases and 100 Jira issues summarized
+                      per request.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric">
+                <span class="icon-only"><i class="fa fa-bolt"></i></span>
+                <div>
+                  <div class="metric-main">Execution window</div>
+                  <div class="metric-text">
+                    <p>
+                      Maximum runtime ≤ 5 minutes for full triage execution,
+                      with no data persisted.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- USE CASES -->
+        <section class="section reveal">
+          <div class="section-header">
+            <h2 class="brand-heading">Use Cases</h2>
+            <p>Where SYNaTRA fits day-to-day CS workflows.</p>
+          </div>
+          <div class="section-body">
+            <div class="grid grid-usecases">
+              <div class="card">
+                <span class="tile-icon">AT</span>
+                <h3>Account + Issue Triage</h3>
+                <p>
+                  A CSM provides an issue description and an AccountId. SYNaTRA
+                  identifies recent Salesforce Cases and Jira tickets,
+                  summarizes resolutions, retrieves active contracts and
+                  products, and returns a complete context package for live
+                  customer calls.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">IR</span>
+                <h3>Issue-Only Research</h3>
+                <p>
+                  When only a short issue description is available, SYNaTRA
+                  searches Jira and historical Salesforce Cases using
+                  keyword-based queries. It ranks and summarizes likely matches
+                  and proposes next steps, even before a specific customer is
+                  identified.
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="tile-icon">CP</span>
+                <h3>CS Ops Coaching &amp; Playbooks</h3>
+                <p>
+                  CS Ops teams use SYNaTRA’s structured outputs—customer
+                  overview, case list, Jira issue list, and suggested
+                  actions—to design standard playbooks and improve coaching for
+                  handling recurring issue patterns.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- GET IN TOUCH -->
+        <section class="section reveal" id="contact">
+          <div class="section-header">
+            <h2 class="brand-heading">Get in Touch</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              Interested in creating your own internal Customer Success? Email
+              Sarah at Sarah.Brown@naturallylogical.com
+            </p>
+            <p class="note">
+              <strong>Note:</strong> Access is restricted to internal employees;
+              operational details and PII are guarded and not persisted.
+            </p>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>© 2025 Naturally Logical</p>
+          <p>
+            Portfolio excerpt for demonstration; operational details redacted.
           </p>
-        </div>
-        <div class="w3-col l3 m6">
-          <a href="https://github.com/jazminhicks/pof-machine-learning" target="_blank" rel="noopener">
-            <i class="fas fa-fish w3-jumbo w3-hover-opacity w3-center tile-icon"></i>
-          </a>
-          <p style="color:var(--ink);">Main goal of Dat-a-Mate was to reduce the amount of search results by predicting the users physical match based on facial recognition. Group project using machine learning, python, API interacting, web scrapping, D3.js</p>
-        </div>
-        <div class="w3-col l3 m6">
-          <a href="https://github.com/Serruhb/SQLalchemy" target="_blank" rel="noopener">
-            <i class="fas fa-cloud-sun-rain w3-jumbo w3-hover-opacity w3-center tile-icon"></i>
-          </a>
-          <p style="color:var(--ink);">In the midst of planning a trip, I decided to use SQLalchemy to aid in my research of weather. Using live generated information from weatherAPI I was able to compare the past, present and future weather patterns of my destintation.</p>
-        </div>
+        </footer>
       </div>
-  </div>
+    </div>
 
-<!-- Contact Section -->
-<div class="w3-container" style="padding:128px 16px" id="contact">
-  <h1 class="large w3-center brand-heading">
-    <a href="#contact" style="color:inherit;text-decoration:none;">CONTACT</a>
-  </h1>
-  <p class="w3-center w3-large" style="color:var(--ink-muted);">
-    Let's get in touch. Send me a message:
-  </p>
-
-  <div style="margin-top:48px">
-    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Amesbury, Ma</p>
-    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Phone: (512) 884-1220</p>
-    <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right" style="color:var(--brand-strong);"></i> Email: SerruhB@gmail.com</p>
-    <br>
-
-    <!-- Updated form -->
-    <form id="contactForm" onsubmit="return sendMail(event)">
-      <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><textarea class="w3-input w3-border" placeholder="Message" required name="Message" rows="4"></textarea></p>
-      <p>
-        <button class="w3-button brand-btn" type="submit" style="background-color:var(--brand);color:#fff;">
-          <i class="fa fa-paper-plane" style="color:#fff;"></i> SEND MESSAGE
+    <!-- Diagram modal (reusable for all .diagram-figure images) -->
+    <div id="diagram-modal" class="diagram-modal" aria-hidden="true">
+      <div class="diagram-modal-backdrop"></div>
+      <div class="diagram-modal-content" role="dialog" aria-modal="true">
+        <button class="diagram-modal-close" aria-label="Close diagram">
+          &times;
         </button>
-      </p>
-    </form>
-  </div>
-</div>
+        <img src="" alt="" />
+        <p class="diagram-modal-caption"></p>
+      </div>
+    </div>
 
-<!-- JS for building the mailto -->
-<script>
-function sendMail(e) {
-  e.preventDefault();
+    <script>
+      // Simple scroll-reveal using IntersectionObserver
+      document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".reveal");
 
-  const form = e.target;
-  const name = form.Name.value.trim();
-  const email = form.Email.value.trim();
-  const subject = form.Subject.value.trim() || 'Website Contact';
-  const message = form.Message.value.trim();
+        if (!("IntersectionObserver" in window)) {
+          elements.forEach((el) => el.classList.add("visible"));
+        } else {
+          const observer = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 }
+          );
 
-  // Construct message body
-  const body = [
-    `Name: ${name}`,
-    `Email: ${email}`,
-    '',
-    message
-  ].join('\\n');
+          elements.forEach((el) => observer.observe(el));
+        }
 
-  // Build mailto link safely
-  const mailtoLink = `mailto:serruhb@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        // === Diagram click-to-zoom modal ===
+        const diagramImages = document.querySelectorAll(".diagram-figure img");
+        const modal = document.getElementById("diagram-modal");
+        if (!modal) return;
 
-  // Open default mail client
-  window.location.href = mailtoLink;
-  return false;
-}
-</script>
+        const modalImg = modal.querySelector("img");
+        const modalCaption = modal.querySelector(".diagram-modal-caption");
+        const closeBtn = modal.querySelector(".diagram-modal-close");
+        const backdrop = modal.querySelector(".diagram-modal-backdrop");
 
+        function openModal(src, alt, caption) {
+          modalImg.src = src;
+          modalImg.alt = alt || "";
+          modalCaption.textContent = caption || "";
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+        }
 
-  <!-- Footer / Social (kept as a single strong brand accent section) -->
-  <div class="w3-xlarge w3-section w3-center" style="background-color:var(--brand);color:#fff;">
-    <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" style="color:#fff;margin-left:12px;"><i class="fab fa-linkedin w3-hover-opacity"></i></a>
-    <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" style="color:#fff;"><i class="fab fa-instagram w3-hover-opacity"></i></a>
-  </div>
-  
+        function closeModal() {
+          modal.classList.remove("open");
+          modal.setAttribute("aria-hidden", "true");
+          modalImg.src = "";
+          modalImg.alt = "";
+          modalCaption.textContent = "";
+        }
 
-  <script>
-    // Toggle the sidebar
-    var mySidebar = document.getElementById("mySidebar");
-    function w3_open(){ mySidebar.style.display = (mySidebar.style.display === 'block') ? 'none' : 'block'; }
-    function w3_close(){ mySidebar.style.display = "none"; }
-  </script>
+        diagramImages.forEach((img) => {
+          img.addEventListener("click", () => {
+            const figure = img.closest("figure");
+            const captionEl = figure
+              ? figure.querySelector("figcaption")
+              : null;
+            const captionText = captionEl ? captionEl.innerText : "";
+            openModal(img.src, img.alt, captionText);
+          });
+        });
 
-</body>
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+        if (backdrop) backdrop.addEventListener("click", closeModal);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeModal();
+          }
+        });
+      });
+    </script>
+
+    <!-- Sidebar toggle JS (same as main page) -->
+    <script>
+      var mySidebar = document.getElementById("mySidebar");
+      function w3_open() {
+        if (mySidebar.style.display === "block") {
+          mySidebar.style.display = "none";
+        } else {
+          mySidebar.style.display = "block";
+        }
+      }
+      function w3_close() {
+        mySidebar.style.display = "none";
+      }
+    </script>
+  </body>
 </html>
