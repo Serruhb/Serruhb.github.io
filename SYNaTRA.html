@@ -446,6 +446,53 @@
   </head>
 
   <body>
+    <div class="w3-top">
+  <div class="w3-bar w3-card" id="myNavbar" style="background-color:var(--brand);color:#fff;">
+    <a href="resume.html" target="_blank" class="w3-bar-item w3-button" style="color:#fff;">
+      <i class="fa fa-user"></i> RESUME
+    </a>
+    <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
+      <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
+    </a>
+    <a href="SYNaTRA.html" target="_blank" rel="noopener" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
+      <i class="fas fa-robot fa-lg w3-hover-opacity"></i> SYNaTRA
+    </a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#Intro" class="w3-bar-item w3-button" style="color:#fff;">
+        <i class="fas fa-comment"></i> INTRO
+      </a>
+      <a href="#work" class="w3-bar-item w3-button" style="color:#fff;">
+        <i class="fa fa-github"></i> PROJECTS
+      </a>
+      <a href="#contact" class="w3-bar-item w3-button" style="color:#fff;">
+        <i class="fa fa-envelope"></i> CONTACT
+      </a>
+    </div>
+
+    <!-- Mobile menu -->
+    <a href="javascript:void(0)" 
+       class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" 
+       onclick="w3_open()" 
+       style="color:#fff;">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+
+  <!-- Sidebar on small screens -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Menu</a>
+    <a href="#Intro" onclick="w3_close()" class="w3-bar-item w3-button">INTRO</a>
+    <a href="SYNaTRA.html" onclick="w3_close()" class="w3-bar-item w3-button">RECENTLY DEPLOYED</a>
+    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">PORTFOLIO</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button">RESUME</a>
+    <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button">MY STORY</a>
+  </nav>
+
+  
     <div class="syn-page">
       <div class="syn-shell">
         <!-- HERO -->
