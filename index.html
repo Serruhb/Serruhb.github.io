@@ -284,11 +284,11 @@ function sendMail(e) {
 
   // Construct message body
   const body = [
-    `Name: ${name}`,
-    `Email: ${email}`,
-    '',
-    message
-  ].join('\\n');
+    
+    message,
+    `
+    ${name}`
+  ].join('\n');
 
   // Build mailto link safely
   const mailtoLink = `mailto:sarah.brown@naturallylogical.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
