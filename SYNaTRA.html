@@ -226,6 +226,7 @@
       .section + .section {
         border-top: 1px solid rgba(0, 0, 0, 0.04);
       }
+      
 
       /* Grid layouts */
       .grid {
@@ -233,7 +234,24 @@
         gap: 20px;
       }
 
-      .grid-features,
+      /* Key Features: 1 on small, 2 on medium, 4 on large */
+      .grid-features {
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 700px) {
+        .grid-features {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1100px) {
+        .grid-features {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      /* Use Cases can keep the flexible auto-fit behavior */
       .grid-usecases {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       }
