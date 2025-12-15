@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OTA Performance Alert & Monitoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Match existing site font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- W3CSS + Font Awesome (same approach as your other project page) -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/c79cc71819.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Favicon (simple "O" mark) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5PPC90ZXh0Pgo8L3N2Zz4="
+    />
+
+    <style>
+      /* ===== Design tokens (kept cohesive with your SYNaTRA page) ===== */
+      :root {
+        --brand: #00cdac;
+        --ink: #1e1e1e;
+        --ink-muted: #5a5a5a;
+        --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
+        --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
+        --card: #ffffff;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Raleway", sans-serif;
+      }
+
+      body {
+        line-height: 1.8;
+        color: var(--ink);
+        background: var(--bg-soft);
+        margin: 0;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .brand-heading {
+        color: var(--brand-strong);
+      }
+
+      .brand-card {
+        background-color: var(--brand);
+        color: #fff;
+        opacity: 0.96;
+        border-radius: 14px;
+        padding: 24px 28px;
+      }
+
+      .pill {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      .brand-btn {
+        background-color: var(--brand);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-size: 0.95rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .brand-btn:hover {
+        filter: brightness(0.96);
+      }
+
+      .ghost-btn {
+        background: transparent;
+        color: var(--brand-strong);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-size: 0.95rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .ghost-btn:hover {
+        border-color: rgba(0, 205, 172, 0.45);
+        box-shadow: 0 8px 18px rgba(0, 205, 172, 0.12);
+        transform: translateY(-1px);
+      }
+
+      /* ===== Page layout ===== */
+      .page {
+        min-height: 100vh;
+        padding-top: 64px; /* fixed navbar offset */
+      }
+
+      .shell {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 16px 60px;
+      }
+
+      /* Hero */
+      .hero {
+        padding-top: 36px;
+        padding-bottom: 18px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1.8fr;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .hero h1 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      .hero p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 0.95rem;
+      }
+
+      .hero-actions {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .hero-badges {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .hero-art {
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 14px;
+      }
+
+      .mini-diagram {
+        width: 100%;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px dashed rgba(255, 255, 255, 0.28);
+        padding: 12px;
+      }
+
+      .mini-diagram .row {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr auto 1fr;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .node {
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 12px;
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      .arrow {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      @media (max-width: 800px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: left;
+        }
+      }
+
+      /* Sections */
+      .section {
+        padding: 40px 0 20px;
+      }
+
+      .section + .section {
+        border-top: 1px solid rgba(0, 0, 0, 0.04);
+      }
+
+      .section-header {
+        margin-bottom: 14px;
+      }
+
+      .section-header h2 {
+        margin: 0 0 6px;
+        font-size: 1.2rem;
+      }
+
+      .section-header p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+      }
+
+      /* Cards */
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 800px) {
+        .grid-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 950px) {
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .card {
+        padding: 18px 18px 20px;
+        border-radius: 14px;
+        background: var(--card);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        transition: transform 0.18s ease, box-shadow 0.18s ease,
+          border-color 0.18s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 18px rgba(0, 205, 172, 0.14);
+        border-color: rgba(0, 205, 172, 0.35);
+      }
+
+      .card h3 {
+        margin: 0 0 6px;
+        font-size: 1.03rem;
+        color: var(--brand-strong);
+      }
+
+      .card p {
+        margin: 6px 0 0;
+        font-size: 0.93rem;
+      }
+
+      .tile-icon {
+        background-color: var(--brand);
+        color: #fff;
+        display: inline-flex;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      /* Tiers */
+      .tiers {
+        display: grid;
+        gap: 14px;
+      }
+
+      .tier {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        border-radius: 14px;
+        padding: 16px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      }
+
+      .tier-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .tier-title {
+        margin: 0;
+        font-weight: 700;
+        color: var(--brand-strong);
+      }
+
+      .tier-tag {
+        font-size: 0.82rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        background: rgba(0, 0, 0, 0.02);
+        color: var(--ink-muted);
+      }
+
+      .tier ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--ink);
+      }
+
+      .tier li {
+        margin-bottom: 6px;
+        font-size: 0.93rem;
+      }
+
+      /* Executive summary block */
+      .exec {
+        display: grid;
+        gap: 16px;
+      }
+
+      .exec-block {
+        border-left: 4px solid rgba(0, 205, 172, 0.65);
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+      }
+
+      .exec-block h4 {
+        margin: 0 0 6px;
+        font-size: 0.95rem;
+        color: var(--brand-strong);
+      }
+
+      .exec-block p {
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.93rem;
+      }
+
+      /* Diagram figure + modal */
+      .diagram-figure {
+        margin: 18px 0 0;
+        text-align: center;
+      }
+
+      .diagram-figure img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        cursor: zoom-in;
+      }
+
+      .diagram-figure figcaption {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: var(--ink-muted);
+      }
+
+      .diagram-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+
+      .diagram-modal.open {
+        display: flex;
+      }
+
+      .diagram-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .diagram-modal-content {
+        position: relative;
+        max-width: min(1000px, 100vw - 32px);
+        max-height: 90vh;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        z-index: 2001;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .diagram-modal-content img {
+        max-width: 100%;
+        max-height: 70vh;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .diagram-modal-caption {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+        text-align: center;
+      }
+
+      .diagram-modal-close {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        border: none;
+        background: transparent;
+        font-size: 1.8rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--ink-muted);
+      }
+
+      /* Footer */
+      .footer {
+        padding: 22px 16px 32px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--ink-muted);
+      }
+
+      /* Reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =================== NAVBAR (kept cohesive; edit links as needed) =================== -->
+    <div class="w3-top">
+      <div
+        class="w3-bar w3-card"
+        id="myNavbar"
+        style="background-color: var(--brand); color: #fff"
+      >
+        <a
+          href="https://naturallylogical.com"
+          target="_blank"
+          class="w3-bar-item w3-button"
+          style="color: #fff"
+        >
+          <i class="fa fa-user"></i> HOME
+        </a>
+        <a
+          href="https://www.linkedin.com/in/serruhb/"
+          target="_blank"
+          rel="noopener"
+          class="w3-bar-item w3-button w3-hide-small"
+          style="color: #fff"
+        >
+          <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
+        </a>
+
+        <div class="w3-right w3-hide-small">
+          <a
+            href="mailto:sarah.brown@naturallylogical.com"
+            class="w3-bar-item w3-button"
+            style="color: #fff"
+          >
+            <i class="fa fa-envelope"></i> CONTACT
+          </a>
+          <a
+            href="resume.html"
+            class="w3-bar-item w3-button"
+            style="color: #fff"
+          >
+            <i class="fa fa-user"></i> RESUME
+          </a>
+        </div>
+
+        <a
+          href="javascript:void(0)"
+          class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+          onclick="w3_open()"
+          style="color: #fff"
+        >
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Sidebar on small screens -->
+    <nav
+      class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+      style="display: none"
+      id="mySidebar"
+    >
+      <a
+        href="javascript:void(0)"
+        onclick="w3_close()"
+        class="w3-bar-item w3-button w3-large w3-padding-16"
+        >Close Menu</a
+      >
+      <a
+        href="mailto:sarah.brown@naturallylogical.com"
+        onclick="w3_close()"
+        class="w3-bar-item w3-button"
+        >CONTACT</a
+      >
+      <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button"
+        >RESUME</a
+      >
+    </nav>
+
+    <div class="page">
+      <div class="shell">
+        <!-- HERO -->
+        <section class="hero" id="intro">
+          <div class="brand-card">
+            <div class="hero-grid">
+              <div class="hero-art">
+                <div class="mini-diagram" aria-label="Mini workflow preview">
+                  <div class="row">
+                    <div class="node"><i class="fa-solid fa-cloud"></i> OTA Data</div>
+                    <div class="arrow">→</div>
+                    <div class="node"><i class="fa-solid fa-database"></i> Warehouse</div>
+                    <div class="arrow">→</div>
+                    <div class="node"><i class="fa-solid fa-bell"></i> Alerts</div>
+                  </div>
+                  <div class="row" style="margin-bottom: 0">
+                    <div class="node"><i class="fa-solid fa-chart-line"></i> KPIs</div>
+                    <div class="arrow">→</div>
+                    <div class="node"><i class="fa-solid fa-ticket"></i> Tickets</div>
+                    <div class="arrow">→</div>
+                    <div class="node"><i class="fa-brands fa-slack"></i> Comms</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h1 class="brand-heading">OTA Performance Alert &amp; Monitoring</h1>
+                <p>
+                  A portfolio case study: designing an automated monitoring system that
+                  detects visibility failures, conversion leakage, and early-warning trends
+                  across online travel agencies.
+                </p>
+
+                <div class="hero-badges">
+                  <span class="pill"><i class="fa-solid fa-user-gear"></i> Ops + Revenue users</span>
+                  <span class="pill"><i class="fa-solid fa-shield"></i> Explainable rules first</span>
+                  <span class="pill"><i class="fa-solid fa-robot"></i> Agent-ready foundation</span>
+                </div>
+
+                <div class="hero-actions">
+                  <!-- Replace href with your PDF/deck link when hosted -->
+                  <a class="brand-btn" href="#exec">
+                    <i class="fa-solid fa-play"></i> Executive summary
+                  </a>
+                  <a class="ghost-btn" href="#architecture">
+                    <i class="fa-solid fa-diagram-project"></i> Architecture
+                  </a>
+                  <a class="ghost-btn" href="#contact">
+                    <i class="fa-solid fa-envelope"></i> Contact
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXEC SUMMARY -->
+        <section class="section reveal" id="exec">
+          <div class="section-header">
+            <h2 class="brand-heading">Executive Summary</h2>
+            <p>For leaders who want the answer before the details.</p>
+          </div>
+
+          <div class="exec">
+            <div class="exec-block">
+              <h4>Problem</h4>
+              <p>
+                Listing performance issues (invisibility, broken availability, or sustained
+                under-conversion) are often discovered after revenue impact. Manual review
+                doesn’t scale across hundreds of listings and multiple OTAs.
+              </p>
+            </div>
+
+            <div class="exec-block">
+              <h4>Solution</h4>
+              <p>
+                An automated alerting system that monitors visibility and conversion health,
+                routes high-severity failures to the right owner via ticketing, and maintains
+                a watchlist for early-warning signals to prevent alert fatigue.
+              </p>
+            </div>
+
+            <div class="exec-block">
+              <h4>Business Impact</h4>
+              <p>
+                Faster detection of “hard failures” (0 appearances / 0 views) prevents complete
+                revenue loss while unresolved. Conversion alerts highlight fixable leakage and
+                create a measurable resolution loop.
+              </p>
+            </div>
+
+            <div class="exec-block">
+              <h4>What’s Next</h4>
+              <p>
+                Expand cross-OTA standardization, enrich alerts with pricing/fees/LOS/availability
+                signals, and introduce an agentic layer that predicts breakage risk before alerts
+                trigger.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- THE PROBLEM / THE SOLUTION -->
+        <section class="section reveal" id="problem">
+          <div class="section-header">
+            <h2 class="brand-heading">The Problem</h2>
+            <p>Why proactive OTA monitoring matters.</p>
+          </div>
+          <div class="section-body">
+            <div class="grid grid-2">
+              <div class="card">
+                <span class="tile-icon">VP</span>
+                <h3>Visibility failures are binary</h3>
+                <p>
+                  When a listing disappears from search results or receives zero views,
+                  the outcome is simple: guests can’t book it.
+                </p>
+                <p>
+                  These issues often map to breakage (mapping, availability sync, calendar,
+                  rate plan failures) and should be treated as highest severity.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">CV</span>
+                <h3>Conversion failures are fixable leakage</h3>
+                <p>
+                  When demand exists (views) but bookings lag, the root cause is often
+                  correctable: pricing, fees, policies, content, or LOS restrictions.
+                </p>
+                <p>
+                  Detecting sustained low conversion early creates high-ROI optimization
+                  opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" id="solution">
+          <div class="section-header">
+            <h2 class="brand-heading">The Solution</h2>
+            <p>Explainable rules first — designed to scale into smarter detection.</p>
+          </div>
+
+          <div class="section-body">
+            <div class="grid grid-3">
+              <div class="card">
+                <span class="tile-icon">A</span>
+                <h3>Alerting</h3>
+                <p>
+                  High-severity rules automatically generate tickets and route to accountable
+                  owners (Ops / Distribution / Revenue).
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">M</span>
+                <h3>Monitoring</h3>
+                <p>
+                  Lower-confidence signals land in a watchlist. Operators can create ad-hoc tickets
+                  after reviewing context, preventing alert fatigue.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">L</span>
+                <h3>Learning loop</h3>
+                <p>
+                  Ticket outcomes feed back into the model over time, enabling smarter prioritization
+                  and early-warning prediction.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISUAL HIERARCHY / TIERS -->
+        <section class="section reveal" id="tiers">
+          <div class="section-header">
+            <h2 class="brand-heading">Signal Hierarchy (Non-Technical Friendly)</h2>
+            <p>Bucket signals by where the guest drops off: find → view → book → trend.</p>
+          </div>
+
+          <div class="tiers">
+            <div class="tier">
+              <div class="tier-top">
+                <p class="tier-title">Tier 1: Visibility</p>
+                <span class="tier-tag"><i class="fa-solid fa-triangle-exclamation"></i> Critical</span>
+              </div>
+              <ul>
+                <li><strong>Metrics:</strong> Appearances, Views</li>
+                <li><strong>Meaning:</strong> Guests can’t find or open the listing</li>
+                <li><strong>Example rules:</strong> 0 appearances for 2 periods; 0 views for 2 periods</li>
+                <li><strong>Action:</strong> Auto-ticket (highest severity)</li>
+              </ul>
+            </div>
+
+            <div class="tier">
+              <div class="tier-top">
+                <p class="tier-title">Tier 2: Conversion</p>
+                <span class="tier-tag"><i class="fa-solid fa-screwdriver-wrench"></i> High ROI</span>
+              </div>
+              <ul>
+                <li><strong>Metric:</strong> CVR (bookings ÷ views)</li>
+                <li><strong>Meaning:</strong> Demand exists, but bookings aren’t converting</li>
+                <li><strong>Example rule:</strong> CVR below threshold for 3 eligible periods (min views)</li>
+                <li><strong>Action:</strong> Route to revenue/pricing optimization</li>
+              </ul>
+            </div>
+
+            <div class="tier">
+              <div class="tier-top">
+                <p class="tier-title">Tier 3: Trend Signals</p>
+                <span class="tier-tag"><i class="fa-solid fa-eye"></i> Monitor</span>
+              </div>
+              <ul>
+                <li><strong>Metrics:</strong> Z-score, streaks, week-over-week declines</li>
+                <li><strong>Meaning:</strong> Early degradation that may become a Tier 1/2 issue</li>
+                <li><strong>Example:</strong> Appearances down 70% WoW; views declining 2 weeks</li>
+                <li><strong>Action:</strong> Watchlist + context enrichment</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ARCHITECTURE -->
+        <section class="section reveal" id="architecture">
+          <div class="section-header">
+            <h2 class="brand-heading">System Architecture</h2>
+            <p>End-to-end workflow: ingest → warehouse → compute → ticket → communicate.</p>
+          </div>
+
+          <div class="section-body">
+            <div class="grid grid-2">
+              <div class="card">
+                <span class="tile-icon">WF</span>
+                <h3>Workflow (high level)</h3>
+                <p>
+                  Retrieve weekly metrics from OTAs, standardize into a common schema, compute per-listing
+                  KPIs and baselines, then create tickets + notifications for owners.
+                </p>
+                <p>
+                  The design emphasizes low manual effort, clear accountability, and explainable alert rules.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">ER</span>
+                <h3>Error handling & guardrails</h3>
+                <p>
+                  If upstream data is missing or delayed, the system degrades gracefully (hold alerts, log failures,
+                  notify ops). Minimum-data eligibility rules reduce noise (e.g., minimum views before evaluating CVR).
+                </p>
+              </div>
+            </div>
+
+            <!-- Optional: add your own exported workflow diagram here -->
+            <figure class="diagram-figure">
+              <img
+                src="diagrams/ota-alerting-architecture.svg"
+                alt="Architecture diagram for OTA alert and monitoring"
+              />
+              <figcaption>
+                Replace this placeholder with your exported workflow diagram (SVG/PNG). Click to zoom.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- KEY FEATURES -->
+        <section class="section reveal" id="features">
+          <div class="section-header">
+            <h2 class="brand-heading">Key Features</h2>
+            <p>What makes this monitoring system operationally useful.</p>
+          </div>
+
+          <div class="section-body">
+            <div class="grid grid-3">
+              <div class="card">
+                <span class="tile-icon">OT</span>
+                <h3>Alert-to-ticket routing</h3>
+                <p>
+                  Each alert type maps cleanly to an owner and likely fix path, reducing back-and-forth and speeding
+                  time-to-resolution.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">PR</span>
+                <h3>Priority scoring (optional)</h3>
+                <p>
+                  Alerts can be ranked using estimated impact and severity to keep teams focused on the highest
+                  NetRevPAR risk first.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">AI</span>
+                <h3>Agent-ready foundation</h3>
+                <p>
+                  Resolution outcomes become training data for an early-warning layer that predicts risk before
+                  a listing goes fully dark.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- NEXT STEPS / ROADMAP -->
+        <section class="section reveal" id="roadmap">
+          <div class="section-header">
+            <h2 class="brand-heading">Roadmap</h2>
+            <p>How this evolves from rules → richer signals → predictive monitoring.</p>
+          </div>
+          <div class="section-body">
+            <div class="grid grid-2">
+              <div class="card">
+                <span class="tile-icon">P1</span>
+                <h3>Phase 1: Rules + ticketing</h3>
+                <p>
+                  Launch explainable alerts (visibility + low conversion with eligibility thresholds). Implement ownership,
+                  SLAs by alert type, and a consistent communication path.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">P2</span>
+                <h3>Phase 2: Enrichment</h3>
+                <p>
+                  Add supporting signals like pricing changes, fees/policies, LOS restrictions, and availability patterns
+                  to improve diagnosis and reduce false positives.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">P3</span>
+                <h3>Phase 3: Early-warning agent</h3>
+                <p>
+                  A lightweight agent reads historical alerts + resolutions, detects precursors to visibility failures,
+                  and produces risk scores. Human approval remains the final gate.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">QA</span>
+                <h3>Phase 4: QA + calibration</h3>
+                <p>
+                  Periodic threshold tuning, precision/recall tracking, and feedback loops ensure the system remains
+                  reliable as seasonality and portfolio mix change.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section reveal" id="contact">
+          <div class="section-header">
+            <h2 class="brand-heading">Get in Touch</h2>
+            <p>Interested in building automation-first monitoring systems?</p>
+          </div>
+          <div class="section-body">
+            <div class="card">
+              <p style="margin-top: 0">
+                Email Sarah at <a href="mailto:sarah.brown@naturallylogical.com">sarah.brown@naturallylogical.com</a>
+              </p>
+              <p style="margin-bottom: 0; color: var(--ink-muted); font-size: 0.9rem">
+                <strong>Note:</strong> This portfolio page intentionally omits company-specific identifiers and operational details.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>© 2025 Naturally Logical</p>
+          <p>Portfolio excerpt for demonstration; sensitive operational details redacted.</p>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Diagram modal -->
+    <div id="diagram-modal" class="diagram-modal" aria-hidden="true">
+      <div class="diagram-modal-backdrop"></div>
+      <div class="diagram-modal-content" role="dialog" aria-modal="true">
+        <button class="diagram-modal-close" aria-label="Close diagram">&times;</button>
+        <img src="" alt="" />
+        <p class="diagram-modal-caption"></p>
+      </div>
+    </div>
+
+    <script>
+      // Scroll reveal + diagram zoom modal
+      document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(".reveal");
+
+        if (!("IntersectionObserver" in window)) {
+          elements.forEach((el) => el.classList.add("visible"));
+        } else {
+          const observer = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 }
+          );
+
+          elements.forEach((el) => observer.observe(el));
+        }
+
+        // Diagram modal
+        const diagramImages = document.querySelectorAll(".diagram-figure img");
+        const modal = document.getElementById("diagram-modal");
+        if (!modal) return;
+
+        const modalImg = modal.querySelector("img");
+        const modalCaption = modal.querySelector(".diagram-modal-caption");
+        const closeBtn = modal.querySelector(".diagram-modal-close");
+        const backdrop = modal.querySelector(".diagram-modal-backdrop");
+
+        function openModal(src, alt, caption) {
+          modalImg.src = src;
+          modalImg.alt = alt || "";
+          modalCaption.textContent = caption || "";
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+        }
+
+        function closeModal() {
+          modal.classList.remove("open");
+          modal.setAttribute("aria-hidden", "true");
+          modalImg.src = "";
+          modalImg.alt = "";
+          modalCaption.textContent = "";
+        }
+
+        diagramImages.forEach((img) => {
+          img.addEventListener("click", () => {
+            const figure = img.closest("figure");
+            const captionEl = figure ? figure.querySelector("figcaption") : null;
+            const captionText = captionEl ? captionEl.innerText : "";
+            openModal(img.src, img.alt, captionText);
+          });
+        });
+
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+        if (backdrop) backdrop.addEventListener("click", closeModal);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeModal();
+        });
+      });
+    </script>
+
+    <!-- Sidebar toggle JS -->
+    <script>
+      var mySidebar = document.getElementById("mySidebar");
+      function w3_open() {
+        if (mySidebar.style.display === "block") {
+          mySidebar.style.display = "none";
+        } else {
+          mySidebar.style.display = "block";
+        }
+      }
+      function w3_close() {
+        mySidebar.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
