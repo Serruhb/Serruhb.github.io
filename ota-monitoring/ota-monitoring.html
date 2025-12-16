@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>OTA Performance Alert & Monitoring</title>
+    <title>OTA Performance Alert and Monitoring</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Fonts -->
@@ -10,6 +10,9 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      document.documentElement.classList.add("js");
+   </script>
 
     <!-- W3CSS + Font Awesome -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -31,6 +34,13 @@
       type="image/svg+xml"
       href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5PPC90ZXh0Pgo8L3N2Zz4="
     />
+    <meta name="description" content="AI & Automation Engineer case study: OTA performance alerting system for visibility, conversion, and early-warning monitoring." />
+    <link rel="canonical" href="https://naturallylogical.com/ota-monitoring.html" />
+
+    <meta property="og:title" content="OTA Performance Alert & Monitoring — Case Study" />
+    <meta property="og:description" content="Automated alerting + ticket routing for OTA visibility failures and conversion leakage, designed to scale into early-warning prediction." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://naturallylogical.com/ota-monitoring.html" />
   </head>
 
 
@@ -115,27 +125,14 @@
       <div class="shell">
         <!-- HERO -->
         <section class="hero" id="intro">
+          <!--div class="hero-actions">
+            <a class="brand-btn" href="#exec"><i class="fa-solid fa-play"></i> Executive summary</a>
+            <a class="ghost-btn" href="#signals"><i class="fa-solid fa-filter"></i> Signal design</a>
+            <a class="ghost-btn" href="#routing"><i class="fa-solid fa-code-branch"></i> Routing</a>
+            <a class="ghost-btn" href="#architecture"><i class="fa-solid fa-diagram-project"></i> Architecture</a>
+          </div-->
           <div class="brand-card">
             <div class="hero-grid">
-              <div class="hero-art">
-                <div class="mini-diagram" aria-label="Mini workflow preview">
-                  <div class="row">
-                    <div class="node"><i class="fa-solid fa-cloud"></i> OTA Data</div>
-                    <div class="arrow">→</div>
-                    <div class="node"><i class="fa-solid fa-database"></i> Warehouse</div>
-                    <div class="arrow">→</div>
-                    <div class="node"><i class="fa-solid fa-bell"></i> Alerts</div>
-                  </div>
-                  <div class="row" style="margin-bottom: 0">
-                    <div class="node"><i class="fa-solid fa-chart-line"></i> KPIs</div>
-                    <div class="arrow">→</div>
-                    <div class="node"><i class="fa-solid fa-ticket"></i> Tickets</div>
-                    <div class="arrow">→</div>
-                    <div class="node"><i class="fa-brands fa-slack"></i> Comms</div>
-                  </div>
-                </div>
-              </div>
-
               <div>
                 <h1 class="brand-heading">OTA Performance Alert &amp; Monitoring</h1>
                 <p>
@@ -169,10 +166,10 @@
 
         <!-- EXEC SUMMARY -->
         <section class="section reveal" id="exec">
-          <div class="section-header">
+          <!--div class="section-header">
             <h2 class="brand-heading">Executive Summary</h2>
             <p>For leaders who want the answer before the details.</p>
-          </div>
+          </div-->
 
           <div class="exec">
             <div class="exec-block">
@@ -210,6 +207,17 @@
                 trigger.
               </p>
             </div>
+            <div class="section-body">
+            <figure class="diagram-figure">
+              <img
+                src="../diagrams/automationWorkflow.png"
+                alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
+              />
+              <figcaption>
+                Work flow to create Jira tickets for Alerts for high risk/ high loss listings and warning comminication for potentially risky listings.
+              </figcaption>
+            </figure>
+          </div>
           </div>
         </section>
 
@@ -493,86 +501,6 @@
       </div>
     </div>
 
-    <script>
-      // Scroll reveal + diagram zoom modal
-      document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll(".reveal");
-
-        if (!("IntersectionObserver" in window)) {
-          elements.forEach((el) => el.classList.add("visible"));
-        } else {
-          const observer = new IntersectionObserver(
-            (entries, obs) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                  obs.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.15 }
-          );
-
-          elements.forEach((el) => observer.observe(el));
-        }
-
-        // Diagram modal
-        const diagramImages = document.querySelectorAll(".diagram-figure img");
-        const modal = document.getElementById("diagram-modal");
-        if (!modal) return;
-
-        const modalImg = modal.querySelector("img");
-        const modalCaption = modal.querySelector(".diagram-modal-caption");
-        const closeBtn = modal.querySelector(".diagram-modal-close");
-        const backdrop = modal.querySelector(".diagram-modal-backdrop");
-
-        function openModal(src, alt, caption) {
-          modalImg.src = src;
-          modalImg.alt = alt || "";
-          modalCaption.textContent = caption || "";
-          modal.classList.add("open");
-          modal.setAttribute("aria-hidden", "false");
-        }
-
-        function closeModal() {
-          modal.classList.remove("open");
-          modal.setAttribute("aria-hidden", "true");
-          modalImg.src = "";
-          modalImg.alt = "";
-          modalCaption.textContent = "";
-        }
-
-        diagramImages.forEach((img) => {
-          img.addEventListener("click", () => {
-            const figure = img.closest("figure");
-            const captionEl = figure ? figure.querySelector("figcaption") : null;
-            const captionText = captionEl ? captionEl.innerText : "";
-            openModal(img.src, img.alt, captionText);
-          });
-        });
-
-        if (closeBtn) closeBtn.addEventListener("click", closeModal);
-        if (backdrop) backdrop.addEventListener("click", closeModal);
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeModal();
-        });
-      });
-    </script>
-
-    <!-- Sidebar toggle JS -->
-    <script>
-      var mySidebar = document.getElementById("mySidebar");
-      function w3_open() {
-        if (mySidebar.style.display === "block") {
-          mySidebar.style.display = "none";
-        } else {
-          mySidebar.style.display = "block";
-        }
-      }
-      function w3_close() {
-        mySidebar.style.display = "none";
-      }
-    </script>
+    <script src="scripts.js" defer></script>
   </body>
 </html>
