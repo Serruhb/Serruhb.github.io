@@ -148,10 +148,7 @@
                 </div>
 
                 <div class="hero-actions">
-                  <!-- Replace href with your PDF/deck link when hosted -->
-                  <a class="brand-btn" href="#exec">
-                    <i class="fa-solid fa-play"></i> Executive summary
-                  </a>
+                 
                   <a class="ghost-btn" href="#architecture">
                     <i class="fa-solid fa-diagram-project"></i> Architecture
                   </a>
@@ -164,62 +161,6 @@
           </div>
         </section>
 
-        <!-- EXEC SUMMARY -->
-        <section class="section reveal" id="exec">
-          <!--div class="section-header">
-            <h2 class="brand-heading">Executive Summary</h2>
-            <p>For leaders who want the answer before the details.</p>
-          </div-->
-
-          <div class="exec">
-            <div class="exec-block">
-              <h4>Problem</h4>
-              <p>
-                Listing performance issues (invisibility, broken availability, or sustained
-                under-conversion) are often discovered after revenue impact. Manual review
-                doesn’t scale across hundreds of listings and multiple OTAs.
-              </p>
-            </div>
-
-            <div class="exec-block">
-              <h4>Solution</h4>
-              <p>
-                An automated alerting system that monitors visibility and conversion health,
-                routes high-severity failures to the right owner via ticketing, and maintains
-                a watchlist for early-warning signals to prevent alert fatigue.
-              </p>
-            </div>
-
-            <div class="exec-block">
-              <h4>Business Impact</h4>
-              <p>
-                Faster detection of “hard failures” (0 appearances / 0 views) prevents complete
-                revenue loss while unresolved. Conversion alerts highlight fixable leakage and
-                create a measurable resolution loop.
-              </p>
-            </div>
-
-            <div class="exec-block">
-              <h4>What’s Next</h4>
-              <p>
-                Expand cross-OTA standardization, enrich alerts with pricing/fees/LOS/availability
-                signals, and introduce an agentic layer that predicts breakage risk before alerts
-                trigger.
-              </p>
-            </div>
-            <div class="section-body">
-            <figure class="diagram-figure">
-              <img
-                src="..\diagrams\ota-monitoring\automationWorkflow.png"
-                alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
-              />
-              <figcaption>
-                Work flow to create Jira tickets for Alerts for high risk/ high loss listings and warning comminication for potentially risky listings.
-              </figcaption>
-            </figure>
-          </div>
-          </div>
-        </section>
 
         <!-- THE PROBLEM / THE SOLUTION -->
         <section class="section reveal" id="problem">
@@ -371,17 +312,18 @@
                 </p>
               </div>
             </div>
-
-            <!-- Optional: add your own exported workflow diagram here -->
+            <div class="section-body">
             <figure class="diagram-figure">
               <img
-                src="diagrams/ota-alerting-architecture.svg"
-                alt="Architecture diagram for OTA alert and monitoring"
+                src="..\diagrams\ota-monitoring\automationWorkflow.png"
+                alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
               />
               <figcaption>
-                Replace this placeholder with your exported workflow diagram (SVG/PNG). Click to zoom.
+                Work flow to create Jira tickets for Alerts for high risk/ high loss listings and warning comminication for potentially risky listings.
               </figcaption>
             </figure>
+          </div>
+            
           </div>
         </section>
 
