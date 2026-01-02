@@ -2,521 +2,96 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>SYNaTRA — Synthetic Triage Assistant</title>
+    <title>OTA Performance Alert and Monitoring</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Optional: match primary page font -->
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      document.documentElement.classList.add("js");
+   </script>
 
-    <!-- W3CSS + Font Awesome (for navbar, same as main page) -->
-    <link
-      rel="stylesheet"
-      href="https://www.w3schools.com/w3css/4/w3.css"
-    />
+    <!-- W3CSS + Font Awesome -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <script
-      src="https://kit.fontawesome.com/c79cc71819.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5TPC90ZXh0Pgo8L3N2Zz4="
-    />
-
-    <!-- Existing Font Awesome 6 (fine to keep) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
 
-    <style>
-      /* ===== Design tokens ===== */
-      :root {
-        --brand: #00cdac; /* main brand */
-        --ink: #1e1e1e; /* body text */
-        --ink-muted: #5a5a5a; /* secondary text */
-        --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
-        /* Very light brand tint for full-page background */
-        --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
-      }
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="styles.css" />
 
-      /* ===== Base ===== */
-      html,
-      body {
-        height: 100%;
-      }
-      body,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Raleway", sans-serif;
-      }
-      body {
-        line-height: 1.8;
-        color: var(--ink);
-        background: #f3fbf9; /* fallback */
-        background: var(--bg-soft); /* preferred */
-        margin: 0;
-      }
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5PPC90ZXh0Pgo8L3N2Zz4="
+    />
+    <meta name="description" content="AI & Automation Engineer case study: OTA performance alerting system for visibility, conversion, and early-warning monitoring." />
+    <link rel="canonical" href="https://naturallylogical.com/ota-monitoring.html" />
 
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .brand-heading {
-        color: var(--brand-strong);
-      }
-
-      .brand-card {
-        background-color: var(--brand);
-        color: #fff;
-        opacity: 0.94;
-        border-radius: 14px;
-        padding: 24px 28px;
-      }
-
-      .brand-btn {
-        background-color: var(--brand);
-        color: #fff;
-        border: none;
-        border-radius: 999px;
-        padding: 10px 20px;
-        font-size: 0.95rem;
-        cursor: pointer;
-      }
-      .brand-btn:hover {
-        filter: brightness(0.95);
-      }
-      .icon-only {
-        color: var(--brand);
-        display: inline-flex;
-        width: 48px;
-        height: 48px;
-        border-radius: 6px;
-        align-items: center;
-        justify-content: center;
-      }
-      .icon-only i {
-        font-size: 1.55rem;
-      }
-
-      .tile-icon {
-        background-color: var(--brand);
-        color: #fff;
-        display: inline-block;
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-      }
-
-      /* ===== Layout for this page ===== */
-      .syn-page {
-        min-height: 100vh;
-        /* offset for fixed navbar */
-        padding-top: 64px;
-      }
-
-      .syn-shell {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 24px 16px 60px;
-      }
-
-      /* Hero */
-      .syn-hero {
-        padding-top: 40px;
-        padding-bottom: 24px;
-      }
-
-      .syn-hero-inner {
-        display: grid;
-        gap: 20px;
-        align-items: center;
-      }
-
-      .syn-hero-title {
-        margin: 0 0 8px;
-        font-size: 2rem;
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      .syn-hero-sub {
-        margin: 0;
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      .syn-hero-meta {
-        margin-top: 8px;
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.9);
-      }
-      /* Hero grid layout (1/3 image + 2/3 text) */
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        align-items: center;
-        gap: 20px;
-      }
-
-      /* Image styling */
-      .hero-image img {
-        width: 100%;
-        max-width: 240px;
-        display: block;
-      }
-
-      /* Mobile: stack vertically */
-      @media (max-width: 700px) {
-        .hero-grid {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-        .hero-image img {
-          margin: 0 auto;
-        }
-      }
-
-      /* Sections */
-      .section {
-        padding: 40px 0 20px;
-      }
-
-      .section-header {
-        margin-bottom: 16px;
-      }
-
-      .section-header h2 {
-        margin: 0 0 6px;
-        font-size: 1.2rem;
-      }
-
-      .section-header p {
-        margin: 0;
-        font-size: 0.9rem;
-        color: var(--ink-muted);
-      }
-
-      .section-body p {
-        margin-top: 0;
-        font-size: 0.95rem;
-        color: var(--ink);
-      }
-
-      /* Simple divider using brand tint */
-      .section + .section {
-        border-top: 1px solid rgba(0, 0, 0, 0.04);
-      }
-
-      /* Grid layouts */
-      .grid {
-        display: grid;
-        gap: 20px;
-      }
-
-      .grid-features,
-      .grid-usecases {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-
-      /* Cards */
-      .card {
-        padding: 18px 18px 20px;
-        border-radius: 14px;
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-        transition: transform 0.18s ease, box-shadow 0.18s ease,
-          border-color 0.18s ease;
-      }
-
-      .card h3 {
-        margin-top: 0;
-        margin-bottom: 6px;
-        font-size: 1.02rem;
-        color: var(--brand-strong);
-      }
-
-      .card p {
-        margin: 4px 0;
-        font-size: 0.93rem;
-      }
-
-      .card small {
-        display: block;
-        margin-top: 8px;
-        font-size: 0.82rem;
-        color: var(--ink-muted);
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
-        border-color: rgba(0, 205, 172, 0.45);
-      }
-
-      /* Architecture list */
-      .architecture-list {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 10px;
-      }
-
-      .architecture-list li {
-        margin-bottom: 6px;
-        font-size: 0.93rem;
-        color: var(--ink-muted);
-      }
-
-      .architecture-list strong {
-        color: var(--brand-strong);
-      }
-
-      .architecture-list code {
-        font-size: 0.85rem;
-        background: rgba(0, 0, 0, 0.04);
-        padding: 1px 4px;
-        border-radius: 4px;
-      }
-
-      /* Diagram figure (for all diagrams) */
-      .diagram-figure {
-        margin: 24px 0 0;
-        text-align: center;
-      }
-
-      .diagram-figure img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 14px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        cursor: zoom-in; /* hint it's clickable */
-      }
-
-      .diagram-figure figcaption {
-        margin-top: 8px;
-        font-size: 0.85rem;
-        color: var(--ink-muted);
-      }
-
-      /* Diagram modal / lightbox */
-      .diagram-modal {
-        position: fixed;
-        inset: 0;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 2000;
-      }
-
-      .diagram-modal.open {
-        display: flex;
-      }
-
-      .diagram-modal-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.7);
-      }
-
-      .diagram-modal-content {
-        position: relative;
-        max-width: min(1000px, 100vw - 32px);
-        max-height: 90vh;
-        background: #ffffff;
-        border-radius: 16px;
-        padding: 16px;
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-        z-index: 2001;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .diagram-modal-content img {
-        max-width: 100%;
-        max-height: 70vh;
-        height: auto;
-        border-radius: 8px;
-      }
-
-      .diagram-modal-caption {
-        margin-top: 10px;
-        font-size: 0.9rem;
-        color: var(--ink-muted);
-        text-align: center;
-      }
-
-      .diagram-modal-close {
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        border: none;
-        background: transparent;
-        font-size: 1.8rem;
-        line-height: 1;
-        cursor: pointer;
-        color: var(--ink-muted);
-      }
-
-      /* Metrics */
-      .metrics {
-        display: flex;
-        justify-content: space-around;
-        gap: 16px;
-        flex-wrap: wrap;
-        text-align: left;
-      }
-
-      .metric {
-        flex: 1;
-        min-width: 180px;
-        padding: 14px 14px 16px;
-        border-radius: 14px;
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        transition: transform 0.18s ease, box-shadow 0.18s ease,
-          border-color 0.18s ease;
-      }
-
-      .metric-main {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--brand-strong);
-      }
-
-      .metric-text {
-        font-size: 0.9rem;
-        color: var(--ink);
-      }
-
-      .metric:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 18px rgba(0, 205, 172, 0.18);
-        border-color: rgba(0, 205, 172, 0.4);
-      }
-
-      /* Get in touch note */
-      .note {
-        font-size: 0.9rem;
-        color: var(--ink-muted);
-      }
-
-      /* Footer */
-      .footer {
-        padding: 22px 16px 32px;
-        text-align: center;
-        font-size: 0.85rem;
-        color: var(--ink-muted);
-      }
-
-      .footer p {
-        margin: 3px 0;
-      }
-
-      /* Scroll reveal base */
-      .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
+    <meta property="og:title" content="OTA Performance Alert & Monitoring — Case Study" />
+    <meta property="og:description" content="Automated alerting + ticket routing for OTA visibility failures and conversion leakage, designed to scale into early-warning prediction." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://naturallylogical.com/ota-monitoring.html" />
   </head>
 
+
   <body>
-    <!-- =================== NAVBAR FROM MAIN PAGE =================== -->
+    <!-- =================== NAVBAR (kept cohesive; edit links as needed) =================== -->
     <div class="w3-top">
       <div
         class="w3-bar w3-card"
         id="myNavbar"
-        style="background-color:var(--brand);color:#fff;"
+        style="background-color: var(--brand); color: #fff"
       >
         <a
-          href="resume.html"
+          href="https://naturallylogical.com"
           target="_blank"
           class="w3-bar-item w3-button"
-          style="color:#fff;"
+          style="color: #fff"
         >
-          <i class="fa fa-user"></i> RESUME
+          <i class="fa fa-user"></i> HOME
         </a>
         <a
           href="https://www.linkedin.com/in/serruhb/"
           target="_blank"
           rel="noopener"
           class="w3-bar-item w3-button w3-hide-small"
-          style="color:#fff;"
+          style="color: #fff"
         >
           <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
         </a>
-        <a
-          href="SYNaTRA.html"
-          target="_blank"
-          rel="noopener"
-          class="w3-bar-item w3-button w3-hide-small"
-          style="color:#fff;"
-        >
-          <i class="fas fa-robot fa-lg w3-hover-opacity"></i> SYNaTRA
-        </a>
 
-        <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
-          <a href="#Intro" class="w3-bar-item w3-button" style="color:#fff;">
-            <i class="fas fa-comment"></i> INTRO
-          </a>
-          <a href="#work" class="w3-bar-item w3-button" style="color:#fff;">
-            <i class="fa fa-github"></i> PROJECTS
-          </a>
-          <a href="#contact" class="w3-bar-item w3-button" style="color:#fff;">
+          <a
+            href="mailto:sarah.brown@naturallylogical.com"
+            class="w3-bar-item w3-button"
+            style="color: #fff"
+          >
             <i class="fa fa-envelope"></i> CONTACT
+          </a>
+          <a
+            href="resume.html"
+            class="w3-bar-item w3-button"
+            style="color: #fff"
+          >
+            <i class="fa fa-user"></i> RESUME
           </a>
         </div>
 
-        <!-- Mobile menu -->
         <a
           href="javascript:void(0)"
           class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
           onclick="w3_open()"
-          style="color:#fff;"
+          style="color: #fff"
         >
           <i class="fa fa-bars"></i>
         </a>
@@ -526,7 +101,7 @@
     <!-- Sidebar on small screens -->
     <nav
       class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
-      style="display:none"
+      style="display: none"
       id="mySidebar"
     >
       <a
@@ -535,467 +110,348 @@
         class="w3-bar-item w3-button w3-large w3-padding-16"
         >Close Menu</a
       >
-      <a href="#Intro" onclick="w3_close()" class="w3-bar-item w3-button"
-        >INTRO</a
-      >
-      <a href="SYNaTRA.html" onclick="w3_close()" class="w3-bar-item w3-button"
-        >RECENTLY DEPLOYED</a
-      >
-      <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button"
-        >PORTFOLIO</a
-      >
-      <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button"
+      <a
+        href="mailto:sarah.brown@naturallylogical.com"
+        onclick="w3_close()"
+        class="w3-bar-item w3-button"
         >CONTACT</a
       >
       <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button"
         >RESUME</a
       >
-      <a href="about.html" onclick="w3_close()" class="w3-bar-item w3-button"
-        >MY STORY</a
-      >
     </nav>
-    <!-- =================== END NAVBAR =================== -->
 
-    <div class="syn-page">
-      <div class="syn-shell">
+    <div class="page">
+      <div class="shell">
         <!-- HERO -->
-        <section class="syn-hero" id="Intro">
-          <div class="brand-card syn-hero-inner hero-grid">
-            <div class="hero-image">
-              <img src="/Images/synatralogo.jpg" alt="SYNaTRA Logo" />
-            </div>
+        <section class="hero" id="intro">
+          <!--div class="hero-actions">
+            <a class="brand-btn" href="#exec"><i class="fa-solid fa-play"></i> Executive summary</a>
+            <a class="ghost-btn" href="#signals"><i class="fa-solid fa-filter"></i> Signal design</a>
+            <a class="ghost-btn" href="#routing"><i class="fa-solid fa-code-branch"></i> Routing</a>
+            <a class="ghost-btn" href="#architecture"><i class="fa-solid fa-diagram-project"></i> Architecture</a>
+          </div-->
+          <div class="brand-card">
+            <div class="hero-grid">
+              <div class="hero-art">
+                <figure class="diagram-figure">
+                  <img
+                    src="..\images\techstack1.jpg"
+                    alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
+                  />
+                
+                </figure>
+              </div>
+              <div>
+                <h1 class="brand-heading">OTA Performance Alert &amp; Monitoring</h1>
+                <p>
+                  A portfolio case study: designing an automated monitoring system that
+                  detects visibility failures, conversion leakage, and early-warning trends
+                  across online travel agencies.
+                </p>
 
-            <div class="hero-text">
-              <h1 class="syn-hero-title brand-heading">
-                SYNaTRA — Synthetic Triage Assistant
-              </h1>
-              <p class="syn-hero-sub">
-                Workato-orchestrated Customer Success triage across Salesforce,
-                Jira, and Snowflake.
-              </p>
-              <p class="syn-hero-meta">
-                Primary users: CS Ops, CSMs, and Customer Success
-                Representatives (internal use only).
-              </p>
+                <!--div class="hero-badges">
+                  <span class="pill"><i class="fa-solid fa-user-gear"></i> Ops + Revenue users</span>
+                  <span class="pill"><i class="fa-solid fa-shield"></i> Explainable rules first</span>
+                  <span class="pill"><i class="fa-solid fa-robot"></i> Agent-ready foundation</span>
+                </div-->
+
+                <!--div class="hero-actions">
+                 
+                  <a class="ghost-btn" href="#architecture">
+                    <i class="fa-solid fa-diagram-project"></i> Architecture
+                  </a>
+                  <a class="ghost-btn" href="#contact">
+                    <i class="fa-solid fa-envelope"></i> Contact
+                  </a>
+                </div-->
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- PROBLEM / SOLUTION -->
-        <section class="section reveal">
+
+        <!-- THE PROBLEM / THE SOLUTION -->
+        <section class="section reveal" id="problem">
           <div class="section-header">
             <h2 class="brand-heading">The Problem</h2>
+            <p>Why proactive OTA monitoring matters.</p>
           </div>
           <div class="section-body">
-            <p>
-              Customer Success teams lose valuable time piecing together context
-              across Salesforce, Jira, and subscription systems. Manual
-              searches, inconsistent summaries, and scattered historical
-              resolutions increase time-to-context and slow first-contact
-              resolution. Critical information such as active contracts, product
-              mix, and prior fixes is often buried across tools, making live
-              customer conversations harder than they need to be.
-            </p>
+            <div class="grid grid-2">
+              <div class="card">
+                <span class="tile-icon">VP</span>
+                <h3>Visibility failures are binary</h3>
+                <p>
+                  When a listing disappears from search results or receives zero views,
+                  the outcome is simple: guests can’t book it.
+                </p>
+                <p>
+                  These issues often map to breakage (mapping, availability sync, calendar,
+                  rate plan failures) and should be treated as highest severity.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">CV</span>
+                <h3>Conversion failures are fixable leakage</h3>
+                <p>
+                  When demand exists (views) but bookings lag, the root cause is often
+                  correctable: pricing, fees, policies, content, or LOS restrictions.
+                </p>
+                <p>
+                  Detecting sustained low conversion early creates high-ROI optimization
+                  opportunities.
+                </p>
+              </div>
+            </div>
           </div>
+        </section>
+
+        <section class="section reveal" id="solution">
           <div class="section-header">
-            <p></p>
+            <h2 class="brand-heading">The Solution</h2>
+            <p>Explainable rules first — designed to scale into smarter detection.</p>
           </div>
 
-          <div class="section-header" style="margin-top: 20px;">
-            <h2 class="brand-heading">The Solution</h2>
-          </div>
           <div class="section-body">
-            <p>
-              SYNaTRA is a synthetic triage assistant that retrieves and
-              summarizes customer history from Salesforce Cases, Jira Tickets,
-              and Snowflake subscription data into a single, concise view. It
-              parses an issue description, searches across systems using SOQL,
-              JQL, and SQL, scores the similarity and confidence of matches, and
-              returns an actionable, formatted triage summary ready to use in
-              real time during Slack, MS Teams, or Workbot conversations.
-            </p>
+            <div class="grid grid-3">
+              <div class="card">
+                <span class="tile-icon">A</span>
+                <h3>Alerting</h3>
+                <p>
+                  High-severity rules automatically generate tickets and route to accountable
+                  owners (Ops / Distribution / Revenue).
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">M</span>
+                <h3>Monitoring</h3>
+                <p>
+                  Lower-confidence signals land in a watchlist. Operators can create ad-hoc tickets
+                  after reviewing context, preventing alert fatigue.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">L</span>
+                <h3>Learning loop</h3>
+                <p>
+                  Ticket outcomes feed back into the model over time, enabling smarter prioritization
+                  and early-warning prediction.
+                </p>
+              </div>
+            </div>
           </div>
+        </section>
+
+        <!-- VISUAL HIERARCHY / TIERS -->
+        <section class="section reveal" id="tiers">
+          <div class="section-header">
+            <h2 class="brand-heading">Signal Hierarchy (Non-Technical Friendly)</h2>
+            <p>Bucket signals by where the guest drops off: find → view → book → trend.</p>
+          </div>
+
+          <div class="tiers">
+            <div class="tier">
+              <div class="tier-top">
+                <p class="tier-title">Tier 1: Visibility</p>
+                <span class="tier-tag"><i class="fa-solid fa-triangle-exclamation"></i> Critical</span>
+              </div>
+              <ul>
+                <li><strong>Metrics:</strong> Appearances, Views</li>
+                <li><strong>Meaning:</strong> Guests can’t find or open the listing</li>
+                <li><strong>Example rules:</strong> 0 appearances for 2 periods; 0 views for 2 periods</li>
+                <li><strong>Action:</strong> Auto-ticket (highest severity)</li>
+              </ul>
+            </div>
+
+            <div class="tier">
+              <div class="tier-top">
+                <p class="tier-title">Tier 2: Conversion</p>
+                <span class="tier-tag"><i class="fa-solid fa-screwdriver-wrench"></i> High ROI</span>
+              </div>
+              <ul>
+                <li><strong>Metric:</strong> CVR (bookings ÷ views)</li>
+                <li><strong>Meaning:</strong> Demand exists, but bookings aren’t converting</li>
+                <li><strong>Example rule:</strong> CVR below threshold for 3 eligible periods (min views)</li>
+                <li><strong>Action:</strong> Route to revenue/pricing optimization</li>
+              </ul>
+            </div>
+
+            <div class="tier">
+              <div class="tier-top">
+                <p class="tier-title">Tier 3: Trend Signals</p>
+                <span class="tier-tag"><i class="fa-solid fa-eye"></i> Monitor</span>
+              </div>
+              <ul>
+                <li><strong>Metrics:</strong> Z-score, streaks, week-over-week declines</li>
+                <li><strong>Meaning:</strong> Early degradation that may become a Tier 1/2 issue</li>
+                <li><strong>Example:</strong> Appearances down 70% WoW; views declining 2 weeks</li>
+                <li><strong>Action:</strong> Watchlist + context enrichment</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ARCHITECTURE -->
+        <section class="section reveal" id="architecture">
+          <div class="section-header">
+            <h2 class="brand-heading">System Architecture</h2>
+            <p>End-to-end workflow: ingest → warehouse → compute → ticket → communicate.</p>
+          </div>
+
           <div class="section-body">
+            <div class="grid grid-2">
+              <div class="card">
+                <span class="tile-icon">WF</span>
+                <h3>Workflow (high level)</h3>
+                <p>
+                  Retrieve weekly metrics from OTAs, standardize into a common schema, compute per-listing
+                  KPIs and baselines, then create tickets + notifications for owners.
+                </p>
+                <p>
+                  The design emphasizes low manual effort, clear accountability, and explainable alert rules.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">ER</span>
+                <h3>Error handling & guardrails</h3>
+                <p>
+                  If upstream data is missing or delayed, the system degrades gracefully (hold alerts, log failures,
+                  notify ops). Minimum-data eligibility rules reduce noise (e.g., minimum views before evaluating CVR).
+                </p>
+              </div>
+            </div>
+            <div class="section-body">
             <figure class="diagram-figure">
               <img
-                src="diagrams/workatoWorkflow.svg"
+                src="..\diagrams\ota-monitoring\automationWorkflow.png"
                 alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
               />
               <figcaption>
-                Workato Workflow diagram of SYNaTRA the SYNthetic TRiage
-                Assistant Salesforce, Jira, Snowflake, and LLM skills into a
-                single triage response.
+                Work flow to create Jira tickets for Alerts for high risk/ high loss listings and warning comminication for potentially risky listings.
               </figcaption>
             </figure>
+          </div>
+            
           </div>
         </section>
 
         <!-- KEY FEATURES -->
-        <section class="section reveal" id="work">
+        <section class="section reveal" id="features">
           <div class="section-header">
             <h2 class="brand-heading">Key Features</h2>
-            <p>
-              How SYNaTRA assembles context, searches systems, and keeps data
-              safe.
-            </p>
+            <p>What makes this monitoring system operationally useful.</p>
           </div>
+
           <div class="section-body">
-            <div class="grid grid-features">
+            <div class="grid grid-3">
               <div class="card">
-                <span class="tile-icon">UC</span>
-                <h3>Unified Customer Context</h3>
+                <span class="tile-icon">OT</span>
+                <h3>Alert-to-ticket routing</h3>
                 <p>
-                  Searches Salesforce for Accounts, Cases, Contracts, and
-                  Subscriptions, and Snowflake for subscription details, then
-                  builds a concise customer overview with active plans, status,
-                  and total MRR.
-                </p>
-                <small
-                  >Data sources: Salesforce (Case, Contract, Account),
-                  Snowflake subscription tables.</small
-                >
-              </div>
-
-              <div class="card">
-                <span class="tile-icon">IS</span>
-                <h3>Issue-Aware Search Across Systems</h3>
-                <p>
-                  Converts short issue descriptions into keyword strings and
-                  constructs SOQL and JQL queries. Searches Salesforce Cases and
-                  Jira issues (DSSD, DS, COPS) for relevant historical tickets
-                  within a 12-month window.
-                </p>
-                <small>Tech: SOQL, JQL, optional SOSL.</small>
-              </div>
-
-              <div class="card">
-                <span class="tile-icon">SS</span>
-                <h3>Summaries, Scores, and Next Steps</h3>
-                <p>
-                  For each Salesforce Case and Jira issue, SYNaTRA generates
-                  ≤150-word summaries of historical resolutions, adds confidence
-                  and similarity scores, and labels records with source
-                  references (e.g., SF-Case-12345, JIRA-6789). It then proposes
-                  the next best action in friendly, live-usable language.
+                  Each alert type maps cleanly to an owner and likely fix path, reducing back-and-forth and speeding
+                  time-to-resolution.
                 </p>
               </div>
-
               <div class="card">
-                <span class="tile-icon">GR</span>
-                <h3>Guardrails, Access Rules, and Safety</h3>
+                <span class="tile-icon">PR</span>
+                <h3>Priority scoring (optional)</h3>
                 <p>
-                  Uses integration-user credentials for Salesforce and Jira,
-                  masks PII (emails, phone numbers, tokens) in summaries, and
-                  avoids any persistent storage beyond the current response.
-                  Designed for internal use only.
+                  Alerts can be ranked using estimated impact and severity to keep teams focused on the highest
+                  NetRevPAR risk first.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">AI</span>
+                <h3>Agent-ready foundation</h3>
+                <p>
+                  Resolution outcomes become training data for an early-warning layer that predicts risk before
+                  a listing goes fully dark.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- SYSTEM ARCHITECTURE -->
-        <section class="section reveal">
+        <!-- NEXT STEPS / ROADMAP -->
+        <section class="section reveal" id="roadmap">
           <div class="section-header">
-            <h2 class="brand-heading">System Architecture</h2>
-            <p>
-              How SYNaTRA orchestrates connectors and skills into a triage
-              report.
-            </p>
+            <h2 class="brand-heading">Roadmap</h2>
+            <p>How this evolves from rules → richer signals → predictive monitoring.</p>
           </div>
           <div class="section-body">
-            <p>
-              SYNaTRA orchestrates multiple connectors and skills to transform a
-              short issue description into a structured triage report:
-            </p>
-            <ul class="architecture-list">
-              <li>
-                <strong>Inputs:</strong>
-                <code>issue_description</code> (free text) and optional
-                <code>customer_identifier</code> (AccountId, ContractId,
-                CustomerId).
-              </li>
-              <li>
-                <strong>Customer Identification:</strong> Salesforce account
-                search skill with fuzzy matching and top-5 candidates when only
-                a name is provided.
-              </li>
-              <li>
-                <strong>Keyword &amp; Query Builder:</strong> Tokenizes issue
-                text and builds JQL and SOQL/SOSL keyword queries.
-              </li>
-              <li>
-                <strong>Record Fetching:</strong> Salesforce Cases &amp;
-                Contracts, Jira tickets, Snowflake subscription data (12-month
-                lookback).
-              </li>
-              <li>
-                <strong>Summarization &amp; Scoring:</strong> Resolution
-                summaries with similarity and confidence metrics at record and
-                overall result levels.
-              </li>
-              <li>
-                <strong>Insight Assembly:</strong> Final message composed into a
-                readable chat response for Slack, MS Teams, or Workbot.
-              </li>
-            </ul>
-            <p>
-              If Salesforce or Jira are unavailable, SYNaTRA responds with a
-              user-friendly error:
-              <em
-                >“I couldn’t reach Salesforce or Jira right now — please try
-                again shortly or check your connection settings.”</em
-              >
-            </p>
-          </div>
-          <div class="section-body">
-            <figure class="diagram-figure">
-              <img
-                src="diagrams/syntra-architecture.svg"
-                alt="High-level architecture diagram of the SYNaTRA synthetic triage assistant"
-              />
-              <figcaption>
-                High-level view of how SYNaTRA orchestrates Salesforce, Jira,
-                Snowflake, and LLM skills into a single triage response.
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- IMPACT & RESULTS -->
-        <section class="section reveal">
-          <div class="section-header">
-            <h2 class="brand-heading">Impact &amp; Results</h2>
-            <p>Targeted outcomes for Customer Success teams.</p>
-          </div>
-
-          <div class="section-body">
-            <div class="metrics">
-              <div class="metric">
-                <span class="icon-only"><i class="fa fa-clock"></i></span>
-                <div>
-                  <div class="metric-main">Time-to-context</div>
-                  <div class="metric-text">
-                    <p>
-                      50% reduction in average time-to-context for CS Ops and
-                      CSMs.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <span class="icon-only"
-                  ><i class="fa fa-chart-line"></i
-                ></span>
-                <div>
-                  <div class="metric-main">FCR uplift</div>
-                  <div class="metric-text">
-                    <p>
-                      Improved first-contact resolution rate by surfacing prior
-                      fixes faster.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <span class="icon-only"><i class="fa fa-database"></i></span>
-                <div>
-                  <div class="metric-main">Breadth of context</div>
-                  <div class="metric-text">
-                    <p>
-                      Up to 100 Salesforce cases and 100 Jira issues summarized
-                      per request.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <span class="icon-only"><i class="fa fa-bolt"></i></span>
-                <div>
-                  <div class="metric-main">Execution window</div>
-                  <div class="metric-text">
-                    <p>
-                      Maximum runtime ≤ 5 minutes for full triage execution,
-                      with no data persisted.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- USE CASES -->
-        <section class="section reveal">
-          <div class="section-header">
-            <h2 class="brand-heading">Use Cases</h2>
-            <p>Where SYNaTRA fits day-to-day CS workflows.</p>
-          </div>
-          <div class="section-body">
-            <div class="grid grid-usecases">
+            <div class="grid grid-2">
               <div class="card">
-                <span class="tile-icon">AT</span>
-                <h3>Account + Issue Triage</h3>
+                <span class="tile-icon">P1</span>
+                <h3>Phase 1: Rules + ticketing</h3>
                 <p>
-                  A CSM provides an issue description and an AccountId. SYNaTRA
-                  identifies recent Salesforce Cases and Jira tickets,
-                  summarizes resolutions, retrieves active contracts and
-                  products, and returns a complete context package for live
-                  customer calls.
+                  Launch explainable alerts (visibility + low conversion with eligibility thresholds). Implement ownership,
+                  SLAs by alert type, and a consistent communication path.
                 </p>
               </div>
-
               <div class="card">
-                <span class="tile-icon">IR</span>
-                <h3>Issue-Only Research</h3>
+                <span class="tile-icon">P2</span>
+                <h3>Phase 2: Enrichment</h3>
                 <p>
-                  When only a short issue description is available, SYNaTRA
-                  searches Jira and historical Salesforce Cases using
-                  keyword-based queries. It ranks and summarizes likely matches
-                  and proposes next steps, even before a specific customer is
-                  identified.
+                  Add supporting signals like pricing changes, fees/policies, LOS restrictions, and availability patterns
+                  to improve diagnosis and reduce false positives.
                 </p>
               </div>
-
               <div class="card">
-                <span class="tile-icon">CP</span>
-                <h3>CS Ops Coaching &amp; Playbooks</h3>
+                <span class="tile-icon">P3</span>
+                <h3>Phase 3: Early-warning agent</h3>
                 <p>
-                  CS Ops teams use SYNaTRA’s structured outputs—customer
-                  overview, case list, Jira issue list, and suggested
-                  actions—to design standard playbooks and improve coaching for
-                  handling recurring issue patterns.
+                  A lightweight agent reads historical alerts + resolutions, detects precursors to visibility failures,
+                  and produces risk scores. Human approval remains the final gate.
+                </p>
+              </div>
+              <div class="card">
+                <span class="tile-icon">QA</span>
+                <h3>Phase 4: QA + calibration</h3>
+                <p>
+                  Periodic threshold tuning, precision/recall tracking, and feedback loops ensure the system remains
+                  reliable as seasonality and portfolio mix change.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- GET IN TOUCH -->
+        <!-- CONTACT -->
         <section class="section reveal" id="contact">
           <div class="section-header">
             <h2 class="brand-heading">Get in Touch</h2>
+            <p>Interested in building automation-first monitoring systems?</p>
           </div>
           <div class="section-body">
-            <p>
-              Interested in creating your own internal Customer Success? Email
-              Sarah at Sarah.Brown@naturallylogical.com
-            </p>
-            <p class="note">
-              <strong>Note:</strong> Access is restricted to internal employees;
-              operational details and PII are guarded and not persisted.
-            </p>
+            <div class="card">
+              <p style="margin-top: 0">
+                Email Sarah at <a href="mailto:sarah.brown@naturallylogical.com">sarah.brown@naturallylogical.com</a>
+              </p>
+              <p style="margin-bottom: 0; color: var(--ink-muted); font-size: 0.9rem">
+                <strong>Note:</strong> This portfolio page intentionally omits company-specific identifiers and operational details.
+              </p>
+            </div>
           </div>
         </section>
 
         <footer class="footer">
           <p>© 2025 Naturally Logical</p>
-          <p>
-            Portfolio excerpt for demonstration; operational details redacted.
-          </p>
+          <p>Portfolio excerpt for demonstration; sensitive operational details redacted.</p>
         </footer>
       </div>
     </div>
 
-    <!-- Diagram modal (reusable for all .diagram-figure images) -->
+    <!-- Diagram modal -->
     <div id="diagram-modal" class="diagram-modal" aria-hidden="true">
       <div class="diagram-modal-backdrop"></div>
       <div class="diagram-modal-content" role="dialog" aria-modal="true">
-        <button class="diagram-modal-close" aria-label="Close diagram">
-          &times;
-        </button>
+        <button class="diagram-modal-close" aria-label="Close diagram">&times;</button>
         <img src="" alt="" />
         <p class="diagram-modal-caption"></p>
       </div>
     </div>
 
-    <script>
-      // Simple scroll-reveal using IntersectionObserver
-      document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll(".reveal");
-
-        if (!("IntersectionObserver" in window)) {
-          elements.forEach((el) => el.classList.add("visible"));
-        } else {
-          const observer = new IntersectionObserver(
-            (entries, obs) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                  obs.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.15 }
-          );
-
-          elements.forEach((el) => observer.observe(el));
-        }
-
-        // === Diagram click-to-zoom modal ===
-        const diagramImages = document.querySelectorAll(".diagram-figure img");
-        const modal = document.getElementById("diagram-modal");
-        if (!modal) return;
-
-        const modalImg = modal.querySelector("img");
-        const modalCaption = modal.querySelector(".diagram-modal-caption");
-        const closeBtn = modal.querySelector(".diagram-modal-close");
-        const backdrop = modal.querySelector(".diagram-modal-backdrop");
-
-        function openModal(src, alt, caption) {
-          modalImg.src = src;
-          modalImg.alt = alt || "";
-          modalCaption.textContent = caption || "";
-          modal.classList.add("open");
-          modal.setAttribute("aria-hidden", "false");
-        }
-
-        function closeModal() {
-          modal.classList.remove("open");
-          modal.setAttribute("aria-hidden", "true");
-          modalImg.src = "";
-          modalImg.alt = "";
-          modalCaption.textContent = "";
-        }
-
-        diagramImages.forEach((img) => {
-          img.addEventListener("click", () => {
-            const figure = img.closest("figure");
-            const captionEl = figure
-              ? figure.querySelector("figcaption")
-              : null;
-            const captionText = captionEl ? captionEl.innerText : "";
-            openModal(img.src, img.alt, captionText);
-          });
-        });
-
-        if (closeBtn) closeBtn.addEventListener("click", closeModal);
-        if (backdrop) backdrop.addEventListener("click", closeModal);
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            closeModal();
-          }
-        });
-      });
-    </script>
-
-    <!-- Sidebar toggle JS (same as main page) -->
-    <script>
-      var mySidebar = document.getElementById("mySidebar");
-      function w3_open() {
-        if (mySidebar.style.display === "block") {
-          mySidebar.style.display = "none";
-        } else {
-          mySidebar.style.display = "block";
-        }
-      }
-      function w3_close() {
-        mySidebar.style.display = "none";
-      }
-    </script>
+    <script src="scripts.js" defer></script>
   </body>
 </html>
