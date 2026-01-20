@@ -1,0 +1,329 @@
+<!-- what-i-build.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) - optional: keep consistent with your site -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-HM5VZHXLCT");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>What I Build | Sarah M. Brown — Senior AI & Automation Engineer</title>
+    <meta
+      name="description"
+      content="What I build: AI triage agents, enterprise automation & integrations, and monitoring/alerting systems that turn scattered data into clear decisions."
+    />
+    <link rel="canonical" href="https://naturallylogical.com/what-i-build.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="What I Build | Sarah M. Brown" />
+    <meta
+      property="og:description"
+      content="AI triage agents, enterprise automation & integrations, and monitoring/alerting systems—built for real teams and measurable outcomes."
+    />
+    <meta property="og:url" content="https://naturallylogical.com/what-i-build.html" />
+
+    <!-- Fonts + W3CSS + Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Your page CSS -->
+    <link rel="stylesheet" href="what-i-build/styles.css" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sarah M. Brown",
+      "jobTitle": "Senior AI & Automation Engineer",
+      "url": "https://naturallylogical.com/",
+      "email": "mailto:sarah.brown@naturallylogical.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/serruhb/",
+        "https://github.com/Serruhb"
+      ]
+    }
+    </script>
+  </head>
+
+  <body>
+    <!-- =================== NAVBAR (matches your other pages) =================== -->
+    <div class="w3-top">
+      <div class="w3-bar w3-card" id="myNavbar" style="background-color: var(--brand); color:#fff;">
+        <a href="https://naturallylogical.com" class="w3-bar-item w3-button" style="color:#fff;">
+          <i class="fa fa-user"></i> HOME
+        </a>
+
+        <a href="SYNaTRA.html" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
+          <i class="fa-solid fa-robot"></i> SYNaTRA
+        </a>
+
+        <a href="ota-monitoring.html" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
+          <i class="fa-solid fa-tower-broadcast"></i> OTA MONITORING
+        </a>
+
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
+          <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
+        </a>
+
+        <div class="w3-right w3-hide-small">
+          <a href="mailto:sarah.brown@naturallylogical.com" class="w3-bar-item w3-button" style="color:#fff;">
+            <i class="fa fa-envelope"></i> CONTACT
+          </a>
+          <a href="resume.html" class="w3-bar-item w3-button" style="color:#fff;">
+            <i class="fa fa-user"></i> RESUME
+          </a>
+        </div>
+
+        <!-- Mobile -->
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()" style="color:#fff;">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Sidebar on small screens -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+         style="display:none" id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Menu</a>
+      <a href="https://naturallylogical.com" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+      <a href="SYNaTRA.html" onclick="w3_close()" class="w3-bar-item w3-button">SYNaTRA</a>
+      <a href="ota-monitoring.html" onclick="w3_close()" class="w3-bar-item w3-button">OTA MONITORING</a>
+      <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button">RESUME</a>
+      <a href="mailto:sarah.brown@naturallylogical.com" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    </nav>
+    <!-- =================== END NAVBAR =================== -->
+
+    <div class="page">
+      <div class="shell">
+        <!-- HERO -->
+        <section class="hero" id="top">
+          <div class="brand-card hero-card">
+            <div class="hero-grid">
+              <div class="hero-art">
+                <!-- Optional: swap with your own image -->
+                <div class="hero-badge">
+                  <i class="fa-solid fa-cubes"></i>
+                </div>
+              </div>
+
+              <div>
+                <h1 class="brand-heading hero-title">What I Build</h1>
+                <p class="hero-sub">
+                  I build AI + automation systems that turn scattered data into decisions:
+                  faster triage, earlier detection, and cleaner handoffs.
+                </p>
+
+                <div class="hero-actions">
+                  <a class="brand-btn" href="#flagships"><i class="fa-solid fa-star"></i> Flagship systems</a>
+                  <a class="ghost-btn" href="#capabilities"><i class="fa-solid fa-list-check"></i> Capabilities</a>
+                  <a class="ghost-btn" href="#toolbox"><i class="fa-solid fa-toolbox"></i> Toolbox</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FLAGSHIPS -->
+        <section class="section reveal" id="flagships">
+          <div class="section-header">
+            <h2 class="brand-heading">Flagship Systems</h2>
+            <p>Two examples that show how I think: signal → context → action.</p>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">AI</span>
+                <h3>SYNaTRA — AI Triage Agent</h3>
+              </div>
+              <p>
+                An internal triage assistant that retrieves and summarizes customer history across Salesforce, Jira, and Snowflake,
+                then returns a structured, actionable triage summary for live CS workflows.
+              </p>
+              <ul class="bullets">
+                <li><strong>Core:</strong> query building (SOQL/JQL/SQL) + summarization + confidence scoring</li>
+                <li><strong>Outputs:</strong> prior fixes, likely matches, next best actions, source references</li>
+                <li><strong>Safety:</strong> internal-only guardrails, PII masking, no persistence by default</li>
+              </ul>
+              <div class="card-actions">
+                <a class="brand-btn" href="SYNaTRA.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">OT</span>
+                <h3>OTA Performance Alert &amp; Monitoring</h3>
+              </div>
+              <p>
+                An automated monitoring framework that converts weekly OTA performance metrics into prioritized, owner-aware alerts—
+                catching visibility failures, conversion leakage, and degradation trends early.
+              </p>
+              <ul class="bullets">
+                <li><strong>Signal tiers:</strong> visibility → conversion → trend (monitor)</li>
+                <li><strong>Noise control:</strong> eligibility thresholds, streaks, baselines to reduce fatigue</li>
+                <li><strong>Ops-ready:</strong> alert-to-ticket routing + watchlists + feedback loop for future prediction</li>
+              </ul>
+              <div class="card-actions">
+                <a class="brand-btn" href="ota-monitoring.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CAPABILITIES -->
+        <section class="section reveal" id="capabilities">
+          <div class="section-header">
+            <h2 class="brand-heading">Capabilities</h2>
+            <p>ATS-friendly, but still real: these are the patterns I ship.</p>
+          </div>
+
+          <div class="grid grid-3">
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">DS</span>
+                <h3>Decision systems</h3>
+              </div>
+              <p>Turn messy inputs into clear, human-readable actions (summaries, scores, and next steps).</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">IN</span>
+                <h3>Integrations</h3>
+              </div>
+              <p>Cross-system workflows that keep CRM, tickets, and data platforms aligned and low-friction.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">MO</span>
+                <h3>Monitoring &amp; alerting</h3>
+              </div>
+              <p>Explainable thresholds, baselines, routing, and watchlists that avoid alert fatigue.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">DQ</span>
+                <h3>Data shaping</h3>
+              </div>
+              <p>Common schemas, eligibility rules, and KPI design that makes signals trustworthy.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">GR</span>
+                <h3>Guardrails</h3>
+              </div>
+              <p>Access controls, PII masking, and “safe by default” patterns for internal AI tools.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">EN</span>
+                <h3>Enablement</h3>
+              </div>
+              <p>Docs + dashboards + handoffs so systems get adopted and stay maintainable.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOOLBOX -->
+        <section class="section reveal" id="toolbox">
+          <div class="section-header">
+            <h2 class="brand-heading">Toolbox</h2>
+            <p>A compact scan-friendly list for recruiters (and a reminder for future me).</p>
+          </div>
+
+          <div class="card">
+            <div class="toolbox">
+              <span class="pill">Salesforce</span>
+              <span class="pill">SOQL / SOSL</span>
+              <span class="pill">Jira</span>
+              <span class="pill">JQL</span>
+              <span class="pill">Snowflake</span>
+              <span class="pill">SQL</span>
+              <span class="pill">Workato</span>
+              <span class="pill">Slack / Teams workflows</span>
+              <span class="pill">Monitoring &amp; alerting</span>
+              <span class="pill">Data modeling / KPI design</span>
+              <span class="pill">PII masking / guardrails</span>
+              <span class="pill">Documentation &amp; enablement</span>
+            </div>
+
+            <p class="note" style="margin-top:12px;">
+              If you’re hiring for systems that blend automation + AI + operational reality, I’m happiest when the goal is
+              measurable: less time-to-context, fewer escalations, earlier detection, cleaner routing.
+            </p>
+          </div>
+        </section>
+
+        <!-- HOW I WORK -->
+        <section class="section reveal" id="how">
+          <div class="section-header">
+            <h2 class="brand-heading">How I Work</h2>
+            <p>Low-drama engineering: clear owners, reliable systems, and feedback loops.</p>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="card">
+              <span class="tile-icon">01</span>
+              <h3>Workflow first</h3>
+              <p>Define owners, inputs/outputs, and “what good looks like.” Then build the simplest system that works.</p>
+            </div>
+            <div class="card">
+              <span class="tile-icon">02</span>
+              <h3>Reliability built-in</h3>
+              <p>Guardrails, logging, failure modes, and noise control (eligibility rules, thresholds, baselines).</p>
+            </div>
+            <div class="card">
+              <span class="tile-icon">03</span>
+              <h3>Ship &amp; iterate</h3>
+              <p>Deploy small, measure usage, and refine where humans actually get stuck—not where we guess they might.</p>
+            </div>
+            <div class="card">
+              <span class="tile-icon">04</span>
+              <h3>Make it adoptable</h3>
+              <p>Docs + dashboards + handoffs so the system survives staffing changes and stays trusted.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section reveal" id="contact">
+          <div class="section-header">
+            <h2 class="brand-heading">Get in Touch</h2>
+            <p>Want to talk about AI triage, enterprise automation, or monitoring systems?</p>
+          </div>
+          <div class="card">
+            <p style="margin-top:0;">
+              Email me at <a href="mailto:sarah.brown@naturallylogical.com">sarah.brown@naturallylogical.com</a>
+            </p>
+            <p class="note" style="margin-bottom:0;">
+              <strong>Note:</strong> Public portfolio pages intentionally omit company identifiers and sensitive operational details.
+            </p>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>© 2026 Naturally Logical</p>
+          <p>Portfolio excerpt for demonstration; sensitive details redacted.</p>
+        </footer>
+      </div>
+    </div>
+
+    <script src="what-i-build/scripts.js" defer></script>
+  </body>
+</html>
