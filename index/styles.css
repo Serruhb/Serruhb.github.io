@@ -1,0 +1,64 @@
+/* ===== Design tokens ===== */
+:root{
+  --brand: #00CDAC;                 /* main brand */
+  --ink: #1e1e1e;                   /* body text */
+  --ink-muted: #5a5a5a;             /* secondary text */
+  --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
+  /* Very light brand tint for full-page background */
+  --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
+}
+
+/* ===== Base ===== */
+html, body{ height:100%; }
+body,h1,h2,h3,h4,h5,h6{ font-family:"Raleway",sans-serif }
+body{
+  line-height:1.8;
+  color:var(--ink);
+  background: #f3fbf9;        /* fallback */
+  background: var(--bg-soft); /* preferred */
+}
+
+/* Full height image header */
+.bgimg-1{
+  background-position:center;
+  background-size:cover;
+  background-image:url("/flamingos.jpg");
+  min-height:100%;
+}
+
+.jumbo,.xxlarge,.large{ font-weight:bolder; }
+.w3-bar .w3-button{ padding:16px; }
+
+/* Avoid global fixed img size to prevent layout conflicts */
+img{ max-width:100%; height:auto; }
+
+/* Headings using consistent brand variant */
+.brand-heading{ color:var(--brand-strong); }
+
+/* Accent cards (hero + CTA) keep solid brand backgrounds */
+.brand-card{
+  background-color:var(--brand);
+  color:#fff;
+  opacity:0.82;
+  border-radius:14px;
+  padding:24px 28px;
+}
+
+/* Buttons */
+.brand-btn{
+  background-color:var(--brand);
+  color:#fff;
+}
+.brand-btn:hover{
+  filter:brightness(0.95);
+}
+
+/* Tile icons use brand as accent, not section background */
+.tile-icon{
+  background-color:var(--brand);
+  color:#fff;
+  display:inline-block;
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+}
