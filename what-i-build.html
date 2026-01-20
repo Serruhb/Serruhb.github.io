@@ -17,7 +17,7 @@
     <title>What I Build | Sarah M. Brown — Senior AI & Automation Engineer</title>
     <meta
       name="description"
-      content="What I build: AI triage agents, enterprise automation & integrations, subscription self-serve systems, and monitoring/alerting that turn scattered data into clear decisions."
+      content="What I build: AI triage agents, subscription self-serve automation, enterprise integrations, and monitoring/alerting systems that turn scattered data into clear decisions."
     />
     <link rel="canonical" href="https://naturallylogical.com/what-i-build.html" />
 
@@ -146,57 +146,60 @@
           </div>
 
           <div class="grid grid-3">
+            <!-- SYNaTRA -->
             <div class="card">
               <div class="card-top">
                 <span class="tile-icon">AI</span>
                 <h3>SYNaTRA — AI Triage Agent</h3>
               </div>
               <p>
-                An internal triage assistant that retrieves and summarizes customer history across Salesforce, Jira, and Snowflake,
-                then returns a structured, actionable triage summary for live CS workflows.
+                A Slack-based triage assistant that retrieves and summarizes customer context across Salesforce and Jira,
+                returning a structured triage summary with ranked signals and confidence.
               </p>
               <ul class="bullets">
-                <li><strong>Core:</strong> query building (SOQL/JQL/SQL) + summarization + confidence scoring</li>
-                <li><strong>Outputs:</strong> prior fixes, likely matches, next best actions, source references</li>
-                <li><strong>Safety:</strong> internal-only guardrails, PII masking, no persistence by default</li>
+                <li><strong>Trigger:</strong> user-initiated via Slack command (on-demand)</li>
+                <li><strong>AI scope:</strong> summarization + confidence scoring + ranking (assistive, not autonomous)</li>
+                <li><strong>Data:</strong> read-only access to specific Salesforce objects and scoped Jira projects</li>
               </ul>
               <div class="card-actions">
                 <a class="brand-btn" href="SYNaTRA.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
               </div>
             </div>
 
+            <!-- Subscription Self-Serve -->
             <div class="card">
               <div class="card-top">
                 <span class="tile-icon">SS</span>
                 <h3>Subscription Self-Serve Automation</h3>
               </div>
               <p>
-                A self-serve framework that transforms support-tool subscription events into validated, auditable contract amendments
-                in Salesforce CPQ—handling ALDs, upgrades/downgrades, provider changes, and multi-contract edge cases.
+                A framework that translates subscription state changes into validated, auditable CPQ-ready actions—reducing
+                manual error and improving revenue alignment.
               </p>
               <ul class="bullets">
-                <li><strong>Data:</strong> Snowflake reshapes events into a normalized, amendment-ready model</li>
-                <li><strong>Orchestration:</strong> Workato parent recipe validates + routes modular sub-recipes</li>
-                <li><strong>Trust:</strong> idempotency + logging + reconciliation; fail-closed on invalid states</li>
+                <li><strong>Source of truth:</strong> upstream SQL Server subscription state feeds normalized events</li>
+                <li><strong>Automation:</strong> activations/deactivations automated; contract amendments require human review</li>
+                <li><strong>Safety:</strong> fail-closed validation, logging, and (when needed) Jira ticket creation</li>
               </ul>
               <div class="card-actions">
                 <a class="brand-btn" href="subscription-self-serve.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
               </div>
             </div>
 
+            <!-- OTA Monitoring -->
             <div class="card">
               <div class="card-top">
                 <span class="tile-icon">OT</span>
                 <h3>OTA Performance Alert &amp; Monitoring</h3>
               </div>
               <p>
-                An automated monitoring framework that converts weekly OTA performance metrics into prioritized, owner-aware alerts—
-                catching visibility failures, conversion leakage, and degradation trends early.
+                Automated alerting that monitors visibility, conversion, and trends to detect revenue-impacting OTA issues early,
+                with clear ownership and reduced alert fatigue.
               </p>
               <ul class="bullets">
-                <li><strong>Signal tiers:</strong> visibility → conversion → trend (monitor)</li>
-                <li><strong>Noise control:</strong> eligibility thresholds, streaks, baselines to reduce fatigue</li>
-                <li><strong>Ops-ready:</strong> alert-to-ticket routing + watchlists + feedback loop for future prediction</li>
+                <li><strong>Signals:</strong> CVR, zero views, zero appearances, and streak-based degradation</li>
+                <li><strong>Noise control:</strong> eligibility thresholds, rolling baselines, streak rules</li>
+                <li><strong>Routing:</strong> critical alerts auto-ticketed; early warnings monitored before escalation</li>
               </ul>
               <div class="card-actions">
                 <a class="brand-btn" href="ota-monitoring.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
