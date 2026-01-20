@@ -17,7 +17,7 @@
     <title>What I Build | Sarah M. Brown — Senior AI & Automation Engineer</title>
     <meta
       name="description"
-      content="What I build: AI triage agents, enterprise automation & integrations, and monitoring/alerting systems that turn scattered data into clear decisions."
+      content="What I build: AI triage agents, enterprise automation & integrations, subscription self-serve systems, and monitoring/alerting that turn scattered data into clear decisions."
     />
     <link rel="canonical" href="https://naturallylogical.com/what-i-build.html" />
 
@@ -26,7 +26,7 @@
     <meta property="og:title" content="What I Build | Sarah M. Brown" />
     <meta
       property="og:description"
-      content="AI triage agents, enterprise automation & integrations, and monitoring/alerting systems—built for real teams and measurable outcomes."
+      content="AI triage agents, subscription self-serve automation, enterprise integrations, and monitoring/alerting systems—built for real teams and measurable outcomes."
     />
     <meta property="og:url" content="https://naturallylogical.com/what-i-build.html" />
 
@@ -68,6 +68,10 @@
           <i class="fa-solid fa-robot"></i> SYNaTRA
         </a>
 
+        <a href="subscription-self-serve.html" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
+          <i class="fa-solid fa-file-contract"></i> SUBSCRIPTIONS
+        </a>
+
         <a href="ota-monitoring.html" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
           <i class="fa-solid fa-tower-broadcast"></i> OTA MONITORING
         </a>
@@ -98,6 +102,7 @@
       <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Menu</a>
       <a href="https://naturallylogical.com" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
       <a href="SYNaTRA.html" onclick="w3_close()" class="w3-bar-item w3-button">SYNaTRA</a>
+      <a href="subscription-self-serve.html" onclick="w3_close()" class="w3-bar-item w3-button">SUBSCRIPTIONS</a>
       <a href="ota-monitoring.html" onclick="w3_close()" class="w3-bar-item w3-button">OTA MONITORING</a>
       <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button">RESUME</a>
       <a href="mailto:sarah.brown@naturallylogical.com" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
@@ -111,7 +116,6 @@
           <div class="brand-card hero-card">
             <div class="hero-grid">
               <div class="hero-art">
-                <!-- Optional: swap with your own image -->
                 <div class="hero-badge">
                   <i class="fa-solid fa-cubes"></i>
                 </div>
@@ -138,10 +142,10 @@
         <section class="section reveal" id="flagships">
           <div class="section-header">
             <h2 class="brand-heading">Flagship Systems</h2>
-            <p>Two examples that show how I think: signal → context → action.</p>
+            <p>Three examples that show how I think: signal → context → action.</p>
           </div>
 
-          <div class="grid grid-2">
+          <div class="grid grid-3">
             <div class="card">
               <div class="card-top">
                 <span class="tile-icon">AI</span>
@@ -158,6 +162,25 @@
               </ul>
               <div class="card-actions">
                 <a class="brand-btn" href="SYNaTRA.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top">
+                <span class="tile-icon">SS</span>
+                <h3>Subscription Self-Serve Automation</h3>
+              </div>
+              <p>
+                A self-serve framework that transforms support-tool subscription events into validated, auditable contract amendments
+                in Salesforce CPQ—handling ALDs, upgrades/downgrades, provider changes, and multi-contract edge cases.
+              </p>
+              <ul class="bullets">
+                <li><strong>Data:</strong> Snowflake reshapes events into a normalized, amendment-ready model</li>
+                <li><strong>Orchestration:</strong> Workato parent recipe validates + routes modular sub-recipes</li>
+                <li><strong>Trust:</strong> idempotency + logging + reconciliation; fail-closed on invalid states</li>
+              </ul>
+              <div class="card-actions">
+                <a class="brand-btn" href="subscription-self-serve.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
               </div>
             </div>
 
@@ -250,6 +273,7 @@
           <div class="card">
             <div class="toolbox">
               <span class="pill">Salesforce</span>
+              <span class="pill">Salesforce CPQ</span>
               <span class="pill">SOQL / SOSL</span>
               <span class="pill">Jira</span>
               <span class="pill">JQL</span>
@@ -259,6 +283,7 @@
               <span class="pill">Slack / Teams workflows</span>
               <span class="pill">Monitoring &amp; alerting</span>
               <span class="pill">Data modeling / KPI design</span>
+              <span class="pill">Idempotency / reconciliation</span>
               <span class="pill">PII masking / guardrails</span>
               <span class="pill">Documentation &amp; enablement</span>
             </div>
@@ -305,7 +330,7 @@
         <section class="section reveal" id="contact">
           <div class="section-header">
             <h2 class="brand-heading">Get in Touch</h2>
-            <p>Want to talk about AI triage, enterprise automation, or monitoring systems?</p>
+            <p>Want to talk about AI triage, enterprise automation, subscription ops, or monitoring systems?</p>
           </div>
           <div class="card">
             <p style="margin-top:0;">
