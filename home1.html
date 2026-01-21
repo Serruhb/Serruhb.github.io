@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#00CDAC" />
+  <meta name="theme-color" content="#2D5A27" />
 
   <title>Naturally Logical | Consulting — AI, Automation, and Strategy Systems</title>
   <meta name="description" content="Naturally Logical helps teams turn scattered data into reliable decisions. Consulting in AI-assisted operations, enterprise automation, and strategic alignment." />
   <link rel="canonical" href="https://naturallylogical.com/" />
-
+ 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
+  <link rel="icon" href="images/favicon-large.ico" type="image/x-icon">
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
 
   <!-- Styles -->
-  <link rel="stylesheet" href="New_assets/styles.css" />
+  <link rel="stylesheet" href="New_assets/oldsty.css" />
+  
 </head>
 
 <body>
@@ -38,8 +40,8 @@
         <a href="#proof">Proof</a>
         <a href="#process">Process</a>
         <a href="#about">About</a>
-        <a class="btn btn--ghost" href="what-i-build.html">What I Build</a>
-        <a class="btn btn--ghost" href="contact.html">Book</a>
+        <a class="btn btn--ghost" href="what-i-build2.html">What I Build</a>
+        <a class="btn btn--ghost" href="booking.html">Book</a>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -69,11 +71,12 @@
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" href="naturallylogical.com/contact.html">
+            <a class="btn btn--primary" href="booking.html">
               <i class="fa-solid fa-calendar"></i> Book a consult
             </a>
-            <a class="btn btn--primary" href="naturallylogical.com/contact.html">
-                <i class="fa-solid fa-envelope"></i> Reach out
+            <!-- Reach out now matches Book -->
+            <a class="btn btn--primary" href="contact.html">
+              <i class="fa-solid fa-envelope"></i> Reach out
             </a>
           </div>
 
@@ -112,7 +115,7 @@
 
             <div class="card__actions">
               <a class="btn btn--small btn--primary" href="#services">View services</a>
-              <a class="btn btn--small btn--primary" href="naturallylogical.com/what-i-build.html">See examples</a>
+              <a class="btn btn--small btn--primary" href="what-i-build2.html">See examples</a>
             </div>
           </div>
         </div>
@@ -121,7 +124,8 @@
       <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
-    <!-- SERVICES -->
+   <!-- SERVICES (CAROUSEL) -->
+    <!-- SERVICES (SIMPLE GRID) -->
     <section class="section" id="services">
       <div class="container">
         <div class="section__header">
@@ -130,64 +134,99 @@
         </div>
 
         <div class="grid grid--3">
+          <!-- Service 1: AI + Automation Guardrails -->
           <article class="card">
+            <img
+              src="Images/carosel/aiguradrails.png"
+              alt="AI and automation guardrails"
+              class="carousel__image"
+            >
+
             <div class="card__kicker">
               <i class="fa-solid fa-shield-halved"></i> AI + Automation Guardrails
             </div>
             <h3>Safe AI-assisted operations</h3>
             <p>
-              Validation layers, fail-closed behavior, idempotency, and auditability—especially where revenue and customer experience are at stake.
+              Design automation and AI flows with validation, fail-closed behavior, and auditability —
+              especially where revenue and customer experience are at risk.
             </p>
             <ul class="bullets">
               <li>Validation + policy gates</li>
-              <li>Logging + traceability</li>
-              <li>Human-in-the-loop workflows</li>
+              <li>Logging, observability, and traceability</li>
+              <li>Human-in-the-loop where it matters</li>
             </ul>
+            <div class="card__footer">
+              <a href="SYNaTRA.html">
+                See example (SYNaTRA) <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </article>
 
+          <!-- Service 2: Subscription Self-Serve -->
           <article class="card">
+            <img
+              src="Images/carosel/subscriptionselfserv.png"
+              alt="Subscription self-serve automation"
+              class="carousel__image"
+            >
+
             <div class="card__kicker">
-              <i class="fa-solid fa-arrows-rotate"></i> Enterprise Automation &amp; Integrations
+              <i class="fa-solid fa-arrows-rotate"></i> Subscription Self-Serve
             </div>
-            <h3>Cross-system alignment</h3>
+            <h3>Revenue-safe automation</h3>
             <p>
-              Integrations that keep CRM, ticketing, and data platforms coherent—built to survive real-world edge cases and changing teams.
+              Self-serve subscription changes that still respect contracts, billing rules, and downstream systems.
             </p>
             <ul class="bullets">
-              <li>Salesforce / Jira / Snowflake</li>
-              <li>Workato orchestration</li>
-              <li>Clean handoffs + documentation</li>
+              <li>Contract state validation</li>
+              <li>Fail-closed flows to avoid bad changes</li>
+              <li>Logging, auditability, and reconciliation</li>
             </ul>
+            <div class="card__footer">
+              <a href="subscription-self-serve.html">
+                See example <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </article>
 
+          <!-- Service 3: Ticket & Signal Triage -->
           <article class="card">
+            <img
+              src="Images/carosel/tickettriage.png"
+              alt="Ticket triage and signal monitoring"
+              class="carousel__image"
+            >
+
             <div class="card__kicker">
-              <i class="fa-solid fa-signal"></i> Monitoring & Decision Systems
+              <i class="fa-solid fa-signal"></i> Ticket &amp; Signal Triage
             </div>
             <h3>Earlier detection, less noise</h3>
             <p>
-              Explainable thresholds, baselines, and routing that turn raw metrics into owner-aware actions—without alert fatigue.
+              Ranked signals and ownership-aware alerts that surface issues before customers feel them.
             </p>
             <ul class="bullets">
-              <li>Signal design + KPI shaping</li>
-              <li>Alert routing + ownership</li>
-              <li>Feedback loops for refinement</li>
+              <li>Signal scoring and ranking</li>
+              <li>Owner-aware routing and escalation</li>
+              <li>Monitoring feedback loops</li>
             </ul>
+            <div class="card__footer">
+              <a href="ota-monitoring.html">
+                See example <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </article>
-        </div>
-
-        <div class="ctaRow">
-          <a class="btn btn--primary" href="booking.html"><i class="fa-solid fa-calendar"></i> Book a consult</a>
-          <a class="btn btn--ghost" href="contact.html"><i class="fa-solid fa-envelope"></i> Ask a question</a>
         </div>
       </div>
     </section>
+
+
+
 
     <!-- PROOF -->
     <section class="section section--alt" id="proof">
       <div class="container">
         <div class="section__header">
-          <h2>Proof & Case Studies</h2>
+          <h2>Proof &amp; Case Studies</h2>
           <p>Examples of the systems and decision frameworks I ship.</p>
         </div>
 
@@ -253,7 +292,7 @@
 
         <div class="ctaRow">
           <a class="btn btn--primary" href="booking.html"><i class="fa-solid fa-calendar"></i> Start with a consult</a>
-          <a class="btn btn--ghost" href="what-i-build.html"><i class="fa-solid fa-cubes"></i> Explore what I build</a>
+          <a class="btn btn--primary" href="what-i-build2.html"><i class="fa-solid fa-cubes"></i> Explore what I build</a>
         </div>
       </div>
     </section>
@@ -267,13 +306,12 @@
             Naturally Logical is a consulting practice focused on building reliable automation and decision systems that teams trust.
           </p>
           <p>
-            I’m Sarah M. Brown — a Senior AI & Automation Engineer with a systems-first approach. I specialize in the operational reality:
+            I’m Sarah M. Brown — a Senior AI &amp; Automation Engineer with a systems-first approach. I specialize in the operational reality:
             messy inputs, cross-team constraints, and automation that must be safe, observable, and adoptable.
           </p>
 
           <div class="about__actions">
             <a class="btn btn--primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Reach out</a>
-            <a class="btn btn--ghost" href="resume.html" target="_blank" rel="noopener"><i class="fa-solid fa-file"></i> Resume</a>
           </div>
         </div>
 
@@ -302,15 +340,17 @@
           <div class="footer__sub">Consulting • AI • Automation • Decision Systems</div>
         </div>
         <div class="footer__right">
-          <a href="booking.html">Book</a>
+          <a href="../contact.html">Book</a>
           <a href="contact.html">Contact</a>
-          <a href="what-i-build.html">What I Build</a>
+          <a href="what-i-build2.html">What I Build</a>
           <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </footer>
   </main>
 
+  <!-- Swiper JS (for offerings slider) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="New_assets/scripts.js"></script>
 </body>
 </html>
