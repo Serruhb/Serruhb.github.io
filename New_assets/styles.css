@@ -1,6 +1,7 @@
 :root{
   /* ===== Theme Palette ===== */
   --brand: #2D5A27;   /* Forest */
+  --mutedBrand: #7eaa79;   /* Forest */
   --accent: #C26747;  /* Terracotta */
   --link: #007AFF;    /* Blue */
   --muted: #708090;   /* Slate */
@@ -63,13 +64,28 @@ a[href]:hover{ filter: brightness(0.95); text-decoration: underline; }
   gap: 12px;
 }
 
-.brand__mark{
+.brand__mark {
+  width: 40px;          /* control logo size */
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  background: var(--mutedBrand);
+  justify-content: center;
+}
+
+.brand__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* keeps logo from squishing */
+  display: block;
+}
+/*.brand__mark{
   width: 14px;
   height: 14px;
   border-radius: 999px;
   background: var(--brand);
   box-shadow: 0 0 0 6px rgba(45,90,39,0.14);
-}
+}*/
 
 .brand__text{ display: grid; line-height: 1.1; }
 .brand__name{ font-weight: 900; letter-spacing: 0.2px; color: rgba(16,19,20,0.92); }
@@ -662,3 +678,4 @@ a[href]:hover{ filter: brightness(0.95); text-decoration: underline; }
   .carousel__btn--prev{ left: 8px; }
   .carousel__btn--next{ right: 8px; }
 }
+
