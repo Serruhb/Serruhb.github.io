@@ -564,7 +564,6 @@ a[href]:hover{ filter: brightness(0.95); text-decoration: underline; }
 }
 
 /* Floating card */
-/* Centered, lighter glass card */
 .carousel__card{
   position: absolute;
   z-index: 5;
