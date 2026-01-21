@@ -1,359 +1,223 @@
-
-
-<!-- what-i-build.html -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) - optional: keep consistent with your site -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-      gtag("config", "G-HM5VZHXLCT");
-    </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2D5A27" />
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies &amp; Systems | Naturally Logical Consulting</title>
+  <meta
+    name="description"
+    content="Case studies from Naturally Logical: AI triage assistants, subscription self-serve automation, and monitoring systems built with guardrails, observability, and adoption in mind."
+  />
+  <link rel="canonical" href="https://naturallylogical.com/what-i-build.html" />
 
-    <title>What I Build | Sarah M. Brown — Senior AI & Automation Engineer</title>
-    <meta
-      name="description"
-      content="What I build: AI triage agents, subscription self-serve automation, enterprise integrations, and monitoring/alerting systems that turn scattered data into clear decisions."
-    />
-    <link rel="canonical" href="https://naturallylogical.com/what-i-build.html" />
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="icon" href="images/favicon-large.ico" type="image/x-icon">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="What I Build | Sarah M. Brown" />
-    <meta
-      property="og:description"
-      content="AI triage agents, subscription self-serve automation, enterprise integrations, and monitoring/alerting systems—built for real teams and measurable outcomes."
-    />
-    <meta property="og:url" content="https://naturallylogical.com/what-i-build.html" />
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
-    <!-- Fonts + W3CSS + Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Site Styles (same as new homepage)   -->
+  <link rel="stylesheet" href="New_assets/styles.css" />
+</head>
 
-    <!-- Your page CSS -->
-    <link rel="stylesheet" href="what-i-build/styles.css" />
+<body>
+  <!-- NAV (same structure as new homepage, but links back to index sections) -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Naturally Logical home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">Naturally Logical</span>
+          <span class="brand__tag">Consulting</span>
+        </span>
+      </a>
 
-    <!-- Structured data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Sarah M. Brown",
-      "jobTitle": "Senior AI & Automation Engineer",
-      "url": "https://naturallylogical.com/",
-      "email": "mailto:sarah.brown@naturallylogical.com",
-      "sameAs": [
-        "https://www.linkedin.com/in/serruhb/",
-        "https://github.com/Serruhb"
-      ]
-    }
-    </script>
-  </head>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#proof">Proof</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#about">About</a>
+        <a class="btn btn--ghost" href="what-i-build.html">Case Studies</a>
+        <a class="btn btn--ghost" href="booking.html">Book</a>
+      </nav>
 
-  <body>
-    <!-- =================== NAVBAR (matches your other pages) =================== -->
-    <div class="w3-top">
-      <div class="w3-bar w3-card" id="myNavbar" style="background-color: var(--brand); color:#fff;">
-        <a href="https://naturallylogical.com" class="w3-bar-item w3-button" style="color:#fff;">
-          <i class="fa fa-user"></i> HOME
-        </a>
+      <button
+        class="nav__toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
 
-        <a href="SYNaTRA.html" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
-          <i class="fa-solid fa-robot"></i> SYNaTRA
-        </a>
-
-        <a href="subscription-self-serve.html" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
-          <i class="fa-solid fa-file-contract"></i> SUBSCRIPTIONS
-        </a>
-
-        <a href="ota-monitoring.html" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
-          <i class="fa-solid fa-tower-broadcast"></i> OTA MONITORING
-        </a>
-
-        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="w3-bar-item w3-button w3-hide-small" style="color:#fff;">
-          <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
-        </a>
-
-        <div class="w3-right w3-hide-small">
-          <a href="mailto:sarah.brown@naturallylogical.com" class="w3-bar-item w3-button" style="color:#fff;">
-            <i class="fa fa-envelope"></i> CONTACT
-          </a>
-          <a href="resume.html" class="w3-bar-item w3-button" style="color:#fff;">
-            <i class="fa fa-user"></i> RESUME
-          </a>
+  <main>
+    <!-- PAGE INTRO -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <h1>Case Studies &amp; Systems</h1>
+          <p class="lead">
+            A few concrete examples of how I design and ship automation and decision systems:
+            signal &rarr; context &rarr; decision.
+          </p>
         </div>
 
-        <!-- Mobile -->
-        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()" style="color:#fff;">
-          <i class="fa fa-bars"></i>
-        </a>
+        <p>
+          These are anonymized versions of real systems I’ve built for teams who care about
+          <strong>reliability</strong>, <strong>guardrails</strong>, and
+          <strong>adoption</strong> — not just one-off automations.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" href="booking.html">
+            <i class="fa-solid fa-calendar"></i> Book a consult
+          </a>
+          <a class="btn btn--primary" href="contact.html">
+            <i class="fa-solid fa-envelope"></i> Reach out
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP SYSTEMS -->
+    <section class="section" id="flagships">
+      <div class="container">
+        <div class="section__header">
+          <h2>Flagship systems</h2>
+          <p>Three examples that show how I think about AI, automation, and decision systems.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <!-- SYNaTRA -->
+          <article class="card card--link">
+            <div class="card__kicker">
+              <i class="fa-solid fa-robot"></i> SYNaTRA
+            </div>
+            <h3>AI triage assistant (Slack)</h3>
+            <p>
+              A Slack-based triage assistant that pulls customer context from Salesforce and Jira,
+              ranks signals, and returns a structured summary for faster, safer decisions.
+            </p>
+            <ul class="bullets">
+              <li>Retrieves relevant records across multiple systems</li>
+              <li>Summarizes into a consistent triage format</li>
+              <li>Highlights risks and next best actions</li>
+            </ul>
+            <div class="card__footer">
+              <a href="SYNaTRA.html">
+                View case study <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Subscription Self-Serve -->
+          <article class="card card--link">
+            <div class="card__kicker">
+              <i class="fa-solid fa-file-contract"></i> Subscription Self-Serve
+            </div>
+            <h3>Revenue-safe subscription changes</h3>
+            <p>
+              A framework that turns subscription change requests into validated, auditable updates —
+              with automation where it’s safe and human review where it isn’t.
+            </p>
+            <ul class="bullets">
+              <li>Central subscription state and validation rules</li>
+              <li>Fail-closed behavior to protect revenue</li>
+              <li>Clear logging, audit trails, and reconciliation</li>
+            </ul>
+            <div class="card__footer">
+              <a href="subscription-self-serve.html">
+                View case study <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- OTA Monitoring -->
+          <article class="card card--link">
+            <div class="card__kicker">
+              <i class="fa-solid fa-tower-broadcast"></i> OTA Monitoring
+            </div>
+            <h3>Signals &rarr; alerts &rarr; owners</h3>
+            <p>
+              Monitoring that detects degradation in visibility and conversion early, routes it to
+              the right owner, and reduces alert fatigue through smarter thresholds.
+            </p>
+            <ul class="bullets">
+              <li>Signal scoring, baselines, and eligibility rules</li>
+              <li>Ownership-aware routing and escalation paths</li>
+              <li>Feedback loops to refine thresholds over time</li>
+            </ul>
+            <div class="card__footer">
+              <a href="ota-monitoring.html">
+                View case study <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="noteBox">
+          <strong>Note:</strong> Public case studies intentionally remove company identifiers and
+          sensitive operational details while preserving the design decisions.
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header">
+          <h2>Want something like this for your team?</h2>
+          <p>
+            I work with leadership and operations teams who need automation and AI that’s
+            <strong>safe</strong>, <strong>observable</strong>, and
+            <strong>actually used</strong>.
+          </p>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" href="booking.html">
+            <i class="fa-solid fa-calendar"></i> Start with a consult
+          </a>
+          <a class="btn btn--primary" href="contact.html">
+            <i class="fa-solid fa-envelope"></i> Reach out
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (same as homepage) -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <div class="footer__brand">Naturally Logical</div>
+        <div class="footer__sub">Consulting • AI • Automation • Decision Systems</div>
+      </div>
+      <div class="footer__right">
+        <a href="booking.html">Book</a>
+        <a href="contact.html">Contact</a>
+        <a href="what-i-build.html">Case Studies</a>
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
+  </footer>
 
-    <!-- Sidebar on small screens -->
-    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
-         style="display:none" id="mySidebar">
-      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Menu</a>
-      <a href="https://naturallylogical.com" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
-      <a href="SYNaTRA.html" onclick="w3_close()" class="w3-bar-item w3-button">SYNaTRA</a>
-      <a href="subscription-self-serve.html" onclick="w3_close()" class="w3-bar-item w3-button">SUBSCRIPTIONS</a>
-      <a href="ota-monitoring.html" onclick="w3_close()" class="w3-bar-item w3-button">OTA MONITORING</a>
-      <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button">RESUME</a>
-      <a href="mailto:sarah.brown@naturallylogical.com" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
-    </nav>
-    <!-- =================== END NAVBAR =================== -->
-
-    <div class="page">
-      <div class="shell">
-        <!-- HERO -->
-        <section class="hero" id="top">
-          <div class="brand-card hero-card">
-            <div class="hero-grid">
-              <div class="hero-art">
-                <div class="hero-badge">
-                  <i class="fa-solid fa-cubes"></i>
-                </div>
-              </div>
-
-              <div>
-                <h1 class="brand-heading hero-title">What I Build</h1>
-                <p class="hero-sub">
-                  I build AI + automation systems that turn scattered data into decisions:
-                  faster triage, earlier detection, and cleaner handoffs.
-                </p>
-
-                <div class="hero-actions">
-                  <a class="brand-btn" href="#flagships"><i class="fa-solid fa-star"></i> Flagship systems</a>
-                  <a class="ghost-btn" href="#capabilities"><i class="fa-solid fa-list-check"></i> Capabilities</a>
-                  <a class="ghost-btn" href="#toolbox"><i class="fa-solid fa-toolbox"></i> Toolbox</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- FLAGSHIPS -->
-        <section class="section reveal" id="flagships">
-          <div class="section-header">
-            <h2 class="brand-heading">Flagship Systems</h2>
-            <p>Three examples that show how I think: signal → context → action.</p>
-          </div>
-
-          <div class="grid grid-3">
-            <!-- SYNaTRA -->
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">AI</span>
-                <h3>SYNaTRA — AI Triage Agent</h3>
-              </div>
-              <p>
-                A Slack-based triage assistant that retrieves and summarizes customer context across Salesforce and Jira,
-                returning a structured triage summary with ranked signals and confidence.
-              </p>
-              <ul class="bullets">
-                <li><strong>Trigger:</strong> user-initiated via Slack command (on-demand)</li>
-                <li><strong>AI scope:</strong> summarization + confidence scoring + ranking (assistive, not autonomous)</li>
-                <li><strong>Data:</strong> read-only access to specific Salesforce objects and scoped Jira projects</li>
-              </ul>
-              <div class="card-actions">
-                <a class="brand-btn" href="SYNaTRA.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
-              </div>
-            </div>
-
-            <!-- Subscription Self-Serve -->
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">SS</span>
-                <h3>Subscription Self-Serve Automation</h3>
-              </div>
-              <p>
-                A framework that translates subscription state changes into validated, auditable CPQ-ready actions—reducing
-                manual error and improving revenue alignment.
-              </p>
-              <ul class="bullets">
-                <li><strong>Source of truth:</strong> upstream SQL Server subscription state feeds normalized events</li>
-                <li><strong>Automation:</strong> activations/deactivations automated; contract amendments require human review</li>
-                <li><strong>Safety:</strong> fail-closed validation, logging, and (when needed) Jira ticket creation</li>
-              </ul>
-              <div class="card-actions">
-                <a class="brand-btn" href="subscription-self-serve.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
-              </div>
-            </div>
-
-            <!-- OTA Monitoring -->
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">OT</span>
-                <h3>OTA Performance Alert &amp; Monitoring</h3>
-              </div>
-              <p>
-                Automated alerting that monitors visibility, conversion, and trends to detect revenue-impacting OTA issues early,
-                with clear ownership and reduced alert fatigue.
-              </p>
-              <ul class="bullets">
-                <li><strong>Signals:</strong> CVR, zero views, zero appearances, and streak-based degradation</li>
-                <li><strong>Noise control:</strong> eligibility thresholds, rolling baselines, streak rules</li>
-                <li><strong>Routing:</strong> critical alerts auto-ticketed; early warnings monitored before escalation</li>
-              </ul>
-              <div class="card-actions">
-                <a class="brand-btn" href="ota-monitoring.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> View case study</a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- CAPABILITIES -->
-        <section class="section reveal" id="capabilities">
-          <div class="section-header">
-            <h2 class="brand-heading">Capabilities</h2>
-            <p>ATS-friendly, but still real: these are the patterns I ship.</p>
-          </div>
-
-          <div class="grid grid-3">
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">DS</span>
-                <h3>Decision systems</h3>
-              </div>
-              <p>Turn messy inputs into clear, human-readable actions (summaries, scores, and next steps).</p>
-            </div>
-
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">IN</span>
-                <h3>Integrations</h3>
-              </div>
-              <p>Cross-system workflows that keep CRM, tickets, and data platforms aligned and low-friction.</p>
-            </div>
-
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">MO</span>
-                <h3>Monitoring &amp; alerting</h3>
-              </div>
-              <p>Explainable thresholds, baselines, routing, and watchlists that avoid alert fatigue.</p>
-            </div>
-
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">DQ</span>
-                <h3>Data shaping</h3>
-              </div>
-              <p>Common schemas, eligibility rules, and KPI design that makes signals trustworthy.</p>
-            </div>
-
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">GR</span>
-                <h3>Guardrails</h3>
-              </div>
-              <p>Access controls, PII masking, and “safe by default” patterns for internal AI tools.</p>
-            </div>
-
-            <div class="card">
-              <div class="card-top">
-                <span class="tile-icon">EN</span>
-                <h3>Enablement</h3>
-              </div>
-              <p>Docs + dashboards + handoffs so systems get adopted and stay maintainable.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- TOOLBOX -->
-        <section class="section reveal" id="toolbox">
-          <div class="section-header">
-            <h2 class="brand-heading">Toolbox</h2>
-            <p>A compact scan-friendly list for recruiters (and a reminder for future me).</p>
-          </div>
-
-          <div class="card">
-            <div class="toolbox">
-              <span class="pill">Salesforce</span>
-              <span class="pill">Salesforce CPQ</span>
-              <span class="pill">SOQL / SOSL</span>
-              <span class="pill">Jira</span>
-              <span class="pill">JQL</span>
-              <span class="pill">Snowflake</span>
-              <span class="pill">SQL</span>
-              <span class="pill">Workato</span>
-              <span class="pill">Slack / Teams workflows</span>
-              <span class="pill">Monitoring &amp; alerting</span>
-              <span class="pill">Data modeling / KPI design</span>
-              <span class="pill">Idempotency / reconciliation</span>
-              <span class="pill">PII masking / guardrails</span>
-              <span class="pill">Documentation &amp; enablement</span>
-            </div>
-
-            <p class="note" style="margin-top:12px;">
-              If you’re hiring for systems that blend automation + AI + operational reality, I’m happiest when the goal is
-              measurable: less time-to-context, fewer escalations, earlier detection, cleaner routing.
-            </p>
-          </div>
-        </section>
-
-        <!-- HOW I WORK -->
-        <section class="section reveal" id="how">
-          <div class="section-header">
-            <h2 class="brand-heading">How I Work</h2>
-            <p>Low-drama engineering: clear owners, reliable systems, and feedback loops.</p>
-          </div>
-
-          <div class="grid grid-2">
-            <div class="card">
-              <span class="tile-icon">01</span>
-              <h3>Workflow first</h3>
-              <p>Define owners, inputs/outputs, and “what good looks like.” Then build the simplest system that works.</p>
-            </div>
-            <div class="card">
-              <span class="tile-icon">02</span>
-              <h3>Reliability built-in</h3>
-              <p>Guardrails, logging, failure modes, and noise control (eligibility rules, thresholds, baselines).</p>
-            </div>
-            <div class="card">
-              <span class="tile-icon">03</span>
-              <h3>Ship &amp; iterate</h3>
-              <p>Deploy small, measure usage, and refine where humans actually get stuck—not where we guess they might.</p>
-            </div>
-            <div class="card">
-              <span class="tile-icon">04</span>
-              <h3>Make it adoptable</h3>
-              <p>Docs + dashboards + handoffs so the system survives staffing changes and stays trusted.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="section reveal" id="contact">
-          <div class="section-header">
-            <h2 class="brand-heading">Get in Touch</h2>
-            <p>Want to talk about AI triage, enterprise automation, subscription ops, or monitoring systems?</p>
-          </div>
-          <div class="card">
-            <p style="margin-top:0;">
-              Email me at <a href="mailto:sarah.brown@naturallylogical.com">sarah.brown@naturallylogical.com</a>
-            </p>
-            <p class="note" style="margin-bottom:0;">
-              <strong>Note:</strong> Public portfolio pages intentionally omit company identifiers and sensitive operational details.
-            </p>
-          </div>
-        </section>
-
-        <footer class="footer">
-          <p>© 2026 Naturally Logical</p>
-          <p>Portfolio excerpt for demonstration; sensitive details redacted.</p>
-        </footer>
-      </div>
-    </div>
-
-    <script src="what-i-build/scripts.js" defer></script>
-  </body>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="New_assets/scripts.js"></script>
+</body>
 </html>
