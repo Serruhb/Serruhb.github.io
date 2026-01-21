@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#2D5A27" />
+  <meta name="theme-color" content="#00CDAC" />
 
   <title>Naturally Logical | Consulting — AI, Automation, and Strategy Systems</title>
   <meta name="description" content="Naturally Logical helps teams turn scattered data into reliable decisions. Consulting in AI-assisted operations, enterprise automation, and strategic alignment." />
@@ -17,9 +17,8 @@
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-
   <!-- Styles -->
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="New_assets/styles.css" />
 </head>
 
 <body>
@@ -40,7 +39,7 @@
         <a href="#process">Process</a>
         <a href="#about">About</a>
         <a class="btn btn--ghost" href="what-i-build.html">What I Build</a>
-        <a class="btn btn--primary" href="booking.html">Book</a>
+        <a class="btn btn--ghost" href="contact.html">Book</a>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -70,12 +69,11 @@
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" href="booking.html">
+            <a class="btn btn--primary" href="naturallylogical.com/contact.html">
               <i class="fa-solid fa-calendar"></i> Book a consult
             </a>
-            <!-- Reach out now matches Book -->
-            <a class="btn btn--primary" href="contact.html">
-              <i class="fa-solid fa-envelope"></i> Reach out
+            <a class="btn btn--primary" href="naturallylogical.com/contact.html">
+                <i class="fa-solid fa-envelope"></i> Reach out
             </a>
           </div>
 
@@ -114,7 +112,7 @@
 
             <div class="card__actions">
               <a class="btn btn--small btn--primary" href="#services">View services</a>
-              <a class="btn btn--small btn--ghost" href="what-i-build.html">See examples</a>
+              <a class="btn btn--small btn--primary" href="naturallylogical.com/what-i-build.html">See examples</a>
             </div>
           </div>
         </div>
@@ -123,17 +121,15 @@
       <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
-   <!-- SERVICES (CAROUSEL) -->
-<section class="section" id="services">
-  <div class="container">
-    <div class="section__header">
-      <h2>Consulting Services</h2>
-      <p>Clear outcomes, not slide decks for their own sake.</p>
-    </div>
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__header">
+          <h2>Consulting Services</h2>
+          <p>Clear outcomes, not slide decks for their own sake.</p>
+        </div>
 
-    <div class="carousel" data-carousel>
-      <div class="carousel__viewport" data-carousel-viewport>
-        <div class="carousel__slide is-active" data-carousel-slide data-href="../SYNaTRA.html">
+        <div class="grid grid--3">
           <article class="card">
             <div class="card__kicker">
               <i class="fa-solid fa-shield-halved"></i> AI + Automation Guardrails
@@ -148,10 +144,7 @@
               <li>Human-in-the-loop workflows</li>
             </ul>
           </article>
-        </div>
 
-        <!-- Slide 2 -->
-        <div class="carousel__slide" data-carousel-slide data-href="../subscription-self-serve.html">
           <article class="card">
             <div class="card__kicker">
               <i class="fa-solid fa-arrows-rotate"></i> Enterprise Automation &amp; Integrations
@@ -166,13 +159,10 @@
               <li>Clean handoffs + documentation</li>
             </ul>
           </article>
-        </div>
 
-        <!-- Slide 3 -->
-        <div class="carousel__slide" data-carousel-slide data-href="../ota-monitoring.html">
           <article class="card">
             <div class="card__kicker">
-              <i class="fa-solid fa-signal"></i> Monitoring &amp; Decision Systems
+              <i class="fa-solid fa-signal"></i> Monitoring & Decision Systems
             </div>
             <h3>Earlier detection, less noise</h3>
             <p>
@@ -185,33 +175,19 @@
             </ul>
           </article>
         </div>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" href="booking.html"><i class="fa-solid fa-calendar"></i> Book a consult</a>
+          <a class="btn btn--ghost" href="contact.html"><i class="fa-solid fa-envelope"></i> Ask a question</a>
+        </div>
       </div>
-
-      <!-- Controls (outside viewport) -->
-      <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous slide">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button class="carousel__btn carousel__btn--next" type="button" data-carousel-next aria-label="Next slide">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-      <!-- Dots (outside viewport) -->
-      <div class="carousel__dots" data-carousel-dots aria-label="Carousel navigation"></div>
-    </div>
-    
-    <div class="ctaRow">
-      <a class="btn btn--primary" href="booking.html"><i class="fa-solid fa-calendar"></i> Book a consult</a>
-      <a class="btn btn--primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Ask a question</a>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- PROOF -->
     <section class="section section--alt" id="proof">
       <div class="container">
         <div class="section__header">
-          <h2>Proof &amp; Case Studies</h2>
+          <h2>Proof & Case Studies</h2>
           <p>Examples of the systems and decision frameworks I ship.</p>
         </div>
 
@@ -326,7 +302,7 @@
           <div class="footer__sub">Consulting • AI • Automation • Decision Systems</div>
         </div>
         <div class="footer__right">
-          <a href="../contact.html">Book</a>
+          <a href="booking.html">Book</a>
           <a href="contact.html">Contact</a>
           <a href="what-i-build.html">What I Build</a>
           <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
@@ -335,8 +311,6 @@
     </footer>
   </main>
 
-  <!-- Swiper JS (for offerings slider) -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="assets/scripts.js"></script>
+  <script src="New_assets/scripts.js"></script>
 </body>
 </html>
