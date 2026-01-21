@@ -1,291 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Sarah M. Brown</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#00CDAC" />
+  <meta name="theme-color" content="#2D5A27" />
 
-  <!-- Fonts & Icons -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700&display=swap" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
+  <title>Naturally Logical | Consulting — AI, Automation, and Strategy Systems</title>
+  <meta name="description" content="Naturally Logical helps teams turn scattered data into reliable decisions. Consulting in AI-assisted operations, enterprise automation, and strategic alignment." />
+  <link rel="canonical" href="https://naturallylogical.com/" />
 
-  <!-- Favicon -->
-  <link
-    rel="icon"
-    type="image/x-icon"
-    href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAGAAAAFgAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAJ1lP2f9ZT9n/AAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAFlP2f8AAAAFWU/Z/wAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAABWTdK9AAAAL1lP2f8AAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAAAAAAAAAAAAAFJJyXxZT9n/AAAAEwAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAdWU/Z/1JIx8EAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAAAAAAAAAAAAAAAAHUUjGzzs0j2lYTtbtAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAAAAAAA8AAAA0AAAASFZM1/9COqOlRj6uhgAAAAsAAAAFAAAABAAAAAD///8A////AP///wD///8A////AAAAABVuaNzDk4f//6GT//+jmP//lY7//4B9//5hX8KmOjl2bE9OnWQAAAAA////AP///wD///8A////AP///wBnYM+h29P//52P//+fkf//kYj//3p3/v97ef7/gn/+/8vG//92dfG0AAAAAP///wD///8A////AP///wD///8Af3b//3Bo5KOim///h33//5+T//+dk///m5L//8bB//+Fg/7/AAAAAgAAAAD///8A////AP///wD///8A////AH5198dRTJ5ncWvlYbm0///c1v//4Nv//7m1//96d/35AAAAAQAAAAAAAAAA////AP///wD///8A////AP///wAAAAAAf3f5zgAAACoAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////AP///wD///8AAAAAIQAAAAqBev//AAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AGBgX/9LS0nDh4D48wAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8A////AP///wAnJyUUfHXf6rCq//8AAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A//8AAP5/AAD9fwAA/X8AAP9/AAD/PwAA/r8AAP4/AADwHwAA4AcAAOAPAADsHwAA9/8AAPv/AADj/wAA8/8AAA=="
-  />
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Your external CSS -->
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 
 <body>
-  <!-- ===== Navbar ===== -->
-  <header class="navbar-wrapper">
-    <div class="container navbar" aria-label="Primary navigation">
-      <div class="navbar-left">
-        <a href="resume.html" target="_blank" class="nav-link">
-          <i class="fa fa-user"></i> Resume
-        </a>
-        <a
-          href="https://www.linkedin.com/in/serruhb/"
-          target="_blank"
-          rel="noopener"
-          class="nav-link"
-        >
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-      </div>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Naturally Logical home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">Naturally Logical</span>
+          <span class="brand__tag">Consulting</span>
+        </span>
+      </a>
 
-      <div class="navbar-right">
-        <a href="#Intro" class="nav-link">
-          <i class="fas fa-comment"></i> Intro
-        </a>
-        <a href="#work" class="nav-link">
-          <i class="fa fa-github"></i> Projects
-        </a>
-        <a href="#contact" class="nav-link">
-          <i class="fa fa-envelope"></i> Contact
-        </a>
-      </div>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#proof">Proof</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a class="btn btn--ghost" href="what-i-build.html">What I Build</a>
+        <a class="btn btn--primary" href="booking.html">Book</a>
+      </nav>
 
-      <button class="nav-toggle" aria-label="Toggle navigation menu" id="navToggle">
-        <i class="fa fa-bars"></i>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <i class="fa-solid fa-bars"></i>
       </button>
     </div>
-
-    <nav class="mobile-menu" id="mobileMenu">
-      <a href="#Intro">Intro</a>
-      <a href="#work">Projects</a>
-      <a href="#contact">Contact</a>
-      <a href="resume.html" target="_blank" rel="noopener">Resume</a>
-      <a href="about.html">My Story</a>
-    </nav>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" id="home" aria-label="Hero">
-    <div class="hero-inner">
-      <div class="brand-card">
-        <span class="hero-name">Sarah M. Brown</span>
-        <span class="hero-tagline">
-          <a href="#Intro">• Creative Philomath •</a>
-        </span>
-        <span class="hero-contact">
-          512•884•1220 — <a href="mailto:serruhb@gmail.com" style="color:#fff;">serruhb@gmail.com</a>
-        </span>
-      </div>
-
-      <div class="brand-card">
-        <span class="hero-resume-title">
-          <a href="resume.html" target="_blank" rel="noopener">• Resume •</a>
-        </span>
-        <span class="hero-resume-sub">Check it out!</span>
-      </div>
-    </div>
-  </section>
-
+  <!-- HERO -->
   <main>
-    <!-- ===== Intro Section ===== -->
-    <section class="section" id="Intro">
-      <div class="container">
-        <div class="text-center">
-          <h1 class="brand-heading">
-            <a href="#Intro">Intro</a>
-          </h1>
-          <p class="lead">Me in a nutshell.</p>
-        </div>
-
-        <div class="intro-text" style="margin-top: 40px;">
-          <p>
-            Born in Franklin, Louisiana, and grew up across several east coast states, from New Hampshire to South
-            Carolina to Florida. Moving often taught me adaptability and connection; I learned how to communicate with many
-            different people, from varying backgrounds, which to shaped how I collaborate and lead today.
-          </p>
-          <p>
-            At Columbia College in South Carolina, I pursued Mathematics and Chemistry, drawn to the logic and structure
-            behind how things work. It was during those studies that I took my first programming course and discovered how
-            seamlessly problem-solving and creativity could merge. My professors recognized my strength for debugging and
-            development, and together we replaced several math courses with programming, one of the best and most exciting
-            decisions of my life.
-          </p>
-          <p>
-            While in college, I worked as a tutor, using code to track my students’ progress and manage finances; an early
-            hint of how I’d combine automation with real-world problem-solving. After graduation, I founded a small
-            business, applying data-driven systems to operations and client experience. It was successful, but it also made
-            me realize that my true passion was in creating tools that make people’s work simpler, smarter, and more
-            meaningful.
-          </p>
-          <p>
-            Today, as a Senior AI and Automation Engineer, that same passion drives everything I do, designing intelligent
-            systems that bridge technology and human insight, helping teams focus on impact instead of inefficiency. I
-            believe great automation doesn’t replace people, it empowers them.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Projects Section ===== -->
-    <section class="section" id="work">
-      <div class="container">
-        <div class="text-center">
-          <h1 class="brand-heading projects-header">
-            <a
-              href="https://github.com/Serruhb"
-              target="_blank"
-              rel="noopener"
-            >
-              Projects
-            </a>
-          </h1>
-          <p class="lead">Merging Math, Mind, and Machine.</p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card">
-            <a
-              href="https://github.com/Serruhb/SYNTRA"
-              target="_blank"
-              rel="noopener"
-              class="project-icon-link"
-              aria-label="View SYNaTRA project on GitHub"
-            >
-              <div class="project-icon-wrapper">
-                <i class="fas fa-robot"></i>
-              </div>
-            </a>
-            <p class="project-text">
-              An AI-powered triage and context engine that accelerates case resolution and empowers Customer Success teams
-              with actionable insight. By helping users quickly understanding a customer’s historical and technical context
-              by retrieving and summarizing related Salesforce Cases, Jira Tickets, and active subscription details. SYNaTRA
-              reduces time-to-context and improves first-contact resolution through concise, data-driven summaries and
-              next-step guidance.
-            </p>
-          </article>
-
-          <article class="project-card">
-            <a
-              href="https://github.com/Serruhb/RequestForm"
-              target="_blank"
-              rel="noopener"
-              class="project-icon-link"
-              aria-label="View RequestForm project on GitHub"
-            >
-              <div class="project-icon-wrapper">
-                <i class="fa fa-wpforms"></i>
-              </div>
-            </a>
-            <p class="project-text">
-              A process-engineering initiative to streamline a request workflow that became unmanageable during rapid
-              growth. By documenting and analyzing the existing Oracle-based process, then rebuilding it within Salesforce
-              using Visualforce, Apex, and reusable plug-and-play code modules, this project improved efficiency,
-              transparency, and adoption. Deliverables included interactive process documentation, automated form
-              generation (PDF rendering via Visualforce), and user-friendly dashboards and training guides to empower both
-              end-users and developers.
-            </p>
-          </article>
-
-          <article class="project-card">
-            <a
-              href="https://github.com/jazminhicks/pof-machine-learning"
-              target="_blank"
-              rel="noopener"
-              class="project-icon-link"
-              aria-label="View Dat-a-Mate project on GitHub"
-            >
-              <div class="project-icon-wrapper">
-                <i class="fas fa-fish"></i>
-              </div>
-            </a>
-            <p class="project-text">
-              Main goal of Dat-a-Mate was to reduce the amount of search results by predicting the users physical match
-              based on facial recognition. Group project using machine learning, python, API interacting, web scrapping,
-              D3.js.
-            </p>
-          </article>
-
-          <article class="project-card">
-            <a
-              href="https://github.com/Serruhb/SQLalchemy"
-              target="_blank"
-              rel="noopener"
-              class="project-icon-link"
-              aria-label="View SQLAlchemy weather project on GitHub"
-            >
-              <div class="project-icon-wrapper">
-                <i class="fas fa-cloud-sun-rain"></i>
-              </div>
-            </a>
-            <p class="project-text">
-              In the midst of planning a trip, I decided to use SQLalchemy to aid in my research of weather. Using live
-              generated information from weatherAPI I was able to compare the past, present and future weather patterns of
-              my destintation.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Contact Section ===== -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="text-center">
-          <h1 class="brand-heading">
-            <a href="#contact">Contact</a>
-          </h1>
-          <p class="lead">Let's get in touch. Send me a message:</p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-details">
-            <p>
-              <i class="fa fa-map-marker"></i>
-              Amesbury, MA
-            </p>
-            <p>
-              <i class="fa fa-phone"></i>
-              Phone: (512) 884-1220
-            </p>
-            <p>
-              <i class="fa fa-envelope"></i>
-              Email: <a href="mailto:serruhb@gmail.com">SerruhB@gmail.com</a>
-            </p>
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <div class="pill">
+            <i class="fa-solid fa-compass"></i>
+            <span>Strategy + Systems + AI-Assisted Operations</span>
           </div>
 
-          <form id="contactForm" class="contact-form" onsubmit="return sendMail(event)">
-            <input type="text" name="Name" placeholder="Name" required />
-            <input type="email" name="Email" placeholder="Email" required />
-            <input type="text" name="Subject" placeholder="Subject" required />
-            <textarea name="Message" rows="4" placeholder="Message" required></textarea>
-            <button type="submit" class="btn">
-              <i class="fa fa-paper-plane"></i>
-              Send Message
-            </button>
-          </form>
+          <h1>
+            Turn scattered data into
+            <span class="accent">reliable decisions</span>.
+          </h1>
+
+          <p class="lead">
+            Naturally Logical helps leadership teams reduce operational noise, improve cross-system alignment,
+            and build automation that’s safe, observable, and adopted.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="booking.html">
+              <i class="fa-solid fa-calendar"></i> Book a consult
+            </a>
+            <!-- Reach out now matches Book -->
+            <a class="btn btn--primary" href="contact.html">
+              <i class="fa-solid fa-envelope"></i> Reach out
+            </a>
+          </div>
+
+          <div class="hero__meta">
+            <div class="metaItem">
+              <div class="metaItem__title">Focus</div>
+              <div class="metaItem__text">Automation, AI guardrails, decision systems</div>
+            </div>
+            <div class="metaItem">
+              <div class="metaItem__title">Stack</div>
+              <div class="metaItem__text">Salesforce, Snowflake, Workato, Jira</div>
+            </div>
+            <div class="metaItem">
+              <div class="metaItem__title">Engagements</div>
+              <div class="metaItem__text">Fractional, advisory, build-to-handoff</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__card">
+          <div class="card card--glass">
+            <div class="card__header">
+              <div class="card__icon"><i class="fa-solid fa-diagram-project"></i></div>
+              <div>
+                <div class="card__title">What I do</div>
+                <div class="card__subtitle">Signal → Context → Decision</div>
+              </div>
+            </div>
+
+            <ul class="checklist">
+              <li><i class="fa-solid fa-check"></i> Diagnose misalignment across brand/product/ops</li>
+              <li><i class="fa-solid fa-check"></i> Design automation frameworks with guardrails</li>
+              <li><i class="fa-solid fa-check"></i> Build observability: logs, reports, audit trails</li>
+              <li><i class="fa-solid fa-check"></i> Deliver systems people actually use</li>
+            </ul>
+
+            <div class="card__actions">
+              <a class="btn btn--small btn--primary" href="#services">View services</a>
+              <a class="btn btn--small btn--ghost" href="what-i-build.html">See examples</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__bg" aria-hidden="true"></div>
+    </section>
+
+   <!-- SERVICES (CAROUSEL) -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section__header">
+      <h2>Consulting Services</h2>
+      <p>Clear outcomes, not slide decks for their own sake.</p>
+    </div>
+
+    <div class="carousel" data-carousel>
+      <div class="carousel__viewport" data-carousel-viewport>
+        <div class="carousel__slide is-active" data-carousel-slide data-href="../SYNaTRA.html">
+          <article class="card">
+            <div class="card__kicker">
+              <i class="fa-solid fa-shield-halved"></i> AI + Automation Guardrails
+            </div>
+            <h3>Safe AI-assisted operations</h3>
+            <p>
+              Validation layers, fail-closed behavior, idempotency, and auditability—especially where revenue and customer experience are at stake.
+            </p>
+            <ul class="bullets">
+              <li>Validation + policy gates</li>
+              <li>Logging + traceability</li>
+              <li>Human-in-the-loop workflows</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel__slide" data-carousel-slide data-href="../subscription-self-serve.html">
+          <article class="card">
+            <div class="card__kicker">
+              <i class="fa-solid fa-arrows-rotate"></i> Enterprise Automation &amp; Integrations
+            </div>
+            <h3>Cross-system alignment</h3>
+            <p>
+              Integrations that keep CRM, ticketing, and data platforms coherent—built to survive real-world edge cases and changing teams.
+            </p>
+            <ul class="bullets">
+              <li>Salesforce / Jira / Snowflake</li>
+              <li>Workato orchestration</li>
+              <li>Clean handoffs + documentation</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel__slide" data-carousel-slide data-href="../ota-monitoring.html">
+          <article class="card">
+            <div class="card__kicker">
+              <i class="fa-solid fa-signal"></i> Monitoring &amp; Decision Systems
+            </div>
+            <h3>Earlier detection, less noise</h3>
+            <p>
+              Explainable thresholds, baselines, and routing that turn raw metrics into owner-aware actions—without alert fatigue.
+            </p>
+            <ul class="bullets">
+              <li>Signal design + KPI shaping</li>
+              <li>Alert routing + ownership</li>
+              <li>Feedback loops for refinement</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- Controls (outside viewport) -->
+      <button class="carousel__btn carousel__btn--prev" type="button" data-carousel-prev aria-label="Previous slide">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="carousel__btn carousel__btn--next" type="button" data-carousel-next aria-label="Next slide">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Dots (outside viewport) -->
+      <div class="carousel__dots" data-carousel-dots aria-label="Carousel navigation"></div>
+    </div>
+    
+    <div class="ctaRow">
+      <a class="btn btn--primary" href="booking.html"><i class="fa-solid fa-calendar"></i> Book a consult</a>
+      <a class="btn btn--primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Ask a question</a>
+    </div>
+  </div>
+</section>
+
+
+    <!-- PROOF -->
+    <section class="section section--alt" id="proof">
+      <div class="container">
+        <div class="section__header">
+          <h2>Proof &amp; Case Studies</h2>
+          <p>Examples of the systems and decision frameworks I ship.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <a class="card card--link" href="SYNaTRA.html">
+            <div class="card__kicker"><i class="fa-solid fa-robot"></i> SYNaTRA</div>
+            <h3>AI triage assistant</h3>
+            <p>Slack-based context retrieval + summarization across Salesforce and Jira, with ranked signals and confidence.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a class="card card--link" href="subscription-self-serve.html">
+            <div class="card__kicker"><i class="fa-solid fa-file-contract"></i> Subscriptions</div>
+            <h3>Self-serve automation + validation</h3>
+            <p>Fail-closed subscription state automation with logging, auditability, and human review for amendments.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a class="card card--link" href="ota-monitoring.html">
+            <div class="card__kicker"><i class="fa-solid fa-tower-broadcast"></i> OTA Monitoring</div>
+            <h3>Signals → alerts → owners</h3>
+            <p>Conversion/visibility degradation detection with eligibility thresholds, baselines, and routing.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+        </div>
+
+        <div class="noteBox">
+          <strong>Note:</strong> Public pages intentionally omit company identifiers and sensitive operational details.
         </div>
       </div>
     </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section__header">
+          <h2>How Engagements Work</h2>
+          <p>Low-drama consulting: clear owners, reliable systems, measurable outcomes.</p>
+        </div>
+
+        <div class="grid grid--4">
+          <div class="step">
+            <div class="step__num">01</div>
+            <div class="step__title">Diagnose</div>
+            <div class="step__text">Clarify goals, constraints, stakeholders, and failure modes.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">02</div>
+            <div class="step__title">Align</div>
+            <div class="step__text">Define the smallest set of high-leverage decisions to make.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">03</div>
+            <div class="step__title">Build</div>
+            <div class="step__text">Implement with guardrails, logging, and adoption in mind.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">04</div>
+            <div class="step__title">Handoff</div>
+            <div class="step__text">Docs, dashboards, runbooks—so the system survives staffing changes.</div>
+          </div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" href="booking.html"><i class="fa-solid fa-calendar"></i> Start with a consult</a>
+          <a class="btn btn--ghost" href="what-i-build.html"><i class="fa-solid fa-cubes"></i> Explore what I build</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--alt" id="about">
+      <div class="container about">
+        <div class="about__copy">
+          <h2>About Naturally Logical</h2>
+          <p class="lead">
+            Naturally Logical is a consulting practice focused on building reliable automation and decision systems that teams trust.
+          </p>
+          <p>
+            I’m Sarah M. Brown — a Senior AI & Automation Engineer with a systems-first approach. I specialize in the operational reality:
+            messy inputs, cross-team constraints, and automation that must be safe, observable, and adoptable.
+          </p>
+
+          <div class="about__actions">
+            <a class="btn btn--primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Reach out</a>
+            <a class="btn btn--ghost" href="resume.html" target="_blank" rel="noopener"><i class="fa-solid fa-file"></i> Resume</a>
+          </div>
+        </div>
+
+        <div class="about__card">
+          <div class="card">
+            <div class="card__kicker"><i class="fa-solid fa-briefcase"></i> Engagement types</div>
+            <ul class="bullets">
+              <li><strong>Advisory:</strong> decision memos, strategy clarity, risk flags</li>
+              <li><strong>Fractional:</strong> ongoing systems leadership</li>
+              <li><strong>Build-to-handoff:</strong> implement + document + enable teams</li>
+            </ul>
+            <div class="mini">
+              <div class="mini__label">Based in</div>
+              <div class="mini__value">Amesbury, MA • Remote</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <div class="footer__brand">Naturally Logical</div>
+          <div class="footer__sub">Consulting • AI • Automation • Decision Systems</div>
+        </div>
+        <div class="footer__right">
+          <a href="../contact.html">Book</a>
+          <a href="contact.html">Contact</a>
+          <a href="what-i-build.html">What I Build</a>
+          <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
   </main>
 
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-  </footer>
-
-  <script src="assets/js/script.js"></script>
-
+  <!-- Swiper JS (for offerings slider) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/scripts.js"></script>
 </body>
 </html>
