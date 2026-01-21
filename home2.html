@@ -124,105 +124,99 @@
       <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
-   <!-- SERVICES (CAROUSEL) -->
-<section class="section" id="services">
-  <div class="container">
-    <div class="section__header">
-      <h2>Consulting Services</h2>
-      <p>Clear outcomes, not slide decks for their own sake.</p>
-    </div>
-
-    <div class="carousel" data-carousel>
-      <div class="carousel__viewport" data-carousel-viewport>
-
-        <!-- Slide 1 -->
-        <div class="carousel__slide is-active" data-carousel-slide>
-          <img src="Images/carosel/aiguradrails.png" alt="AI automation guardrails" class="carousel__image">
-      <article class="card carousel__card">
-            <div class="card__kicker">
-              <i class="fa-solid fa-shield-halved"></i> AI + Automation Guardrails
-            </div>
-            <h3>Safe AI-assisted operations</h3>
-            <p>
-              Validation layers, fail-closed behavior, idempotency, and auditability—especially where revenue and customer experience are at stake.
-            </p>
-            <ul class="bullets">
-              <li>Validation + policy gates</li>
-              <li>Logging + traceability</li>
-              <li>Human-in-the-loop workflows</li>
-            </ul>
-          </article>
-          <article class="card carousel__card">
-            <div class="card__kicker">
-              <i class="fa-solid fa-shield-halved"></i> AI + Automation Guardrails
-            </div>
-            <h3>Safe AI-assisted operations</h3>
-            <p>
-              Validation layers, fail-closed behavior, idempotency, and auditability—especially where revenue and customer experience are at stake.
-            </p>
-            <ul class="bullets">
-              <li>Validation + policy gates</li>
-              <li>Logging + traceability</li>
-              <li>Human-in-the-loop workflows</li>
-            </ul>
-          </article>
+  <!-- SERVICES (SIMPLE GRID) -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__header">
+          <h2>Consulting Services</h2>
+          <p>Clear outcomes, not slide decks for their own sake.</p>
         </div>
 
-        <!-- Slide 2 -->
-        <div class="carousel__slide" data-carousel-slide>
-          <img src="Images/carosel/subscriptionselfserv.png" alt="Subscription self-serve automation" class="carousel__image">
+        <div class="grid grid--3">
+          <!-- Service 1: AI + Automation Guardrails -->
+          <article class="card">
+            <img
+              src="Images/carosel/aiguradrails.png"
+              alt="AI and automation guardrails"
+              class="carousel__image"
+            >
 
-          <article class="card carousel__card">
+            <div class="card__kicker">
+              <i class="fa-solid fa-shield-halved"></i> AI + Automation Guardrails
+            </div>
+            <h3>Safe AI-assisted operations</h3>
+            <p>
+              Design automation and AI flows with validation, fail-closed behavior, and auditability —
+              especially where revenue and customer experience are at risk.
+            </p>
+            <ul class="bullets">
+              <li>Validation + policy gates</li>
+              <li>Logging, observability, and traceability</li>
+              <li>Human-in-the-loop where it matters</li>
+            </ul>
+            <div class="card__footer">
+              <a href="SYNaTRA.html">
+                See example (SYNaTRA) <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Service 2: Subscription Self-Serve -->
+          <article class="card">
+            <img
+              src="Images/carosel/subscriptionselfserv.png"
+              alt="Subscription self-serve automation"
+              class="carousel__image"
+            >
+
             <div class="card__kicker">
               <i class="fa-solid fa-arrows-rotate"></i> Subscription Self-Serve
             </div>
             <h3>Revenue-safe automation</h3>
             <p>
-              Self-serve subscription changes with validation, logging, and human review for contract amendments.
+              Self-serve subscription changes that still respect contracts, billing rules, and downstream systems.
             </p>
             <ul class="bullets">
               <li>Contract state validation</li>
-              <li>Fail-closed automation</li>
-              <li>Auditability + reconciliation</li>
+              <li>Fail-closed flows to avoid bad changes</li>
+              <li>Logging, auditability, and reconciliation</li>
             </ul>
+            <div class="card__footer">
+              <a href="subscription-self-serve.html">
+                See example <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </article>
-        </div>
 
-        <!-- Slide 3 -->
-        <div class="carousel__slide" data-carousel-slide>
-          <img src="Images/carosel/tickettriage.png" alt="Ticket triage and signal monitoring" class="carousel__image">
+          <!-- Service 3: Ticket & Signal Triage -->
+          <article class="card">
+            <img
+              src="Images/carosel/tickettriage.png"
+              alt="Ticket triage and signal monitoring"
+              class="carousel__image"
+            >
 
-          <article class="card carousel__card">
             <div class="card__kicker">
-              <i class="fa-solid fa-signal"></i> Ticket & Signal Triage
+              <i class="fa-solid fa-signal"></i> Ticket &amp; Signal Triage
             </div>
             <h3>Earlier detection, less noise</h3>
             <p>
               Ranked signals and ownership-aware alerts that surface issues before customers feel them.
             </p>
             <ul class="bullets">
-              <li>Signal scoring + ranking</li>
-              <li>Owner-aware routing</li>
+              <li>Signal scoring and ranking</li>
+              <li>Owner-aware routing and escalation</li>
               <li>Monitoring feedback loops</li>
             </ul>
+            <div class="card__footer">
+              <a href="ota-monitoring.html">
+                See example <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
           </article>
         </div>
-
       </div>
-
-      <!-- Controls -->
-      <button class="carousel__btn carousel__btn--prev" data-carousel-prev aria-label="Previous slide">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button class="carousel__btn carousel__btn--next" data-carousel-next aria-label="Next slide">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-      <!-- Dots -->
-      <div class="carousel__dots" data-carousel-dots></div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
 

@@ -539,7 +539,7 @@ a[href]:hover{ filter: brightness(0.95); text-decoration: underline; }
   z-index: 1;
 }
 
-/* Full-bleed image */
+/* Full-bleed image 
 .carousel__image{
   position: absolute;
   inset: 0;
@@ -547,7 +547,19 @@ a[href]:hover{ filter: brightness(0.95); text-decoration: underline; }
   height: 100%;
   object-fit: cover;
   z-index: 0;
+}*/
+
+.section#services .carousel__image{
+  position: static;      /* cancel the absolute positioning */
+  inset: auto;           /* reset inset */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
 }
+
 
 /* Readability gradient */
 .carousel__slide::after{
