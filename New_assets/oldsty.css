@@ -271,7 +271,7 @@ a[href]:hover{ filter: brightness(0.95); text-decoration: underline; }
     radial-gradient(circle at 55% 75%, rgba(194,103,71,0.08), transparent 62%),
     radial-gradient(circle at 52% 55%, rgba(112,128,144,0.06), transparent 60%);
   pointer-events: none;
-  opacity: ;
+ 
   z-index: 0;
 }
 
