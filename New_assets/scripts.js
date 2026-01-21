@@ -180,3 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("click", (e) => {
+  const slide = e.target.closest("[data-carousel-slide][data-href]");
+  if (!slide) return;
+  window.location.href = slide.dataset.href;
+});
