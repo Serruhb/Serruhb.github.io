@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,31 +8,21 @@
   <meta name="theme-color" content="#2D5A27" />
 
   <title>Naturally Logical | Consulting — AI, Automation, and Strategy Systems</title>
-  <meta
-    name="description"
-    content="Naturally Logical helps teams turn scattered data into reliable decisions. Consulting in AI-assisted operations, enterprise automation, and strategic alignment."
-  />
+  <meta name="description" content="Naturally Logical helps teams turn scattered data into reliable decisions. Consulting in AI-assisted operations, enterprise automation, and strategic alignment." />
   <link rel="canonical" href="https://naturallylogical.com/" />
-
+ 
   <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Favicon -->
-  <link rel="icon" href="Images/favicon-large.ico" type="image/x-icon" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="Images/favicon-large.ico" type="image/x-icon">
   <!-- Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
 
   <!-- Styles -->
   <link rel="stylesheet" href="New_assets/styles.css" />
+  
 </head>
 
 <body>
@@ -38,10 +30,7 @@
   <header class="nav">
     <div class="container nav__inner">
       <a class="brand" href="index.html" aria-label="Naturally Logical home">
-        <span class="brand__mark" aria-hidden="true">
-          <img src="Images/logo.png" alt="" class="brand__logo" />
-        </span>
-
+        <span class="brand__mark" aria-hidden="true"></span>
         <span class="brand__text">
           <span class="brand__name">Naturally Logical</span>
           <span class="brand__tag">Consulting</span>
@@ -57,13 +46,7 @@
         <a class="btn btn--ghost" href="booking.html">Book</a>
       </nav>
 
-      <button
-        class="nav__toggle"
-        id="navToggle"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="navLinks"
-      >
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
@@ -85,15 +68,15 @@
           </h1>
 
           <p class="lead">
-            Naturally Logical helps leadership teams reduce operational noise,
-            improve cross-system alignment, and build automation that’s safe,
-            observable, and adopted.
+            Naturally Logical helps leadership teams reduce operational noise, improve cross-system alignment,
+            and build automation that’s safe, observable, and adopted.
           </p>
 
           <div class="hero__actions">
             <a class="btn btn--primary" href="booking.html">
               <i class="fa-solid fa-calendar"></i> Book a consult
             </a>
+            <!-- Reach out now matches Book -->
             <a class="btn btn--primary" href="contact.html">
               <i class="fa-solid fa-envelope"></i> Reach out
             </a>
@@ -143,7 +126,7 @@
       <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
-    <!-- SERVICES -->
+  <!-- SERVICES (SIMPLE GRID) -->
     <section class="section" id="services">
       <div class="container">
         <div class="section__header">
@@ -152,9 +135,17 @@
         </div>
 
         <div class="grid grid--3">
+          <!-- Service 1: AI + Automation Guardrails -->
           <article class="card">
-            <img src="Images/carosel/aiguradrails.png" alt="AI and automation guardrails" class="carousel__image" />
-            <div class="card__kicker"><i class="fa-solid fa-shield-halved"></i> AI + Automation Guardrails</div>
+            <img
+              src="Images/carosel/aiguradrails.png"
+              alt="AI and automation guardrails"
+              class="carousel__image"
+            >
+
+            <div class="card__kicker">
+              <i class="fa-solid fa-shield-halved"></i> AI + Automation Guardrails
+            </div>
             <h3>Safe AI-assisted operations</h3>
             <p>
               Design automation and AI flows with validation, fail-closed behavior, and auditability —
@@ -166,39 +157,177 @@
               <li>Human-in-the-loop where it matters</li>
             </ul>
             <div class="card__footer">
-              <a href="SYNaTRA.html">See example (SYNaTRA) <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="SYNaTRA.html">
+                See example (SYNaTRA) <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
+          <!-- Service 2: Subscription Self-Serve -->
           <article class="card">
-            <img src="Images/carosel/subscriptionselfserv.png" alt="Subscription self-serve automation" class="carousel__image" />
-            <div class="card__kicker"><i class="fa-solid fa-arrows-rotate"></i> Subscription Self-Serve</div>
+            <img
+              src="Images/carosel/subscriptionselfserv.png"
+              alt="Subscription self-serve automation"
+              class="carousel__image"
+            >
+
+            <div class="card__kicker">
+              <i class="fa-solid fa-arrows-rotate"></i> Subscription Self-Serve
+            </div>
             <h3>Revenue-safe automation</h3>
-            <p>Self-serve subscription changes that still respect contracts, billing rules, and downstream systems.</p>
+            <p>
+              Self-serve subscription changes that still respect contracts, billing rules, and downstream systems.
+            </p>
             <ul class="bullets">
               <li>Contract state validation</li>
               <li>Fail-closed flows to avoid bad changes</li>
               <li>Logging, auditability, and reconciliation</li>
             </ul>
             <div class="card__footer">
-              <a href="subscription-self-serve.html">See example <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="subscription-self-serve.html">
+                See example <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
+          <!-- Service 3: Ticket & Signal Triage -->
           <article class="card">
-            <img src="Images/carosel/tickettriage.png" alt="Ticket triage and signal monitoring" class="carousel__image" />
-            <div class="card__kicker"><i class="fa-solid fa-signal"></i> Ticket &amp; Signal Triage</div>
+            <img
+              src="Images/carosel/tickettriage.png"
+              alt="Ticket triage and signal monitoring"
+              class="carousel__image"
+            >
+
+            <div class="card__kicker">
+              <i class="fa-solid fa-signal"></i> Ticket &amp; Signal Triage
+            </div>
             <h3>Earlier detection, less noise</h3>
-            <p>Ranked signals and ownership-aware alerts that surface issues before customers feel them.</p>
+            <p>
+              Ranked signals and ownership-aware alerts that surface issues before customers feel them.
+            </p>
             <ul class="bullets">
               <li>Signal scoring and ranking</li>
               <li>Owner-aware routing and escalation</li>
               <li>Monitoring feedback loops</li>
             </ul>
             <div class="card__footer">
-              <a href="ota-monitoring.html">See example <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="ota-monitoring.html">
+                See example <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- PROOF -->
+    <section class="section section--alt" id="proof">
+      <div class="container">
+        <div class="section__header">
+          <h2>Proof &amp; Case Studies</h2>
+          <p>Examples of the systems and decision frameworks I ship.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <a class="card card--link" href="SYNaTRA.html">
+            <div class="card__kicker"><i class="fa-solid fa-robot"></i> SYNaTRA</div>
+            <h3>AI triage assistant</h3>
+            <p>Slack-based context retrieval + summarization across Salesforce and Jira, with ranked signals and confidence.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a class="card card--link" href="subscription-self-serve.html">
+            <div class="card__kicker"><i class="fa-solid fa-file-contract"></i> Subscriptions</div>
+            <h3>Self-serve automation + validation</h3>
+            <p>Fail-closed subscription state automation with logging, auditability, and human review for amendments.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a class="card card--link" href="ota-monitoring.html">
+            <div class="card__kicker"><i class="fa-solid fa-tower-broadcast"></i> OTA Monitoring</div>
+            <h3>Signals → alerts → owners</h3>
+            <p>Conversion/visibility degradation detection with eligibility thresholds, baselines, and routing.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+        </div>
+
+        <div class="noteBox">
+          <strong>Note:</strong> Public pages intentionally omit company identifiers and sensitive operational details.
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section__header">
+          <h2>How Engagements Work</h2>
+          <p>Low-drama consulting: clear owners, reliable systems, measurable outcomes.</p>
+        </div>
+
+        <div class="grid grid--4">
+          <div class="step">
+            <div class="step__num">01</div>
+            <div class="step__title">Diagnose</div>
+            <div class="step__text">Clarify goals, constraints, stakeholders, and failure modes.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">02</div>
+            <div class="step__title">Align</div>
+            <div class="step__text">Define the smallest set of high-leverage decisions to make.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">03</div>
+            <div class="step__title">Build</div>
+            <div class="step__text">Implement with guardrails, logging, and adoption in mind.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">04</div>
+            <div class="step__title">Handoff</div>
+            <div class="step__text">Docs, dashboards, runbooks—so the system survives staffing changes.</div>
+          </div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" href="booking.html"><i class="fa-solid fa-calendar"></i> Start with a consult</a>
+          <a class="btn btn--primary" href="what-i-build.html"><i class="fa-solid fa-cubes"></i> Explore what I build</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--alt" id="about">
+      <div class="container about">
+        <div class="about__copy">
+          <h2>About Naturally Logical</h2>
+          <p class="lead">
+            Naturally Logical is a consulting practice focused on building reliable automation and decision systems that teams trust.
+          </p>
+          <p>
+            I’m Sarah M. Brown — a Senior AI &amp; Automation Engineer with a systems-first approach. I specialize in the operational reality:
+            messy inputs, cross-team constraints, and automation that must be safe, observable, and adoptable.
+          </p>
+
+          <div class="about__actions">
+            <a class="btn btn--primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Reach out</a>
+          </div>
+        </div>
+
+        <div class="about__card">
+          <div class="card">
+            <div class="card__kicker"><i class="fa-solid fa-briefcase"></i> Engagement types</div>
+            <ul class="bullets">
+              <li><strong>Advisory:</strong> decision memos, strategy clarity, risk flags</li>
+              <li><strong>Fractional:</strong> ongoing systems leadership</li>
+              <li><strong>Build-to-handoff:</strong> implement + document + enable teams</li>
+            </ul>
+            <div class="mini">
+              <div class="mini__label">Based in</div>
+              <div class="mini__value">Amesbury, MA • Remote</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -211,7 +340,7 @@
           <div class="footer__sub">Consulting • AI • Automation • Decision Systems</div>
         </div>
         <div class="footer__right">
-          <a href="booking.html">Book</a>
+          <a href="../contact.html">Book</a>
           <a href="contact.html">Contact</a>
           <a href="what-i-build.html">What I Build</a>
           <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
@@ -220,7 +349,211 @@
     </footer>
   </main>
 
-  <!-- ✅ External JS (this MUST be at the bottom) -->
+  <!-- Swiper JS (for offerings slider) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="New_assets/scripts.js"></script>
+</body>
+</html>
+
+    <!-- PROOF -->
+    <section class="section section--alt" id="proof">
+      <div class="container">
+        <div class="section__header">
+          <h2>Proof &amp; Case Studies</h2>
+          <p>Examples of the systems and decision frameworks I ship.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <a class="card card--link" href="SYNaTRA.html">
+            <div class="card__kicker"><i class="fa-solid fa-robot"></i> SYNaTRA</div>
+            <h3>AI triage assistant</h3>
+            <p>Slack-based context retrieval + summarization across Salesforce and Jira, with ranked signals and confidence.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a class="card card--link" href="subscription-self-serve.html">
+            <div class="card__kicker"><i class="fa-solid fa-file-contract"></i> Subscriptions</div>
+            <h3>Self-serve automation + validation</h3>
+            <p>Fail-closed subscription state automation with logging, auditability, and human review for amendments.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+
+          <a class="card card--link" href="ota-monitoring.html">
+            <div class="card__kicker"><i class="fa-solid fa-tower-broadcast"></i> OTA Monitoring</div>
+            <h3>Signals → alerts → owners</h3>
+            <p>Conversion/visibility degradation detection with eligibility thresholds, baselines, and routing.</p>
+            <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+        </div>
+
+        <div class="noteBox">
+          <strong>Note:</strong> Public pages intentionally omit company identifiers and sensitive operational details.
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section__header">
+          <h2>How Engagements Work</h2>
+          <p>Low-drama consulting: clear owners, reliable systems, measurable outcomes.</p>
+        </div>
+
+        <div class="grid grid--4">
+          <div class="step">
+            <div class="step__num">01</div>
+            <div class="step__title">Diagnose</div>
+            <div class="step__text">Clarify goals, constraints, stakeholders, and failure modes.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">02</div>
+            <div class="step__title">Align</div>
+            <div class="step__text">Define the smallest set of high-leverage decisions to make.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">03</div>
+            <div class="step__title">Build</div>
+            <div class="step__text">Implement with guardrails, logging, and adoption in mind.</div>
+          </div>
+          <div class="step">
+            <div class="step__num">04</div>
+            <div class="step__title">Handoff</div>
+            <div class="step__text">Docs, dashboards, runbooks—so the system survives staffing changes.</div>
+          </div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" href="booking.html"><i class="fa-solid fa-calendar"></i> Start with a consult</a>
+          <a class="btn btn--primary" href="what-i-build2.html"><i class="fa-solid fa-cubes"></i> Explore what I build</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--alt" id="about">
+      <div class="container about">
+        <div class="about__copy">
+          <h2>About Naturally Logical</h2>
+          <p class="lead">
+            Naturally Logical is a consulting practice focused on building reliable automation and decision systems that teams trust.
+          </p>
+          <p>
+            I’m Sarah M. Brown — a Senior AI &amp; Automation Engineer with a systems-first approach. I specialize in the operational reality:
+            messy inputs, cross-team constraints, and automation that must be safe, observable, and adoptable.
+          </p>
+
+          <div class="about__actions">
+            <a class="btn btn--primary" href="contact.html"><i class="fa-solid fa-envelope"></i> Reach out</a>
+          </div>
+        </div>
+
+        <div class="about__card">
+          <div class="card">
+            <div class="card__kicker"><i class="fa-solid fa-briefcase"></i> Engagement types</div>
+            <ul class="bullets">
+              <li><strong>Advisory:</strong> decision memos, strategy clarity, risk flags</li>
+              <li><strong>Fractional:</strong> ongoing systems leadership</li>
+              <li><strong>Build-to-handoff:</strong> implement + document + enable teams</li>
+            </ul>
+            <div class="mini">
+              <div class="mini__label">Based in</div>
+              <div class="mini__value">Amesbury, MA • Remote</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Naturally Logical",
+        "url": "https://naturallylogical.com/home2",
+        "logo": "https://naturallylogical.com/path-to-your-logo.png",
+        "image": "https://naturallylogical.com/path-to-featured-image.jpg",
+        "description": "AI & Automation consulting firm specializing in Salesforce optimization, data management, and business process automation.",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Amesbury",
+          "addressRegion": "MA",
+          "addressCountry": "US"
+        },
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "US"
+          },
+          {
+            "@type": "Place",
+            "name": "Worldwide"
+          }
+        ],
+        "sameAs": [
+          "https://github.com/Serruhb"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Sarah M. Brown",
+          "jobTitle": "Senior AI & Automation Engineer",
+          "sameAs": "https://www.linkedin.com/in/serruhb/",
+          "knowsAbout": [
+            "Python", "JavaScript", "Ruby", "SQL", "JQL", "SOQL", "SOSQL", "TSQL", 
+            "HTML", "XML", "VFP", "CSS", "TypeScript", "JSON", "Bash/Shell", "Workato", 
+            "Boomi", "MuleSoft", "PowerApps", "Power Automate", "PostgreSQL", 
+            "Snowflake", "BigQuery", "MongoDB", "Power BI", "Tableau", "Excel", 
+            "Google Sheets", "Jupyter Notebook", "React", "Node.js", "Salesforce Platform",
+            "Lightning Web Components", "Apex", "SharePoint"
+          ]
+        },
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI & Automation Strategy",
+              "description": "Custom roadmaps for integrating AI and automation into business workflows."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Salesforce Development & Optimization",
+              "description": "Expert Apex, LWC, and Flow development for Salesforce platforms."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Data Integration Services",
+              "description": "Connecting disparate systems using Workato, MuleSoft, or custom Python scripts."
+            }
+          }
+        ]
+      }
+    </script>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <div class="footer__brand">Naturally Logical</div>
+          <div class="footer__sub">Consulting • AI • Automation • Decision Systems</div>
+        </div>
+        <div class="footer__right">
+          <a href="../contact.html">Book</a>
+          <a href="contact.html">Contact</a>
+          <a href="what-i-build2.html">What I Build</a>
+          <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Swiper JS (for offerings slider) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="New_assets/scripts.js"></script>
 </body>
 </html>
