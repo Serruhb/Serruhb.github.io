@@ -234,6 +234,194 @@ a{ text-decoration: none; }
   color: var(--ink);
   font-size: 14px;
 }
+/* =========================
+   Case Study Layout
+   ========================= */
+
+.caseIntro{
+  padding: 52px 0 32px;
+}
+
+.caseIntro__layout{
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.15fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.caseIntro__eyebrow{
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.caseIntro h1{
+  margin: 0 0 10px;
+  font-size: clamp(30px, 3.1vw, 40px);
+  letter-spacing: -0.4px;
+  color: color-mix(in srgb, var(--brand) 82%, black);
+}
+
+.caseIntro__tagline{
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(16,19,20,0.68);
+  margin-bottom: 14px;
+}
+
+.caseIntro__card{
+  /* Slightly denser card for this layout */
+}
+
+.caseIntro__meta{
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.caseIntro__metaRow{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.caseIntro__metaLabel{
+  font-weight: 900;
+  color: rgba(16,19,20,0.60);
+  white-space: nowrap;
+}
+
+.caseIntro__metaValue{
+  font-weight: 800;
+  color: rgba(16,19,20,0.82);
+  text-align: right;
+}
+
+.caseIntro__actions{
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Generic case sections */
+
+.caseSection{
+  padding: 40px 0;
+}
+
+.caseSection + .caseSection{
+  border-top: 1px solid var(--line);
+}
+
+.caseSection__header{
+  margin-bottom: 16px;
+}
+
+.caseSection__header h2{
+  margin: 0 0 6px;
+  font-size: 22px;
+  letter-spacing: -0.1px;
+  color: color-mix(in srgb, var(--brand) 78%, black);
+}
+
+.caseSection__header p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Columns for narrative sections */
+
+.caseColumns{
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr);
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Mode grid (operating modes) */
+
+.modeGrid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Impact metrics */
+
+.metricGrid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric{
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.80);
+  padding: 14px 14px;
+}
+
+.metric__label{
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(16,19,20,0.58);
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.metric__value{
+  font-size: 16px;
+  font-weight: 900;
+  color: color-mix(in srgb, var(--brand) 80%, black);
+  margin-bottom: 4px;
+}
+
+.metric__note{
+  font-size: 13px;
+  color: rgba(16,19,20,0.72);
+}
+
+/* Optional inline tag style if you want to label things */
+.inlineTag{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.75);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(16,19,20,0.70);
+}
+
+/* Responsive tuning for case study layout */
+
+@media (max-width: 980px){
+  .caseIntro__layout{
+    grid-template-columns: 1fr;
+  }
+
+  .caseColumns{
+    grid-template-columns: 1fr;
+  }
+
+  .modeGrid{
+    grid-template-columns: 1fr;
+  }
+
+  .metricGrid{
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ===== Footer ===== */
 .footer{
