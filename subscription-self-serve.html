@@ -1,385 +1,527 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#00CDAC" />
 
-  <title>Subscription Self-Serve Automation & Data Validation | Sarah M. Brown</title>
-  <meta name="description" content="Self-serve subscription automation framework using Workato + Snowflake + Salesforce CPQ with validation, orchestration, logging, and auditability." />
+  <title>Subscription Self-Serve Automation | Sarah M. Brown</title>
+  <meta
+    name="description"
+    content="Self-serve subscription automation framework using Workato + Snowflake + Salesforce CPQ with validation, orchestration, logging, and auditability."
+  />
   <link rel="canonical" href="https://naturallylogical.com/subscription-self-serve.html" />
 
-  <!-- W3CSS + Fonts + Icons -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <script src="https://kit.fontawesome.com/c79cc71819.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Page styles -->
-  <link rel="stylesheet" href="\subscription-self-serve\styles.css" />
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="./index/styles.css" />
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5TPC90ZXh0Pgo8L3N2Zz4="
+  />
 </head>
 
-<body>
+<body id="top" class="project-page">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- Top Nav -->
-<div class="w3-top">
-  <div class="w3-bar w3-card nav-brand">
-    <a href="index.html" class="w3-bar-item w3-button nav-link">
-      <i class="fa fa-home"></i> HOME
-    </a>
-    <a href="resume.html" target="_blank" class="w3-bar-item w3-button nav-link">
-      <i class="fa fa-user"></i> RESUME
-    </a>
-    <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="w3-bar-item w3-button w3-hide-small nav-link">
-      <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
-    </a>
-    <a href="https://github.com/Serruhb" target="_blank" rel="noopener" class="w3-bar-item w3-button w3-hide-small nav-link">
-      <i class="fa fa-github"></i> GITHUB
-    </a>
+  <!-- Navbar -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <div class="container navbar__inner">
+        <!-- LEFT: BACK -->
+        <a href="index.html#featured" class="navbar__link">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          <span>BACK</span>
+        </a>
 
-    <div class="w3-right w3-hide-small">
-      <a href="#overview" class="w3-bar-item w3-button nav-link">
-        <i class="fa fa-info-circle"></i> OVERVIEW
-      </a>
-      <a href="#architecture" class="w3-bar-item w3-button nav-link">
-        <i class="fa fa-sitemap"></i> ARCHITECTURE
-      </a>
-      <a href="#alignment" class="w3-bar-item w3-button nav-link">
-        <i class="fa fa-shield"></i> AI ALIGNMENT
-      </a>
-      <a href="#impact" class="w3-bar-item w3-button nav-link">
-        <i class="fa fa-line-chart"></i> IMPACT
-      </a>
-    </div>
+        <div class="navbar__spacer" aria-hidden="true"></div>
 
-    <a href="javascript:void(0)"
-       class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium nav-link"
-       onclick="w3_open()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
-</div>
+        <!-- RIGHT: RESUME / LINKEDIN / CONTACT (desktop) -->
+        <a href="resume.html" target="_blank" rel="noopener" class="navbar__link navbar__link--desktop">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          <span>RESUME</span>
+        </a>
 
-<!-- Sidebar (mobile) -->
-<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
-     style="display:none" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Menu</a>
-  <a href="#overview" onclick="w3_close()" class="w3-bar-item w3-button">OVERVIEW</a>
-  <a href="#architecture" onclick="w3_close()" class="w3-bar-item w3-button">ARCHITECTURE</a>
-  <a href="#alignment" onclick="w3_close()" class="w3-bar-item w3-button">AI ALIGNMENT</a>
-  <a href="#impact" onclick="w3_close()" class="w3-bar-item w3-button">IMPACT</a>
-</nav>
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="navbar__link navbar__link--desktop">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          <span>LINKEDIN</span>
+        </a>
 
-<!-- Hero -->
-<header class="hero">
-  <div class="w3-content" style="max-width:1100px;">
-    <div class="hero-card w3-card">
-      <div class="hero-eyebrow">
-        <span class="pill"><i class="fa fa-cogs"></i> Enterprise Automation</span>
-        <span class="pill"><i class="fa fa-database"></i> Snowflake</span>
-        <span class="pill"><i class="fa fa-random"></i> Workato</span>
-        <span class="pill"><i class="fa fa-cloud"></i> Salesforce CPQ</span>
-      </div>
+        <a href="index.html#contact" class="navbar__link navbar__link--desktop">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span>CONTACT</span>
+        </a>
 
-      <h1 class="hero-title brand-heading">Subscription Self-Serve Automation & Data Validation</h1>
-      <p class="hero-subtitle">
-        A multi-step orchestration engine that transforms support-tool subscription events into validated, auditable
-        contract amendments in Salesforce CPQ — handling complex pricing, upgrades/downgrades, and multi-contract reality.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#overview" class="w3-button brand-btn"><i class="fa fa-arrow-down"></i> Read the case study</a>
-        <button class="w3-button w3-border" id="copySummaryBtn">
-          <i class="fa fa-copy"></i> Copy summary
+        <!-- Mobile menu button -->
+        <button
+          class="navbar__menu"
+          id="menuButton"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="drawer"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </button>
       </div>
+    </nav>
+  </header>
 
-      <p class="w3-small w3-text-grey" id="copyStatus" aria-live="polite"></p>
+  <!-- Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__overlay" id="drawerOverlay" data-drawer-close></div>
+
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <button class="drawer__close" type="button" data-drawer-close>Close Menu</button>
+
+      <a href="index.html#featured" class="drawer__link" data-drawer-close>Back</a>
+      <a href="resume.html" target="_blank" rel="noopener" class="drawer__link" data-drawer-close>Resume</a>
+      <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="drawer__link" data-drawer-close>LinkedIn</a>
+      <a href="index.html#contact" class="drawer__link" data-drawer-close>Contact</a>
+
+      <hr style="border:0;border-top:1px solid rgba(255,255,255,0.12);margin:10px 0;">
+
+      <a href="#exec" class="drawer__link" data-drawer-close>Executive summary</a>
+      <a href="#architecture" class="drawer__link" data-drawer-close>Architecture</a>
+      <a href="#alignment" class="drawer__link" data-drawer-close>AI alignment</a>
+      <a href="#impact" class="drawer__link" data-drawer-close>Impact</a>
     </div>
   </div>
-</header>
 
-<main class="w3-content page" style="max-width:1100px;">
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero project-hero" aria-label="Subscription Self-Serve hero">
+      <div class="container hero__content">
+        <div class="brand-card">
 
-  <!-- Overview -->
-  <section id="overview" class="section">
-    <div class="section-header">
-      <h2 class="section-title brand-heading"><i class="fa fa-info-circle"></i> Overview</h2>
-      <p class="section-kicker">From manual amendments to deterministic, validated self-serve automation.</p>
-    </div>
+          <!-- Pills -->
+          <div class="hero-eyebrow"
+               style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; margin-bottom:16px;">
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-check-double" aria-hidden="true"></i> Validation gates
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Orchestration
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-repeat" aria-hidden="true"></i> Idempotency
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-file-lines" aria-hidden="true"></i> Audit logging
+            </span>
+          </div>
 
-    <div class="w3-row-padding">
-      <div class="w3-col l6 m12">
-        <div class="card">
-          <h3 class="card-title"><i class="fa fa-exclamation-triangle"></i> Problem</h3>
-          <p>
-            The organization lacked an automated and reliable way to reflect subscription and contract changes within Salesforce CPQ.
-            Manual processes were error-prone, inconsistently applied, and failed to capture business-critical events like
-            account-level discounts (ALDs), product/package upgrades, and provider type changes.
+          <!-- Left / Right -->
+          <div class="grid grid--2" style="margin-top:0; align-items:center;">
+            <!-- LEFT -->
+            <div style="text-align:left; min-width:0;">
+              <h1
+                class="hero__title"
+                style="
+                  display:flex !important;
+                  flex-direction:row !important;
+                  align-items:flex-start;
+                  justify-content:flex-start;
+                  gap:12px;
+                  flex-wrap:nowrap !important;
+                  margin:0;
+                  max-width:100%;
+                  font-size:clamp(1.55rem, 3.1vw, 3rem);
+                  line-height:1.1;
+                "
+              >
+                <i class="fa-solid fa-gears" aria-hidden="true" style="flex:0 0 auto; margin-top:0.12em;"></i>
+                <span style="flex:1 1 auto; min-width:0;">
+                  Subscription Self-Serve Automation
+                </span>
+              </h1>
+
+              <p class="hero__tagline" style="margin-top:6px; text-align:left;">
+                <span style="opacity:0.95;">Validation · Orchestration · Auditability</span>
+              </p>
+            </div>
+
+            <!-- RIGHT -->
+            <div style="text-align:left; min-width:0;">
+              <p class="hero__subtag" style="margin-top:0; max-width:none;">
+                A multi-step orchestration engine that transforms subscription events into validated, auditable
+                contract amendments in Salesforce CPQ—handling complex pricing, upgrades/downgrades, and multi-contract reality.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA buttons -->
+          <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
+            <a class="btn btn-ghost" href="#exec"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+              Executive summary
+            </a>
+            <a class="btn btn-ghost" href="#architecture"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
+              Architecture
+            </a>
+            <a class="btn btn-ghost" href="#alignment"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              Guardrails
+            </a>
+            <a
+              class="btn btn-ghost"
+              href="mailto:sarah.brown@naturallylogical.com?subject=Subscription%20Self-Serve%20Automation%20Summary&body=Hi%20Sarah%2C%0A%0AI%E2%80%99d%20love%20to%20hear%20more%20about%20the%20Subscription%20Self-Serve%20Automation%20project.%0A%0AKey%20idea%3A%20Workato%20orchestrates%20validated%20amendments%20into%20Salesforce%20CPQ%20using%20Snowflake%20as%20a%20canonical%20transformation%20layer%2C%20with%20logging%2C%20idempotency%2C%20and%20fail-closed%20guardrails.%0A%0AThanks!"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;"
+            >
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              Email summary
+            </a>
+          </div>
+
+          <!-- Note (right aligned) -->
+          <p class="project-note"
+             style="width:100%; display:flex; justify-content:flex-end; color:rgba(255,255,255,0.65); font-size:0.82rem; margin:14px 0 0;">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true" style="margin-right:8px;"></i>
+            Details are generalized; sensitive identifiers and company specifics are redacted.
           </p>
-          <p class="muted">
-            Outcome: downstream gaps in revenue alignment, customer experience, and operational scalability.
+        </div>
+      </div>
+    </section>
+
+    <!-- EXEC SUMMARY -->
+    <section class="section" id="exec">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Executive Summary
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            From manual amendments to deterministic, validated self-serve automation.
           </p>
         </div>
-      </div>
 
-      <div class="w3-col l6 m12">
-        <div class="card">
-          <h3 class="card-title"><i class="fa fa-lightbulb-o"></i> Solution</h3>
-          <p>
-            A self-serve subscription automation framework was developed, powered by Workato and Snowflake.
-            Transformed data from Support Tools is processed through a multi-step orchestration engine that validates,
-            constructs, and applies contract amendments automatically in Salesforce.
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+              The problem
+            </h3>
+            <p class="project-card__one-liner">
+              Subscription and contract changes weren’t reliably reflected in Salesforce CPQ.
+            </p>
+            <ul class="bullets">
+              <li>Manual processes were error-prone and inconsistently applied.</li>
+              <li>Complex events (ALDs, upgrades/downgrades, provider changes) were frequently missed or mis-modeled.</li>
+              <li>Downstream impact: revenue alignment drift, CX friction, and scaling limits.</li>
+            </ul>
+          </article>
+
+          <article class="project-card project-card--featured">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
+              The solution
+            </h3>
+            <p class="project-card__one-liner">
+              Workato + Snowflake automation that validates, builds, and applies CPQ amendments with full logging and auditability.
+            </p>
+            <ul class="bullets">
+              <li>Handles complex pricing + account-level discounts (ALDs).</li>
+              <li>Supports multiple active contracts and correct contract selection.</li>
+              <li>Upgrade/downgrade paths + product/edition mapping.</li>
+              <li>Idempotency + stage-by-stage audit trail for reconciliation.</li>
+            </ul>
+
+            <ul class="tags" aria-label="Tech tags">
+              <li>Workato</li>
+              <li>Snowflake</li>
+              <li>Salesforce CPQ</li>
+              <li>Validation gates</li>
+              <li>Idempotency</li>
+              <li>Audit logging</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn brand-btn" href="#architecture">Architecture</a>
+              <a class="btn brand-btn" href="#alignment">Guardrails</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture" class="section">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Architecture Summary
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Snowflake transforms. Workato validates + orchestrates. Salesforce CPQ executes.
           </p>
-          <ul class="checklist">
-            <li><i class="fa fa-check"></i> Handles complex pricing + ALDs</li>
-            <li><i class="fa fa-check"></i> Supports multiple active contracts</li>
-            <li><i class="fa fa-check"></i> Upgrade/downgrade paths + product/edition mapping</li>
-            <li><i class="fa fa-check"></i> Full logging + reconciliation for auditability</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Architecture -->
-  <section id="architecture" class="section">
-    <div class="section-header">
-      <h2 class="section-title brand-heading"><i class="fa fa-sitemap"></i> Architecture Summary</h2>
-      <p class="section-kicker">Snowflake transforms. Workato validates + orchestrates. Salesforce CPQ executes.</p>
-    </div>
-
-    <!-- Diagram -->
-    <div class="diagram card">
-      <div class="diagram-row">
-        <div class="node">
-          <div class="node-title"><i class="fa fa-life-ring"></i> Support Tools</div>
-          <div class="node-sub">Events: ALDs, upgrades, provider changes, etc.</div>
         </div>
 
-        <div class="arrow"><i class="fa fa-long-arrow-right"></i></div>
+        <article class="project-card project-card--featured">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-sitemap icon-accent" aria-hidden="true"></i>
+            System flow (high level)
+          </h3>
 
-        <div class="node">
-          <div class="node-title"><i class="fa fa-database"></i> Snowflake</div>
-          <div class="node-sub">Normalize + map products, qty, pricing family</div>
-        </div>
-
-        <div class="arrow"><i class="fa fa-long-arrow-right"></i></div>
-
-        <div class="node">
-          <div class="node-title"><i class="fa fa-random"></i> Workato</div>
-          <div class="node-sub">Parent recipe validates + routes sub-recipes</div>
-        </div>
-
-        <div class="arrow"><i class="fa fa-long-arrow-right"></i></div>
-
-        <div class="node">
-          <div class="node-title"><i class="fa fa-cloud"></i> Salesforce CPQ</div>
-          <div class="node-sub">Opp → Quote → Quote Lines → Order</div>
-        </div>
-      </div>
-
-      <div class="diagram-legend">
-        <div class="legend-item"><span class="dot dot-brand"></span> Deterministic validation gates</div>
-        <div class="legend-item"><span class="dot dot-ink"></span> Logged transitions + audit trail</div>
-        <div class="legend-item"><span class="dot dot-warn"></span> Error states + retry paths</div>
-      </div>
-    </div>
-
-    <!-- Expandable details -->
-    <div class="w3-row-padding">
-      <div class="w3-col l6 m12">
-        <button class="accordion" data-acc="acc1">
-          <span><i class="fa fa-database"></i> Data Transformation (Snowflake)</span>
-          <i class="fa fa-chevron-down"></i>
-        </button>
-        <div class="panel" id="acc1">
           <ul class="bullets">
-            <li>Curates raw support data into a normalized, contract-amendment-ready model.</li>
-            <li>Applies business logic: product matching, quantity resolution, pricing family alignment.</li>
-            <li>Produces clean, versionable records for downstream processing and reconciliation.</li>
+            <li><strong>Support tools</strong> → emit subscription events (ALDs, upgrades, provider changes, etc.).</li>
+            <li><strong>Snowflake</strong> → normalize + map products, quantities, and pricing families into a canonical model.</li>
+            <li><strong>Workato</strong> → parent recipe validates + routes; enforces idempotency and logs decisions.</li>
+            <li><strong>Salesforce CPQ</strong> → builds artifacts (Opp → Quote → Quote Lines → Order).</li>
           </ul>
+
+          <ul class="tags" aria-label="Tech tags">
+            <li>Canonical modeling</li>
+            <li>Deterministic gates</li>
+            <li>Retry/fail-closed</li>
+            <li>Reconciliation</li>
+          </ul>
+        </article>
+
+        <div class="stack">
+          <!-- Native accordions (no extra JS needed) -->
+          <details class="accordion">
+            <summary class="accordion__summary">
+              <i class="fa-solid fa-database" aria-hidden="true"></i>
+              Data Transformation (Snowflake)
+              <span class="accordion__hint">Normalization + mapping into an amendment-ready model</span>
+            </summary>
+            <ul class="bullets">
+              <li>Curates raw support data into a normalized, contract-amendment-ready dataset.</li>
+              <li>Applies business logic: product matching, quantity resolution, pricing family alignment.</li>
+              <li>Produces clean, versionable records for downstream processing and reconciliation.</li>
+            </ul>
+          </details>
+
+          <details class="accordion">
+            <summary class="accordion__summary">
+              <i class="fa-solid fa-random" aria-hidden="true"></i>
+              Validation + Orchestration (Workato)
+              <span class="accordion__hint">Parent recipe routes controlled sub-recipes</span>
+            </summary>
+            <ul class="bullets">
+              <li>Central parent recipe controls validation, logging, idempotency, and routing.</li>
+              <li>Child recipes build CPQ artifacts: Opportunities → Quotes → Quote Lines → Orders.</li>
+              <li>Safeguards prevent duplicate builds and misalignment across multiple active contracts.</li>
+            </ul>
+          </details>
+
+          <details class="accordion">
+            <summary class="accordion__summary">
+              <i class="fa-solid fa-bug" aria-hidden="true"></i>
+              Error Handling
+              <span class="accordion__hint">Structured failures + safe retries</span>
+            </summary>
+            <ul class="bullets">
+              <li>Invalid states surface with structured context for triage.</li>
+              <li>Retry paths handle transient failures; manual resolution supported when needed.</li>
+              <li><strong>Fail-closed posture:</strong> no silent corruption of CPQ records.</li>
+            </ul>
+          </details>
+
+          <details class="accordion">
+            <summary class="accordion__summary">
+              <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+              Logging + Auditability
+              <span class="accordion__hint">Trace every decision and action</span>
+            </summary>
+            <ul class="bullets">
+              <li>Stage-by-stage logs: validation decisions, routing, actions taken, outcomes.</li>
+              <li>Human-readable summaries improve Support/Biz interpretability.</li>
+              <li>Reconciliation enables revenue alignment and post-incident review.</li>
+            </ul>
+          </details>
         </div>
       </div>
+    </section>
 
-      <div class="w3-col l6 m12">
-        <button class="accordion" data-acc="acc2">
-          <span><i class="fa fa-random"></i> Validation + Orchestration (Workato)</span>
-          <i class="fa fa-chevron-down"></i>
-        </button>
-        <div class="panel" id="acc2">
+    <!-- AI Alignment -->
+    <section id="alignment" class="section">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            AI Alignment Perspective
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            When automation touches revenue, “aligned” means safe, observable, correct-by-design.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-lock icon-accent" aria-hidden="true"></i>
+              Guardrails &amp; determinism
+            </h3>
+            <p class="project-card__one-liner">
+              The system behaves like an “agent” with strict constraints: only validated, mapped actions are allowed.
+            </p>
+            <ul class="bullets">
+              <li>Validation gates for known mappings, contract-context rules, and upgrade paths.</li>
+              <li>Prevents unintended actions and pricing drift.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-eye icon-accent" aria-hidden="true"></i>
+              Observability &amp; accountability
+            </h3>
+            <p class="project-card__one-liner">
+              Every decision is logged with inputs, decision metadata, and outcomes.
+            </p>
+            <ul class="bullets">
+              <li>Provable audit trail for trust, compliance, and incident response.</li>
+              <li>Traceability from final CPQ state back to source events.</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="project-card project-card--featured" style="margin-top:18px;">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-quote-left icon-accent" aria-hidden="true"></i>
+            Why this matters for AI-enabled systems
+          </h3>
+          <p class="project-card__one-liner">
+            Deterministic validation layers are the “seatbelts” that keep AI-assisted recommendations from turning into unsafe production changes.
+          </p>
           <ul class="bullets">
-            <li>Central parent recipe controls validation, logging, idempotency, and routing.</li>
-            <li>Child recipes build CPQ artifacts: Opportunities → Quotes → Quote Lines → Orders.</li>
-            <li>Safeguards prevent duplicate builds and misalignment across multiple active contracts.</li>
+            <li>Validation + idempotency reduce blast radius.</li>
+            <li>Logging + reversible paths keep the system supportable.</li>
+            <li>Human-in-the-loop remains the safe fallback for exceptions.</li>
           </ul>
-        </div>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <div class="w3-row-padding">
-      <div class="w3-col l6 m12">
-        <button class="accordion" data-acc="acc3">
-          <span><i class="fa fa-bug"></i> Error Handling</span>
-          <i class="fa fa-chevron-down"></i>
-        </button>
-        <div class="panel" id="acc3">
-          <ul class="bullets">
-            <li>Invalid states surface to reporting and logs with structured context for triage.</li>
-            <li>Retry paths handle transient failures; manual resolution is supported when needed.</li>
-            <li>Fail-closed posture: no silent corruption of CPQ records.</li>
+    <!-- Impact -->
+    <section id="impact" class="section">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Operational Impact
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Outcome-focused: fewer errors, faster amendments, cleaner revenue alignment.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-check icon-accent" aria-hidden="true"></i>
+              Reliability
+            </h3>
+            <ul class="bullets">
+              <li>Consistent rule application across contracts, products, and pricing states.</li>
+              <li>Validation gates prevent silent failure modes.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-rotate icon-accent" aria-hidden="true"></i>
+              Scalability
+            </h3>
+            <ul class="bullets">
+              <li>Event-driven amendments reduce operational load as volume grows.</li>
+              <li>Deterministic routing keeps operations predictable under growth.</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="project-card" style="margin-top:18px;">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-toolbox icon-accent" aria-hidden="true"></i>
+            Tech stack
+          </h3>
+          <ul class="tags" aria-label="Tech stack">
+            <li>Snowflake</li>
+            <li>Workato</li>
+            <li>Salesforce CPQ</li>
+            <li>Data modeling</li>
+            <li>Validation &amp; controls</li>
+            <li>Logging / audit</li>
           </ul>
-        </div>
+          </article>
+          <div class="actions actions--center">
+            <a class="btn btn-ghost" href="#top">Back to top</a>
+         
+          </div>
+       
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
       </div>
 
-      <div class="w3-col l6 m12">
-        <button class="accordion" data-acc="acc4">
-          <span><i class="fa fa-file-text-o"></i> Logging + Auditability</span>
-          <i class="fa fa-chevron-down"></i>
-        </button>
-        <div class="panel" id="acc4">
-          <ul class="bullets">
-            <li>Stage-by-stage logs: validation decisions, routing, actions taken, and outcomes.</li>
-            <li>Quote notes include human-readable summaries so Support + Biz teams can understand changes fast.</li>
-            <li>Reconciliation makes revenue alignment and post-incident review straightforward.</li>
-          </ul>
-        </div>
+      <div class="footer__meta">
+        <p>© 2026 Naturally Logical</p>
+        <p>Portfolio excerpt for demonstration; sensitive details redacted.</p>
       </div>
+    </footer>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Subscription Self-Serve Automation",
+      "author": { "@type": "Person", "name": "Sarah M. Brown", "url": "https://naturallylogical.com/" },
+      "url": "https://naturallylogical.com/subscription-self-serve.html",
+      "about": ["Subscription automation", "Workato", "Snowflake", "Salesforce CPQ", "Validation", "Auditability"]
+    }
+    </script>
+  </main>
+
+  <!-- Diagram modal (keep ONCE per page) -->
+  <div id="diagramModal" aria-hidden="true"
+    style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:3000;">
+    <div id="diagramModalBackdrop"
+      style="position:absolute; inset:0; background:rgba(0,0,0,0.72);"></div>
+
+    <div role="dialog" aria-modal="true"
+      style="position:relative; background:#fff; border-radius:16px; padding:16px;
+             max-width:min(1040px, calc(100vw - 40px)); max-height:82vh;
+             box-shadow:0 18px 40px rgba(0,0,0,0.45); z-index:3001;">
+      <button id="diagramModalClose" aria-label="Close"
+        style="position:absolute; top:8px; right:10px; border:0; background:transparent;
+               font-size:28px; cursor:pointer; color:#666;">
+        &times;
+      </button>
+
+      <img id="diagramModalImg" alt=""
+        style="display:block; max-width:100%; max-height:64vh; width:auto; height:auto; border-radius:10px;" />
+
+      <p id="diagramModalCaption" class="muted" style="margin:10px 6px 2px; text-align:center;"></p>
     </div>
-  </section>
-
-  <!-- AI Alignment -->
-  <section id="alignment" class="section">
-    <div class="section-header">
-      <h2 class="section-title brand-heading"><i class="fa fa-shield"></i> AI Alignment Perspective</h2>
-      <p class="section-kicker">When automation touches revenue, “aligned” means safe, observable, and correct-by-design.</p>
-    </div>
-
-    <div class="w3-row-padding">
-      <div class="w3-col l4 m12">
-        <div class="card">
-          <h3 class="card-title"><i class="fa fa-lock"></i> Guardrails & Determinism</h3>
-          <p>
-            The pipeline behaves like an “agent” with strict constraints:
-            it can only take actions that pass validation gates, match known product mappings,
-            and satisfy contract-context rules (e.g., active contract selection, upgrade paths, ALDs).
-          </p>
-          <p class="muted">
-            Alignment goal: prevent unintended actions and pricing drift.
-          </p>
-        </div>
-      </div>
-
-      <div class="w3-col l4 m12">
-        <div class="card">
-          <h3 class="card-title"><i class="fa fa-eye"></i> Observability & Accountability</h3>
-          <p>
-            Every decision is logged with inputs, reasoning metadata, and outcomes.
-            This creates a provable audit trail — essential for trust, compliance, and rapid incident response.
-          </p>
-          <p class="muted">
-            Alignment goal: transparency, traceability, and explainability.
-          </p>
-        </div>
-      </div>
-
-      <div class="w3-col l4 m12">
-        <div class="card">
-          <h3 class="card-title"><i class="fa fa-users"></i> Human-in-the-Loop Fallbacks</h3>
-          <p>
-            Failures route to reports with structured context for fast review.
-            Retry and manual resolution paths ensure the system is resilient without “papering over” bad states.
-          </p>
-          <p class="muted">
-            Alignment goal: safe escalation instead of silent failure.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout card">
-      <div class="callout-icon"><i class="fa fa-quote-left"></i></div>
-      <div>
-        <div class="callout-title">Why this matters for AI-enabled systems</div>
-        <p class="callout-text">
-          As teams introduce LLMs into ticket triage, support tooling, and subscription operations, deterministic validation layers
-          become the “seatbelts” that keep AI-assisted recommendations from mutating into unsafe production changes.
-          This project establishes those controls: validation, idempotency, logging, and reversible paths.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Impact -->
-  <section id="impact" class="section">
-    <div class="section-header">
-      <h2 class="section-title brand-heading"><i class="fa fa-line-chart"></i> Operational Impact</h2>
-      <p class="section-kicker">Outcome-focused: fewer errors, faster amendments, cleaner revenue alignment.</p>
-    </div>
-
-    <div class="w3-row-padding">
-      <div class="w3-col l4 m12">
-        <div class="metric card">
-          <div class="metric-value">↑</div>
-          <div class="metric-label">Reliability</div>
-          <p class="muted">Consistent rule application across contracts, products, and pricing states.</p>
-        </div>
-      </div>
-      <div class="w3-col l4 m12">
-        <div class="metric card">
-          <div class="metric-value">⟲</div>
-          <div class="metric-label">Scalability</div>
-          <p class="muted">Self-serve, event-driven amendments reduce operational load as volume grows.</p>
-        </div>
-      </div>
-      <div class="w3-col l4 m12">
-        <div class="metric card">
-          <div class="metric-value">✓</div>
-          <div class="metric-label">Auditability</div>
-          <p class="muted">Stage-by-stage logs, quote notes, and reconciliation support trust and compliance.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3 class="card-title"><i class="fa fa-wrench"></i> Tech Stack</h3>
-      <div class="tag-row">
-        <span class="tag"><i class="fa fa-database"></i> Snowflake</span>
-        <span class="tag"><i class="fa fa-random"></i> Workato</span>
-        <span class="tag"><i class="fa fa-cloud"></i> Salesforce CPQ</span>
-        <span class="tag"><i class="fa fa-code"></i> Data Modeling</span>
-        <span class="tag"><i class="fa fa-shield"></i> Validation & Controls</span>
-        <span class="tag"><i class="fa fa-file-text-o"></i> Logging / Audit</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Back to top -->
-  <div class="w3-center w3-padding-32">
-    <a class="w3-button w3-border" href="#top" id="backToTopBtn">
-      <i class="fa fa-arrow-up"></i> Back to top
-    </a>
   </div>
 
-</main>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="w3-content" style="max-width:1100px;">
-    <div class="footer-row">
-      <div>
-        <div class="footer-title">Sarah M. Brown</div>
-        <div class="footer-sub">Senior AI & Automation Engineer • Enterprise Systems • Agentic Automation</div>
-      </div>
-      <div class="footer-links">
-        <a href="mailto:sarah.brown@naturallylogical.com"><i class="fa fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Serruhb" target="_blank" rel="noopener"><i class="fa fa-github"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="\subscription-self-serve\scripts.js"></script>
+  <!-- Shared site JS -->
+  <script defer src="./index/scripts.js"></script>
 </body>
 </html>

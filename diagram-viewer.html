@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00CDAC" />
+
+  <title>Diagram Viewer | Naturally Logical</title>
+
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Shared site CSS (keeps your brand + navbar styles consistent) -->
+  <link rel="stylesheet" href="./index/styles.css" />
+
+  <!-- Viewer-only CSS -->
+  <link rel="stylesheet" href="./diagram-viewer.css" />
+</head>
+
+<body class="project-page diagram-viewer">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Simple navbar (no drawer needed) -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Diagram viewer navigation">
+      <div class="container navbar__inner">
+        <a id="backLink" href="index.html" class="navbar__link">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          <span>BACK</span>
+        </a>
+
+        <div class="navbar__spacer" aria-hidden="true"></div>
+
+        <a id="openRawLink" class="navbar__link navbar__link--desktop" href="#" target="_blank" rel="noopener">
+          <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i>
+          <span>OPEN</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="dv">
+    <div class="container dv__top">
+      <h1 id="dvTitle" class="dv__title brand-heading">Diagram</h1>
+      <p id="dvSubtitle" class="dv__subtitle muted"></p>
+    </div>
+
+    <!-- NO CARD: just a large, centered canvas area -->
+    <div class="dv__stage">
+      <div class="dv__media">
+        <img id="dvImg" class="dv__img" alt="" />
+      </div>
+    </div>
+
+    <div class="container dv__bottom">
+      <p id="dvCaption" class="dv__caption muted"></p>
+    </div>
+  </main>
+
+  <!-- Shared site JS (optional; includes GA + your existing behaviors) -->
+  <script defer src="./index/scripts.js"></script>
+
+  <!-- Viewer-only JS -->
+  <script defer src="./diagram-viewer.js"></script>
+</body>
+</html>

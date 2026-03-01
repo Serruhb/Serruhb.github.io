@@ -1,463 +1,725 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>OTA Performance Alert and Monitoring</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
 
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      document.documentElement.classList.add("js");
-   </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00CDAC" />
 
-    <!-- W3CSS + Font Awesome -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+  <title>OTA Performance Alert &amp; Monitoring | Sarah M. Brown</title>
+  <meta
+    name="description"
+    content="OTA performance alerting + monitoring system for visibility, conversion leakage, and early-warning signals across online travel agencies—designed for explainable rules, clean routing, and scale."
+  />
+  <link rel="canonical" href="https://naturallylogical.com/ota-monitoring.html" />
 
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="\ota-monitoring\styles.css" />
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5PPC90ZXh0Pgo8L3N2Zz4="
-    />
-    <meta name="description" content="AI &amp; Automation Engineer case study: OTA performance alerting system for visibility, conversion, and early-warning monitoring." />
-    <link rel="canonical" href="https://naturallylogical.com/ota-monitoring.html" />
+  <!-- Shared site CSS (matches SYNaTRA) -->
+  <link rel="stylesheet" href="./index/styles.css" />
 
-    <meta property="og:title" content="OTA Performance Alert &amp; Monitoring — Case Study" />
-    <meta property="og:description" content="Automated alerting + ticket routing for OTA visibility failures and conversion leakage, designed to scale into early-warning prediction." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://naturallylogical.com/ota-monitoring.html" />
-  </head>
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5PPC90ZXh0Pgo8L3N2Zz4="
+  />
+</head>
 
+<body id="top" class="project-page">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <body>
-    <!-- =================== NAVBAR (kept cohesive; edit links as needed) =================== -->
-    <div class="w3-top">
-      <div
-        class="w3-bar w3-card"
-        id="myNavbar"
-        style="background-color: var(--brand); color: #fff"
-      >
-        <a
-          href="https://naturallylogical.com"
-          target="_blank"
-          class="w3-bar-item w3-button"
-          style="color: #fff"
-        >
-          <i class="fa fa-user"></i> HOME
-        </a>
-        <a
-          href="https://www.linkedin.com/in/serruhb/"
-          target="_blank"
-          rel="noopener"
-          class="w3-bar-item w3-button w3-hide-small"
-          style="color: #fff"
-        >
-          <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
+  <!-- Navbar (matches SYNaTRA; no W3) -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <div class="container navbar__inner">
+        <!-- LEFT: BACK -->
+        <a href="index.html" class="navbar__link">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          <span>BACK</span>
         </a>
 
-        <div class="w3-right w3-hide-small">
-          <a
-            href="mailto:sarah.brown@naturallylogical.com"
-            class="w3-bar-item w3-button"
-            style="color: #fff"
-          >
-            <i class="fa fa-envelope"></i> CONTACT
-          </a>
-          <a
-            href="resume.html"
-            class="w3-bar-item w3-button"
-            style="color: #fff"
-          >
-            <i class="fa fa-user"></i> RESUME
-          </a>
+        <div class="navbar__spacer" aria-hidden="true"></div>
+
+        <!-- RIGHT: RESUME / LINKEDIN / CONTACT (desktop) -->
+        <a href="resume.html" target="_blank" rel="noopener" class="navbar__link navbar__link--desktop">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          <span>RESUME</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="navbar__link navbar__link--desktop">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          <span>LINKEDIN</span>
+        </a>
+
+        <a href="index.html#contact" class="navbar__link navbar__link--desktop">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span>CONTACT</span>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          class="navbar__menu"
+          id="menuButton"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="drawer"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Drawer (matches SYNaTRA; no W3) -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__overlay" id="drawerOverlay" data-drawer-close></div>
+
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <button class="drawer__close" type="button" data-drawer-close>Close Menu</button>
+
+      <a href="index.html" class="drawer__link" data-drawer-close>Back</a>
+      <a href="resume.html" target="_blank" rel="noopener" class="drawer__link" data-drawer-close>Resume</a>
+      <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="drawer__link" data-drawer-close>LinkedIn</a>
+      <a href="index.html#contact" class="drawer__link" data-drawer-close>Contact</a>
+
+      <hr style="border:0;border-top:1px solid rgba(255,255,255,0.12);margin:10px 0;">
+
+      <a href="#exec" class="drawer__link" data-drawer-close>Executive summary</a>
+      <a href="#signals" class="drawer__link" data-drawer-close>Signal hierarchy</a>
+      <a href="#architecture" class="drawer__link" data-drawer-close>Architecture</a>
+      <a href="#features" class="drawer__link" data-drawer-close>Key features</a>
+      <a href="#roadmap" class="drawer__link" data-drawer-close>Roadmap</a>
+      <a href="#use-cases" class="drawer__link" data-drawer-close>Use cases</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero project-hero" aria-label="OTA Monitoring hero">
+      <div class="container hero__content">
+        <div class="brand-card">
+
+          <!-- Pills -->
+          <div class="hero-eyebrow"
+               style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; margin-bottom:16px;">
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Visibility alerts
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-percent" aria-hidden="true"></i> Conversion leakage
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Guardrails
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-code-branch" aria-hidden="true"></i> Owner-aware routing
+            </span>
+          </div>
+
+          <!-- Left / Right -->
+          <div class="grid grid--2" style="margin-top:0; align-items:center; gap:24px; flex-wrap:wrap;">
+  <!-- LEFT -->
+  <div style="text-align:left; min-width:0; flex:1 1 320px;">
+    <h1
+      class="hero__title"
+      style="
+        display:inline-flex;
+        align-items:center;
+        justify-content:flex-start;
+        gap:12px;
+        white-space:nowrap;
+        max-width:100%;
+        font-size:clamp(1.6rem, 3.2vw, 3rem);
+        line-height:1.1;
+      "
+    >
+      <i class="fa-solid fa-bell" aria-hidden="true" style="flex:0 0 auto;"></i>
+      <span>OTA Monitoring</span>
+    </h1>
+
+    <p class="hero__tagline" style="margin-top:6px; text-align:left;">
+      <span style="opacity:0.95;">Performance Alert &amp; Monitoring</span>
+    </p>
+  </div>
+
+  <!-- RIGHT -->
+  <div style="text-align:left; min-width:0; flex:1 1 360px;">
+    <p class="hero__subtag" style="margin-top:0; max-width:none;">
+      A monitoring + alerting framework that turns weekly OTA metrics into prioritized, accountable tickets and watchlist signals.
+      Built for explainable rules now, with a clear path to early-warning prediction later.
+    </p>
+  </div>
+</div>
+
+          <!-- CTA buttons -->
+          <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
+            <a class="btn btn-ghost" href="#exec"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+              Executive summary
+            </a>
+            <a class="btn btn-ghost" href="#signals"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              Signal hierarchy
+            </a>
+            <a class="btn btn-ghost" href="#architecture"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+              Architecture
+            </a>
+            <a class="btn btn-ghost" href="#roadmap"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-road" aria-hidden="true"></i>
+              Roadmap
+            </a>
+          </div>
+
+          <!-- Note (right aligned) -->
+          <p class="project-note"
+             style="width:100%; display:flex; justify-content:flex-end; color:rgba(255,255,255,0.65); font-size:0.82rem; margin:14px 0 0;">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true" style="margin-right:8px;"></i>
+            Portfolio excerpt; identifiers redacted.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXEC SUMMARY -->
+    <section class="section" id="exec">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Executive Summary
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Why it exists, what it does, and how it stays operationally safe.
+          </p>
         </div>
 
-        <a
-          href="javascript:void(0)"
-          class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-          onclick="w3_open()"
-          style="color: #fff"
-        >
-          <i class="fa fa-bars"></i>
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+              The problem
+            </h3>
+            <p class="project-card__one-liner">
+              Weekly OTA performance signals are reviewed late, in isolation, and without consistent thresholds.
+            </p>
+            <ul class="bullets">
+              <li>Visibility failures (0 appearances / 0 views) are often detected after revenue loss.</li>
+              <li>Conversion leakage is fixable, but hard to spot without eligibility + streak logic.</li>
+              <li>No integrated framework → blind spots, inconsistent severity, and alert fatigue.</li>
+            </ul>
+          </article>
+
+          <article class="project-card project-card--featured">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
+              The solution
+            </h3>
+            <p class="project-card__one-liner">
+              An explainable alert + monitoring system that converts OTA metrics into owner-aware actions.
+            </p>
+            <ul class="bullets">
+              <li>Standardizes metrics into a common schema → computes KPIs, streaks, and baselines.</li>
+              <li>Auto-tickets critical failures; routes conversion leakage to optimization owners.</li>
+              <li>Watchlist for lower-confidence trends; human review prevents alert fatigue.</li>
+            </ul>
+
+            <ul class="tags" aria-label="Tech tags">
+              <li>Monitoring</li>
+              <li>Alerting + Ticketing</li>
+              <li>Rule-based detection</li>
+              <li>Early-warning foundations</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn brand-btn" href="#signals">Signal hierarchy</a>
+              <a class="btn brand-btn" href="#architecture">Architecture</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Workflow header row -->
+        <div style="margin-top:64px; display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:14px;">
+          <h3 class="brand-heading" style="text-align:left; margin:0; font-weight:950;">
+            Workflow Overview
+          </h3>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Ingest → compute → route → communicate.
+          </p>
+        </div>
+
+        <figure class="diagram-figure" style="margin-top:0;">
+          <a
+            href="diagram-viewer.html?src=diagrams/ota-monitoring/automationWorkflow.png&back=ota-monitoring.html&title=Workflow%20Overview&subtitle=Ingest%20%E2%86%92%20compute%20%E2%86%92%20route%20%E2%86%92%20communicate.&caption=Automation%20workflow%3A%20normalize%20OTA%20metrics%20%E2%86%92%20detect%20signals%20%E2%86%92%20create%20tickets%20and%20watchlist%20notifications."
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="diagrams/ota-monitoring/automationWorkflow.png"
+              alt="Automation workflow diagram for OTA Monitoring"
+              loading="lazy"
+              style="max-height:520px; object-fit:contain; width:100%;"
+            />
+          </a>
+
+          <figcaption class="muted" style="text-align:center; margin-top:10px;">
+            Automation workflow: normalize OTA metrics → detect signals → create tickets and watchlist notifications.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SIGNAL HIERARCHY -->
+    <section class="section" id="signals">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Signal Hierarchy
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Non-technical framing: find → view → book → trend.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+              Tier 1: Visibility (Critical)
+            </h3>
+            <p class="project-card__one-liner">Guests can’t find or open the listing.</p>
+            <ul class="bullets">
+              <li><strong>Metrics:</strong> Appearances, Views</li>
+              <li><strong>Example rules:</strong> 0 appearances for 2 periods; 0 views for 2 periods</li>
+              <li><strong>Action:</strong> Auto-ticket (highest severity)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-screwdriver-wrench icon-accent" aria-hidden="true"></i>
+              Tier 2: Conversion (High ROI)
+            </h3>
+            <p class="project-card__one-liner">Demand exists, but bookings aren’t converting.</p>
+            <ul class="bullets">
+              <li><strong>Metric:</strong> CVR (bookings ÷ views)</li>
+              <li><strong>Eligibility:</strong> minimum views before evaluating CVR</li>
+              <li><strong>Example rule:</strong> CVR below threshold for 3 eligible periods</li>
+              <li><strong>Action:</strong> Route to revenue / pricing optimization</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-eye icon-accent" aria-hidden="true"></i>
+              Tier 3: Trend Signals (Monitor)
+            </h3>
+            <p class="project-card__one-liner">Early degradation that may become a Tier 1/2 issue.</p>
+            <ul class="bullets">
+              <li><strong>Signals:</strong> streaks, WoW declines, z-score against baseline</li>
+              <li><strong>Example:</strong> appearances down 70% WoW; views declining 2 weeks</li>
+              <li><strong>Action:</strong> Watchlist + context enrichment</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-shield-halved icon-accent" aria-hidden="true"></i>
+              Noise controls (Guardrails)
+            </h3>
+            <p class="project-card__one-liner">Designed to reduce alert fatigue and prevent misfires.</p>
+            <ul class="bullets">
+              <li>Eligibility thresholds (e.g., minimum views / active listing checks)</li>
+              <li>Scoped time windows + streak logic (avoids single-week blips)</li>
+              <li>Fail-safe handling for missing/delayed upstream data</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            System Architecture
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            How weekly OTA metrics become tickets, notifications, and a watchlist.
+          </p>
+        </div>
+
+        <article class="project-card project-card--featured">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
+            Flow (high level)
+          </h3>
+          <ul class="bullets">
+            <li><strong>Inputs:</strong> weekly OTA metrics (visibility, engagement, conversion)</li>
+            <li><strong>Normalize:</strong> map each OTA’s schema into a canonical weekly fact table</li>
+            <li><strong>Compute:</strong> KPIs (CVR), baselines, streaks, eligibility flags</li>
+            <li><strong>Detect:</strong> tiered rules (critical alerts vs. watchlist trends)</li>
+            <li><strong>Route:</strong> create tickets for owners (Ops / Distribution / Revenue)</li>
+            <li><strong>Communicate:</strong> Slack/Teams-ready summaries + evidence context</li>
+          </ul>
+          <p class="muted" style="margin:10px 0 0;">
+            If upstream data is missing or delayed, the system holds alerts, logs failures, and notifies operators.
+          </p>
+        </article>
+
+        <div style="margin-top:42px; display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:14px;">
+          <h3 class="brand-heading" style="text-align:left; margin:0; font-weight:950;">
+            Architecture Overview
+          </h3>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Practical, explainable detection first—designed to evolve into early-warning prediction.
+          </p>
+        </div>
+
+        <figure class="diagram-figure" style="margin-top:0;">
+          <a
+            href="diagram-viewer.html?src=diagrams/ota-monitoring/automationWorkflow.png&back=ota-monitoring.html&title=Architecture%20Overview&subtitle=Explainable%20rules%20%E2%86%92%20tickets%20%2B%20watchlist%20%E2%86%92%20learning%20loop.&caption=Architecture%3A%20canonical%20metrics%20%E2%86%92%20signal%20engine%20%E2%86%92%20routing%20%2B%20notifications%20%E2%86%92%20feedback%20loop."
+            target="_blank"
+            rel="noopener"
+            style="display:block;"
+          >
+            <img
+              src="diagrams/ota-monitoring/automationWorkflow.png"
+              alt="High-level architecture diagram of OTA Monitoring"
+              loading="lazy"
+              style="width:100%; max-height:520px; object-fit:contain;"
+            />
+          </a>
+          <figcaption class="muted" style="text-align:center; margin-top:10px;">
+            Architecture: canonical metrics → signal engine → routing + notifications → feedback loop.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- KEY FEATURES -->
+    <section class="section" id="features">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Key Features
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            What makes this operationally useful and scalable.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-code-branch icon-accent" aria-hidden="true"></i>
+              Alert-to-ticket routing
+            </h3>
+            <p class="project-card__one-liner">
+              Each alert type maps to an owner + likely fix path to reduce handoffs and speed resolution.
+            </p>
+            <ul class="bullets">
+              <li>Owner-aware severity rules (Ops / Distribution / Revenue)</li>
+              <li>Consistent ticket templates for fast triage</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-filter icon-accent" aria-hidden="true"></i>
+              Eligibility &amp; streak logic
+            </h3>
+            <p class="project-card__one-liner">
+              Noise controls that prevent single-week anomalies from flooding the team.
+            </p>
+            <ul class="bullets">
+              <li>Minimum-data thresholds (e.g., min views before CVR evaluation)</li>
+              <li>Multi-period confirmation (streaks) before escalation</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-ranking-star icon-accent" aria-hidden="true"></i>
+              Priority scoring (optional)
+            </h3>
+            <p class="project-card__one-liner">
+              Rank work by severity + estimated impact to keep focus on highest revenue risk first.
+            </p>
+            <ul class="bullets">
+              <li>Severity tiers + business impact proxies</li>
+              <li>Queue ordering to fit team capacity</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-robot icon-accent" aria-hidden="true"></i>
+              Agent-ready foundation
+            </h3>
+            <p class="project-card__one-liner">
+              Ticket outcomes become training data for early-warning detection with human approval as the gate.
+            </p>
+            <ul class="bullets">
+              <li>Resolution labeling → feedback loop</li>
+              <li>Predictive risk scoring as a future layer</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="section" id="impact">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Impact
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Outcome-focused improvements for distribution and revenue workflows.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-clock icon-accent" aria-hidden="true"></i>
+              Faster detection
+            </h3>
+            <ul class="bullets">
+              <li>Turns weekly reviews into proactive alerts.</li>
+              <li>Reduces time-to-awareness for “listing went dark” failures.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-bullseye icon-accent" aria-hidden="true"></i>
+              Less conversion leakage
+            </h3>
+            <ul class="bullets">
+              <li>Surfaces sustained low CVR early, when fixes are highest ROI.</li>
+              <li>Separates optimization work from operational breakage.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-user-check icon-accent" aria-hidden="true"></i>
+              Clear accountability
+            </h3>
+            <ul class="bullets">
+              <li>Routing aligns severity with the right team on day one.</li>
+              <li>Standardized ticket content improves triage speed.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-shield-halved icon-accent" aria-hidden="true"></i>
+              Safer operations
+            </h3>
+            <ul class="bullets">
+              <li>Eligibility thresholds + streak checks reduce noise.</li>
+              <li>Fail-safe behavior when data is delayed or missing.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section" id="roadmap">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Roadmap
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Rules → enrichment → early-warning prediction.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-flag-checkered icon-accent" aria-hidden="true"></i>
+              Phase 1: Rules + ticketing
+            </h3>
+            <ul class="bullets">
+              <li>Launch explainable Tier 1/2 rules with eligibility thresholds.</li>
+              <li>Define ownership + SLAs by alert type.</li>
+              <li>Standardize ticket templates and notification cadence.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-magnifying-glass icon-accent" aria-hidden="true"></i>
+              Phase 2: Enrichment
+            </h3>
+            <ul class="bullets">
+              <li>Add supporting signals: pricing changes, fees/policies, LOS restrictions.</li>
+              <li>Improve diagnosis and reduce false positives.</li>
+              <li>Expand watchlist context for faster human decisions.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-robot icon-accent" aria-hidden="true"></i>
+              Phase 3: Early-warning layer
+            </h3>
+            <ul class="bullets">
+              <li>Use historical alerts + resolutions to learn precursors.</li>
+              <li>Produce risk scores before a listing goes fully dark.</li>
+              <li>Human approval remains the final gate.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-gauge-high icon-accent" aria-hidden="true"></i>
+              Phase 4: Calibration + QA
+            </h3>
+            <ul class="bullets">
+              <li>Track precision/recall and tune thresholds periodically.</li>
+              <li>Account for seasonality and portfolio mix shifts.</li>
+              <li>Operationalize quality reviews for sustained reliability.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="section" id="use-cases">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Use Cases
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Where this fits day-to-day in Ops, Distribution, and Revenue workflows.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+              Visibility incident response
+            </h3>
+            <p class="project-card__one-liner">
+              Rapid detection + routing when listings stop appearing or receiving views.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-percent icon-accent" aria-hidden="true"></i>
+              Conversion optimization queue
+            </h3>
+            <p class="project-card__one-liner">
+              Surface sustained low CVR only when eligible, then route to revenue owners with context.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-eye icon-accent" aria-hidden="true"></i>
+              Trend watchlist &amp; coaching
+            </h3>
+            <p class="project-card__one-liner">
+              Monitor early degradation signals and standardize playbooks for recurring patterns.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-clipboard-check icon-accent" aria-hidden="true"></i>
+              Portfolio QA
+            </h3>
+            <p class="project-card__one-liner">
+              Detect “quiet failures” across a large listing portfolio without manual weekly review.
+            </p>
+          </article>
+        </div>
+
+        <div class="actions actions--center">
+          <a class="btn btn-ghost" href="#top">Back to top</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
         </a>
       </div>
-    </div>
 
-    <!-- Sidebar on small screens -->
-    <nav
-      class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
-      style="display: none"
-      id="mySidebar"
-    >
-      <a
-        href="javascript:void(0)"
-        onclick="w3_close()"
-        class="w3-bar-item w3-button w3-large w3-padding-16"
-        >Close Menu</a
-      >
-      <a
-        href="mailto:sarah.brown@naturallylogical.com"
-        onclick="w3_close()"
-        class="w3-bar-item w3-button"
-        >CONTACT</a
-      >
-      <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button"
-        >RESUME</a
-      >
-    </nav>
-
-    <div class="page">
-      <div class="shell">
-        <!-- HERO -->
-        <section class="hero" id="intro">
-          <!--div class="hero-actions">
-            <a class="brand-btn" href="#exec"><i class="fa-solid fa-play"></i> Executive summary</a>
-            <a class="ghost-btn" href="#signals"><i class="fa-solid fa-filter"></i> Signal design</a>
-            <a class="ghost-btn" href="#routing"><i class="fa-solid fa-code-branch"></i> Routing</a>
-            <a class="ghost-btn" href="#architecture"><i class="fa-solid fa-diagram-project"></i> Architecture</a>
-          </div-->
-          <div class="brand-card">
-            <div class="hero-grid">
-              <div class="hero-art">
-                <figure class="diagram-figure">
-                  <img
-                    src="..\images\techstack1.jpg"
-                    alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
-                  />
-                
-                </figure>
-              </div>
-              <div>
-                <h1 class="brand-heading">OTA Performance Alert &amp; Monitoring</h1>
-                <p>
-                  A portfolio case study: designing an automated monitoring system that
-                  detects visibility failures, conversion leakage, and early-warning trends
-                  across online travel agencies.
-                </p>
-
-                <!--div class="hero-badges">
-                  <span class="pill"><i class="fa-solid fa-user-gear"></i> Ops + Revenue users</span>
-                  <span class="pill"><i class="fa-solid fa-shield"></i> Explainable rules first</span>
-                  <span class="pill"><i class="fa-solid fa-robot"></i> Agent-ready foundation</span>
-                </div-->
-
-                <!--div class="hero-actions">
-                 
-                  <a class="ghost-btn" href="#architecture">
-                    <i class="fa-solid fa-diagram-project"></i> Architecture
-                  </a>
-                  <a class="ghost-btn" href="#contact">
-                    <i class="fa-solid fa-envelope"></i> Contact
-                  </a>
-                </div-->
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-        <!-- THE PROBLEM / THE SOLUTION -->
-        <section class="section reveal" id="problem">
-          <div class="section-header">
-            <h2 class="brand-heading">The Problem</h2>
-            <p>OTA platforms provide weekly performance metrics across visibility, engagement, and conversion, but these 
-              signals are typically reviewed in isolation and without automated thresholds. As a result, systemic failures 
-              (e.g., listings with zero appearances or sustained low conversion) are detected late, if at all.
-
-              The absence of an integrated alerting framework—one that accounts for eligibility, streaks, and historical 
-              baselines—creates both blind spots and alert fatigue. Teams need a scalable way to convert raw OTA metrics into 
-              prioritized, owner-aware alerts that reflect true revenue risk.</p>
-          </div>
-          <div class="section-body">
-            <div class="grid grid-2">
-              <div class="card">
-                <span class="tile-icon">VP</span>
-                <h3>Visibility failures are binary</h3>
-                <p>
-                  When a listing disappears from search results or receives zero views,
-                  the outcome is simple: guests can’t book it.
-                </p>
-                <p>
-                  These issues often map to breakage (mapping, availability sync, calendar,
-                  rate plan failures) and should be treated as highest severity.
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">CV</span>
-                <h3>Conversion failures are fixable leakage</h3>
-                <p>
-                  When demand exists (views) but bookings lag, the root cause is often
-                  correctable: pricing, fees, policies, content, or LOS restrictions.
-                </p>
-                <p>
-                  Detecting sustained low conversion early creates high-ROI optimization
-                  opportunities.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section reveal" id="solution">
-          <div class="section-header">
-            <h2 class="brand-heading">The Solution</h2>
-            <p>Explainable rules first — designed to scale into smarter detection.</p>
-          </div>
-
-          <div class="section-body">
-            <div class="grid grid-3">
-              <div class="card">
-                <span class="tile-icon">A</span>
-                <h3>Alerting</h3>
-                <p>
-                  High-severity rules automatically generate tickets and route to accountable
-                  owners (Ops / Distribution / Revenue).
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">M</span>
-                <h3>Monitoring</h3>
-                <p>
-                  Lower-confidence signals land in a watchlist. Operators can create ad-hoc tickets
-                  after reviewing context, preventing alert fatigue.
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">L</span>
-                <h3>Learning loop</h3>
-                <p>
-                  Ticket outcomes feed back into the model over time, enabling smarter prioritization
-                  and early-warning prediction.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- VISUAL HIERARCHY / TIERS -->
-        <section class="section reveal" id="tiers">
-          <div class="section-header">
-            <h2 class="brand-heading">Signal Hierarchy (Non-Technical Friendly)</h2>
-            <p>Bucket signals by where the guest drops off: find → view → book → trend.</p>
-          </div>
-
-          <div class="tiers">
-            <div class="tier">
-              <div class="tier-top">
-                <p class="tier-title">Tier 1: Visibility</p>
-                <span class="tier-tag"><i class="fa-solid fa-triangle-exclamation"></i> Critical</span>
-              </div>
-              <ul>
-                <li><strong>Metrics:</strong> Appearances, Views</li>
-                <li><strong>Meaning:</strong> Guests can’t find or open the listing</li>
-                <li><strong>Example rules:</strong> 0 appearances for 2 periods; 0 views for 2 periods</li>
-                <li><strong>Action:</strong> Auto-ticket (highest severity)</li>
-              </ul>
-            </div>
-
-            <div class="tier">
-              <div class="tier-top">
-                <p class="tier-title">Tier 2: Conversion</p>
-                <span class="tier-tag"><i class="fa-solid fa-screwdriver-wrench"></i> High ROI</span>
-              </div>
-              <ul>
-                <li><strong>Metric:</strong> CVR (bookings ÷ views)</li>
-                <li><strong>Meaning:</strong> Demand exists, but bookings aren’t converting</li>
-                <li><strong>Example rule:</strong> CVR below threshold for 3 eligible periods (min views)</li>
-                <li><strong>Action:</strong> Route to revenue/pricing optimization</li>
-              </ul>
-            </div>
-
-            <div class="tier">
-              <div class="tier-top">
-                <p class="tier-title">Tier 3: Trend Signals</p>
-                <span class="tier-tag"><i class="fa-solid fa-eye"></i> Monitor</span>
-              </div>
-              <ul>
-                <li><strong>Metrics:</strong> Z-score, streaks, week-over-week declines</li>
-                <li><strong>Meaning:</strong> Early degradation that may become a Tier 1/2 issue</li>
-                <li><strong>Example:</strong> Appearances down 70% WoW; views declining 2 weeks</li>
-                <li><strong>Action:</strong> Watchlist + context enrichment</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- ARCHITECTURE -->
-        <section class="section reveal" id="architecture">
-          <div class="section-header">
-            <h2 class="brand-heading">System Architecture</h2>
-            <p>End-to-end workflow: ingest → warehouse → compute → ticket → communicate.</p>
-          </div>
-
-          <div class="section-body">
-            <div class="grid grid-2">
-              <div class="card">
-                <span class="tile-icon">WF</span>
-                <h3>Workflow (high level)</h3>
-                <p>
-                  Retrieve weekly metrics from OTAs, standardize into a common schema, compute per-listing
-                  KPIs and baselines, then create tickets + notifications for owners.
-                </p>
-                <p>
-                  The design emphasizes low manual effort, clear accountability, and explainable alert rules.
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">ER</span>
-                <h3>Error handling & guardrails</h3>
-                <p>
-                  If upstream data is missing or delayed, the system degrades gracefully (hold alerts, log failures,
-                  notify ops). Minimum-data eligibility rules reduce noise (e.g., minimum views before evaluating CVR).
-                </p>
-              </div>
-            </div>
-            <div class="section-body">
-            <figure class="diagram-figure">
-              <img
-                src="\diagrams\ota-monitoring\automationWorkflow.png"
-                alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
-              />
-              <figcaption>
-                Work flow to create Jira tickets for Alerts for high risk/ high loss listings and warning comminication for potentially risky listings.
-              </figcaption>
-            </figure>
-          </div>
-            
-          </div>
-        </section>
-
-        <!-- KEY FEATURES -->
-        <section class="section reveal" id="features">
-          <div class="section-header">
-            <h2 class="brand-heading">Key Features</h2>
-            <p>What makes this monitoring system operationally useful.</p>
-          </div>
-
-          <div class="section-body">
-            <div class="grid grid-3">
-              <div class="card">
-                <span class="tile-icon">OT</span>
-                <h3>Alert-to-ticket routing</h3>
-                <p>
-                  Each alert type maps cleanly to an owner and likely fix path, reducing back-and-forth and speeding
-                  time-to-resolution.
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">PR</span>
-                <h3>Priority scoring (optional)</h3>
-                <p>
-                  Alerts can be ranked using estimated impact and severity to keep teams focused on the highest
-                  NetRevPAR risk first.
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">AI</span>
-                <h3>Agent-ready foundation</h3>
-                <p>
-                  Resolution outcomes become training data for an early-warning layer that predicts risk before
-                  a listing goes fully dark.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- NEXT STEPS / ROADMAP -->
-        <section class="section reveal" id="roadmap">
-          <div class="section-header">
-            <h2 class="brand-heading">Roadmap</h2>
-            <p>How this evolves from rules → richer signals → predictive monitoring.</p>
-          </div>
-          <div class="section-body">
-            <div class="grid grid-2">
-              <div class="card">
-                <span class="tile-icon">P1</span>
-                <h3>Phase 1: Rules + ticketing</h3>
-                <p>
-                  Launch explainable alerts (visibility + low conversion with eligibility thresholds). Implement ownership,
-                  SLAs by alert type, and a consistent communication path.
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">P2</span>
-                <h3>Phase 2: Enrichment</h3>
-                <p>
-                  Add supporting signals like pricing changes, fees/policies, LOS restrictions, and availability patterns
-                  to improve diagnosis and reduce false positives.
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">P3</span>
-                <h3>Phase 3: Early-warning agent</h3>
-                <p>
-                  A lightweight agent reads historical alerts + resolutions, detects precursors to visibility failures,
-                  and produces risk scores. Human approval remains the final gate.
-                </p>
-              </div>
-              <div class="card">
-                <span class="tile-icon">QA</span>
-                <h3>Phase 4: QA + calibration</h3>
-                <p>
-                  Periodic threshold tuning, precision/recall tracking, and feedback loops ensure the system remains
-                  reliable as seasonality and portfolio mix change.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="section reveal" id="contact">
-          <div class="section-header">
-            <h2 class="brand-heading">Get in Touch</h2>
-            <p>Interested in building automation-first monitoring systems?</p>
-          </div>
-          <div class="section-body">
-            <div class="card">
-              <p style="margin-top: 0">
-                Email Sarah at <a href="mailto:sarah.brown@naturallylogical.com">sarah.brown@naturallylogical.com</a>
-              </p>
-              <p style="margin-bottom: 0; color: var(--ink-muted); font-size: 0.9rem">
-                <strong>Note:</strong> This portfolio page intentionally omits company-specific identifiers and operational details.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <footer class="footer">
-          <p>© 2025 Naturally Logical</p>
-          <p>Portfolio excerpt for demonstration; sensitive operational details redacted.</p>
-        </footer>
+      <div class="footer__meta">
+        <p>© 2026 Naturally Logical</p>
+        <p>Portfolio excerpt for demonstration; operational details redacted.</p>
       </div>
-    </div>
+    </footer>
 
-    <!-- Diagram modal -->
-    <div id="diagram-modal" class="diagram-modal" aria-hidden="true">
-      <div class="diagram-modal-backdrop"></div>
-      <div class="diagram-modal-content" role="dialog" aria-modal="true">
-        <button class="diagram-modal-close" aria-label="Close diagram">&times;</button>
-        <img src="" alt="" />
-        <p class="diagram-modal-caption"></p>
-      </div>
-    </div>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "OTA Performance Alert & Monitoring",
+      "author": { "@type": "Person", "name": "Sarah M. Brown", "url": "https://naturallylogical.com/" },
+      "url": "https://naturallylogical.com/ota-monitoring.html",
+      "about": ["Monitoring and alerting", "Revenue risk detection", "Conversion optimization", "Operational automation", "Early-warning signals"]
+    }
+    </script>
+  </main>
 
-    <script src="\ota-monitoring\scripts.js" defer></script>
-  </body>
+  <!-- Diagram modal (keep ONCE per page; matches SYNaTRA) -->
+  <div id="diagramModal" aria-hidden="true"
+    style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:3000;">
+    <div id="diagramModalBackdrop"
+      style="position:absolute; inset:0; background:rgba(0,0,0,0.72);"></div>
+
+    <div role="dialog" aria-modal="true"
+      style="position:relative; background:#fff; border-radius:16px; padding:16px;
+             max-width:min(1040px, calc(100vw - 40px)); max-height:82vh;
+             box-shadow:0 18px 40px rgba(0,0,0,0.45); z-index:3001;">
+      <button id="diagramModalClose" aria-label="Close"
+        style="position:absolute; top:8px; right:10px; border:0; background:transparent;
+               font-size:28px; cursor:pointer; color:#666;">
+        &times;
+      </button>
+
+      <img id="diagramModalImg" alt=""
+        style="display:block; max-width:100%; max-height:64vh; width:auto; height:auto; border-radius:10px;" />
+
+      <p id="diagramModalCaption" class="muted" style="margin:10px 6px 2px; text-align:center;"></p>
+    </div>
+  </div>
+
+  <!-- Shared site JS (matches SYNaTRA; no page-specific JS) -->
+  <script defer src="./index/scripts.js"></script>
+</body>
 </html>

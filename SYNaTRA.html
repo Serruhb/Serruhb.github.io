@@ -1,1007 +1,582 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
+<head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
 
-  gtag('config', 'G-HM5VZHXLCT');
-</script>
-    <meta charset="UTF-8" />
-    <title>SYNaTRA — Synthetic Triage Assistant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00CDAC" />
 
-    <!-- Optional: match primary page font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <title>SYNaTRA — Synthetic Triage Assistant | Sarah M. Brown</title>
+  <meta
+    name="description"
+    content="SYNaTRA: triage + context assistant that retrieves and summarizes customer history across Salesforce, Jira, and Snowflake to reduce time-to-context and improve first-contact resolution."
+  />
+  <link rel="canonical" href="https://naturallylogical.com/SYNaTRA.html" />
 
-    <!-- W3CSS + Font Awesome (for navbar, same as main page) -->
-    <link
-      rel="stylesheet"
-      href="https://www.w3schools.com/w3css/4/w3.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/c79cc71819.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5TPC90ZXh0Pgo8L3N2Zz4="
-    />
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="./index/styles.css" />
 
-    <!-- Existing Font Awesome 6 (fine to keep) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5TPC90ZXh0Pgo8L3N2Zz4="
+  />
+</head>
 
-    <style>
-      /* ===== Design tokens ===== */
-      :root {
-        --brand: #00cdac; /* main brand */
-        --ink: #1e1e1e; /* body text */
-        --ink-muted: #5a5a5a; /* secondary text */
-        --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
-        /* Very light brand tint for full-page background */
-        --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
-      }
+<body id="top" class="project-page">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-      /* ===== Base ===== */
-      html,
-      body {
-        height: 100%;
-      }
-      body,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Raleway", sans-serif;
-      }
-      body {
-        line-height: 1.8;
-        color: var(--ink);
-        background: #f3fbf9; /* fallback */
-        background: var(--bg-soft); /* preferred */
-        margin: 0;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .brand-heading {
-        color: var(--brand-strong);
-      }
-
-      .brand-card {
-        background-color: var(--brand);
-        color: #fff;
-        opacity: 0.94;
-        border-radius: 14px;
-        padding: 24px 28px;
-      }
-
-      .brand-btn {
-        background-color: var(--brand);
-        color: #fff;
-        border: none;
-        border-radius: 999px;
-        padding: 10px 20px;
-        font-size: 0.95rem;
-        cursor: pointer;
-      }
-      .brand-btn:hover {
-        filter: brightness(0.95);
-      }
-      .icon-only {
-        color: var(--brand);
-        display: inline-flex;
-        width: 48px;
-        height: 48px;
-        border-radius: 6px;
-        align-items: center;
-        justify-content: center;
-      }
-      .icon-only i {
-        font-size: 1.55rem;
-      }
-
-      .tile-icon {
-        background-color: var(--brand);
-        color: #fff;
-        display: inline-block;
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-      }
-
-      /* ===== Layout for this page ===== */
-      .syn-page {
-        min-height: 100vh;
-        /* offset for fixed navbar */
-        padding-top: 64px;
-      }
-
-      .syn-shell {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 24px 16px 60px;
-      }
-
-      /* Hero */
-      .syn-hero {
-        padding-top: 40px;
-        padding-bottom: 24px;
-      }
-
-      .syn-hero-inner {
-        display: grid;
-        gap: 20px;
-        align-items: center;
-      }
-
-      .syn-hero-title {
-        margin: 0 0 8px;
-        font-size: 2rem;
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      .syn-hero-sub {
-        margin: 0;
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      .syn-hero-meta {
-        margin-top: 8px;
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.9);
-      }
-      /* Hero grid layout (1/3 image + 2/3 text) */
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        align-items: center;
-        gap: 20px;
-      }
-
-      /* Image styling */
-      .hero-image img {
-        width: 100%;
-        max-width: 240px;
-        display: block;
-      }
-
-      /* Mobile: stack vertically */
-      @media (max-width: 700px) {
-        .hero-grid {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-        .hero-image img {
-          margin: 0 auto;
-        }
-      }
-
-      /* Sections */
-      .section {
-        padding: 40px 0 20px;
-      }
-
-      .section-header {
-        margin-bottom: 16px;
-      }
-
-      .section-header h2 {
-        margin: 0 0 6px;
-        font-size: 1.2rem;
-      }
-
-      .section-header p {
-        margin: 0;
-        font-size: 0.9rem;
-        color: var(--ink-muted);
-      }
-
-      .section-body p {
-        margin-top: 0;
-        font-size: 0.95rem;
-        color: var(--ink);
-      }
-
-      /* Simple divider using brand tint */
-      .section + .section {
-        border-top: 1px solid rgba(0, 0, 0, 0.04);
-      }
-      
-
-      /* Grid layouts */
-      .grid {
-        display: grid;
-        gap: 20px;
-      }
-
-      /* Key Features: 1 on small, 2 on medium, 4 on large */
-      .grid-features {
-        grid-template-columns: 1fr;
-      }
-
-      @media (min-width: 700px) {
-        .grid-features {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (min-width: 1100px) {
-        .grid-features {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      /* Use Cases can keep the flexible auto-fit behavior */
-      .grid-usecases {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-
-      /* Cards */
-      .card {
-        padding: 18px 18px 20px;
-        border-radius: 14px;
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-        transition: transform 0.18s ease, box-shadow 0.18s ease,
-          border-color 0.18s ease;
-      }
-
-      .card h3 {
-        margin-top: 0;
-        margin-bottom: 6px;
-        font-size: 1.02rem;
-        color: var(--brand-strong);
-      }
-
-      .card p {
-        margin: 4px 0;
-        font-size: 0.93rem;
-      }
-
-      .card small {
-        display: block;
-        margin-top: 8px;
-        font-size: 0.82rem;
-        color: var(--ink-muted);
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
-        border-color: rgba(0, 205, 172, 0.45);
-      }
-
-      /* Architecture list */
-      .architecture-list {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 10px;
-      }
-
-      .architecture-list li {
-        margin-bottom: 6px;
-        font-size: 0.93rem;
-        color: var(--ink-muted);
-      }
-
-      .architecture-list strong {
-        color: var(--brand-strong);
-      }
-
-      .architecture-list code {
-        font-size: 0.85rem;
-        background: rgba(0, 0, 0, 0.04);
-        padding: 1px 4px;
-        border-radius: 4px;
-      }
-
-      /* Diagram figure (for all diagrams) */
-      .diagram-figure {
-        margin: 24px 0 0;
-        text-align: center;
-      }
-
-      .diagram-figure img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 14px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        cursor: zoom-in; /* hint it's clickable */
-      }
-
-      .diagram-figure figcaption {
-        margin-top: 8px;
-        font-size: 0.85rem;
-        color: var(--ink-muted);
-      }
-
-      /* Diagram modal / lightbox */
-      .diagram-modal {
-        position: fixed;
-        inset: 0;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 2000;
-      }
-
-      .diagram-modal.open {
-        display: flex;
-      }
-
-      .diagram-modal-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.7);
-      }
-
-      .diagram-modal-content {
-        position: relative;
-        max-width: min(1000px, 100vw - 32px);
-        max-height: 90vh;
-        background: #ffffff;
-        border-radius: 16px;
-        padding: 16px;
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-        z-index: 2001;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .diagram-modal-content img {
-        max-width: 100%;
-        max-height: 70vh;
-        height: auto;
-        border-radius: 8px;
-      }
-
-      .diagram-modal-caption {
-        margin-top: 10px;
-        font-size: 0.9rem;
-        color: var(--ink-muted);
-        text-align: center;
-      }
-
-      .diagram-modal-close {
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        border: none;
-        background: transparent;
-        font-size: 1.8rem;
-        line-height: 1;
-        cursor: pointer;
-        color: var(--ink-muted);
-      }
-
-      /* Metrics */
-      .metrics {
-        display: flex;
-        justify-content: space-around;
-        gap: 16px;
-        flex-wrap: wrap;
-        text-align: left;
-      }
-
-      .metric {
-        flex: 1;
-        min-width: 180px;
-        padding: 14px 14px 16px;
-        border-radius: 14px;
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        transition: transform 0.18s ease, box-shadow 0.18s ease,
-          border-color 0.18s ease;
-      }
-
-      .metric-main {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--brand-strong);
-      }
-
-      .metric-text {
-        font-size: 0.9rem;
-        color: var(--ink);
-      }
-
-      .metric:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 18px rgba(0, 205, 172, 0.18);
-        border-color: rgba(0, 205, 172, 0.4);
-      }
-
-      /* Get in touch note */
-      .note {
-        font-size: 0.9rem;
-        color: var(--ink-muted);
-      }
-
-      /* Footer */
-      .footer {
-        padding: 22px 16px 32px;
-        text-align: center;
-        font-size: 0.85rem;
-        color: var(--ink-muted);
-      }
-
-      .footer p {
-        margin: 3px 0;
-      }
-
-      /* Scroll reveal base */
-      .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- =================== NAVBAR FROM MAIN PAGE =================== -->
-    <div class="w3-top">
-      <div
-        class="w3-bar w3-card"
-        id="myNavbar"
-        style="background-color:var(--brand);color:#fff;"
-      >
-        <a
-          href="https://naturallylogical.com"
-          target="_blank"
-          class="w3-bar-item w3-button"
-          style="color:#fff;"
-        >
-          <i class="fa fa-user"></i> HOME
-        </a>
-        <a
-          href="https://www.linkedin.com/in/serruhb/"
-          target="_blank"
-          rel="noopener"
-          class="w3-bar-item w3-button w3-hide-small"
-          style="color:#fff;"
-        >
-          <i class="fab fa-linkedin fa-lg w3-hover-opacity"></i> LINKEDIN
+  <!-- Navbar -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary">
+      <div class="container navbar__inner">
+        <!-- LEFT: BACK -->
+        <a href="index.html" class="navbar__link">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          <span>BACK</span>
         </a>
 
+        <div class="navbar__spacer" aria-hidden="true"></div>
 
-        <!-- Right-sided navbar links -->
-        <div class="w3-right w3-hide-small">
-          <a href="mailto:sarah.brown@naturallylogical.com"  class="w3-bar-item w3-button" style="color:#fff;">
-            <i class="fa fa-envelope"></i> CONTACT
-          </a>
-          <a href="naturallylogical.com/resume.html"  class="w3-bar-item w3-button" style="color:#fff;">
-            <i class="fa fa-user"></i> RESUME
-          </a>
+        <!-- RIGHT: RESUME / LINKEDIN / CONTACT (desktop) -->
+        <a href="resume.html" target="_blank" rel="noopener" class="navbar__link navbar__link--desktop">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          <span>RESUME</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="navbar__link navbar__link--desktop">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          <span>LINKEDIN</span>
+        </a>
+
+        <a href="index.html#contact" class="navbar__link navbar__link--desktop">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span>CONTACT</span>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          class="navbar__menu"
+          id="menuButton"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="drawer"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__overlay" id="drawerOverlay" data-drawer-close></div>
+
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <button class="drawer__close" type="button" data-drawer-close>Close Menu</button>
+
+      <a href="index.html" class="drawer__link" data-drawer-close>Back</a>
+      <a href="resume.html" target="_blank" rel="noopener" class="drawer__link" data-drawer-close>Resume</a>
+      <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" class="drawer__link" data-drawer-close>LinkedIn</a>
+      <a href="index.html#contact" class="drawer__link" data-drawer-close>Contact</a>
+
+      <hr style="border:0;border-top:1px solid rgba(255,255,255,0.12);margin:10px 0;">
+
+      <a href="#problem" class="drawer__link" data-drawer-close>Executive summary</a>
+      <a href="#features" class="drawer__link" data-drawer-close>Key features</a>
+      <a href="#architecture" class="drawer__link" data-drawer-close>Architecture</a>
+      <a href="#impact" class="drawer__link" data-drawer-close>Impact</a>
+      <a href="#use-cases" class="drawer__link" data-drawer-close>Use cases</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero project-hero" aria-label="SYNaTRA hero">
+      <div class="container hero__content">
+        <div class="brand-card">
+
+          <!-- Pills -->
+          <div class="hero-eyebrow"
+               style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; margin-bottom:16px;">
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Triage agent
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Cross-system context
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Guardrails
+            </span>
+            <span style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Workato-orchestrated
+            </span>
+          </div>
+
+          <!-- Left / Right -->
+          <div class="grid grid--2" style="margin-top:0; align-items:center;">
+            <!-- LEFT -->
+            <div style="text-align:left;">
+              <h1 class="hero__title" style="display:flex; align-items:center; justify-content:flex-start; gap:12px;">
+                <i class="fa-solid fa-robot" aria-hidden="true"></i>
+                <span>SYNaTRA</span>
+              </h1>
+
+              <p class="hero__tagline" style="margin-top:6px; text-align:left;">
+                <span style="opacity:0.95;">Synthetic Triage Assistant</span>
+              </p>
+            </div>
+
+            <!-- RIGHT -->
+            <div style="text-align:left;">
+              <p class="hero__subtag" style="margin-top:0; max-width:none;">
+                Ticket triage + context engine for Customer Success teams handling complex enterprise accounts.
+                SYNaTRA retrieves and summarizes related Salesforce Cases, Jira issues, and subscription signals into a single, source-attributed response.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA buttons -->
+          <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
+            <a class="btn btn-ghost" href="#problem"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+              Executive summary
+            </a>
+            <a class="btn btn-ghost" href="#features"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+              Key features
+            </a>
+            <a class="btn btn-ghost" href="#architecture"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+              Architecture
+            </a>
+            <a class="btn btn-ghost" href="#impact"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+              Impact
+            </a>
+          </div>
+
+          <!-- Note (right aligned) -->
+          <p class="project-note"
+             style="width:100%; display:flex; justify-content:flex-end; color:rgba(255,255,255,0.65); font-size:0.82rem; margin:14px 0 0;">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true" style="margin-right:8px;"></i>
+            Internal workflow tool; identifiers redacted.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXEC SUMMARY -->
+    <section class="section" id="problem">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Executive Summary
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Why it exists, what it does, and how it stays safe.
+          </p>
         </div>
 
-        <!-- Mobile menu -->
-        <a
-          href="javascript:void(0)"
-          class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-          onclick="w3_open()"
-          style="color:#fff;"
-        >
-          <i class="fa fa-bars"></i>
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+              The problem
+            </h3>
+            <p class="project-card__one-liner">
+              Customer Success teams lose valuable time assembling context across multiple systems.
+            </p>
+            <ul class="bullets">
+              <li>Manual search + re-summarizing slows live customer conversations.</li>
+              <li>Prior fixes, active contracts, and product context are scattered.</li>
+              <li>Inconsistent narratives reduce confidence and first-contact resolution.</li>
+            </ul>
+          </article>
+
+          <article class="project-card project-card--featured">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
+              The solution
+            </h3>
+            <p class="project-card__one-liner">
+              One concise, source-attributed triage response built from Salesforce, Jira, and Snowflake signals.
+            </p>
+            <ul class="bullets">
+              <li>Parses issue text → builds SOQL/JQL/SQL queries → ranks matches → summarizes resolutions.</li>
+              <li>Outputs a Slack/Teams-ready response with evidence references (Case IDs + Jira keys).</li>
+              <li>Guardrails: scoped access, PII masking, no persistence beyond the response.</li>
+            </ul>
+
+            <ul class="tags" aria-label="Tech tags">
+              <li>LLM / Agents</li>
+              <li>Retrieval + Summarization</li>
+              <li>Workato</li>
+              <li>Salesforce</li>
+              <li>Jira</li>
+              <li>Snowflake</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn brand-btn" href="#features">Key features</a>
+              <a class="btn brand-btn" href="#architecture">Architecture</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Workflow header row (adds space ABOVE) -->
+        <div style="margin-top:64px; display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:14px;">
+          <h3 class="brand-heading" style="text-align:left; margin:0; font-weight:950;">
+            Workflow Overview
+          </h3>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            High-level view of how SYNaTRA assembles context across systems.
+          </p>
+        </div>
+
+        <figure class="diagram-figure" style="margin-top:0;">
+          <a
+  href="diagram-viewer.html?src=diagrams/SYNaTRA/workatoWorkflow.svg&back=SYNaTRA.html&title=Workflow%20Overview&subtitle=High-level%20view%20of%20how%20SYNaTRA%20assembles%20context%20across%20systems.&caption=Workato%20workflow%3A%20connectors%20%2B%20steps%20that%20assemble%20the%20triage%20response."
+  target="_blank"
+  rel="noopener"
+>
+  <img
+    src="diagrams/SYNaTRA/workatoWorkflow.svg"
+    alt="Workato workflow diagram for SYNaTRA"
+    loading="lazy"
+    style="max-height:520px; object-fit:contain; width:100%;"
+  />
+</a>
+
+          <figcaption class="muted" style="text-align:center; margin-top:10px;">
+            Workato workflow: connectors + steps that assemble the triage response.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- KEY FEATURES -->
+    <section class="section" id="features">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Key Features
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            How SYNaTRA assembles context, searches systems, and stays safe.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-layer-group icon-accent" aria-hidden="true"></i>
+              Unified customer context
+            </h3>
+            <p class="project-card__one-liner">
+              Builds a concise overview with contract/subscription signals and relevant history.
+            </p>
+            <ul class="bullets">
+              <li>Salesforce: Accounts, Cases, Contracts</li>
+              <li>Snowflake: subscription facts (canonical view)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-magnifying-glass icon-accent" aria-hidden="true"></i>
+              Issue-aware search across systems
+            </h3>
+            <p class="project-card__one-liner">
+              Converts issue descriptions into queryable patterns across Salesforce + Jira.
+            </p>
+            <ul class="bullets">
+              <li>SOQL/JQL keyword queries (optional SOSL patterns)</li>
+              <li>Scoped lookback (e.g., last 12 months)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-pen-to-square icon-accent" aria-hidden="true"></i>
+              Summaries + scores + next steps
+            </h3>
+            <p class="project-card__one-liner">
+              Produces brief resolution summaries with similarity/confidence labeling and evidence references.
+            </p>
+            <ul class="bullets">
+              <li>Source attribution: Salesforce Case IDs + Jira keys</li>
+              <li>Suggested next step in human-usable language</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-shield-halved icon-accent" aria-hidden="true"></i>
+              Guardrails + privacy
+            </h3>
+            <p class="project-card__one-liner">
+              Built for safe internal use: scoped credentials, PII masking, and no storage beyond the response.
+            </p>
+            <ul class="bullets">
+              <li>Integration-user access patterns</li>
+              <li>Fail-safe messaging when systems are unavailable</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            System Architecture
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            How a short issue description becomes a structured triage report.
+          </p>
+        </div>
+
+        <article class="project-card project-card--featured">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
+            Flow (high level)
+          </h3>
+          <ul class="bullets">
+            <li><strong>Inputs:</strong> issue_description + optional customer_identifier (AccountId / ContractId / CustomerId)</li>
+            <li><strong>Customer identification:</strong> fuzzy account matching + top candidates if ambiguous</li>
+            <li><strong>Query builder:</strong> tokenizes issue text → generates SOQL/JQL (optional SOSL patterns)</li>
+            <li><strong>Record fetch:</strong> Salesforce Cases/Contracts + Jira issues + Snowflake subscription data</li>
+            <li><strong>Summarize & score:</strong> resolution summaries + similarity/confidence per record and overall</li>
+            <li><strong>Assemble response:</strong> one narrative output for Slack / Teams / Workbot</li>
+          </ul>
+          <p class="muted" style="margin:10px 0 0;">
+            If Salesforce or Jira are unavailable, SYNaTRA fails safely with a user-friendly message.
+          </p>
+        </article>
+
+        <div style="margin-top:42px; display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:14px;">
+          <h3 class="brand-heading" style="text-align:left; margin:0; font-weight:950;">
+            Architecture Overview
+          </h3>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Architecture design for SYNaTRA.
+          </p>
+        </div>
+
+        <figure class="diagram-figure" style="margin-top:0;">
+          <a
+  href="diagram-viewer.html?src=diagrams/SYNaTRA/syntra-architecture.svg&back=SYNaTRA.html&title=Architecture%20Overview&subtitle=Architecture%20design%20for%20SYNaTRA.&caption=Architecture%3A%20Salesforce%20%2B%20Jira%20%2B%20Snowflake%20%2B%20summarization%20layer%20%E2%86%92%20a%20single%20triage%20response."
+  target="_blank"
+  rel="noopener"
+  style="display:block;"
+>
+  <img
+    src="diagrams/SYNaTRA/syntra-architecture.svg"
+    alt="High-level architecture diagram of SYNaTRA"
+    loading="lazy"
+    style="width:100%; max-height:520px; object-fit:contain;"
+  />
+</a>
+          <figcaption class="muted" style="text-align:center; margin-top:10px;">
+            Architecture: Salesforce + Jira + Snowflake + summarization layer → a single triage response.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="section" id="impact">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Impact
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Outcome-focused improvements for Customer Success workflows.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-clock icon-accent" aria-hidden="true"></i>
+              Faster time-to-context
+            </h3>
+            <ul class="bullets">
+              <li>Reduces manual searching across tools during live customer conversations.</li>
+              <li>Standardizes what “good context” looks like for triage.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-bullseye icon-accent" aria-hidden="true"></i>
+              Better first-contact resolution
+            </h3>
+            <ul class="bullets">
+              <li>Surfaces prior fixes and patterns earlier.</li>
+              <li>Improves consistency of next-step guidance.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-database icon-accent" aria-hidden="true"></i>
+              Broader context coverage
+            </h3>
+            <ul class="bullets">
+              <li>Summarizes relevant Salesforce + Jira history in one response.</li>
+              <li>Includes subscription/contract signals where available.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-shield-halved icon-accent" aria-hidden="true"></i>
+              Safer operations
+            </h3>
+            <ul class="bullets">
+              <li>Source attribution reduces ambiguity and “trust gaps.”</li>
+              <li>Guardrails + scoped access patterns fit internal workflows.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="section" id="use-cases">
+      <div class="container">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Use Cases
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Where SYNaTRA fits day-to-day CS workflows.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-headset icon-accent" aria-hidden="true"></i>
+              Account + issue triage
+            </h3>
+            <p class="project-card__one-liner">
+              Provide issue text + AccountId → receive relevant history, contract context, and a suggested next step.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-book icon-accent" aria-hidden="true"></i>
+              Issue-only research
+            </h3>
+            <p class="project-card__one-liner">
+              Provide only issue description → ranked likely matches + summaries, even before the customer is confirmed.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-people-group icon-accent" aria-hidden="true"></i>
+              CS Ops coaching & playbooks
+            </h3>
+            <p class="project-card__one-liner">
+              Use structured outputs to standardize playbooks and coach recurring issue patterns.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+              Incident context capture
+            </h3>
+            <p class="project-card__one-liner">
+              During escalations, generate a fast narrative with the most relevant historical evidence.
+            </p>
+          </article>
+        </div>
+
+        <div class="actions actions--center">
+          <a class="btn btn-ghost" href="#top">Back to top</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
         </a>
       </div>
-    </div>
 
-    <!-- Sidebar on small screens -->
-    <nav
-      class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
-      style="display:none"
-      id="mySidebar"
-    >
-      <a
-        href="javascript:void(0)"
-        onclick="w3_close()"
-        class="w3-bar-item w3-button w3-large w3-padding-16"
-        >Close Menu</a
-      >
-      
-      <a href="mailto:sarah.brown@naturallylogical.com" onclick="w3_close()" class="w3-bar-item w3-button"
-        >CONTACT</a
-      >
-      <a href="resume.html" onclick="w3_close()" class="w3-bar-item w3-button"
-        >RESUME</a
-      >
-      
-    </nav>
-    <!-- =================== END NAVBAR =================== -->
-
-    <div class="syn-page">
-      <div class="syn-shell">
-        <!-- HERO -->
-        <section class="syn-hero" id="Intro">
-          <div class="brand-card syn-hero-inner hero-grid">
-            <div class="hero-image">
-              <img src="/Images/synatralogo.jpg" alt="SYNaTRA Logo" />
-            </div>
-
-            <div class="hero-text">
-              <h1 class="syn-hero-title brand-heading">
-                SYNaTRA — Synthetic Triage Assistant
-              </h1>
-              <p class="syn-hero-sub">
-                Workato-orchestrated Customer Success triage across Salesforce,
-                Jira, and Snowflake.
-              </p>
-              <p class="syn-hero-meta">
-                Primary users: CS Ops, CSMs, and Customer Success
-                Representatives (internal use only).
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- PROBLEM / SOLUTION -->
-        <section class="section reveal">
-          <div class="section-header">
-            <h2 class="brand-heading">The Problem</h2>
-          </div>
-          <div class="section-body">
-            <p>
-              Customer Success teams lose valuable time piecing together context
-              across Salesforce, Jira, and subscription systems. Manual
-              searches, inconsistent summaries, and scattered historical
-              resolutions increase time-to-context and slow first-contact
-              resolution. Critical information such as active contracts, product
-              mix, and prior fixes is often buried across tools, making live
-              customer conversations harder than they need to be.
-            </p>
-          </div>
-          <div class="section-header">
-            <p></p>
-          </div>
-
-          <div class="section-header" style="margin-top: 20px;">
-            <h2 class="brand-heading">The Solution</h2>
-          </div>
-          <div class="section-body">
-            <p>
-              SYNaTRA is a synthetic triage assistant that retrieves and
-              summarizes customer history from Salesforce Cases, Jira Tickets,
-              and Snowflake subscription data into a single, concise view. It
-              parses an issue description, searches across systems using SOQL,
-              JQL, and SQL, scores the similarity and confidence of matches, and
-              returns an actionable, formatted triage summary ready to use in
-              real time during Slack, MS Teams, or Workbot conversations.
-            </p>
-          </div>
-          <div class="section-body">
-            <figure class="diagram-figure">
-              <img
-                src="diagrams/SYNaTRA/workatoWorkflow.svg"
-                alt="Workato Workflow diagram of SYNaTRA the SYNthetic TRiage Assistant"
-              />
-              <figcaption>
-                Workato Workflow diagram of SYNaTRA the SYNthetic TRiage
-                Assistant Salesforce, Jira, Snowflake, and LLM skills into a
-                single triage response.
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- KEY FEATURES -->
-        <section class="section reveal" id="work">
-          <div class="section-header">
-            <h2 class="brand-heading">Key Features</h2>
-            <p>
-              How SYNaTRA assembles context, searches systems, and keeps data
-              safe.
-            </p>
-          </div>
-          <div class="section-body">
-            <div class="grid grid-features">
-              <div class="card">
-                <span class="tile-icon">UC</span>
-                <h3>Unified Customer Context</h3>
-                <p>
-                  Searches Salesforce for Accounts, Cases, Contracts, and
-                  Subscriptions, and Snowflake for subscription details, then
-                  builds a concise customer overview with active plans, status,
-                  and total MRR.
-                </p>
-                <small
-                  >Data sources: Salesforce (Case, Contract, Account),
-                  Snowflake subscription tables.</small
-                >
-              </div>
-
-              <div class="card">
-                <span class="tile-icon">IS</span>
-                <h3>Issue-Aware Search Across Systems</h3>
-                <p>
-                  Converts short issue descriptions into keyword strings and
-                  constructs SOQL and JQL queries. Searches Salesforce Cases and
-                  Jira issues (DSSD, DS, COPS) for relevant historical tickets
-                  within a 12-month window.
-                </p>
-                <small>Tech: SOQL, JQL, optional SOSL.</small>
-              </div>
-
-              <div class="card">
-                <span class="tile-icon">SS</span>
-                <h3>Summaries, Scores, and Next Steps</h3>
-                <p>
-                  For each Salesforce Case and Jira issue, SYNaTRA generates
-                  ≤150-word summaries of historical resolutions, adds confidence
-                  and similarity scores, and labels records with source
-                  references (e.g., SF-Case-12345, JIRA-6789). It then proposes
-                  the next best action in friendly, live-usable language.
-                </p>
-              </div>
-
-              <div class="card">
-                <span class="tile-icon">GR</span>
-                <h3>Guardrails, Access Rules, and Safety</h3>
-                <p>
-                  Uses integration-user credentials for Salesforce and Jira,
-                  masks PII (emails, phone numbers, tokens) in summaries, and
-                  avoids any persistent storage beyond the current response.
-                  Designed for internal use only.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SYSTEM ARCHITECTURE -->
-        <section class="section reveal">
-          <div class="section-header">
-            <h2 class="brand-heading">System Architecture</h2>
-            <p>
-              How SYNaTRA orchestrates connectors and skills into a triage
-              report.
-            </p>
-          </div>
-          <div class="section-body">
-            <p>
-              SYNaTRA orchestrates multiple connectors and skills to transform a
-              short issue description into a structured triage report:
-            </p>
-            <ul class="architecture-list">
-              <li>
-                <strong>Inputs:</strong>
-                <code>issue_description</code> (free text) and optional
-                <code>customer_identifier</code> (AccountId, ContractId,
-                CustomerId).
-              </li>
-              <li>
-                <strong>Customer Identification:</strong> Salesforce account
-                search skill with fuzzy matching and top-5 candidates when only
-                a name is provided.
-              </li>
-              <li>
-                <strong>Keyword &amp; Query Builder:</strong> Tokenizes issue
-                text and builds JQL and SOQL/SOSL keyword queries.
-              </li>
-              <li>
-                <strong>Record Fetching:</strong> Salesforce Cases &amp;
-                Contracts, Jira tickets, Snowflake subscription data (12-month
-                lookback).
-              </li>
-              <li>
-                <strong>Summarization &amp; Scoring:</strong> Resolution
-                summaries with similarity and confidence metrics at record and
-                overall result levels.
-              </li>
-              <li>
-                <strong>Insight Assembly:</strong> Final message composed into a
-                readable chat response for Slack, MS Teams, or Workbot.
-              </li>
-            </ul>
-            <p>
-              If Salesforce or Jira are unavailable, SYNaTRA responds with a
-              user-friendly error:
-              <em
-                >“I couldn’t reach Salesforce or Jira right now — please try
-                again shortly or check your connection settings.”</em
-              >
-            </p>
-          </div>
-          <div class="section-body">
-            <figure class="diagram-figure">
-              <img
-                src="diagrams/SYNaTRA/syntra-architecture.svg"
-                alt="High-level architecture diagram of the SYNaTRA synthetic triage assistant"
-              />
-              <figcaption>
-                High-level view of how SYNaTRA orchestrates Salesforce, Jira,
-                Snowflake, and LLM skills into a single triage response.
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <!-- IMPACT & RESULTS -->
-        <section class="section reveal">
-          <div class="section-header">
-            <h2 class="brand-heading">Impact &amp; Results</h2>
-            <p>Targeted outcomes for Customer Success teams.</p>
-          </div>
-
-          <div class="section-body">
-            <div class="metrics">
-              <div class="metric">
-                <span class="icon-only"><i class="fa fa-clock"></i></span>
-                <div>
-                  <div class="metric-main">Time-to-context</div>
-                  <div class="metric-text">
-                    <p>
-                      50% reduction in average time-to-context for CS Ops and
-                      CSMs.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <span class="icon-only"
-                  ><i class="fa fa-chart-line"></i
-                ></span>
-                <div>
-                  <div class="metric-main">FCR uplift</div>
-                  <div class="metric-text">
-                    <p>
-                      Improved first-contact resolution rate by surfacing prior
-                      fixes faster.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <span class="icon-only"><i class="fa fa-database"></i></span>
-                <div>
-                  <div class="metric-main">Breadth of context</div>
-                  <div class="metric-text">
-                    <p>
-                      Up to 100 Salesforce cases and 100 Jira issues summarized
-                      per request.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="metric">
-                <span class="icon-only"><i class="fa fa-bolt"></i></span>
-                <div>
-                  <div class="metric-main">Execution window</div>
-                  <div class="metric-text">
-                    <p>
-                      Maximum runtime ≤ 5 minutes for full triage execution,
-                      with no data persisted.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- USE CASES -->
-        <section class="section reveal">
-          <div class="section-header">
-            <h2 class="brand-heading">Use Cases</h2>
-            <p>Where SYNaTRA fits day-to-day CS workflows.</p>
-          </div>
-          <div class="section-body">
-            <div class="grid grid-usecases">
-              <div class="card">
-                <span class="tile-icon">AT</span>
-                <h3>Account + Issue Triage</h3>
-                <p>
-                  A CSM provides an issue description and an AccountId. SYNaTRA
-                  identifies recent Salesforce Cases and Jira tickets,
-                  summarizes resolutions, retrieves active contracts and
-                  products, and returns a complete context package for live
-                  customer calls.
-                </p>
-              </div>
-
-              <div class="card">
-                <span class="tile-icon">IR</span>
-                <h3>Issue-Only Research</h3>
-                <p>
-                  When only a short issue description is available, SYNaTRA
-                  searches Jira and historical Salesforce Cases using
-                  keyword-based queries. It ranks and summarizes likely matches
-                  and proposes next steps, even before a specific customer is
-                  identified.
-                </p>
-              </div>
-
-              <div class="card">
-                <span class="tile-icon">CP</span>
-                <h3>CS Ops Coaching &amp; Playbooks</h3>
-                <p>
-                  CS Ops teams use SYNaTRA’s structured outputs—customer
-                  overview, case list, Jira issue list, and suggested
-                  actions—to design standard playbooks and improve coaching for
-                  handling recurring issue patterns.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- GET IN TOUCH -->
-        <section class="section reveal" id="contact">
-          <div class="section-header">
-            <h2 class="brand-heading">Get in Touch</h2>
-          </div>
-          <div class="section-body">
-            <p>
-              Interested in creating your own internal Customer Success? Email
-              Sarah at Sarah.Brown@naturallylogical.com
-            </p>
-            <p class="note">
-              <strong>Note:</strong> Access is restricted to internal employees;
-              operational details and PII are guarded and not persisted.
-            </p>
-          </div>
-        </section>
-
-        <footer class="footer">
-          <p>© 2026 Naturally Logical</p>
-          <p>
-            Portfolio excerpt for demonstration; operational details redacted.
-          </p>
-        </footer>
+      <div class="footer__meta">
+        <p>© 2026 Naturally Logical</p>
+        <p>Portfolio excerpt for demonstration; operational details redacted.</p>
       </div>
-    </div>
+    </footer>
 
-    <!-- Diagram modal (reusable for all .diagram-figure images) -->
-    <div id="diagram-modal" class="diagram-modal" aria-hidden="true">
-      <div class="diagram-modal-backdrop"></div>
-      <div class="diagram-modal-content" role="dialog" aria-modal="true">
-        <button class="diagram-modal-close" aria-label="Close diagram">
-          &times;
-        </button>
-        <img src="" alt="" />
-        <p class="diagram-modal-caption"></p>
-      </div>
-    </div>
-
-    <script>
-      // Simple scroll-reveal using IntersectionObserver
-      document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll(".reveal");
-
-        if (!("IntersectionObserver" in window)) {
-          elements.forEach((el) => el.classList.add("visible"));
-        } else {
-          const observer = new IntersectionObserver(
-            (entries, obs) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                  obs.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.15 }
-          );
-
-          elements.forEach((el) => observer.observe(el));
-        }
-
-        // === Diagram click-to-zoom modal ===
-        const diagramImages = document.querySelectorAll(".diagram-figure img");
-        const modal = document.getElementById("diagram-modal");
-        if (!modal) return;
-
-        const modalImg = modal.querySelector("img");
-        const modalCaption = modal.querySelector(".diagram-modal-caption");
-        const closeBtn = modal.querySelector(".diagram-modal-close");
-        const backdrop = modal.querySelector(".diagram-modal-backdrop");
-
-        function openModal(src, alt, caption) {
-          modalImg.src = src;
-          modalImg.alt = alt || "";
-          modalCaption.textContent = caption || "";
-          modal.classList.add("open");
-          modal.setAttribute("aria-hidden", "false");
-        }
-
-        function closeModal() {
-          modal.classList.remove("open");
-          modal.setAttribute("aria-hidden", "true");
-          modalImg.src = "";
-          modalImg.alt = "";
-          modalCaption.textContent = "";
-        }
-
-        diagramImages.forEach((img) => {
-          img.addEventListener("click", () => {
-            const figure = img.closest("figure");
-            const captionEl = figure
-              ? figure.querySelector("figcaption")
-              : null;
-            const captionText = captionEl ? captionEl.innerText : "";
-            openModal(img.src, img.alt, captionText);
-          });
-        });
-
-        if (closeBtn) closeBtn.addEventListener("click", closeModal);
-        if (backdrop) backdrop.addEventListener("click", closeModal);
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            closeModal();
-          }
-        });
-      });
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "SYNaTRA — Synthetic Triage Assistant",
+      "author": { "@type": "Person", "name": "Sarah M. Brown", "url": "https://naturallylogical.com/" },
+      "url": "https://naturallylogical.com/SYNaTRA.html",
+      "about": ["Customer Success automation", "Triage automation", "Retrieval and summarization", "Salesforce", "Jira", "Snowflake"]
+    }
     </script>
+  </main>
 
-    <!-- Sidebar toggle JS (same as main page) -->
-    <script>
-      var mySidebar = document.getElementById("mySidebar");
-      function w3_open() {
-        if (mySidebar.style.display === "block") {
-          mySidebar.style.display = "none";
-        } else {
-          mySidebar.style.display = "block";
-        }
-      }
-      function w3_close() {
-        mySidebar.style.display = "none";
-      }
-    </script>
-  </body>
+  <!-- Diagram modal (keep ONCE per page) -->
+  <div id="diagramModal" aria-hidden="true"
+    style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:3000;">
+    <div id="diagramModalBackdrop"
+      style="position:absolute; inset:0; background:rgba(0,0,0,0.72);"></div>
+
+    <!-- Reduced size (~15%) -->
+    <div role="dialog" aria-modal="true"
+  style="position:relative; background:#fff; border-radius:16px; padding:16px;
+         max-width:min(1040px, calc(100vw - 40px)); max-height:82vh;
+         box-shadow:0 18px 40px rgba(0,0,0,0.45); z-index:3001;">
+  <button id="diagramModalClose" aria-label="Close"
+    style="position:absolute; top:8px; right:10px; border:0; background:transparent;
+           font-size:28px; cursor:pointer; color:#666;">
+    &times;
+  </button>
+
+  <img id="diagramModalImg" alt=""
+    style="display:block; max-width:100%; max-height:64vh; width:auto; height:auto; border-radius:10px;" />
+
+  <p id="diagramModalCaption" class="muted" style="margin:10px 6px 2px; text-align:center;"></p>
+</div>
+  </div>
+
+  <!-- Shared site JS -->
+  <script defer src="./index/scripts.js"></script>
+</body>
 </html>

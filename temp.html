@@ -34,13 +34,13 @@
 
         <a href="#portfolio" class="navbar__link">
           <i class="fa-solid fa-star" aria-hidden="true"></i>
-          <span>Projects</span>
+          <span>PROJECTS</span>
         </a>
 
         <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener"
            class="navbar__link navbar__link--desktop">
           <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-          <span>LinkedIn</span>
+          <span>LINKEDIN</span>
         </a>
 
         <div class="navbar__spacer" aria-hidden="true"></div>
@@ -48,15 +48,15 @@
         <div class="navbar__right navbar__right--desktop">
           <a href="/files/SarahMBrown_Resume.pdf" class="navbar__link" download="SarahMBrown_Resume.pdf" type="application/pdf">
             <i class="fa-solid fa-download" aria-hidden="true"></i>
-            <span>Resume</span>
+            <span>PDF</span>
           </a>
           <a href="#experience" class="navbar__link">
             <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
-            <span>Experience</span>
+            <span>EXPERIENCE</span>
           </a>
           <a href="#education" class="navbar__link">
             <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
-            <span>Education</span>
+            <span>EDUCATION</span>
           </a>
         </div>
 
@@ -99,7 +99,29 @@
   </div>
 
   <main id="main">
-  
+    <!-- Resume header (uses project-page hero override: no flamingo background) -->
+    <section class="hero project-hero" id="top">
+      <div class="container hero__content">
+        <div class="brand-card hero__card">
+          <h1 class="hero__title">Sarah M. Brown</h1>
+          <p class="hero__tagline">Senior AI &amp; Automation Engineer</p>
+          <p class="hero__subtag">
+            Enterprise automation, integrations, AI agents, and decision systems.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn brand-btn" href="/files/SarahMBrown_Resume.pdf" download="SarahMBrown_Resume.pdf">
+              <i class="fa-solid fa-download" aria-hidden="true"></i>
+              Download PDF
+            </a>
+            <a class="btn brand-btn" href="#portfolio">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              View Projects
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Body layout (sidebar ends at Executive Summary; everything else scrolls in main) -->
     <section class="section resume-shell" aria-label="Resume content">
