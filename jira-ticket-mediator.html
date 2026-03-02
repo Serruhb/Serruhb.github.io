@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#00CDAC" />
 
-  <title>The Mediator — AI-Assisted Ticket Intake &amp; Coaching | Sarah M. Brown</title>
+  <title>The Mediator - AI-Assisted Ticket Intake &amp; Coaching | Sarah M. Brown</title>
   <meta
     name="description"
     content="The Mediator: an AI-assisted ticket mediator + coaching layer that turns noisy Jira requests into Definition-of-Ready tickets using Malcolm’s Chaos Score."
@@ -194,64 +194,112 @@
     </section>
 
     <!-- EXEC SUMMARY -->
-    <section class="section" id="exec">
-      <div class="container">
-        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            Executive Summary
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            Strategy first. Systems second. AI where it belongs: between vague ideas and the backlog.
-          </p>
-        </div>
+<section class="section" id="exec">
+  <div class="container">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+      <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+        Executive Summary
+      </h2>
+      <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+        Strategy first. Systems second. AI where it belongs: between vague ideas and the backlog.
+      </p>
+    </div>
 
-        <div class="grid grid--2">
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
-              The problem
-            </h3>
-            <p class="project-card__one-liner">
-              Jira was the shared tool. “Ready for work” was not a shared definition.
-            </p>
-            <ul class="bullets">
-              <li>Tickets arrived underspecified, missing impact, examples, or acceptance criteria.</li>
-              <li>Engineers chased context in comments instead of building systems.</li>
-              <li>Leadership had low confidence the backlog reflected reality.</li>
-            </ul>
-          </article>
+    <!-- Pills -->
+<div
+  style="
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:space-between;
+    margin: 8px 0 18px;
+  "
+>
+ <!-- Pills / tags BEFORE the cards -->
+<ul
+  class="tags"
+  aria-label="High-level tags"
+  style="
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:space-between;
+    margin: 8px 0 18px;
+  "
+>
+  <li style="flex:1 1 180px; text-align:center;">Ticket intake</li>
+  <li style="flex:1 1 180px; text-align:center;">Coaching loop</li>
+  <li style="flex:1 1 220px; text-align:center;">Definition of Ready</li>
+  <li style="flex:1 1 200px; text-align:center;">Jira workflows</li>
+  <li style="flex:1 1 170px; text-align:center;">Guardrails</li>
+</ul>
+</div>
 
-          <article class="project-card project-card--featured">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
-              The solution
-            </h3>
-            <p class="project-card__one-liner">
-              A structured intake + coaching layer that enforces Definition-of-Ready and makes clarity measurable.
-            </p>
-            <ul class="bullets">
-              <li>Normalizes noisy requests into consistent Bug/Story structures.</li>
-              <li>Scores clarity with Malcolm’s Chaos Score (1–10) and pairs it with actionable feedback.</li>
-              <li>Uses guardrails to prevent unsafe or unintended Jira updates.</li>
-            </ul>
+    <div class="grid grid--2">
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+          The problem
+        </h3>
+        <p class="project-card__one-liner">
+          Jira was the shared tool. “Ready for work” was not a shared definition.
+        </p>
+        <ul class="bullets">
+          <li>Tickets arrived underspecified, missing impact, examples, or acceptance criteria.</li>
+          <li>Engineers chased context in comments instead of building systems.</li>
+          <li>Leadership had low confidence the backlog reflected reality.</li>
+        </ul>
+      </article>
 
-            <ul class="tags" aria-label="Tags">
-              <li>Ticket intake</li>
-              <li>Coaching loop</li>
-              <li>Definition of Ready</li>
-              <li>Jira workflows</li>
-              <li>Guardrails</li>
-            </ul>
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
+          The solution
+        </h3>
+        <p class="project-card__one-liner">
+          A structured intake + coaching layer that enforces Definition-of-Ready and makes clarity measurable.
+        </p>
+        <ul class="bullets">
+          <li>Normalizes noisy requests into consistent Bug/Story structures.</li>
+          <li>Scores clarity with Malcolm’s Chaos Score (1–10) and pairs it with actionable feedback.</li>
+          <li>Uses guardrails to prevent unsafe or unintended Jira updates.</li>
+        </ul>
+      </article>
+    </div>
 
-            <div class="actions">
-              <a class="btn brand-btn" href="#modes">Operating model</a>
-              <a class="btn brand-btn" href="#guardrails">Guardrails</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+   <!-- CTAs pulled OUT of the cards (full width) -->
+<div
+  class="actions actions--center"
+  style="
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:space-between;
+    margin-top:18px;
+  "
+>
+  <a
+    class="btn brand-btn"
+    href="#modes"
+    style="flex:1 1 260px; justify-content:center; text-align:center;"
+  >
+    <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+    Operating model
+  </a>
 
+  <a
+    class="btn brand-btn"
+    href="#guardrails"
+    style="flex:1 1 260px; justify-content:center; text-align:center;"
+  >
+    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+    Guardrails
+  </a>
+</div>
+</section>
     <!-- CONTEXT -->
     <section class="section" id="context">
       <div class="container">
@@ -277,7 +325,7 @@
               <li>Duplicates scattered across projects.</li>
             </ul>
             <p class="muted" style="margin:10px 0 0;">
-              The cost wasn’t just time—it was backlog trust and predictable delivery.
+              The cost wasn’t just time, it was backlog trust and predictable delivery.
             </p>
           </article>
 
@@ -392,51 +440,139 @@
     </section>
 
     <!-- DEFINITION OF READY -->
-    <section class="section" id="ready">
-      <div class="container">
-        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            Definition of Ready + Chaos Score
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            Quality stops being subjective when it’s encoded into structure.
+<section class="section" id="ready">
+  <div class="container">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+      <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+        Definition of Ready
+      </h2>
+      <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+        Quality stops being subjective when it’s encoded into structure.
+      </p>
+    </div>
+
+    <div class="grid grid--2">
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-clipboard-check icon-accent" aria-hidden="true"></i>
+          Standard ticket template
+        </h3>
+        <ul class="bullets">
+          <li><strong>Metadata:</strong> system, type, priority, summary, reporter, assignee, epic.</li>
+          <li><strong>Bugs:</strong> expected vs actual, impact, steps, URL/example record.</li>
+          <li><strong>Stories:</strong> As a / I want / So that, notes, acceptance criteria.</li>
+          <li><strong>Other types:</strong> concise, fact-based technical context.</li>
+        </ul>
+        <p class="muted" style="margin:10px 0 0;">
+          Hypotheses and “maybe” statements get separated into Additional Notes to keep facts and guesses distinct.
+        </p>
+      </article>
+
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-list-check icon-accent" aria-hidden="true"></i>
+          Definition of Ready checklist
+        </h3>
+        <ul class="bullets">
+          <li><strong>Clear ask:</strong> the request is explicit (what you want done/reviewed/changed).</li>
+          <li><strong>System context:</strong> app/workflow/environment is named (or link provided).</li>
+          <li><strong>Concrete identifiers:</strong> ticket/record IDs, URLs, examples, or screenshots/logs.</li>
+          <li><strong>Expected outcome:</strong> what “done” looks like (success criteria).</li>
+          <li><strong>Repro & impact (if broken):</strong> steps to reproduce + severity/business impact.</li>
+          <li><strong>Constraints:</strong> deadlines, access limits, dependencies, or known blockers.</li>
+        </ul>
+        <p class="muted" style="margin:10px 0 0;">
+          If any core inputs are missing, the next step is coaching: ask targeted questions before starting work.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- COACHING -->
+<section class="section" id="coaching">
+  <div class="container">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+      <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+        Coaching for Growth & Clarity
+      </h2>
+      <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+        Every request is a chance to strengthen shared context, so the next one moves faster, with less rework and better outcomes.
+      </p>
+    </div>
+
+    <div class="grid grid--2">
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-seedling icon-accent" aria-hidden="true"></i>
+          The coaching flow (3 steps)
+        </h3>
+        <ol class="bullets">
+          <li><strong>Frame the intent:</strong> Restate what you believe the user wants in one sentence.</li>
+          <li><strong>Sharpen the inputs:</strong> Ask 2–4 questions that improve precision (system, IDs, success criteria, impact).</li>
+          <li><strong>Build the habit:</strong> Offer a reusable “next time” template so future requests are instantly actionable.</li>
+        </ol>
+        <p class="muted" style="margin:10px 0 0;">
+          This isn’t about catching mistakes, it’s about helping everyone communicate in a way that makes work easier tomorrow.
+        </p>
+      </article>
+
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-comment-dots icon-accent" aria-hidden="true"></i>
+          Question prompts (copy/paste)
+        </h3>
+        <ul class="bullets">
+          <li><strong>System + scope:</strong> “Which system/app is this in, and what part of it are we touching?”</li>
+          <li><strong>Identifiers:</strong> “Can you share the ticket/record ID, link, or an example record?”</li>
+          <li><strong>Outcome:</strong> “What does success look like; review, fix, recommendation, or confirmation?”</li>
+          <li><strong>Impact:</strong> “Who is impacted and how urgent is this?”</li>
+          <li><strong>Constraints:</strong> “Any deadline, dependencies, or access considerations?”</li>
+        </ul>
+        <p class="muted" style="margin:10px 0 0;">
+          Tip: If you only add one thing, add <strong>system + link/ID</strong> it unlocks speed.
+        </p>
+      </article>
+    </div>
+
+    <div class="grid grid--2" style="margin-top:18px;">
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
+          Example coaching response (growth mindset)
+        </h3>
+        <p class="muted" style="margin:0 0 10px;">
+          Use this to move faster now <em>and</em> make the next request easier.
+        </p>
+        <div class="callout" style="padding:12px 14px; border:1px solid rgba(255,255,255,.12); border-radius:12px;">
+          <p style="margin:0;">
+            <strong>Got it - I can help.</strong> To make this quick and repeatable, can you share:<br>
+            1) the <strong>system</strong> (Jira/Zendesk/Workato/etc.) and the <strong>ticket link/ID</strong>, and<br>
+            2) what “done” means here: <strong>review</strong>, <strong>fix</strong>, or <strong>recommendation</strong>?<br><br>
+            <span class="muted">Next time, a one-liner like “<strong>[System] + [Link/ID] + [Outcome]</strong>” will get you an answer even faster.</span>
           </p>
         </div>
+      </article>
 
-        <div class="grid grid--2">
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-clipboard-check icon-accent" aria-hidden="true"></i>
-              Standard ticket template
-            </h3>
-            <ul class="bullets">
-              <li><strong>Metadata:</strong> system, type, priority, summary, reporter, assignee, epic.</li>
-              <li><strong>Bugs:</strong> expected vs actual, impact, steps, URL/example record.</li>
-              <li><strong>Stories:</strong> As a / I want / So that, notes, acceptance criteria.</li>
-              <li><strong>Other types:</strong> concise, fact-based technical context.</li>
-            </ul>
-            <p class="muted" style="margin:10px 0 0;">
-              Hypotheses and “maybe” statements get separated into Additional Notes to keep facts and guesses distinct.
-            </p>
-          </article>
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-rectangle-list icon-accent" aria-hidden="true"></i>
+          “Next time” request template
+        </h3>
+        <ul class="bullets">
+          <li><strong>System:</strong> Workato / Jira / Salesforce / NetSuite / …</li>
+          <li><strong>Link or ID:</strong> ticket, record, recipe, job, run ID, etc.</li>
+          <li><strong>Goal:</strong> what you want (review / troubleshoot / update / build)</li>
+          <li><strong>Success criteria:</strong> what “done” looks like</li>
+          <li><strong>Impact + urgency:</strong> who is blocked and by when</li>
+        </ul>
+        <p class="muted" style="margin:10px 0 0;">
+          The goal is shared clarity with less back-and-forth, faster delivery, and cleaner handoffs.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
 
-          <article class="project-card project-card--featured">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-gauge-high icon-accent" aria-hidden="true"></i>
-              Malcolm’s Chaos Score (1–10)
-            </h3>
-            <ul class="bullets">
-              <li><strong>1–3:</strong> High clarity; actionable for any team member.</li>
-              <li><strong>4–7:</strong> Moderate chaos; usually missing AC or concrete examples.</li>
-              <li><strong>8–10:</strong> High chaos; requires major refinement before work begins.</li>
-            </ul>
-            <p class="muted" style="margin:10px 0 0;">
-              The score always ships with feedback: what’s strong, what’s missing, and the next best improvement.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
 
     <!-- GUARDRAILS -->
     <section class="section" id="guardrails">
@@ -499,7 +635,7 @@
               Reduced ticket thrash
             </h3>
             <ul class="bullets">
-              <li>Targeted questions once, up front—fewer scattered comment threads.</li>
+              <li>Targeted questions once, up front allowing for fewer scattered comment threads.</li>
               <li>More time on design/delivery, less time chasing context.</li>
             </ul>
           </article>
@@ -526,27 +662,86 @@
             </ul>
           </article>
 
-          <article class="project-card project-card--featured">
+          <article class="project-card">
             <h3 class="project-card__title">
               <i class="fa-solid fa-recycle icon-accent" aria-hidden="true"></i>
               Reusable beyond Jira
             </h3>
             <p class="project-card__one-liner">
-              The pattern—Definition of Ready, scoring, and coaching comments—adapts cleanly to other tools and teams.
+              The pattern Definition of Ready, scoring, and coaching comments; adapts cleanly to other tools and teams.
             </p>
-            <div class="actions">
         
-              <a class="btn btn-ghost" href="#top">Back to top</a>
-            </div>
           </article>
-          <div class="actions actions--center">
-        
-              <a class="btn btn-ghost" href="#top">Back to top</a>
-            </div>
+          
         </div>
       </div>
     </section>
+    <!-- INTAKE → STRATEGY ROADMAP -->
+<section class="section" id="roadmap">
+  <div class="container">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+      <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+        From Intake to Strategy
+      </h2>
+      <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:80ch;">
+        When intake is consistent, analytics becomes reliable and the Strategist layer can run: monitoring active sprints, forecasting capacity,
+        and alerting the right team before deadlines slip.
+      </p>
+    </div>
 
+    <div class="grid grid--2">
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-inbox icon-accent" aria-hidden="true"></i>
+          Intake Mode (consistent data)
+        </h3>
+        <ul class="bullets">
+          <li><strong>Standardized fields:</strong> system, category, IDs/links, goal, success criteria, priority, impact.</li>
+          <li><strong>Cleaner handoffs:</strong> fewer follow-ups and faster triage.</li>
+          <li><strong>Comparable threads:</strong> every conversation becomes analyzable and reportable.</li>
+        </ul>
+        <p class="muted" style="margin:10px 0 0;">
+          This is the turning point: the same inputs, every time, means the data is trustworthy enough to power strategy.
+        </p>
+      </article>
+
+      <article class="project-card">
+        <h3 class="project-card__title">
+          <i class="fa-solid fa-chess-king icon-accent" aria-hidden="true"></i>
+          Strategist Mode (what it unlocks)
+        </h3>
+        <ul class="bullets">
+          <li><strong>Sprint awareness:</strong> watch active work against capacity and deadlines.</li>
+          <li><strong>Epic-level outcomes:</strong> track progress across the whole initiative, not just tickets.</li>
+          <li><strong>Proactive alerts:</strong> route signals to the right area before risks become blockers.</li>
+        </ul>
+        <p class="muted" style="margin:10px 0 0;">
+          Once intake is structured, the next phase can focus on prevention: capacity, deadlines, and outcomes at scale.
+        </p>
+      </article>
+    </div>
+
+    <div class="project-card" style="margin-top:18px;">
+      <h3 class="project-card__title">
+        <i class="fa-solid fa-bell icon-accent" aria-hidden="true"></i>
+        What comes next: sprint monitoring + alerts
+      </h3>
+      <ul class="bullets" style="margin:0;">
+        <li><strong>Capacity:</strong> notify when sprint load exceeds team capacity thresholds.</li>
+        <li><strong>Deadlines:</strong> alert when epic milestones are at risk based on remaining work and time.</li>
+        <li><strong>Outcomes:</strong> highlight gaps between planned vs delivered acceptance criteria for epics.</li>
+        <li><strong>Routing:</strong> send alerts to the right owner/team based on system + category + epic.</li>
+      </ul>
+      <p class="muted" style="margin:10px 0 0;">
+        The site story becomes: <strong>we standardize intake → we get consistent data → we can run strategy → we prevent sprint surprises.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+<div class="actions actions--center">
+        
+              <a class="btn btn-ghost" href="#top">Back to top</a>
+            </div>
     <!-- Footer -->
     <footer class="footer">
       <div class="footer__social">
@@ -560,7 +755,7 @@
           <i class="fa-brands fa-github" aria-hidden="true"></i>
         </a>
       </div>
-
+      
       <div class="footer__meta">
         <p>© 2026 Naturally Logical</p>
         <p>Portfolio excerpt for demonstration; operational details redacted.</p>
@@ -572,7 +767,7 @@
     {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
-      "name": "The Mediator — AI-Assisted Ticket Intake & Coaching",
+      "name": "The Mediator - AI-Assisted Ticket Intake & Coaching",
       "author": { "@type": "Person", "name": "Sarah M. Brown", "url": "https://naturallylogical.com/" },
       "url": "https://naturallylogical.com/mediator.html",
       "about": ["Ticket intake", "Jira workflows", "Definition of Ready", "Coaching loops", "Operational guardrails"]

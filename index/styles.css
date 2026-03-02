@@ -254,23 +254,28 @@ section[id] { scroll-margin-top: 92px; }
   margin-top: 56px;
 }
 
-/* ===== Recent Work (2-up grid) ===== */
+/* ===== Recent Work (3-up grid) ===== */
 .recent-grid{
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   margin-top: 56px;
   align-items: stretch;
 }
 
-/* 5th card spans full width on desktop/tablet for visual balance */
+/* In a 3-up layout, disable old "span full width" behavior */
 .project-card--span-2{
-  grid-column: 1 / -1;
+  grid-column: auto;
 }
 
-@media (max-width: 900px){
+/* Tablet: 2-up */
+@media (max-width: 1100px){
+  .recent-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Mobile: 1-up */
+@media (max-width: 720px){
   .recent-grid{ grid-template-columns: 1fr; }
-  .project-card--span-2{ grid-column: auto; }
 }
 
 /* ===== Cards ===== */
@@ -743,4 +748,81 @@ section[id] { scroll-margin-top: 92px; }
   word-break: break-word;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
+}
+/* ===== Resume: mobile-only cohesive flow (desktop unchanged) ===== */
+.resume-mobile-only{ display: none; }
+
+/* Mobile: hide sidebar, show intro, stack sections cleanly */
+@media (max-width: 980px){
+  .resume-page .resume-sidebar{ display: none; }
+  .resume-page .resume-mobile-only{ display: block; }
+
+  /* tighten spacing a bit for phones */
+  .resume-page .resume-main{ gap: 18px; }
+
+  .resume-page .resume-mobile-profile__top{
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .resume-page .resume-avatar--mobile{
+    width: 92px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 16px;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .resume-page .resume-mobile-profile__meta p{
+    margin: 0 0 8px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    min-width: 0;
+  }
+  .resume-page .resume-mobile-profile__meta p:last-child{ margin-bottom: 0; }
+
+  .resume-page .resume-mobile-profile__meta a{
+    word-break: break-word;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+}
+
+/* Extra-small phones: stack avatar above meta */
+@media (max-width: 520px){
+  .resume-page .resume-mobile-profile__top{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .resume-page .resume-avatar--mobile{ width: 120px; }
+}
+
+/* Mobile: subtle “one-by-one” entrance (stagger) */
+@media (max-width: 980px){
+  @keyframes resumeIn{
+    from{ opacity: 0; transform: translateY(10px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  .resume-page .resume-main > .resume-block{
+    animation: resumeIn .55s ease both;
+  }
+
+  .resume-page .resume-main > .resume-block:nth-of-type(1){ animation-delay: .05s; } /* Mobile Intro */
+  .resume-page .resume-main > .resume-block:nth-of-type(2){ animation-delay: .12s; } /* Summary */
+  .resume-page .resume-main > .resume-block:nth-of-type(3){ animation-delay: .19s; } /* Skills */
+  .resume-page .resume-main > .resume-block:nth-of-type(4){ animation-delay: .26s; } /* Experience */
+  .resume-page .resume-main > .resume-block:nth-of-type(5){ animation-delay: .33s; } /* Education */
+  .resume-page .resume-main > .resume-block:nth-of-type(6){ animation-delay: .40s; } /* Portfolio */
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .resume-page .resume-main > .resume-block{
+    animation: none !important;
+    transform: none !important;
+  }
 }

@@ -19,16 +19,16 @@
   <meta property="og:url" content="https://naturallylogical.com/" />
   <meta name="twitter:card" content="summary" />
 
-  <!-- Fonts + Icons (only once) -->
+  <!-- Fonts + Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Your CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="./index/styles.css" />
 
-  <!-- Your JS -->
+  <!-- JS -->
   <script defer src="./index/scripts.js"></script>
 </head>
 
@@ -124,13 +124,45 @@
       </div>
     </section>
 
+    <!-- Intro -->
+    <section class="section" id="Intro">
+      <div class="container">
+        <h2 class="section__title brand-heading"><a href="#Intro">Intro</a></h2>
+        <p class="section__subtitle">How I think about systems, automation, and impact.</p>
+
+        <div class="grid grid--2 intro-grid">
+          <div>
+            <p>
+              I design systems that turn scattered data into clear, reliable decisions. My work sits at the intersection of
+              enterprise platforms, automation, and human workflows; where small errors can quietly compound and good systems
+              make teams faster, calmer, and more effective.
+              <br><br>
+              My background in Mathematics and Chemistry shaped how I approach engineering: I look for structure and failure
+              modes before I reach for tools. Programming became an expressive way to model complex systems and make them
+              observable, testable, and safe at scale.
+            </p>
+          </div>
+
+          <div>
+            <p>
+              Before enterprise automation, I owned a dog training business and worked as a math and chemistry tutor for high 
+              school and college students; using automation to track outcomes, manage operations, and reduce manual effort. 
+              That grounded my instincts in real constraints: unclear ownership, noisy data, and systems that must work for humans.
+              <br><br>
+              Today I build AI-assisted and rule-driven systems with guardrails, auditability, and human-in-the-loop control—especially
+              in high-stakes areas like healthcare, revenue, customer experience, and operational decision-making.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Featured Work -->
     <section class="section" id="featured">
       <div class="container">
         <h2 class="section__title brand-heading">Featured Work</h2>
-        <p class="section__subtitle">Five recent systems I’d ship again.</p>
+        <p class="section__subtitle">Six recent systems I’d ship again.</p>
 
-        <!-- 2-column responsive grid -->
         <div class="recent-grid" aria-label="Recent work">
           <!-- Recent #1 -->
           <article class="project-card project-card--featured">
@@ -140,7 +172,6 @@
                   <i class="fa-solid fa-robot icon-accent" aria-hidden="true"></i>
                   SYNaTRA
                 </h3>
-               
               </div>
 
               <p class="project-card__one-liner">
@@ -175,7 +206,6 @@
                   <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
                   RequestForm (Salesforce Workflow Rebuild)
                 </h3>
-              
               </div>
 
               <p class="project-card__one-liner">
@@ -210,7 +240,6 @@
                   <i class="fa-solid fa-database icon-accent" aria-hidden="true"></i>
                   Contract Data Pipeline
                 </h3>
-         
               </div>
 
               <p class="project-card__one-liner">
@@ -240,79 +269,112 @@
           </article>
 
           <!-- Recent #4 -->
-<article class="project-card project-card--featured">
-  <header class="project-card__header">
-    <div class="project-card__title-row">
-      <h3 class="project-card__title">
-        <i class="fa-solid fa-gears icon-accent" aria-hidden="true"></i>
-        Subscription Self-Serve Automation
-      </h3>
-     
-    </div>
+          <article class="project-card project-card--featured">
+            <header class="project-card__header">
+              <div class="project-card__title-row">
+                <h3 class="project-card__title">
+                  <i class="fa-solid fa-gears icon-accent" aria-hidden="true"></i>
+                  Subscription Self-Serve Automation
+                </h3>
+              </div>
 
-    <p class="project-card__one-liner">
-      Validation + orchestration engine that turns subscription events into deterministic, auditable contract amendments in Salesforce CPQ.
-    </p>
-  </header>
+              <p class="project-card__one-liner">
+                Validation + orchestration engine that turns subscription events into deterministic, auditable contract amendments in Salesforce CPQ.
+              </p>
+            </header>
 
-  <ul class="bullets">
-    <li>Normalizes and maps raw subscription events in <strong>Snowflake</strong> into an amendment-ready canonical model (products, quantities, pricing families).</li>
-    <li>Uses a <strong>Workato</strong> parent recipe to enforce validation gates, idempotency, routing, and stage-by-stage audit logs.</li>
-    <li>Builds CPQ artifacts safely (Opp → Quote → Quote Lines → Order), supporting complex realities like ALDs, upgrades/downgrades, and multiple active contracts.</li>
-  </ul>
+            <ul class="bullets">
+              <li>Normalizes and maps raw subscription events in <strong>Snowflake</strong> into an amendment-ready canonical model (products, quantities, pricing families).</li>
+              <li>Uses a <strong>Workato</strong> parent recipe to enforce validation gates, idempotency, routing, and stage-by-stage audit logs.</li>
+              <li>Builds CPQ artifacts safely (Opp → Quote → Quote Lines → Order), supporting complex realities like ALDs, upgrades/downgrades, and multiple active contracts.</li>
+            </ul>
 
-  <ul class="tags" aria-label="Tech tags">
-    <li>Workato</li>
-    <li>Snowflake</li>
-    <li>Salesforce CPQ</li>
-    <li>Validation gates</li>
-    <li>Idempotency</li>
-    <li>Audit logging</li>
-    <li>Orchestration</li>
-  </ul>
+            <ul class="tags" aria-label="Tech tags">
+              <li>Workato</li>
+              <li>Snowflake</li>
+              <li>Salesforce CPQ</li>
+              <li>Validation gates</li>
+              <li>Idempotency</li>
+              <li>Audit logging</li>
+              <li>Orchestration</li>
+            </ul>
 
-  <div class="actions">
-    <a class="btn brand-btn" href="subscription-self-serve.html" target="_blank" rel="noopener">Case Study</a>
-  </div>
-</article>
+            <div class="actions">
+              <a class="btn brand-btn" href="subscription-self-serve.html" target="_blank" rel="noopener">Case Study</a>
+            </div>
+          </article>
 
-<!-- Recent #5 — spans full width for balance -->
-<article class="project-card project-card--featured project-card--span-2">
-  <header class="project-card__header">
-    <div class="project-card__title-row">
-      <h3 class="project-card__title">
-        <i class="fa-solid fa-bell icon-accent" aria-hidden="true"></i>
-        OTA Monitoring (Performance Alert &amp; Monitoring)
-      </h3>
-      
-    </div>
+          <!-- Recent #5 -->
+          <article class="project-card project-card--featured project-card--span-2">
+            <header class="project-card__header">
+              <div class="project-card__title-row">
+                <h3 class="project-card__title">
+                  <i class="fa-solid fa-bell icon-accent" aria-hidden="true"></i>
+                  OTA Monitoring (Performance Alert &amp; Monitoring)
+                </h3>
+              </div>
 
-    <p class="project-card__one-liner">
-      Explainable alerting + monitoring framework that converts weekly OTA metrics into prioritized, owner-aware tickets and watchlist signals.
-    </p>
-  </header>
+              <p class="project-card__one-liner">
+                Explainable alerting + monitoring framework that converts weekly OTA metrics into prioritized, owner-aware tickets and watchlist signals.
+              </p>
+            </header>
 
-  <ul class="bullets">
-    <li>Standardizes OTA feeds into a canonical schema; computes KPIs (CVR), baselines, streaks, and eligibility flags.</li>
-    <li>Detects tiered issues: <strong>visibility failures</strong> (critical), <strong>conversion leakage</strong> (high ROI), and <strong>trend signals</strong> (monitor) to reduce alert fatigue.</li>
-    <li>Routes actions to the right owners (Ops / Distribution / Revenue) with clear evidence context and fail-safe handling for missing/delayed upstream data.</li>
-  </ul>
+            <ul class="bullets">
+              <li>Standardizes OTA feeds into a canonical schema; computes KPIs (CVR), baselines, streaks, and eligibility flags.</li>
+              <li>Detects tiered issues: <strong>visibility failures</strong> (critical), <strong>conversion leakage</strong> (high ROI), and <strong>trend signals</strong> (monitor) to reduce alert fatigue.</li>
+              <li>Routes actions to the right owners (Ops / Distribution / Revenue) with clear evidence context and fail-safe handling for missing/delayed upstream data.</li>
+            </ul>
 
-  <ul class="tags" aria-label="Tech tags">
-    <li>Monitoring</li>
-    <li>Alerting + Ticketing</li>
-    <li>Rule-based detection</li>
-    <li>Owner-aware routing</li>
-    <li>Eligibility + streak logic</li>
-    <li>Guardrails</li>
-    <li>Early-warning foundations</li>
-  </ul>
+            <ul class="tags" aria-label="Tech tags">
+              <li>Monitoring</li>
+              <li>Alerting + Ticketing</li>
+              <li>Rule-based detection</li>
+              <li>Owner-aware routing</li>
+              <li>Eligibility + streak logic</li>
+              <li>Guardrails</li>
+              <li>Early-warning foundations</li>
+            </ul>
 
-  <div class="actions">
-    <a class="btn brand-btn" href="ota-monitoring.html" target="_blank" rel="noopener">Case Study</a>
-  </div>
-</article>
+            <div class="actions">
+              <a class="btn brand-btn" href="ota-monitoring.html" target="_blank" rel="noopener">Case Study</a>
+            </div>
+          </article>
+
+          <!-- Recent #6 -->
+          <article class="project-card project-card--featured project-card--span-2">
+            <header class="project-card__header">
+              <div class="project-card__title-row">
+                <h3 class="project-card__title">
+                  <i class="fa-solid fa-scale-balanced icon-accent" aria-hidden="true"></i>
+                  The Mediator
+                </h3>
+              </div>
+
+              <p class="project-card__one-liner">
+                AI-assisted Jira intake + coaching layer that turns vague requests into Definition-of-Ready tickets using Malcolm’s Chaos Score.
+              </p>
+            </header>
+
+            <ul class="bullets">
+              <li>Converts noisy Jira requests into consistent Bug/Story structures and enforces a clear Definition of Ready.</li>
+              <li>Scores clarity with Malcolm’s Chaos Score (1–10) and returns actionable, growth-minded coaching prompts.</li>
+              <li>Uses safety guardrails: drafts changes first, only updates explicitly requested fields, and defaults to internal comments.</li>
+            </ul>
+
+            <ul class="tags" aria-label="Tech tags">
+              <li>Jira intake</li>
+              <li>Definition of Ready</li>
+              <li>Coaching loop</li>
+              <li>Guardrails</li>
+              <li>Workflow design</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn brand-btn" href="mediator.html" target="_blank" rel="noopener">Case Study</a>
+            </div>
+          </article>
         </div>
+        <!-- ✅ IMPORTANT: close .recent-grid BEFORE the accordion -->
 
         <!-- Earlier / Experiments (collapsed) -->
         <details class="accordion" id="more-projects">
@@ -383,39 +445,6 @@
             </article>
           </div>
         </details>
-      </div>
-    </section>
-
-    <!-- Intro -->
-    <section class="section" id="Intro">
-      <div class="container">
-        <h2 class="section__title brand-heading"><a href="#Intro">Intro</a></h2>
-        <p class="section__subtitle">How I think about systems, automation, and impact.</p>
-
-        <div class="grid grid--2 intro-grid">
-          <div>
-            <p>
-              I design systems that turn scattered data into clear, reliable decisions. My work sits at the intersection of
-              enterprise platforms, automation, and human workflows—where small errors can quietly compound and good systems
-              make teams faster, calmer, and more effective.
-              <br><br>
-              My background in Mathematics and Chemistry shaped how I approach engineering: I look for structure and failure
-              modes before I reach for tools. Programming became an expressive way to model complex systems and make them
-              observable, testable, and safe at scale.
-            </p>
-          </div>
-
-          <div>
-            <p>
-              Before enterprise automation, I ran a small dog training business and worked as a tutor—using automation to track
-              outcomes, manage operations, and reduce manual effort. That grounded my instincts in real constraints: unclear ownership,
-              noisy data, and systems that must work for humans.
-              <br><br>
-              Today I build AI-assisted and rule-driven systems with guardrails, auditability, and human-in-the-loop control—especially
-              in high-stakes areas like healthcare, revenue, customer experience, and operational decision-making.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
 

@@ -99,31 +99,29 @@
   </div>
 
   <main id="main">
-  
 
     <!-- Body layout (sidebar ends at Executive Summary; everything else scrolls in main) -->
     <section class="section resume-shell" aria-label="Resume content">
       <div class="container">
         <div class="resume-grid">
-          <!-- LEFT / SIDEBAR -->
+          <!-- LEFT / SIDEBAR (desktop/tablet only; hidden on mobile via CSS add-on) -->
           <aside class="project-card resume-sidebar" aria-label="Profile, contact, and executive summary">
             <img class="resume-avatar" src="Images/ProfilePicture.png" alt="Sarah M. Brown headshot" />
-             <p>
-    <i class="fa-solid fa-envelope icon-accent" aria-hidden="true"></i>
-    <a href="mailto:sarah.brown@naturallylogical.com">sarah.brown@naturallylogical.com</a>
-  </p>
+
+            <p>
+              <i class="fa-solid fa-envelope icon-accent" aria-hidden="true"></i>
+              <a href="mailto:sarah.brown@naturallylogical.com">sarah.brown@naturallylogical.com</a>
+            </p>
 
             <div class="resume-meta">
+              <p><i class="fa-solid fa-phone icon-accent" aria-hidden="true"></i> (512) 884-1220</p>
+              <p><i class="fa-solid fa-location-dot icon-accent" aria-hidden="true"></i> Amesbury, MA</p>
+            </div>
 
- 
-  <p><i class="fa-solid fa-phone icon-accent" aria-hidden="true"></i> (512) 884-1220</p>
-   <p><i class="fa-solid fa-location-dot icon-accent" aria-hidden="true"></i> Amesbury, MA</p>
-  
-</div>
-<p>
-    <i class="fa-brands fa-linkedin icon-accent" aria-hidden="true"></i>
-    <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">linkedin.com/in/serruhb</a>
-  </p>
+            <p>
+              <i class="fa-brands fa-linkedin icon-accent" aria-hidden="true"></i>
+              <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">linkedin.com/in/serruhb</a>
+            </p>
 
             <hr class="resume-divider" />
 
@@ -137,6 +135,77 @@
 
           <!-- RIGHT / MAIN -->
           <div class="resume-main">
+
+            <!-- MOBILE INTRO (profile/contact + executive summary) -->
+            <section class="resume-block resume-mobile-only" aria-label="Mobile profile and executive summary">
+              <div class="grid grid--2">
+                <article class="project-card resume-mobile-profile" aria-label="Profile and contact">
+                  <div class="resume-mobile-profile__top">
+                    <img class="resume-avatar resume-avatar--mobile" src="Images/ProfilePicture.png" alt="Sarah M. Brown headshot" />
+                    <div class="resume-mobile-profile__meta">
+                      <p>
+                        <i class="fa-solid fa-envelope icon-accent" aria-hidden="true"></i>
+                        <a href="mailto:sarah.brown@naturallylogical.com">sarah.brown@naturallylogical.com</a>
+                      </p>
+                      <p><i class="fa-solid fa-phone icon-accent" aria-hidden="true"></i> (512) 884-1220</p>
+                      <p><i class="fa-solid fa-location-dot icon-accent" aria-hidden="true"></i> Amesbury, MA</p>
+                      <p>
+                        <i class="fa-brands fa-linkedin icon-accent" aria-hidden="true"></i>
+                        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">linkedin.com/in/serruhb</a>
+                      </p>
+                    </div>
+                  </div>
+
+                  <hr class="resume-divider" />
+
+                  <nav class="resume-toc" aria-label="Resume sections">
+                    <a class="resume-toc__link" href="#summary">
+                      <i class="fa-solid fa-user icon-accent" aria-hidden="true"></i>
+                      <span>Summary</span>
+                    </a>
+                    <a class="resume-toc__link" href="#accomplishments">
+                      <i class="fa-solid fa-trophy icon-accent" aria-hidden="true"></i>
+                      <span>Accomplishments</span>
+                    </a>
+                    <a class="resume-toc__link" href="#skills">
+                      <i class="fa-solid fa-code icon-accent" aria-hidden="true"></i>
+                      <span>Skills</span>
+                    </a>
+                    <a class="resume-toc__link" href="#experience">
+                      <i class="fa-solid fa-briefcase icon-accent" aria-hidden="true"></i>
+                      <span>Experience</span>
+                    </a>
+                    <a class="resume-toc__link" href="#education">
+                      <i class="fa-solid fa-graduation-cap icon-accent" aria-hidden="true"></i>
+                      <span>Education</span>
+                    </a>
+                    <a class="resume-toc__link" href="#portfolio">
+                      <i class="fa-solid fa-star icon-accent" aria-hidden="true"></i>
+                      <span>Portfolio</span>
+                    </a>
+                  </nav>
+                </article>
+
+                <article class="project-card" aria-label="Executive summary">
+                  <header class="project-card__header">
+                    <h2 class="project-card__title">
+                      <i class="fa-solid fa-bolt icon-accent" aria-hidden="true"></i>
+                      Executive Summary
+                    </h2>
+                    <p class="project-card__one-liner">
+                      Enterprise AI + automation leadership across CRM/ERP stacks.
+                    </p>
+                  </header>
+
+                  <p class="muted">
+                    Senior AI &amp; Automation leader shaping enterprise roadmaps, orchestrating programs across CRM &amp; ERP stacks,
+                    and translating business challenges into scalable, data-driven solutions that unlock efficiency, accelerate growth,
+                    and drive innovation.
+                  </p>
+                </article>
+              </div>
+            </section>
+
             <!-- Summary + Highlights -->
             <section class="resume-block" id="summary" aria-label="Professional summary and highlights">
               <div class="grid grid--2">
@@ -163,7 +232,7 @@
                   </p>
                 </article>
 
-                <article class="project-card">
+                <article class="project-card" id="accomplishments">
                   <header class="project-card__header">
                     <h2 class="project-card__title">
                       <i class="fa-solid fa-trophy icon-accent" aria-hidden="true"></i>
@@ -423,159 +492,290 @@
 
             <!-- Portfolio -->
             <section class="resume-block" id="portfolio">
-              <h2 class="section__title brand-heading resume-section-title-left">Portfolio</h2>
-              <p class="section__subtitle resume-section-subtitle-left">Selected systems and experiments.</p>
+  <h2 class="section__title brand-heading resume-section-title-left">Portfolio</h2>
+  <p class="section__subtitle resume-section-subtitle-left">Selected systems and experiments.</p>
 
-              <div class="recent-grid" aria-label="Portfolio projects">
-                <!-- Featured #1 -->
-                <article class="project-card project-card--featured">
-                  <header class="project-card__header">
-                    <div class="project-card__title-row">
-                      <h3 class="project-card__title">
-                        <i class="fa-solid fa-robot icon-accent" aria-hidden="true"></i>
-                        SYNaTRA
-                      </h3>
-                    </div>
+  <div class="recent-grid" aria-label="Portfolio projects">
+    <!-- Featured #1 -->
+    <article class="project-card project-card--featured">
+      <header class="project-card__header">
+        <div class="project-card__title-row">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-robot icon-accent" aria-hidden="true"></i>
+            SYNaTRA
+          </h3>
+        </div>
 
-                    <p class="project-card__one-liner">
-                      Ticket triage + context agent for Customer Success teams handling complex enterprise accounts.
-                    </p>
-                  </header>
+        <p class="project-card__one-liner">
+          Ticket triage + context agent for Customer Success teams handling complex enterprise accounts.
+        </p>
+      </header>
 
-                  <ul class="bullets">
-                    <li>Reduces time-to-context by summarizing Salesforce Cases, Jira issues, and subscription status.</li>
-                    <li>Improves first-contact resolution with concise next-step guidance.</li>
-                    <li>Designed for safer operations with clear source attribution and human-in-the-loop workflows.</li>
-                  </ul>
+      <ul class="bullets">
+        <li>Reduces “time-to-context” by retrieving and summarizing related Salesforce Cases, Jira issues, and subscription status.</li>
+        <li>Improves first-contact resolution with concise next-step guidance and consistent case narratives.</li>
+        <li>Supports safer operations with clear source attribution and human-in-the-loop workflows.</li>
+      </ul>
 
-                  <ul class="tags" aria-label="Tech tags">
-                    <li>LLM / Agents</li>
-                    <li>Retrieval + Summarization</li>
-                    <li>Salesforce</li>
-                    <li>Jira</li>
-                    <li>APIs</li>
-                  </ul>
+      <ul class="tags" aria-label="Tech tags">
+        <li>LLM / Agents</li>
+        <li>Retrieval + Summarization</li>
+        <li>Salesforce</li>
+        <li>Jira</li>
+        <li>APIs</li>
+      </ul>
 
-                  <div class="actions">
-                    <a class="btn brand-btn btn-ghost btn--disabled" aria-disabled="true" href="#">
-                      Case Study (TBD)
-                    </a>
-                    <a class="btn btn-ghost" href="https://github.com/Serruhb/syntra" target="_blank" rel="noopener">
-                      GitHub
-                    </a>
-                  </div>
-                </article>
+      <div class="actions">
+        <a class="btn brand-btn" href="SYNaTRA.html" target="_blank" rel="noopener">Case Study</a>
+      </div>
+    </article>
 
-                <!-- Featured #2 -->
-                <article class="project-card project-card--featured">
-                  <header class="project-card__header">
-                    <div class="project-card__title-row">
-                      <h3 class="project-card__title">
-                        <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
-                        RequestForm (Salesforce Workflow Rebuild)
-                      </h3>
-                    </div>
+    <!-- Featured #2 -->
+    <article class="project-card project-card--featured">
+      <header class="project-card__header">
+        <div class="project-card__title-row">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
+            RequestForm (Salesforce Workflow Rebuild)
+          </h3>
+        </div>
 
-                    <p class="project-card__one-liner">
-                      Rebuilt a fragile Oracle-era intake workflow into a maintainable Salesforce process for internal teams.
-                    </p>
-                  </header>
+        <p class="project-card__one-liner">
+          Rebuilt a fragile, Oracle-era intake workflow into a maintainable Salesforce process for internal teams.
+        </p>
+      </header>
 
-                  <ul class="bullets">
-                    <li>Improved throughput and transparency by standardizing intake and reducing handoffs.</li>
-                    <li>Reduced errors with validation, consistent capture, and reusable modules.</li>
-                    <li>Enabled self-serve reporting with dashboards and training artifacts.</li>
-                  </ul>
+      <ul class="bullets">
+        <li>Improved throughput and transparency by standardizing intake + reducing manual handoffs.</li>
+        <li>Reduced errors by enforcing validation, consistent data capture, and reusable modules.</li>
+        <li>Enabled self-serve reporting with dashboards + training artifacts for users and developers.</li>
+      </ul>
 
-                  <ul class="tags" aria-label="Tech tags">
-                    <li>Salesforce</li>
-                    <li>Apex</li>
-                    <li>Visualforce</li>
-                    <li>PDF Rendering</li>
-                    <li>Process Engineering</li>
-                  </ul>
+      <ul class="tags" aria-label="Tech tags">
+        <li>Salesforce</li>
+        <li>Apex</li>
+        <li>Visualforce</li>
+        <li>PDF Rendering</li>
+        <li>Process Engineering</li>
+      </ul>
 
-                  <div class="actions">
-                    <a class="btn brand-btn btn-ghost btn--disabled" aria-disabled="true" href="#">
-                      Case Study (TBD)
-                    </a>
-                    <a class="btn btn-ghost" href="https://github.com/Serruhb/RequestForm/" target="_blank" rel="noopener">
-                      GitHub
-                    </a>
-                  </div>
-                </article>
-              </div>
+      <div class="actions">
+        <a class="btn brand-btn" href="ota-monitoring.html" target="_blank" rel="noopener">Case Study</a>
+      </div>
+    </article>
 
-              <!-- Earlier / Experiments (collapsed) -->
-              <details class="accordion" id="more-projects">
-                <summary class="accordion__summary">
-                  Earlier / Experiments
-                  <span class="accordion__hint">Student + exploratory work</span>
-                </summary>
+    <!-- Featured #3 -->
+    <article class="project-card project-card--featured">
+      <header class="project-card__header">
+        <div class="project-card__title-row">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-database icon-accent" aria-hidden="true"></i>
+            Contract Data Pipeline
+          </h3>
+        </div>
 
-                <div class="grid grid--2">
-                  <article class="project-card">
-                    <header class="project-card__header">
-                      <h3 class="project-card__title">
-                        <i class="fa-solid fa-fish icon-accent" aria-hidden="true"></i>
-                        Dat-a-Mate (ML Group Project)
-                      </h3>
-                      <p class="project-card__one-liner">
-                        Exploration: ranking search results by predicting a “match” signal using ML + face recognition concepts.
-                      </p>
-                    </header>
+        <p class="project-card__one-liner">
+          End-to-end procurement data pipeline that unifies Purchase Orders + Contracts into a governed,
+          analytics-ready model for spend visibility, compliance, and vendor performance.
+        </p>
+      </header>
 
-                    <ul class="bullets">
-                      <li>Built an end-to-end flow across ingestion, modeling, and visualization.</li>
-                      <li>Practiced API integration + web scraping and presenting outputs clearly.</li>
-                    </ul>
+      <ul class="bullets">
+        <li>Standardized fragmented source data (supplier, items, units, dates, currencies) into a canonical dataset with durable keys and mapping logic.</li>
+        <li>Enabled reliable PO-line compliance analytics across complex relationships (contracts, amendments, PO headers/lines) with explicit linking rules.</li>
+        <li>Improved trust and repeatability with automated data quality gates (freshness, completeness, referential integrity, anomalies) and drill-through to PO-line evidence.</li>
+      </ul>
 
-                    <ul class="tags" aria-label="Tech tags">
-                      <li>Python</li>
-                      <li>Machine Learning</li>
-                      <li>APIs</li>
-                      <li>D3.js</li>
-                    </ul>
+      <ul class="tags" aria-label="Tech tags">
+        <li>raw → staging → curated</li>
+        <li>Entity resolution</li>
+        <li>Surrogate keys</li>
+        <li>Incremental loads</li>
+        <li>Data quality</li>
+        <li>Dimensional marts</li>
+      </ul>
 
-                    <div class="actions">
-                      <a class="btn btn-ghost" href="https://github.com/jazminhicks/pof-machine-learning" target="_blank" rel="noopener">
-                        GitHub
-                      </a>
-                    </div>
-                  </article>
+      <div class="actions">
+        <a class="btn brand-btn" href="contract-data-pipeline.html" target="_blank" rel="noopener">Case Study</a>
+      </div>
+    </article>
 
-                  <article class="project-card">
-                    <header class="project-card__header">
-                      <h3 class="project-card__title">
-                        <i class="fa-solid fa-cloud-rain icon-accent" aria-hidden="true"></i>
-                        Weather Research (SQLAlchemy)
-                      </h3>
-                      <p class="project-card__one-liner">
-                        Exploration: comparing historical + current patterns to support trip planning and decision-making.
-                      </p>
-                    </header>
+    <!-- Featured #4 -->
+    <article class="project-card project-card--featured">
+      <header class="project-card__header">
+        <div class="project-card__title-row">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-gears icon-accent" aria-hidden="true"></i>
+            Subscription Self-Serve Automation
+          </h3>
+        </div>
 
-                    <ul class="bullets">
-                      <li>Modeled and queried weather data with SQLAlchemy to compare time windows.</li>
-                      <li>Strengthened data modeling + analysis habits for real-world questions.</li>
-                    </ul>
+        <p class="project-card__one-liner">
+          Validation + orchestration engine that turns subscription events into deterministic, auditable contract amendments in Salesforce CPQ.
+        </p>
+      </header>
 
-                    <ul class="tags" aria-label="Tech tags">
-                      <li>Python</li>
-                      <li>SQLAlchemy</li>
-                      <li>APIs</li>
-                      <li>Data Analysis</li>
-                    </ul>
+      <ul class="bullets">
+        <li>Normalizes and maps raw subscription events in <strong>Snowflake</strong> into an amendment-ready canonical model (products, quantities, pricing families).</li>
+        <li>Uses a <strong>Workato</strong> parent recipe to enforce validation gates, idempotency, routing, and stage-by-stage audit logs.</li>
+        <li>Builds CPQ artifacts safely (Opp → Quote → Quote Lines → Order), supporting complex realities like ALDs, upgrades/downgrades, and multiple active contracts.</li>
+      </ul>
 
-                    <div class="actions">
-                      <a class="btn btn-ghost" href="https://github.com/Serruhb/SQLalchemy" target="_blank" rel="noopener">
-                        GitHub
-                      </a>
-                    </div>
-                  </article>
-                </div>
-              </details>
-            </section>
+      <ul class="tags" aria-label="Tech tags">
+        <li>Workato</li>
+        <li>Snowflake</li>
+        <li>Salesforce CPQ</li>
+        <li>Validation gates</li>
+        <li>Idempotency</li>
+        <li>Audit logging</li>
+        <li>Orchestration</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn brand-btn" href="subscription-self-serve.html" target="_blank" rel="noopener">Case Study</a>
+      </div>
+    </article>
+
+    <!-- Featured #5 — spans full width for balance -->
+    <article class="project-card project-card--featured project-card--span-2">
+      <header class="project-card__header">
+        <div class="project-card__title-row">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-bell icon-accent" aria-hidden="true"></i>
+            OTA Monitoring (Performance Alert &amp; Monitoring)
+          </h3>
+        </div>
+
+        <p class="project-card__one-liner">
+          Explainable alerting + monitoring framework that converts weekly OTA metrics into prioritized, owner-aware tickets and watchlist signals.
+        </p>
+      </header>
+
+      <ul class="bullets">
+        <li>Standardizes OTA feeds into a canonical schema; computes KPIs (CVR), baselines, streaks, and eligibility flags.</li>
+        <li>Detects tiered issues: <strong>visibility failures</strong> (critical), <strong>conversion leakage</strong> (high ROI), and <strong>trend signals</strong> (monitor) to reduce alert fatigue.</li>
+        <li>Routes actions to the right owners (Ops / Distribution / Revenue) with clear evidence context and fail-safe handling for missing/delayed upstream data.</li>
+      </ul>
+
+      <ul class="tags" aria-label="Tech tags">
+        <li>Monitoring</li>
+        <li>Alerting + Ticketing</li>
+        <li>Rule-based detection</li>
+        <li>Owner-aware routing</li>
+        <li>Eligibility + streak logic</li>
+        <li>Guardrails</li>
+        <li>Early-warning foundations</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn brand-btn" href="ota-monitoring.html" target="_blank" rel="noopener">Case Study</a>
+      </div>
+    </article>
+    <!-- Featured #6 -->
+<article class="project-card project-card--featured project-card--span-2">
+  <header class="project-card__header">
+    <div class="project-card__title-row">
+      <h3 class="project-card__title">
+        <i class="fa-solid fa-scale-balanced icon-accent" aria-hidden="true"></i>
+        The Mediator
+      </h3>
+    </div>
+
+    <p class="project-card__one-liner">
+      AI-assisted Jira intake + coaching layer that turns vague requests into Definition-of-Ready tickets using Malcolm’s Chaos Score.
+    </p>
+  </header>
+
+  <ul class="bullets">
+    <li>Converts noisy Jira requests into consistent Bug/Story structures and enforces a clear Definition of Ready.</li>
+    <li>Scores clarity with Malcolm’s Chaos Score (1–10) and returns actionable, growth-minded coaching prompts.</li>
+    <li>Uses safety guardrails: drafts changes first, only updates explicitly requested fields, and defaults to internal comments.</li>
+  </ul>
+
+  <ul class="tags" aria-label="Tech tags">
+    <li>Jira intake</li>
+    <li>Definition of Ready</li>
+    <li>Coaching loop</li>
+    <li>Guardrails</li>
+    <li>Workflow design</li>
+  </ul>
+
+  <div class="actions">
+    <a class="btn brand-btn" href="mediator.html" target="_blank" rel="noopener">Case Study</a>
+  </div>
+</article>
+  </div>
+
+  <!-- Earlier / Experiments (collapsed) -->
+  <details class="accordion" id="more-projects">
+    <summary class="accordion__summary">
+      Earlier / Experiments
+      <span class="accordion__hint">Student + exploratory work</span>
+    </summary>
+
+    <div class="grid grid--2">
+      <article class="project-card">
+        <header class="project-card__header">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-fish icon-accent" aria-hidden="true"></i>
+            Dat-a-Mate (ML Group Project)
+          </h3>
+          <p class="project-card__one-liner">
+            Exploration: ranking search results by predicting a “match” signal using ML + face recognition concepts.
+          </p>
+        </header>
+
+        <ul class="bullets">
+          <li>Built an end-to-end flow across ingestion, modeling, and visualization.</li>
+          <li>Practiced API integration + web scraping and presenting outputs clearly.</li>
+        </ul>
+
+        <ul class="tags" aria-label="Tech tags">
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>APIs</li>
+          <li>D3.js</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-ghost" href="https://github.com/jazminhicks/pof-machine-learning" target="_blank" rel="noopener">
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <header class="project-card__header">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-cloud-rain icon-accent" aria-hidden="true"></i>
+            Weather Research (SQLAlchemy)
+          </h3>
+          <p class="project-card__one-liner">
+            Exploration: comparing historical + current patterns to support trip planning and decision-making.
+          </p>
+        </header>
+
+        <ul class="bullets">
+          <li>Modeled and queried weather data with SQLAlchemy to compare time windows.</li>
+          <li>Strengthened data modeling + analysis habits for real-world questions.</li>
+        </ul>
+
+        <ul class="tags" aria-label="Tech tags">
+          <li>Python</li>
+          <li>SQLAlchemy</li>
+          <li>APIs</li>
+          <li>Data Analysis</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-ghost" href="https://github.com/Serruhb/SQLalchemy" target="_blank" rel="noopener">
+            GitHub
+          </a>
+        </div>
+      </article>
+    </div>
+  </details>
+</section>
           </div>
         </div>
       </div>
