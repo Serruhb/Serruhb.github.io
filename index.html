@@ -162,7 +162,7 @@
     <section class="section" id="featured">
       <div class="container">
         <h2 class="section__title brand-heading">Featured Work</h2>
-        <p class="section__subtitle">Six recent systems I’d ship again.</p>
+        <p class="section__subtitle">Six recent data systems I’d ship again.</p>
 
         <div class="recent-grid" aria-label="Recent work">
          
@@ -191,7 +191,7 @@
             </ul>
 
             <ul class="tags" aria-label="Tech tags">
-              <li>raw → staging → curated</li>
+              <li>raw→staging→curated marts + DQ gates + KPI drill-through</li>
               <li>Entity resolution</li>
               <li>Surrogate keys</li>
               <li>Incremental loads</li>
@@ -220,6 +220,7 @@
             </header>
 
             <ul class="bullets">
+              <li>Canonical Snowflake model → validated orchestration → audit logs</li>
               <li>Normalizes and maps raw subscription events in <strong>Snowflake</strong> into an amendment-ready canonical model (products, quantities, pricing families).</li>
               <li>Uses a <strong>Workato</strong> parent recipe to enforce validation gates, idempotency, routing, and stage-by-stage audit logs.</li>
               <li>Builds CPQ artifacts safely (Opp → Quote → Quote Lines → Order), supporting complex realities like ALDs, upgrades/downgrades, and multiple active contracts.</li>
@@ -256,6 +257,7 @@
             </header>
 
             <ul class="bullets">
+              <li>Canonical metrics fact table + KPI baselines/streaks + owner-aware routing</li>
               <li>Standardizes OTA feeds into a canonical schema; computes KPIs (CVR), baselines, streaks, and eligibility flags.</li>
               <li>Detects tiered issues: <strong>visibility failures</strong> (critical), <strong>conversion leakage</strong> (high ROI), and <strong>trend signals</strong> (monitor) to reduce alert fatigue.</li>
               <li>Routes actions to the right owners (Ops / Distribution / Revenue) with clear evidence context and fail-safe handling for missing/delayed upstream data.</li>
@@ -291,6 +293,7 @@
             </header>
 
             <ul class="bullets">
+              <li>Cross-system query building (SOQL/JQL/SQL) + source-attributed summaries</li>
               <li>Reduces “time-to-context” by retrieving and summarizing related Salesforce Cases, Jira issues, and subscription status.</li>
               <li>Improves first-contact resolution with concise next-step guidance and consistent case narratives.</li>
               <li>Supports safer operations with clear source attribution and human-in-the-loop workflows.</li>
@@ -325,8 +328,9 @@
             </header>
 
             <ul class="bullets">
+              <li>structured intake → cleaner backlog data → better reporting &amp; prioritization</li>
               <li>Converts noisy Jira requests into consistent Bug/Story structures and enforces a clear Definition of Ready.</li>
-              <li>Scores clarity with Malcolm’s Chaos Score (1–10) and returns actionable, growth-minded coaching prompts.</li>
+              <li>Scores clarity with Definition of Ready (1-5) and returns actionable, growth-minded coaching prompts.</li>
               <li>Uses safety guardrails: drafts changes first, only updates explicitly requested fields, and defaults to internal comments.</li>
             </ul>
 
