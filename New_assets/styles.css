@@ -110,6 +110,18 @@ a[href]:hover{ color: var(--link); filter: brightness(0.95); text-decoration: no
   transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
+.navbar__link--desktop{
+  color: var(--brand) !important;
+  background: var(--mutedbrand);
+  border-color: var(--brand);
+}
+
+.navbar__link--desktop:hover{
+  color: #ffffff !important;
+  background: color-mix(in srgb, var(--brand) 88%, black);
+  border-color: color-mix(in srgb, var(--brand) 88%, black);
+}
+
 .nav__links a:hover{
   color: rgba(16,19,20,0.92);
   background: rgba(255,255,255,0.90);
