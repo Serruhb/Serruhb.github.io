@@ -18,6 +18,7 @@
 </head>
 
 <body>
+<!-- NAV -->
   <header class="nav">
     <div class="container nav__inner">
       <a class="brand" href="index.html" aria-label="Naturally Logical home">
@@ -27,12 +28,16 @@
 
         <span class="brand__text">
           <span class="brand__name">Naturally Logical</span>
-          <span class="brand__tag">Leadership Consulting</span>
+          <span class="brand__tag">Consulting</span>
         </span>
       </a>
 
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="">About</a>
+                <a href="https://www.linkedin.com/in/lbrownie/" target="_blank" rel="noopener"
+           class="navbar__link navbar__link--desktop">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          <span>LinkedIn</span>
+        </a>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -40,6 +45,10 @@
       </button>
     </div>
   </header>
+
+
+
+        
 
   <main>
     <section class="hero">
@@ -60,15 +69,13 @@
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" id="bookingLinkBtn" href="https://calendar.app.google/Tc6ccxh88BqruL9U8" target="_blank" rel="noopener">
-              <i class="fa-solid fa-calendar"></i> Book on Google Calendar
+            <a class="btn btn--primary" id="bookingLinkBtn"  href="https://calendar.app.google/Tc6ccxh88BqruL9U8" target="_blank" rel="noopener">
+              <i class="fa-solid fa-calendar"></i>   Book &nbsp;&nbsp;
             </a>
-            <a class="btn btn--ghost" href="mailto:sarah.brown@naturallylogical.com">
-              <i class="fa-solid fa-envelope"></i> Email Sarah
+            <a class="btn btn--primary" href="mailto:lauren.brown@naturallylogical.com">
+              <i class="fa-solid fa-envelope"></i> Email
             </a>
-            <button class="btn btn--ghost" id="copyLinkBtn" type="button">
-              <i class="fa-solid fa-copy"></i> Copy booking link
-            </button>
+          
           </div>
 
           <p class="lead" id="statusMsg" aria-live="polite" style="margin-top: 12px;"></p>
@@ -105,10 +112,10 @@
               <li><i class="fa-solid fa-check"></i> Something 3</li>
             </ul>
 
-            <div class="card__actions">
-              <a class="btn btn--primary btn--small" href="what-i-build.html">See examples</a>
-              <a class="btn btn--ghost btn--small" href="index.html">Back to home</a>
-            </div>
+          
+              
+              
+            
           </div>
         </div>
       </div>
@@ -166,5 +173,6 @@
       }
     });
   </script>
+
 </body>
 </html>
