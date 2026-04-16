@@ -1,0 +1,367 @@
+/* Resume bridge for Naturally Logical New_assets theme */
+
+/* Page spacing */
+.resume-page main,
+body.resume-page main,
+body.project-page.resume-page main {
+  padding-bottom: 48px;
+}
+
+.resume-shell {
+  padding: 56px 0;
+}
+
+/* Resume grid layout */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.resume-sidebar,
+.resume-main > .resume-block,
+.resume-mobile-profile,
+.project-card {
+  background: rgba(255,255,255,0.72);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Reuse Naturally Logical card feel */
+.project-card {
+  padding: 22px;
+}
+
+.resume-sidebar {
+  position: sticky;
+  top: 100px;
+  padding: 22px;
+}
+
+.resume-main {
+  display: grid;
+  gap: 20px;
+}
+
+.resume-block {
+  display: block;
+}
+
+.resume-block + .resume-block {
+  margin-top: 0;
+}
+
+/* Typography */
+.resume-h,
+.section__title,
+.resume-section-title-left {
+  margin: 0 0 8px;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+}
+
+.resume-section-subtitle-left,
+.section__subtitle {
+  margin: 0 0 18px;
+  color: rgba(16,19,20,0.64);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.project-card__title,
+.card__title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.project-card__one-liner,
+.card__subtitle,
+.resume-mobile-profile__meta p,
+.muted {
+  color: rgba(16,19,20,0.72);
+}
+
+.project-card__header {
+  margin-bottom: 14px;
+}
+
+.project-card__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.icon-accent {
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+/* Avatar */
+.resume-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.resume-avatar--mobile {
+  width: 88px;
+  height: 88px;
+  margin-bottom: 0;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Resume meta */
+.resume-meta p,
+.resume-sidebar p,
+.resume-mobile-profile__meta p {
+  margin: 0 0 10px;
+}
+
+.resume-divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 18px 0;
+}
+
+/* TOC */
+.resume-toc {
+  display: grid;
+  gap: 10px;
+}
+
+.resume-toc__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.66);
+  font-weight: 800;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.resume-toc__link:hover {
+  background: rgba(255,255,255,0.9);
+  border-color: rgba(45,90,39,0.28);
+  transform: translateY(-1px);
+}
+
+/* Bullets / tags */
+.bullets {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.bullets li {
+  margin-bottom: 8px;
+}
+
+.bullets--cols {
+  columns: 2;
+  column-gap: 24px;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tags li,
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 900;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid var(--line);
+  color: rgba(16,19,20,0.78);
+}
+
+.badge--recent {
+  background: rgba(194,103,71,0.10);
+  border-color: rgba(194,103,71,0.24);
+  color: rgba(194,103,71,0.9);
+}
+
+/* Actions */
+.actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand-btn {
+  background: var(--accent);
+  color: #fff !important;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 24px rgba(194,103,71,0.28);
+}
+
+.brand-btn:hover {
+  filter: brightness(0.97);
+  transform: translateY(-1px);
+}
+
+/* Recent grid */
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.project-card--featured {
+  background: rgba(255,255,255,0.8);
+}
+
+.project-card--span-2 {
+  grid-column: span 2;
+}
+
+/* Language meters */
+.resume-lang {
+  margin-bottom: 14px;
+}
+
+.resume-lang__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-weight: 800;
+}
+
+.resume-progress {
+  height: 10px;
+  background: rgba(16,19,20,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.resume-progress span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand), var(--mutedBrand));
+}
+
+/* Accordion */
+.accordion {
+  margin-top: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.72);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.accordion__summary {
+  cursor: pointer;
+  padding: 18px 22px;
+  font-weight: 900;
+  list-style: none;
+}
+
+.accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion__hint {
+  display: inline-block;
+  margin-left: 12px;
+  color: rgba(16,19,20,0.56);
+  font-weight: 700;
+}
+
+.accordion[open] > div {
+  padding: 0 22px 22px;
+}
+
+/* Mobile intro handling */
+.resume-mobile-only {
+  display: none;
+}
+
+.resume-mobile-profile__top {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Footer compatibility */
+.footer {
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-sidebar {
+    position: static;
+  }
+
+  .recent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card--span-2 {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .resume-sidebar {
+    display: none;
+  }
+
+  .resume-mobile-only {
+    display: block;
+  }
+
+  .bullets--cols {
+    columns: 1;
+  }
+
+  .resume-mobile-profile__top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
