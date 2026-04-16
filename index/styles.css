@@ -583,11 +583,26 @@ section[id] { scroll-margin-top: 92px; }
   .resume-grid{ grid-template-columns: 1fr; }
 }
 
-.resume-avatar{
-  border-radius: 16px;
-  margin-bottom: 14px;
+/* Avatar */
+.resume-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
 }
 
+.resume-avatar--mobile {
+  width: 88px;
+  height: 88px;
+  margin-bottom: 0;
+  object-fit: cover;
+  object-position: center top;
+}
 /*.resume-meta p{
   margin: 10px 0 0;
   display:flex;
