@@ -18,6 +18,7 @@ body.project-page.resume-page main {
   gap: 24px;
   align-items: start;
 }
+
 .grid--2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -32,7 +33,7 @@ body.project-page.resume-page main {
 
 .resume-mobile-profile,
 .project-card {
-  background: rgba(255,255,255,0.72);
+  background: rgba(255, 255, 255, 0.72);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -75,7 +76,7 @@ body.project-page.resume-page main {
 .resume-section-subtitle-left,
 .section__subtitle {
   margin: 0 0 18px;
-  color: rgba(16,19,20,0.64);
+  color: rgba(16, 19, 20, 0.64);
   font-size: 15px;
   font-weight: 700;
 }
@@ -91,7 +92,7 @@ body.project-page.resume-page main {
 .card__subtitle,
 .resume-mobile-profile__meta p,
 .muted {
-  color: rgba(16,19,20,0.72);
+  color: rgba(16, 19, 20, 0.72);
 }
 
 .project-card__header {
@@ -158,14 +159,14 @@ body.project-page.resume-page main {
   padding: 10px 12px;
   border-radius: 14px;
   border: 1px solid var(--line);
-  background: rgba(255,255,255,0.66);
+  background: rgba(255, 255, 255, 0.66);
   font-weight: 800;
   transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
 .resume-toc__link:hover {
-  background: rgba(255,255,255,0.9);
-  border-color: rgba(45,90,39,0.28);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(45, 90, 39, 0.28);
   transform: translateY(-1px);
 }
 
@@ -215,15 +216,15 @@ body.project-page.resume-page main {
   padding: 8px 12px;
   font-size: 12px;
   font-weight: 900;
-  background: rgba(255,255,255,0.75);
+  background: rgba(255, 255, 255, 0.75);
   border: 1px solid var(--line);
-  color: rgba(16,19,20,0.78);
+  color: rgba(16, 19, 20, 0.78);
 }
 
 .badge--recent {
-  background: rgba(194,103,71,0.10);
-  border-color: rgba(194,103,71,0.24);
-  color: rgba(194,103,71,0.9);
+  background: rgba(194, 103, 71, 0.10);
+  border-color: rgba(194, 103, 71, 0.24);
+  color: rgba(194, 103, 71, 0.9);
 }
 
 /* Actions */
@@ -237,8 +238,8 @@ body.project-page.resume-page main {
 .brand-btn {
   background: var(--accent);
   color: #fff !important;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 12px 24px rgba(194,103,71,0.28);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 24px rgba(194, 103, 71, 0.28);
 }
 
 .brand-btn:hover {
@@ -254,7 +255,7 @@ body.project-page.resume-page main {
 }
 
 .project-card--featured {
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .project-card--span-2 {
@@ -276,7 +277,7 @@ body.project-page.resume-page main {
 
 .resume-progress {
   height: 10px;
-  background: rgba(16,19,20,0.08);
+  background: rgba(16, 19, 20, 0.08);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -293,7 +294,7 @@ body.project-page.resume-page main {
   margin-top: 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255,255,255,0.72);
+  background: rgba(255, 255, 255, 0.72);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
@@ -312,11 +313,11 @@ body.project-page.resume-page main {
 .accordion__hint {
   display: inline-block;
   margin-left: 12px;
-  color: rgba(16,19,20,0.56);
+  color: rgba(16, 19, 20, 0.56);
   font-weight: 700;
 }
 
-.accordion[open] > div {
+.accordion[open]>div {
   padding: 0 22px 22px;
 }
 
@@ -397,10 +398,10 @@ body.project-page.resume-page main {
 
   .resume-mobile-only .resume-toc {
     position: sticky;
-    top: 78px;
+    top: 96px;
     z-index: 20;
     padding: 10px;
-    background: rgba(245,245,220,0.96);
+    background: rgba(245, 245, 220, 0.96);
     backdrop-filter: blur(10px);
     border: 1px solid var(--line);
     border-radius: 16px;
@@ -408,58 +409,13 @@ body.project-page.resume-page main {
   }
 
   .resume-mobile-only .resume-toc__link {
-    background: rgba(255,255,255,0.92);
+    background: rgba(255, 255, 255, 0.92);
   }
 }
-.resume-banner {
-  margin-bottom: 24px;
-  padding: 24px;
-}
 
-.resume-banner__top {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.resume-banner__avatar {
-  width: 110px;
-  height: 110px;
-  margin-bottom: 0;
-  flex-shrink: 0;
-}
-
-.resume-banner__identity {
-  min-width: 0;
-}
-
-.resume-banner__identity .resume-h {
-  margin-bottom: 8px;
-}
-
-.resume-banner__meta {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 20px;
-}
-
-.resume-banner__meta p {
-  margin: 0;
-}
-
-@media (max-width: 760px) {
-  .resume-banner__top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .resume-banner__meta {
-    grid-template-columns: 1fr;
-  }
-}
 .resume-banner {
   position: sticky;
-  top: 88px;
+  top: 96px;
   z-index: 15;
   margin-bottom: 24px;
   padding: 24px;
@@ -500,7 +456,7 @@ body.project-page.resume-page main {
 
 @media (max-width: 760px) {
   .resume-banner {
-    top: 76px;
+    top: 96px;
     padding: 18px;
   }
 
