@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) loader only (scripts.js does gtag config) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
+
+    <title>[PAGE TITLE] - [PERSON NAME]</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2D5A27" />
+    <meta name="description" content="[SHORT PAGE DESCRIPTION]" />
+
+    <!-- Fonts + Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="Images/favicon-large.ico" type="image/x-icon">
+
+    <!-- Shared site CSS / JS -->
+    <link rel="stylesheet" href="New_assets/styles.css" />
+    <link rel="stylesheet" href="New_assets/profile-bridge.css" />
+    <script defer src="New_assets/scripts.js"></script>
+</head>
+
+<body class="project-page resume-page">
+    <!-- Site Header -->
+    <header class="nav">
+        <div class="container nav__inner">
+            <a class="brand" href="index.html" aria-label="Naturally Logical home">
+                <span class="brand__mark" aria-hidden="true">
+                    <img src="Images/logo.png" alt="" class="brand__logo" />
+                </span>
+
+                <span class="brand__text">
+                    <span class="brand__name">Naturally Logical</span>
+                    <span class="brand__tag">System Recovery Consulting</span>
+                </span>
+            </a>
+
+            <nav class="nav__links" id="navLinks" aria-label="Primary">
+                <a href="#summary">Summary</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#portfolio">Portfolio</a>
+                <a class="btn btn--ghost" href="[RESUME FILE URL]">Resume</a>
+                <a class="btn btn--ghost" href="[LINKEDIN URL]" target="_blank" rel="noopener">LinkedIn</a>
+            </nav>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Profile Banner -->
+        <section class="section resume-shell" aria-label="Profile header">
+            <div class="container">
+                <article class="project-card resume-banner" id="headshot">
+                    <div class="resume-banner__top">
+                        <img class="resume-avatar resume-banner__avatar" src="Images\logo.png"
+                            alt="[PERSON NAME] headshot" />
+
+                        <div class="resume-banner__identity">
+                            <h1 class="resume-h">[PERSON NAME] - [ROLE / TITLE]</h1>
+                            <p class="muted">
+                                [2–3 sentence positioning statement. Explain who this person helps, what they solve,
+                                and how they work.]
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr class="resume-divider" />
+
+                    <div class="resume-banner__meta">
+                        <p>
+                            <i class="fa-brands fa-linkedin icon-accent" aria-hidden="true"></i>
+                            <a href="[LINKEDIN URL]" target="_blank" rel="noopener">[LINKEDIN DISPLAY TEXT]</a>
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-location-dot icon-accent" aria-hidden="true"></i>
+                            [CITY, STATE / REGION]
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-envelope icon-accent" aria-hidden="true"></i>
+                            <a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a>
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-phone icon-accent" aria-hidden="true"></i>
+                            [PHONE NUMBER]
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Mobile section nav -->
+        <section class="resume-block resume-mobile-only" aria-label="Mobile profile navigation">
+            <div class="container">
+                <article class="project-card resume-mobile-profile" aria-label="Mobile section navigation">
+                    <nav class="resume-toc" aria-label="Resume sections">
+                        <a class="resume-toc__link" href="#summary">
+                            <i class="fa-solid fa-user icon-accent" aria-hidden="true"></i>
+                            <span>Summary</span>
+                        </a>
+                        <a class="resume-toc__link" href="#skills">
+                            <i class="fa-solid fa-code icon-accent" aria-hidden="true"></i>
+                            <span>Skills</span>
+                        </a>
+                        <a class="resume-toc__link" href="#experience">
+                            <i class="fa-solid fa-briefcase icon-accent" aria-hidden="true"></i>
+                            <span>Experience</span>
+                        </a>
+                        <a class="resume-toc__link" href="#education">
+                            <i class="fa-solid fa-graduation-cap icon-accent" aria-hidden="true"></i>
+                            <span>Education</span>
+                        </a>
+                        <a class="resume-toc__link" href="#portfolio">
+                            <i class="fa-solid fa-star icon-accent" aria-hidden="true"></i>
+                            <span>Portfolio</span>
+                        </a>
+                    </nav>
+                </article>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="resume-block" id="summary" aria-label="Professional summary">
+            <div class="container">
+                <div class="grid grid--2">
+                    <article class="project-card">
+                        <header class="project-card__header">
+                            <h2 class="project-card__title">
+                                <i class="fa-solid fa-user icon-accent" aria-hidden="true"></i>
+                                Professional Summary
+                            </h2>
+                            <p class="project-card__one-liner">
+                                [One-line positioning statement]
+                            </p>
+                        </header>
+
+                        <p class="muted">
+                            [Paragraph 1: background, strengths, operating style.]
+                        </p>
+
+                        <p class="muted">
+                            [Paragraph 2: systems, platforms, industries, or leadership angle.]
+                        </p>
+                    </article>
+
+                    <article class="project-card" id="accomplishments">
+                        <header class="project-card__header">
+                            <h2 class="project-card__title">
+                                <i class="fa-solid fa-trophy icon-accent" aria-hidden="true"></i>
+                                Strategic Highlights
+                            </h2>
+                            <p class="project-card__one-liner">
+                                [Short intro to measurable strengths]
+                            </p>
+                        </header>
+
+                        <ul class="bullets">
+                            <li>[Highlight 1]</li>
+                            <li>[Highlight 2]</li>
+                            <li>[Highlight 3]</li>
+                            <li>[Highlight 4]</li>
+                            <li>[Highlight 5]</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="resume-block" id="skills" aria-label="Skills">
+            <div class="container">
+                <hr class="resume-divider" />
+                <h2 class="section__title brand-heading resume-section-title-left">Skills</h2>
+                <p class="section__subtitle resume-section-subtitle-left">
+                    Core technologies across programming, integration, analytics, and automation.
+                </p>
+
+                <div class="grid grid--4">
+                    <article class="project-card">
+                        <header class="project-card__header">
+                            <h3 class="project-card__title">
+                                <i class="fa-solid fa-code icon-accent" aria-hidden="true"></i>
+                                Programming &amp; Scripting
+                            </h3>
+                        </header>
+                        <ul class="bullets">
+                            <li><strong>Core:</strong> [List]</li>
+                            <li><strong>Query:</strong> [List]</li>
+                            <li><strong>Markup/Styling:</strong> [List]</li>
+                            <li><strong>Extensions:</strong> [List]</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <header class="project-card__header">
+                            <h3 class="project-card__title">
+                                <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
+                                Integration &amp; Automation
+                            </h3>
+                        </header>
+                        <ul class="bullets bullets--cols">
+                            <li>[Tool]</li>
+                            <li>[Tool]</li>
+                            <li>[Tool]</li>
+                            <li>[Tool]</li>
+                            <li>[Tool]</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <header class="project-card__header">
+                            <h3 class="project-card__title">
+                                <i class="fa-solid fa-chart-simple icon-accent" aria-hidden="true"></i>
+                                Data / Analytics
+                            </h3>
+                        </header>
+                        <ul class="bullets">
+                            <li>[Databases / Warehouses]</li>
+                            <li>[Reporting / BI tools]</li>
+                            <li>[Notebook / analysis tools]</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <header class="project-card__header">
+                            <h3 class="project-card__title">
+                                <i class="fa-solid fa-language icon-accent" aria-hidden="true"></i>
+                                Languages
+                            </h3>
+                        </header>
+
+                        <div class="resume-lang">
+                            <div class="resume-lang__row"><span>[Language]</span><span class="badge">100%</span></div>
+                            <div class="resume-progress"><span style="width:100%"></span></div>
+                        </div>
+                        <div class="resume-lang">
+                            <div class="resume-lang__row"><span>[Language]</span><span class="badge">75%</span></div>
+                            <div class="resume-progress"><span style="width:75%"></span></div>
+                        </div>
+                        <div class="resume-lang">
+                            <div class="resume-lang__row"><span>[Language]</span><span class="badge">25%</span></div>
+                            <div class="resume-progress"><span style="width:25%"></span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="resume-block" id="experience">
+            <div class="container">
+                <hr class="resume-divider" />
+                <h2 class="section__title brand-heading resume-section-title-left">Professional Experience</h2>
+                <p class="section__subtitle resume-section-subtitle-left">
+                    Roles focused on enterprise systems, operations, and measurable outcomes.
+                </p>
+
+                <div class="grid grid--2">
+                    <article class="project-card project-card--featured">
+                        <header class="project-card__header">
+                            <div class="project-card__title-row">
+                                <h3 class="project-card__title">
+                                    <i class="fa-solid fa-building icon-accent" aria-hidden="true"></i>
+                                    [Company Name] — [Role Title]
+                                </h3>
+                                <span class="badge">[Start Date – End Date]</span>
+                            </div>
+
+                            <p class="project-card__one-liner">
+                                [Short summary of role scope and impact]
+                            </p>
+                        </header>
+
+                        <div class="grid grid--2">
+                            <ul class="bullets">
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                            </ul>
+                            <ul class="bullets">
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <header class="project-card__header">
+                            <div class="project-card__title-row">
+                                <h3 class="project-card__title">
+                                    <i class="fa-solid fa-briefcase icon-accent" aria-hidden="true"></i>
+                                    [Company Name] — [Role Title]
+                                </h3>
+                                <span class="badge">[Start Date – End Date]</span>
+                            </div>
+
+                            <p class="project-card__one-liner">
+                                [Short summary of role scope and impact]
+                            </p>
+                        </header>
+
+                        <div class="grid grid--2">
+                            <ul class="bullets">
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                            </ul>
+                            <ul class="bullets">
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                                <li>[Responsibility / impact]</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="resume-block" id="education">
+            <div class="container">
+                <hr class="resume-divider" />
+                <h2 class="section__title brand-heading resume-section-title-left">Education</h2>
+                <p class="section__subtitle resume-section-subtitle-left">
+                    Formal study supporting systems thinking, analytics, and applied problem-solving.
+                </p>
+
+                <div class="grid grid--2">
+                    <article class="project-card">
+                        <header class="project-card__header">
+                            <h3 class="project-card__title">
+                                <i class="fa-solid fa-graduation-cap icon-accent" aria-hidden="true"></i>
+                                [School / University]
+                            </h3>
+                            <p class="project-card__one-liner">[Program / Degree / Year]</p>
+                        </header>
+                    </article>
+
+                    <article class="project-card">
+                        <header class="project-card__header">
+                            <h3 class="project-card__title">
+                                <i class="fa-solid fa-school icon-accent" aria-hidden="true"></i>
+                                [School / Program Group]
+                            </h3>
+                            <ul class="bullets">
+                                <li><strong>[Institution]:</strong> [Program / years]</li>
+                                <li><strong>[Institution]:</strong> [Program / years]</li>
+                            </ul>
+                        </header>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section class="resume-block" id="portfolio">
+            <div class="container">
+                <hr class="resume-divider" />
+                <h2 class="section__title brand-heading resume-section-title-left">Portfolio</h2>
+                <p class="section__subtitle resume-section-subtitle-left">
+                    Examples of systems rebuilt for clarity, control, and real-world adoption.
+                </p>
+
+                <div class="grid grid--3">
+                    <a class="card card--link" href="[CASE-STUDY-URL]">
+                        <div class="card__kicker"><i class="fa-solid fa-diagram-project icon-accent"></i> [Category]
+                        </div>
+                        <h3>[Project Name]</h3>
+                        <p>[Short case study description]</p>
+                        <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+                    </a>
+
+                    <a class="card card--link" href="[CASE-STUDY-URL]">
+                        <div class="card__kicker"><i class="fa-solid fa-database icon-accent"></i> [Category]</div>
+                        <h3>[Project Name]</h3>
+                        <p>[Short case study description]</p>
+                        <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+                    </a>
+
+                    <a class="card card--link" href="[CASE-STUDY-URL]">
+                        <div class="card__kicker"><i class="fa-solid fa-robot icon-accent"></i> [Category]</div>
+                        <h3>[Project Name]</h3>
+                        <p>[Short case study description]</p>
+                        <div class="card__footer">View case study <i class="fa-solid fa-arrow-right"></i></div>
+                    </a>
+                </div>
+
+                <div class="noteBox">
+                    <strong>Note:</strong> Public pages should omit confidential client identifiers and sensitive
+                    operational details.
+                </div>
+
+                <details class="accordion" id="more-projects">
+                    <summary class="accordion__summary">
+                        Earlier / Experiments
+                        <span class="accordion__hint">Student + exploratory work</span>
+                    </summary>
+
+                    <div class="grid grid--2">
+                        <article class="project-card">
+                            <header class="project-card__header">
+                                <h3 class="project-card__title">
+                                    <i class="fa-solid fa-lightbulb icon-accent" aria-hidden="true"></i>
+                                    [Project Name]
+                                </h3>
+                                <p class="project-card__one-liner">
+                                    [Short exploratory description]
+                                </p>
+                            </header>
+
+                            <ul class="bullets">
+                                <li>[What was built]</li>
+                                <li>[What was learned / practiced]</li>
+                            </ul>
+
+                            <ul class="tags" aria-label="Tech tags">
+                                <li>[Tech]</li>
+                                <li>[Tech]</li>
+                                <li>[Tech]</li>
+                                <li>[Tech]</li>
+                            </ul>
+
+                            <div class="actions">
+                                <a class="btn btn-ghost" href="[LINK]" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <header class="project-card__header">
+                                <h3 class="project-card__title">
+                                    <i class="fa-solid fa-flask icon-accent" aria-hidden="true"></i>
+                                    [Project Name]
+                                </h3>
+                                <p class="project-card__one-liner">
+                                    [Short exploratory description]
+                                </p>
+                            </header>
+
+                            <ul class="bullets">
+                                <li>[What was built]</li>
+                                <li>[What was learned / practiced]</li>
+                            </ul>
+
+                            <ul class="tags" aria-label="Tech tags">
+                                <li>[Tech]</li>
+                                <li>[Tech]</li>
+                                <li>[Tech]</li>
+                                <li>[Tech]</li>
+                            </ul>
+
+                            <div class="actions">
+                                <a class="btn btn-ghost" href="[LINK]" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </article>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__social">
+            <a href="[LINKEDIN URL]" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="[SECOND SOCIAL URL]" target="_blank" rel="noopener" aria-label="[SECOND SOCIAL NAME]">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="[GITHUB URL]" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div class="footer__meta">
+            <p>© 2026 Naturally Logical</p>
+        </div>
+    </footer>
+</body>
+
+</html>
