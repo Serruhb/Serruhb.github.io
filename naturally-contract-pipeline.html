@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2D5A27" />
+
+    <title>Contract Data Pipeline | Naturally Logical</title>
+    <meta name="description"
+        content="End-to-end PO + Contract data pipeline producing a governed, analytics-ready model for spend visibility, contract compliance, and vendor performance insights." />
+    <link rel="canonical" href="https://naturallylogical.com/contract-data-pipeline.html" />
+
+    <!-- Social preview -->
+    <meta property="og:title" content="Contract Data Pipeline — Naturally Logical Case Study" />
+    <meta property="og:description"
+        content="Layered pipeline (raw → staging → curated marts) with data quality gates, durable keys, and KPI-ready procurement analytics." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://naturallylogical.com/contract-data-pipeline.html" />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Fonts + Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Shared site CSS -->
+    <link rel="stylesheet" href="New_assets/styles.css" />
+    <link rel="stylesheet" href="contract-project-theme.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="Images/favicon-contractpipeline.png"
+        href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5QPC90ZXh0Pgo8L3N2Zz4=" />
+</head>
+
+<body id="top" class="project-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav">
+        <div class="container nav__inner">
+            <a class="brand" href="index.html" aria-label="Naturally Logical home">
+                <span class="brand__mark" aria-hidden="true">
+                    <img src="Images/logo.png" alt="" class="brand__logo" />
+                </span>
+
+                <span class="brand__text">
+                    <span class="brand__name">Naturally Logical</span>
+                    <span class="brand__tag">Consulting</span>
+                </span>
+            </a>
+
+            <nav class="nav__links" id="navLinks" aria-label="Primary">
+                <a href="index.html#proof">Proof</a>
+                <a href="#exec">Summary</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#highlights">Highlights</a>
+                <a class="btn btn--ghost" href="about-sarah.html">About</a>
+                <a class="btn btn--ghost" href="index.html#contact">Contact</a>
+            </nav>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- HERO -->
+        <section class="hero project-hero" aria-label="PO + Contract Data Pipeline hero">
+            <div class="container hero__content">
+                <div class="brand-card">
+
+                    <!-- Pills -->
+                    <div class="hero-eyebrow"
+                        style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; margin-bottom:16px;">
+                        <span
+                            style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+                            <i class="fa-solid fa-database" aria-hidden="true"></i> Layered pipeline
+                        </span>
+                        <span
+                            style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+                            <i class="fa-solid fa-check-double" aria-hidden="true"></i> DQ gates
+                        </span>
+                        <span
+                            style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+                            <i class="fa-solid fa-key" aria-hidden="true"></i> Durable keys
+                        </span>
+                        <span
+                            style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+                            <i class="fa-solid fa-chart-simple" aria-hidden="true"></i> KPI-ready marts
+                        </span>
+                    </div>
+
+                    <!-- Left / Right -->
+                    <div class="grid grid--2" style="margin-top:0; align-items:center;">
+                        <!-- LEFT -->
+                        <div style="text-align:left; min-width:0;">
+                            <h1 class="hero__title" style="
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:flex-start;
+    justify-content:flex-start;
+    gap:12px;
+    flex-wrap:nowrap !important;
+    margin:0;
+  ">
+                                <i class="fa-solid fa-database" aria-hidden="true"
+                                    style="flex:0 0 auto; margin-top:0.12em;"></i>
+                                <span style="flex:1 1 auto; min-width:0;">
+                                    Contract Data Pipeline
+                                </span>
+                            </h1>
+
+                            <p class="hero__tagline" style="margin-top:6px; text-align:left;">
+                                <span style="opacity:0.95;">Case Study · Data Engineering + Analytics</span>
+                            </p>
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div style="text-align:left; min-width:0;">
+                            <p class="hero__subtag" style="margin-top:0; max-width:none;">
+                                End-to-end pipeline converting fragmented Purchase Order + Contract data into a
+                                governed,
+                                analytics-ready model for spend visibility, contract compliance, and vendor performance
+                                insights.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- CTA buttons -->
+                    <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
+                        <a class="btn btn-ghost" href="#exec"
+                            style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+                            <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                            Executive summary
+                        </a>
+                        <a class="btn btn-ghost" href="#architecture"
+                            style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+                            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                            Architecture
+                        </a>
+                        <a class="btn btn-ghost" href="#highlights"
+                            style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+                            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                            Technical highlights
+                        </a>
+                        <a class="btn btn-ghost" href="#kpis"
+                            style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+                            <i class="fa-solid fa-chart-pie" aria-hidden="true"></i>
+                            KPIs
+                        </a>
+                    </div>
+
+                    <!-- Note (right aligned) -->
+                    <p class="project-note"
+                        style="width:100%; display:flex; justify-content:flex-end; color:rgba(255,255,255,0.65); font-size:0.82rem; margin:14px 0 0;">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true" style="margin-right:8px;"></i>
+                        Details are generalized; sensitive identifiers and client specifics are redacted.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXEC SUMMARY -->
+        <section class="section" id="exec">
+            <div class="container">
+                <div
+                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+                        Executive Summary
+                    </h2>
+                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+                        The context, the build, and the operational guardrails.
+                    </p>
+                </div>
+
+                <div class="grid grid--2">
+                    <article class="project-card">
+                        <h3 class="project-card__title">
+                            <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+                            The problem
+                        </h3>
+                        <p class="project-card__one-liner">
+                            Fragmented procurement data made reporting slow, brittle, and hard to trust.
+                        </p>
+                        <ul class="bullets">
+                            <li>Supplier names, item descriptions, units, dates, and currencies varied across sources
+                                and time.</li>
+                            <li>Contracts, amendments, PO headers, and PO lines didn’t join reliably without explicit
+                                mapping logic.</li>
+                            <li>Duplicates + late-arriving updates made “current truth” hard without losing history.
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card project-card--featured">
+                        <h3 class="project-card__title">
+                            <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
+                            The solution
+                        </h3>
+                        <p class="project-card__one-liner">
+                            A layered pipeline (raw → staging → curated/marts) that standardizes ingestion, enforces
+                            quality, and enables KPI-ready analytics.
+                        </p>
+                        <ul class="bullets">
+                            <li>Normalization + entity resolution for suppliers/contracts (deduping, mapping tables,
+                                surrogate keys).</li>
+                            <li>Incremental processing + late-arriving handling to keep refresh fast while preserving
+                                auditability.</li>
+                            <li>Automated checks: freshness, completeness, referential integrity, and anomaly
+                                thresholds.</li>
+                        </ul>
+
+                        <ul class="tags" aria-label="Tech tags">
+                            <li>raw → staging → curated</li>
+                            <li>Entity resolution</li>
+                            <li>Surrogate keys</li>
+                            <li>Incremental loads</li>
+                            <li>DQ gates</li>
+                            <li>Star-like marts</li>
+                        </ul>
+
+                        <div class="actions">
+                            <a class="btn brand-btn" href="#highlights">Technical highlights</a>
+                            <a class="btn brand-btn" href="#architecture">Architecture</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARCHITECTURE -->
+        <section class="section" id="architecture">
+            <div class="container">
+                <div
+                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+                        Architecture
+                    </h2>
+                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+                        A durable model supporting drill-through from KPIs to PO-line evidence.
+                    </p>
+                </div>
+
+                <div class="grid grid--2">
+                    <article class="project-card">
+                        <h3 class="project-card__title">
+                            <i class="fa-solid fa-layer-group icon-accent" aria-hidden="true"></i>
+                            Layered design
+                        </h3>
+                        <ol class="steps">
+                            <li><strong>Raw:</strong> ingest PO + Contract extracts (retain history, minimal
+                                transformation).</li>
+                            <li><strong>Stage/Clean:</strong> standardize types; normalize supplier + item fields;
+                                currency/date rules.</li>
+                            <li><strong>Conform/Unify:</strong> canonical supplier/contract entities, amendment mapping,
+                                PO↔contract linking.</li>
+                            <li><strong>Curate/Marts:</strong> PO-line fact + dimensions (supplier, contract, org,
+                                category, time).</li>
+                            <li><strong>Validate/Monitor:</strong> automated checks + logging + lineage for
+                                reconciliation.</li>
+                        </ol>
+                    </article>
+
+                    <article class="project-card">
+                        <h3 class="project-card__title">
+                            <i class="fa-solid fa-shield icon-accent" aria-hidden="true"></i>
+                            Guardrails + traceability
+                        </h3>
+                        <ul class="bullets">
+                            <li><strong>Freshness:</strong> alert when source extracts stop updating.</li>
+                            <li><strong>Completeness:</strong> required fields present at expected rates.</li>
+                            <li><strong>Referential integrity:</strong> PO-lines reconcile to valid suppliers/contracts.
+                            </li>
+                            <li><strong>Anomalies:</strong> threshold checks for spikes/drops and suspicious variance.
+                            </li>
+                            <li><strong>Lineage:</strong> trace dashboard KPIs back to PO-line and source records.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- HIGHLIGHTS -->
+        <section class="section" id="highlights">
+            <div class="container">
+                <div
+                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+                        Key Technical Highlights
+                    </h2>
+                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+                        Scannable summary: impact bullets + tech tags.
+                    </p>
+                </div>
+
+                <article class="project-card project-card--featured">
+                    <h3 class="project-card__title">
+                        <i class="fa-solid fa-list-check icon-accent" aria-hidden="true"></i>
+                        Summary
+                    </h3>
+                    <p class="project-card__one-liner">
+                        Built a governed procurement analytics model supporting spend visibility, contract compliance,
+                        and vendor performance insights.
+                    </p>
+
+                    <ul class="bullets">
+                        <li>Modeled complex relationships across contract headers/amendments and PO headers/lines to
+                            enable reliable line-level analytics.</li>
+                        <li>Implemented incremental + late-arriving patterns to keep refresh times low while preserving
+                            auditability.</li>
+                        <li>Created KPI-ready marts enabling drill-through from executive KPIs to PO-line evidence,
+                            improving trust and adoption.</li>
+                    </ul>
+
+                    <ul class="tags" aria-label="Tech tags">
+                        <li>Normalization</li>
+                        <li>Mapping tables</li>
+                        <li>Durable keys</li>
+                        <li>DQ validations</li>
+                        <li>Dimensional modeling</li>
+                        <li>Drill-through reporting</li>
+                    </ul>
+
+                    <div class="actions">
+                        <a class="btn btn-ghost" href="index.html#contact">Request details</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="section" id="how">
+            <div class="container">
+                <div
+                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+                        How It Works
+                    </h2>
+                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+                        Cohesive pipeline flow, end-to-end.
+                    </p>
+                </div>
+
+                <div class="grid grid--2">
+                    <article class="project-card">
+                        <h3 class="project-card__title">
+                            <i class="fa-solid fa-file-import icon-accent" aria-hidden="true"></i>
+                            Ingest + stage
+                        </h3>
+                        <ul class="bullets">
+                            <li>Ingest raw PO + contract extracts and retain history.</li>
+                            <li>Standardize types, fix null semantics, parse IDs.</li>
+                            <li>Normalize supplier + item fields, units, dates, currencies.</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <h3 class="project-card__title">
+                            <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
+                            Conform + curate
+                        </h3>
+                        <ul class="bullets">
+                            <li>Canonical supplier + contract entities; amendment mapping.</li>
+                            <li>PO↔contract linking logic to enable line-level compliance analytics.</li>
+                            <li>Curated marts: fact PO lines + dimensions for slicing and drill-down.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPIs -->
+        <section class="section" id="kpis">
+            <div class="container">
+                <div
+                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+                        Analytics + KPIs
+                    </h2>
+                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+                        Consistent definitions for repeatable spend and compliance reporting.
+                    </p>
+                </div>
+
+                <div class="grid grid--2">
+                    <article class="project-card">
+                        <h3 class="project-card__title">
+                            <i class="fa-solid fa-chart-pie icon-accent" aria-hidden="true"></i>
+                            What stakeholders can answer
+                        </h3>
+                        <ul class="bullets">
+                            <li><strong>Contract utilization vs. leakage:</strong> where off-contract spend occurs.</li>
+                            <li><strong>Pricing/quantity variance:</strong> detect drift and exceptions.</li>
+                            <li><strong>Supplier concentration risk:</strong> exposure and performance signals.</li>
+                            <li><strong>Cycle-time bottlenecks:</strong> where purchasing slows down.</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-card">
+                        <h3 class="project-card__title">
+                            <i class="fa-solid fa-magnifying-glass icon-accent" aria-hidden="true"></i>
+                            Why it’s trusted
+                        </h3>
+                        <ul class="bullets">
+                            <li>Drill from executive KPIs → PO-line evidence → source records.</li>
+                            <li>Quality gates prevent silent data drift from corrupting reports.</li>
+                            <li>Common dimensions: supplier, category/GL, cost center, BU, contract, time.</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="actions actions--center" style="margin-top:18px;">
+                    <a class="btn btn-ghost" href="#top">Back to top</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__social">
+                <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <div class="footer__meta">
+                <p>© 2026 Naturally Logical</p>
+                <p>Portfolio excerpt for demonstration; sensitive operational details redacted.</p>
+            </div>
+        </footer>
+
+        <!-- JSON-LD -->
+        <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CreativeWork",
+          "name": "Contract Data Pipeline",
+          "headline": "Contract Data Pipeline",
+          "description": "Case study describing a governed procurement data pipeline for spend visibility, contract compliance, and vendor performance insights.",
+          "url": "https://naturallylogical.com/contract-data-pipeline.html",
+          "author": {
+            "@type": "Person",
+            "name": "Sarah M. Brown",
+            "url": "https://naturallylogical.com/about-me.html"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Naturally Logical",
+            "url": "https://naturallylogical.com/"
+          },
+          "about": [
+            "Data engineering",
+            "Procurement analytics",
+            "Dimensional modeling",
+            "Data quality",
+            "Spend visibility",
+            "Contract compliance"
+          ],
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Naturally Logical",
+              "item": "https://naturallylogical.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Proof & Case Studies",
+              "item": "https://naturallylogical.com/#proof"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Contract Data Pipeline",
+              "item": "https://naturallylogical.com/contract-data-pipeline.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    </main>
+
+    <!-- Diagram modal (keep ONCE per page) -->
+    <div id="diagramModal" aria-hidden="true"
+        style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:3000;">
+        <div id="diagramModalBackdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.72);"></div>
+
+        <div role="dialog" aria-modal="true" style="position:relative; background:#fff; border-radius:16px; padding:16px;
+             max-width:min(1040px, calc(100vw - 40px)); max-height:82vh;
+             box-shadow:0 18px 40px rgba(0,0,0,0.45); z-index:3001;">
+            <button id="diagramModalClose" aria-label="Close" style="position:absolute; top:8px; right:10px; border:0; background:transparent;
+               font-size:28px; cursor:pointer; color:#666;">
+                &times;
+            </button>
+
+            <img id="diagramModalImg" alt=""
+                style="display:block; max-width:100%; max-height:64vh; width:auto; height:auto; border-radius:10px;" />
+
+            <p id="diagramModalCaption" class="muted" style="margin:10px 6px 2px; text-align:center;"></p>
+        </div>
+    </div>
+
+    <!-- Shared site JS -->
+    <script defer src="New_assets/scripts.js"></script>
+</body>
+
+</html>
