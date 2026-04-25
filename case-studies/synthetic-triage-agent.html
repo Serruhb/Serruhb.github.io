@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2D5A27" />
+
+  <title>Synthetic Triage Agent | Naturally Logical</title>
+  <meta name="description"
+    content="SYNaTRA: triage + context assistant that retrieves and summarizes customer history across Salesforce, Jira, and Snowflake to reduce time-to-context and improve first-contact resolution." />
+  <link rel="canonical" href="https://naturallylogical.com/case-studies/SYNaTRA.html" />
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Synthetic Triage Agent — Naturally Logical Case Study" />
+  <meta property="og:description"
+    content="Synthetic triage assistant that retrieves and summarizes Salesforce, Jira, and Snowflake context into a source-attributed response." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://naturallylogical.com/case-studies/SYNaTRA.html" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="../New_Assets/styles.css" />
+  <link rel="stylesheet" href="../New_Assets/project-bridge.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="../Images/favicon-large.ico" type="image/x-icon">
+</head>
+
+<body id="top" class="project-page">
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="../index.html" aria-label="Naturally Logical home">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="../Images/logo.png" alt="" class="brand__logo" />
+        </span>
+
+        <span class="brand__text">
+          <span class="brand__name">Synthetic Triage Agent</span>
+          <span class="brand__tag">Case Study</span>
+        </span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="../index.html#proof">Proof</a>
+        <a href="#problem">Summary</a>
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#impact">Impact</a>
+        <a class="btn btn--ghost" href="../about-sarah.html">About</a>
+        <a class="btn btn--ghost" href="../index.html#contact">Contact</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero project-hero" aria-label="SYNaTRA hero">
+      <div class="container hero__content">
+        <div class="brand-card">
+
+          <!-- Pills -->
+          <div class="hero-eyebrow"
+            style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; margin-bottom:16px;">
+            <span
+              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Triage agent
+            </span>
+            <span
+              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Cross-system context
+            </span>
+            <span
+              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Guardrails
+            </span>
+            <span
+              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Workato-orchestrated
+            </span>
+          </div>
+
+          <!-- Left / Right -->
+          <div class="grid grid--2" style="margin-top:0; align-items:center;">
+            <!-- LEFT -->
+            <div style="text-align:left;">
+              <h1 class="hero__title" style="display:flex; align-items:center; justify-content:flex-start; gap:12px;">
+                <i class="fa-solid fa-robot" aria-hidden="true"></i>
+                <span>SYNaTRA</span>
+              </h1>
+
+              <p class="hero__tagline" style="margin-top:6px; text-align:left;">
+                <span style="opacity:0.95;">Synthetic Triage Assistant</span>
+              </p>
+            </div>
+
+            <!-- RIGHT -->
+            <div style="text-align:left;">
+              <p class="hero__subtag" style="margin-top:0; max-width:none;">
+                Ticket triage + context engine for Customer Success teams handling complex enterprise accounts.
+                Synthetic Triage Agent retrieves and summarizes related Salesforce Cases, Jira issues, and subscription
+                signals into a
+                single, source-attributed response.
+              </p>
+            </div>
+          </div>
+
+          <!-- CTA buttons -->
+          <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
+            <a class="btn btn--ghost" href="#problem"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+              Executive summary
+            </a>
+            <a class="btn btn--ghost" href="#features"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+              Key features
+            </a>
+            <a class="btn btn--ghost" href="#architecture"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+              Architecture
+            </a>
+            <a class="btn btn--ghost" href="#impact"
+              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+              Impact
+            </a>
+          </div>
+
+          <!-- Note (right aligned) -->
+          <p class="project-note"
+            style="width:100%; display:flex; justify-content:flex-end; color:rgba(255,255,255,0.65); font-size:0.82rem; margin:14px 0 0;">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true" style="margin-right:8px;"></i>
+            Internal workflow tool; identifiers redacted.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXEC SUMMARY -->
+    <section class="section" id="problem">
+      <div class="container">
+        <div
+          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Executive Summary
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Why it exists, what it does, and how it stays safe.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+              The problem
+            </h3>
+            <p class="project-card__one-liner">
+              Customer Success teams lose valuable time assembling context across multiple systems.
+            </p>
+            <ul class="bullets">
+              <li>Manual search + re-summarizing slows live customer conversations.</li>
+              <li>Prior fixes, active contracts, and product context are scattered.</li>
+              <li>Inconsistent narratives reduce confidence and first-contact resolution.</li>
+            </ul>
+          </article>
+
+          <article class="project-card project-card--featured">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
+              The solution
+            </h3>
+            <p class="project-card__one-liner">
+              One concise, source-attributed triage response built from Salesforce, Jira, and Snowflake signals.
+            </p>
+            <ul class="bullets">
+              <li>Parses issue text → builds SOQL/JQL/SQL queries → ranks matches → summarizes resolutions.</li>
+              <li>Outputs a Slack/Teams-ready response with evidence references (Case IDs + Jira keys).</li>
+              <li>Guardrails: scoped access, PII masking, no persistence beyond the response.</li>
+            </ul>
+
+            <ul class="tags" aria-label="Tech tags">
+              <li>LLM / Agents</li>
+              <li>Retrieval + Summarization</li>
+              <li>Workato</li>
+              <li>Salesforce</li>
+              <li>Jira</li>
+              <li>Snowflake</li>
+            </ul>
+
+            <div class="actions">
+              <a class="btn btn--primary" href="#features">Key features</a>
+              <a class="btn btn--primary" href="#architecture">Architecture</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Workflow header row (adds space ABOVE) -->
+        <div
+          style="margin-top:64px; display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:14px;">
+          <h3 class="brand-heading" style="text-align:left; margin:0; font-weight:950;">
+            Workflow Overview
+          </h3>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            High-level view of how SYNaTRA assembles context across systems.
+          </p>
+        </div>
+
+        <figure class="diagram-figure" style="margin-top:0;">
+          <a href="../diagram-viewer.html?src=../diagrams/SYNaTRA/workatoWorkflow.svg&back=case-studies/SYNaTRA.html&title=Workflow%20Overview&subtitle=High-level%20view%20of%20how%20SYNaTRA%20assembles%20context%20across%20systems.&caption=Workato%20workflow%3A%20connectors%20%2B%20steps%20that%20assemble%20the%20triage%20response."
+            target="_blank" rel="noopener">
+            <img src="../diagrams/SYNaTRA/workatoWorkflow.svg" alt="Workato workflow diagram for SYNaTRA" loading="lazy"
+              style="max-height:520px; object-fit:contain; width:100%;" />
+          </a>
+
+          <figcaption class="muted" style="text-align:center; margin-top:10px;">
+            Workato workflow: connectors + steps that assemble the triage response.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- KEY FEATURES -->
+    <section class="section" id="features">
+      <div class="container">
+        <div
+          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Key Features
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            How SYNaTRA assembles context, searches systems, and stays safe.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-layer-group icon-accent" aria-hidden="true"></i>
+              Unified customer context
+            </h3>
+            <p class="project-card__one-liner">
+              Builds a concise overview with contract/subscription signals and relevant history.
+            </p>
+            <ul class="bullets">
+              <li>Salesforce: Accounts, Cases, Contracts</li>
+              <li>Snowflake: subscription facts (canonical view)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-magnifying-glass icon-accent" aria-hidden="true"></i>
+              Issue-aware search across systems
+            </h3>
+            <p class="project-card__one-liner">
+              Converts issue descriptions into queryable patterns across Salesforce + Jira.
+            </p>
+            <ul class="bullets">
+              <li>SOQL/JQL keyword queries (optional SOSL patterns)</li>
+              <li>Scoped lookback (e.g., last 12 months)</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-pen-to-square icon-accent" aria-hidden="true"></i>
+              Summaries + scores + next steps
+            </h3>
+            <p class="project-card__one-liner">
+              Produces brief resolution summaries with similarity/confidence labeling and evidence references.
+            </p>
+            <ul class="bullets">
+              <li>Source attribution: Salesforce Case IDs + Jira keys</li>
+              <li>Suggested next step in human-usable language</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-shield-halved icon-accent" aria-hidden="true"></i>
+              Guardrails + privacy
+            </h3>
+            <p class="project-card__one-liner">
+              Built for safe internal use: scoped credentials, PII masking, and no storage beyond the response.
+            </p>
+            <ul class="bullets">
+              <li>Integration-user access patterns</li>
+              <li>Fail-safe messaging when systems are unavailable</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div
+          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            System Architecture
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            How a short issue description becomes a structured triage report.
+          </p>
+        </div>
+
+        <article class="project-card project-card--featured">
+          <h3 class="project-card__title">
+            <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
+            Flow (high level)
+          </h3>
+          <ul class="bullets">
+            <li><strong>Inputs:</strong> issue_description + optional customer_identifier (AccountId / ContractId /
+              CustomerId)</li>
+            <li><strong>Customer identification:</strong> fuzzy account matching + top candidates if ambiguous</li>
+            <li><strong>Query builder:</strong> tokenizes issue text → generates SOQL/JQL (optional SOSL patterns)</li>
+            <li><strong>Record fetch:</strong> Salesforce Cases/Contracts + Jira issues + Snowflake subscription data
+            </li>
+            <li><strong>Summarize & score:</strong> resolution summaries + similarity/confidence per record and overall
+            </li>
+            <li><strong>Assemble response:</strong> one narrative output for Slack / Teams / Workbot</li>
+          </ul>
+          <p class="muted" style="margin:10px 0 0;">
+            If Salesforce or Jira are unavailable, SYNaTRA fails safely with a user-friendly message.
+          </p>
+        </article>
+
+        <div
+          style="margin-top:42px; display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:14px;">
+          <h3 class="brand-heading" style="text-align:left; margin:0; font-weight:950;">
+            Architecture Overview
+          </h3>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Architecture design for SYNaTRA.
+          </p>
+        </div>
+
+        <figure class="diagram-figure" style="margin-top:0;">
+          <a href="../diagram-viewer.html?src=../diagrams/SYNaTRA/syntra-architecture.svg&back=case-studies/SYNaTRA.html&title=Architecture%20Overview&subtitle=Architecture%20design%20for%20SYNaTRA.&caption=Architecture%3A%20Salesforce%20%2B%20Jira%20%2B%20Snowflake%20%2B%20summarization%20layer%20%E2%86%92%20a%20single%20triage%20response."
+            target="_blank" rel="noopener" style="display:block;">
+            <img src="../diagrams/SYNaTRA/syntra-architecture.svg" alt="High-level architecture diagram of SYNaTRA"
+              loading="lazy" style="width:100%; max-height:520px; object-fit:contain;" />
+          </a>
+          <figcaption class="muted" style="text-align:center; margin-top:10px;">
+            Architecture: Salesforce + Jira + Snowflake + summarization layer → a single triage response.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="section" id="impact">
+      <div class="container">
+        <div
+          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Impact
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Outcome-focused improvements for Customer Success workflows.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-clock icon-accent" aria-hidden="true"></i>
+              Faster time-to-context
+            </h3>
+            <ul class="bullets">
+              <li>Reduces manual searching across tools during live customer conversations.</li>
+              <li>Standardizes what “good context” looks like for triage.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-bullseye icon-accent" aria-hidden="true"></i>
+              Better first-contact resolution
+            </h3>
+            <ul class="bullets">
+              <li>Surfaces prior fixes and patterns earlier.</li>
+              <li>Improves consistency of next-step guidance.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-database icon-accent" aria-hidden="true"></i>
+              Broader context coverage
+            </h3>
+            <ul class="bullets">
+              <li>Summarizes relevant Salesforce + Jira history in one response.</li>
+              <li>Includes subscription/contract signals where available.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-shield-halved icon-accent" aria-hidden="true"></i>
+              Safer operations
+            </h3>
+            <ul class="bullets">
+              <li>Source attribution reduces ambiguity and “trust gaps.”</li>
+              <li>Guardrails + scoped access patterns fit internal workflows.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="section" id="use-cases">
+      <div class="container">
+        <div
+          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
+          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
+            Use Cases
+          </h2>
+          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
+            Where SYNaTRA fits day-to-day CS workflows.
+          </p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-headset icon-accent" aria-hidden="true"></i>
+              Account + issue triage
+            </h3>
+            <p class="project-card__one-liner">
+              Provide issue text + AccountId → receive relevant history, contract context, and a suggested next step.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-book icon-accent" aria-hidden="true"></i>
+              Issue-only research
+            </h3>
+            <p class="project-card__one-liner">
+              Provide only issue description → ranked likely matches + summaries, even before the customer is confirmed.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-people-group icon-accent" aria-hidden="true"></i>
+              CS Ops coaching & playbooks
+            </h3>
+            <p class="project-card__one-liner">
+              Use structured outputs to standardize playbooks and coach recurring issue patterns.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-card__title">
+              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
+              Incident context capture
+            </h3>
+            <p class="project-card__one-liner">
+              During escalations, generate a fast narrative with the most relevant historical evidence.
+            </p>
+          </article>
+        </div>
+
+        <div class="actions actions--center">
+          <a class="btn btn--ghost" href="#top">Back to top</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="footer__meta">
+        <p>© 2026 Naturally Logical</p>
+        <p>Portfolio excerpt for demonstration; operational details redacted.</p>
+      </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "SYNaTRA — Synthetic Triage Assistant",
+      "author": { "@type": "Person", "name": "Sarah M. Brown", "url": "https://naturallylogical.com/" },
+      "url": "https://naturallylogical.com/case-studies/SYNaTRA.html",
+      "about": ["Customer Success automation", "Triage automation", "Retrieval and summarization", "Salesforce", "Jira", "Snowflake"]
+    }
+    </script>
+  </main>
+
+  <!-- Diagram modal (keep ONCE per page) -->
+  <div id="diagramModal" aria-hidden="true"
+    style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:3000;">
+    <div id="diagramModalBackdrop" style="position:absolute; inset:0; background:rgba(0,0,0,0.72);"></div>
+
+    <!-- Reduced size (~15%) -->
+    <div role="dialog" aria-modal="true" style="position:relative; background:#fff; border-radius:16px; padding:16px;
+         max-width:min(1040px, calc(100vw - 40px)); max-height:82vh;
+         box-shadow:0 18px 40px rgba(0,0,0,0.45); z-index:3001;">
+      <button id="diagramModalClose" aria-label="Close" style="position:absolute; top:8px; right:10px; border:0; background:transparent;
+           font-size:28px; cursor:pointer; color:#666;">
+        &times;
+      </button>
+
+      <img id="diagramModalImg" alt=""
+        style="display:block; max-width:100%; max-height:64vh; width:auto; height:auto; border-radius:10px;" />
+
+      <p id="diagramModalCaption" class="muted" style="margin:10px 6px 2px; text-align:center;"></p>
+    </div>
+  </div>
+
+  <!-- Shared site JS -->
+  <script src="../New_Assets/scripts.js"></script>
+</body>
+
+</html>

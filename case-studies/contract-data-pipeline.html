@@ -29,22 +29,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <!-- Shared site CSS -->
-    <link rel="stylesheet" href="New_assets/styles.css" />
-    <link rel="stylesheet" href="contract-project-theme.css" />
-
+    <link rel="stylesheet" href="../New_Assets/styles.css" />
+    <link rel="stylesheet" href="../New_Assets/project-bridge.css" />
     <!-- Favicon -->
-    <link rel="icon" type="Images/favicon-contractpipeline.png"
-        href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJSYWxld2F5LCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDBDREFDIj5QPC90ZXh0Pgo8L3N2Zz4=" />
+    <link rel="icon" href="../Images/favicon-large.ico" type="image/x-icon">
+
+    <style>
+        /* Contract Pipeline page-specific support styles.
+           These make the existing case-study markup render as cards even if the shared CSS
+           does not yet include the project-page layer. */
+    </style>
+
 </head>
 
 <body id="top" class="project-page">
-    <a class="skip-link" href="#main">Skip to content</a>
+
 
     <header class="nav">
         <div class="container nav__inner">
-            <a class="brand" href="index.html" aria-label="Naturally Logical home">
+            <a class="brand" href="../index.html" aria-label="Naturally Logical home">
                 <span class="brand__mark" aria-hidden="true">
-                    <img src="Images/logo.png" alt="" class="brand__logo" />
+                    <img src="../Images/logo.png" alt="" class="brand__logo" />
                 </span>
 
                 <span class="brand__text">
@@ -134,22 +139,22 @@
 
                     <!-- CTA buttons -->
                     <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
-                        <a class="btn btn-ghost" href="#exec"
+                        <a class="btn btn--ghost" href="#exec"
                             style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
                             <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
                             Executive summary
                         </a>
-                        <a class="btn btn-ghost" href="#architecture"
+                        <a class="btn btn--ghost" href="#architecture"
                             style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
                             <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
                             Architecture
                         </a>
-                        <a class="btn btn-ghost" href="#highlights"
+                        <a class="btn btn--ghost" href="#highlights"
                             style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
                             <i class="fa-solid fa-list-check" aria-hidden="true"></i>
                             Technical highlights
                         </a>
-                        <a class="btn btn-ghost" href="#kpis"
+                        <a class="btn btn--ghost" href="#kpis"
                             style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
                             <i class="fa-solid fa-chart-pie" aria-hidden="true"></i>
                             KPIs
@@ -226,8 +231,8 @@
                         </ul>
 
                         <div class="actions">
-                            <a class="btn brand-btn" href="#highlights">Technical highlights</a>
-                            <a class="btn brand-btn" href="#architecture">Architecture</a>
+                            <a class="btn btn--primary" href="#highlights">Technical highlights</a>
+                            <a class="btn btn--primary" href="#architecture">Architecture</a>
                         </div>
                     </article>
                 </div>
@@ -328,7 +333,7 @@
                     </ul>
 
                     <div class="actions">
-                        <a class="btn btn-ghost" href="index.html#contact">Request details</a>
+                        <a class="btn btn--ghost" href="index.html#contact">Request details</a>
                     </div>
                 </article>
             </div>
@@ -416,7 +421,7 @@
                 </div>
 
                 <div class="actions actions--center" style="margin-top:18px;">
-                    <a class="btn btn-ghost" href="#top">Back to top</a>
+                    <a class="btn btn--ghost" href="#top">Back to top</a>
                 </div>
             </div>
         </section>
@@ -521,7 +526,7 @@
     </div>
 
     <!-- Shared site JS -->
-    <script defer src="New_assets/scripts.js"></script>
+    <script src="../New_Assets/scripts.js"></script>
 </body>
 
 </html>

@@ -1,113 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#00CDAC" />
+  <meta name="theme-color" content="#2D5A27" />
 
-  <title>Book Time | Sarah M. Brown | AI &amp; Automation Engineer</title>
-  <meta name="description" content="Schedule time with Sarah M. Brown via Google Calendar." />
+  <title>Contact | Naturally Logical</title>
+  <meta name="description"
+    content="Book time with Sarah M. Brown of Naturally Logical for AI, automation, and strategy consulting." />
+  <link rel="canonical" href="https://naturallylogical.com/contact.html" />
 
-  <!-- W3CSS + Fonts + Icons -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-  <!-- Your booking page CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="Images/favicon-large.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="New_assets/styles.css" />
 </head>
 
 <body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="about-sarah.html" aria-label="Naturally Logical home">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="Images/logo.png" alt="" class="brand__logo" />
+        </span>
 
-  <!-- Top Navbar (simple + matches your brand) -->
-  <div class="w3-top">
-    <div class="w3-bar w3-card nav-brand">
-      <a href="index.html" class="w3-bar-item w3-button nav-link">
-        <i class="fa fa-home"></i> HOME
-      </a>
-      <a href="what-i-build.html" class="w3-bar-item w3-button nav-link w3-hide-small">
-        <i class="fa fa-cubes"></i> WHAT I BUILD
-      </a>
-      <a href="resume.html" class="w3-bar-item w3-button nav-link w3-hide-small" target="_blank">
-        <i class="fa fa-user"></i> RESUME
+        <span class="brand__text">
+          <span class="brand__name">Naturally Logical</span>
+          <span class="brand__tag">Consulting</span>
+        </span>
       </a>
 
-      <div class="w3-right w3-hide-small">
-        <a href="mailto:sarah.brown@naturallylogical.com" class="w3-bar-item w3-button nav-link">
-          <i class="fa fa-envelope"></i> CONTACT
-        </a>
-      </div>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#proof">Proof</a>
+        <a href="index.html#process">Process</a>
+        <a href="about-sarah.html">About</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
-  </div>
+  </header>
 
-  <main class="page w3-content" style="max-width: 1100px;">
-    <!-- HERO -->
+  <main>
     <section class="hero">
-      <div class="hero-card w3-card">
-        <h1 class="brand-heading hero-title">Book Time</h1>
-        <p class="hero-subtitle">
-          Choose a slot that works for you using my Google Calendar scheduling page.
-        </p>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <div class="pill">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact + Scheduling</span>
+          </div>
 
-        <div class="hero-actions">
-          <!-- Primary CTA -->
-          <a class="w3-button brand-btn" id="bookingLinkBtn" href="https://calendar.app.google/2r5d7oSBQ422ipMG9" target="_blank" rel="noopener">
-            <i class="fa fa-calendar"></i> Book on Google Calendar
-          </a>
+          <h1>
+            Reach out or
+            <span class="accent">book time directly</span>.
+          </h1>
 
-          <!-- Secondary actions -->
-          <button class="w3-button w3-border" id="copyLinkBtn" type="button">
-            <i class="fa fa-copy"></i> Copy booking link
-          </button>
+          <p class="lead">
+            For consulting, automation strategy, or system design support, choose a time that works for you and I’ll
+            follow up with the right next steps.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" id="bookingLinkBtn" href="https://calendar.app.google/2r5d7oSBQ422ipMG9"
+              target="_blank" rel="noopener">
+              <i class="fa-solid fa-calendar"></i> Book on Google Calendar
+            </a>
+            <a class="btn btn--ghost" href="mailto:sarah.brown@naturallylogical.com">
+              <i class="fa-solid fa-envelope"></i> Email Sarah
+            </a>
+            <button class="btn btn--ghost" id="copyLinkBtn" type="button">
+              <i class="fa-solid fa-copy"></i> Copy booking link
+            </button>
+          </div>
+
+          <p class="lead" id="statusMsg" aria-live="polite" style="margin-top: 12px;"></p>
+
+          <div class="hero__meta">
+            <div class="metaItem">
+              <div class="metaItem__title">What to expect</div>
+              <div class="metaItem__text">Pick a time, add context, receive an invite automatically.</div>
+            </div>
+            <div class="metaItem">
+              <div class="metaItem__title">Meeting format</div>
+              <div class="metaItem__text">Virtual meeting details are included in the invite.</div>
+            </div>
+            <div class="metaItem">
+              <div class="metaItem__title">Best for</div>
+              <div class="metaItem__text">Discovery calls, consulting intake, and project scoping.</div>
+            </div>
+          </div>
         </div>
 
-        <p class="w3-small w3-text-grey status" id="statusMsg" aria-live="polite"></p>
+        <div class="hero__card">
+          <div class="card card--glass">
+            <div class="card__header">
+              <div class="card__icon"><i class="fa-solid fa-comments"></i></div>
+              <div>
+                <div class="card__title">How to make this useful</div>
+                <div class="card__subtitle">Bring the real system, not the summary</div>
+              </div>
+            </div>
 
-        <div class="tips">
-          <div class="tip">
-            <div class="tip-title"><i class="fa fa-clock-o"></i> What to expect</div>
-            <div class="tip-body">You’ll pick a time, add a short note, and get an invite automatically.</div>
-          </div>
-          <div class="tip">
-            <div class="tip-title"><i class="fa fa-video-camera"></i> Call format</div>
-            <div class="tip-body">Virtual hangouts meeting link will be included in the calendar invite.</div>
-          </div>
-          <div class="tip">
-            <div class="tip-title"><i class="fa fa-shield"></i> Privacy</div>
-            <div class="tip-body">This page doesn’t collect form data, booking happens directly in Google Calendar.</div>
+            <ul class="checklist">
+              <li><i class="fa-solid fa-check"></i> What system or process is breaking down?</li>
+              <li><i class="fa-solid fa-check"></i> Where are you seeing inconsistency or lack of trust?</li>
+              <li><i class="fa-solid fa-check"></i> What has already been tried or implemented?</li>
+              <li><i class="fa-solid fa-check"></i> Who currently owns the system—and where is it unclear?</li>
+            </ul>
+
+            <div class="card__actions">
+              <a class="btn btn--primary btn--small" href="what-i-build.html">See examples</a>
+              <a class="btn btn--ghost btn--small" href="index.html">Back to home</a>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
-    <!-- OPTIONAL EMBED -->
     <section class="section">
-      <div class="card">
-        <h2 class="brand-heading section-title">
-          <i class="fa fa-external-link"></i> Book a 30 min Intro Call
-        </h2>
-        <p class="muted" style="margin-top:6px;">
-          Please attach any relavent docs or information to the meeting once created. 
-        </p>
+      <div class="container">
+        <div class="section__header">
+          <h2>Book a 30 minute intro call</h2>
+          <p>Please attach any relevant docs or background information once the meeting is created.</p>
+        </div>
 
-        <div class="embed-wrap">
-          <iframe
-            id="bookingIframe"
-            title="Google Calendar Booking"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://calendar.app.google/2r5d7oSBQ422ipMG9">
+        <div class="card" style="padding: 14px; overflow: hidden;">
+          <iframe id="bookingIframe" title="Google Calendar Booking" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" src="https://calendar.app.google/2r5d7oSBQ422ipMG9"
+            style="width: 100%; min-height: 780px; border: 0; border-radius: 14px; background: #fff; display: block;">
           </iframe>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <p>© 2026 Naturally Logical</p>
-      <p class="muted">Scheduling powered by Google Calendar.</p>
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <div class="footer__brand">Naturally Logical</div>
+          <div class="footer__sub">Consulting • AI • Automation • Decision Systems</div>
+        </div>
+        <div class="footer__right">
+          <a href="contact.html">Contact</a>
+          <a href="what-i-build.html">What we Build</a>
+          <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
     </footer>
   </main>
 
   <script src="New_assets/scripts.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const bookingUrl = "https://calendar.app.google/2r5d7oSBQ422ipMG9";
+      const copyBtn = document.getElementById("copyLinkBtn");
+      const statusMsg = document.getElementById("statusMsg");
+
+      if (copyBtn) {
+        copyBtn.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(bookingUrl);
+            if (statusMsg) statusMsg.textContent = "Booking link copied.";
+          } catch (err) {
+            if (statusMsg) statusMsg.textContent = "Could not copy the link. Please use the Book button instead.";
+          }
+        });
+      }
+    });
+  </script>
 </body>
+
 </html>

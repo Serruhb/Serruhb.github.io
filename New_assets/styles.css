@@ -2,10 +2,12 @@
   /* ===== Theme Palette ===== */
   --brand: #2D5A27;
   /* Forest */
-  --mutedBrand: #7eaa79;
+  --mutedBrand: #a6c9a2;
   /* Forest */
   --accent: #C26747;
   /* Terracotta */
+  --mutedaccent: #FBFCEC;
+  /* Transparent Leaf */
   --link: #007AFF;
   /* Blue */
   --muted: #708090;
@@ -481,7 +483,9 @@ a[href]:hover {
   display: grid;
   gap: 16px;
 }
-
+.grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 .grid--3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -510,6 +514,7 @@ a[href]:hover {
   align-items: center;
   margin-bottom: 10px;
 }
+
 
 .card__icon {
   width: 44px;
@@ -966,4 +971,45 @@ a[href]:hover {
   .carousel__btn--next {
     right: 8px;
   }
+}
+
+/* Team profile cards */
+.team-grid {
+  margin-top: 24px;
+  align-items: stretch;
+}
+
+.team-card {
+  text-align: center;
+  background: var(--mutedaccent);
+}
+
+.team-card__image {
+  width: 220px !important;
+  height: 220px !important;
+  max-width: 220px !important;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  margin: 18px auto;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 24px rgba(16, 19, 20, 0.12);
+}
+
+@media (max-width: 800px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.project-card__role {
+  margin: 4px 0 0 0px;
+  color: var(--brand);
+  font-weight: 900;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.project-card__title-row {
+  align-items: flex-start;
 }
