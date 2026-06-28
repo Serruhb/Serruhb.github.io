@@ -3,12 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>On the Road · Sarah & Co.</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2D5A27">
+    <title>On the Road </title>
+    <meta name="description"
+        content="Tyler, Sarah and Batty are on the road Oct 28 – Nov 12, 2026. Follow along - see where they are, where they've been, and what's next.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+
     <style>
+        :root {
+            --brand: #2D5A27;
+            --mutedBrand: #a6c9a2;
+            --accent: #C26747;
+            --mutedaccent: #FBFCEC;
+            --link: #007AFF;
+            --muted: #708090;
+            --bg: #F5F5DC;
+            --ink: #152f12;
+            --paper: #ffffff;
+            --line: rgba(16, 19, 20, 0.10);
+            --shadow: 0 16px 40px rgba(16, 19, 20, 0.10);
+            --radius: 18px;
+        }
+
         *,
         *::before,
         *::after {
@@ -17,17 +40,9 @@
             padding: 0;
         }
 
-        :root {
-            --forest: #2D5A27;
-            --mid: #4A7C44;
-            --sage: #8FAB8A;
-            --pale: #D6E5D4;
-            --white: #F7F5F0;
-            --charcoal: #1A1A1A;
-            --ink: #3D3D3D;
-            --muted: #7A7A72;
-            --amber: #C97D20;
-            --rule: #E2DDD5;
+        html,
+        body {
+            height: 100%;
         }
 
         html {
@@ -35,169 +50,287 @@
         }
 
         body {
-            background: var(--white);
+            font-family: "Raleway", system-ui, sans-serif;
             color: var(--ink);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            line-height: 1.65;
+            background: var(--bg);
+            line-height: 1.6;
+            padding-top: 72px;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* NAV */
-        nav {
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a[href]:hover {
+            color: var(--link);
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* ── NAV ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(245, 245, 220, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav__inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 18px 40px;
-            border-bottom: 1px solid var(--rule);
-            background: var(--white);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 14px 0;
+            position: relative;
         }
 
-        .nav-logo {
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand__mark {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            background: var(--mutedBrand);
+            box-shadow: 0 0 0 6px rgba(45, 90, 39, 0.14);
+            display: inline-grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .brand__logo {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand__text {
+            display: grid;
+            line-height: 1.1;
+        }
+
+        .brand__name {
+            font-weight: 900;
+            letter-spacing: 0.2px;
+            color: rgba(16, 19, 20, 0.92);
+        }
+
+        .brand__tag {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .nav__links {
             display: flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
-            color: var(--charcoal);
         }
 
-        .nav-logo-mark {
-            width: 28px;
-            height: 28px;
-            background: var(--forest);
-            border-radius: 6px;
-            display: flex;
+        .nav__links a {
+            font-weight: 900;
+            color: rgba(16, 19, 20, 0.82);
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.68);
+            transition: transform 0.15s, background 0.15s, box-shadow 0.15s, border-color 0.15s;
         }
 
-        .nav-logo-text {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 13px;
-            color: var(--muted);
+        .nav__links a:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 18px rgba(16, 19, 20, 0.10);
+            border-color: rgba(45, 90, 39, 0.28);
             text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: color 0.15s;
         }
 
-        .nav-links a:hover {
-            color: var(--forest);
+        .nav__links .btn--ghost {
+            background: rgba(255, 255, 255, 0.68);
+            border-color: var(--line);
         }
 
-        /* HERO */
+        .nav__toggle {
+            display: none;
+            border: 1px solid var(--line);
+            background: var(--paper);
+            border-radius: 12px;
+            padding: 10px 12px;
+            cursor: pointer;
+        }
+
+        /* ── HERO ── */
         .hero {
-            padding: 80px 40px 64px;
-            max-width: 900px;
-            margin: 0 auto;
-            border-bottom: 1px solid var(--rule);
+            padding: 48px 0 28px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-eyebrow {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--forest);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .hero-eyebrow::before {
-            content: '';
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: var(--forest);
+        .hero__inner {
+            display: grid;
+            grid-template-columns: 1.35fr 0.95fr;
+            gap: 26px;
+            align-items: start;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(36px, 5vw, 58px);
+            font-size: clamp(30px, 4vw, 48px);
+            letter-spacing: -0.6px;
+            margin: 14px 0 10px;
             line-height: 1.08;
-            letter-spacing: -0.02em;
-            color: var(--charcoal);
-            margin-bottom: 20px;
+            font-weight: 900;
         }
 
-        .hero h1 em {
-            font-style: italic;
-            color: var(--forest);
+        .hero h1 .accent {
+            color: color-mix(in srgb, var(--brand) 85%, black);
         }
 
-        .hero-desc {
-            font-size: 16px;
-            color: var(--muted);
-            max-width: 560px;
-            line-height: 1.7;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .hero-meta {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .meta-label {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .meta-value {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--charcoal);
-        }
-
-        /* PROGRESS TRACKER — the signature element */
-        .tracker {
-            background: var(--charcoal);
-            padding: 40px;
+        .lead {
+            font-size: 17px;
+            color: rgba(16, 19, 20, 0.74);
             margin: 0;
         }
 
-        .tracker-inner {
-            max-width: 900px;
-            margin: 0 auto;
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.70);
+            color: rgba(16, 19, 20, 0.78);
+            font-weight: 900;
         }
 
-        .tracker-label {
-            font-size: 10px;
+        .hero__meta {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .metaItem {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            padding: 12px;
+        }
+
+        .metaItem--accent {
+            background: rgba(194, 103, 71, 0.06);
+            border-color: rgba(194, 103, 71, 0.18);
+        }
+
+        .metaItem__title {
+            font-weight: 900;
+            font-size: 12px;
+            color: rgba(16, 19, 20, 0.58);
+        }
+
+        .metaItem__title--accent {
+            color: rgba(194, 103, 71, 0.70);
+        }
+
+        .metaItem__text {
+            font-weight: 800;
+            margin-top: 4px;
+            color: rgba(16, 19, 20, 0.80);
+            font-size: 13px;
+        }
+
+        .metaItem__text--accent {
+            color: rgba(194, 103, 71, 0.85);
+        }
+
+        /* Hero sidebar card */
+        .card {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: 0 6px 20px rgba(16, 19, 20, 0.04);
+        }
+
+        .card--glass {
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .card__kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: color-mix(in srgb, var(--brand) 80%, black);
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: .2px;
+            margin-bottom: 10px;
+        }
+
+        .bullets {
+            padding-left: 18px;
+        }
+
+        .bullets li {
+            margin: 8px 0;
             font-weight: 600;
+            font-size: 14px;
+        }
+
+        .mini {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
+        }
+
+        .mini__label {
+            font-size: 11px;
+            font-weight: 900;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .mini__value {
+            font-weight: 800;
+            margin-top: 3px;
+            color: rgba(16, 19, 20, 0.80);
+        }
+
+        /* ── PROGRESS TRACKER ── */
+        .tracker-section {
+            background: rgba(255, 255, 255, 0.62);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: 36px 0;
+        }
+
+        .tracker-eyebrow {
+            font-size: 11px;
+            font-weight: 900;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: var(--sage);
-            margin-bottom: 24px;
+            color: var(--muted);
+            margin-bottom: 18px;
         }
 
         .tracker-stops {
@@ -228,8 +361,8 @@
             top: 8px;
             left: calc(50% + 8px);
             right: calc(-50% + 8px);
-            height: 1px;
-            background: #3A3A3A;
+            height: 2px;
+            background: var(--line);
         }
 
         .tracker-stop:last-child::before {
@@ -237,19 +370,19 @@
         }
 
         .tracker-stop.done::before {
-            background: var(--mid);
+            background: var(--mutedBrand);
         }
 
         .tracker-stop.current::before {
-            background: linear-gradient(90deg, var(--mid), #3A3A3A);
+            background: linear-gradient(90deg, var(--mutedBrand), var(--line));
         }
 
         .tracker-dot {
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            background: #3A3A3A;
-            border: 2px solid #555;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid var(--line);
             position: relative;
             z-index: 1;
             margin-bottom: 10px;
@@ -257,141 +390,156 @@
         }
 
         .tracker-stop.done .tracker-dot {
-            background: var(--forest);
-            border-color: var(--mid);
+            background: var(--brand);
+            border-color: var(--mutedBrand);
         }
 
         .tracker-stop.current .tracker-dot {
-            background: var(--amber);
-            border-color: var(--amber);
-            box-shadow: 0 0 0 4px rgba(201, 125, 32, 0.2);
-        }
-
-        .tracker-stop.home .tracker-dot {
-            background: #3A3A3A;
-            border-color: #555;
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 5px rgba(194, 103, 71, 0.18);
         }
 
         .tracker-city {
-            font-size: 10px;
-            color: #666;
+            font-size: 11px;
+            color: var(--muted);
             text-align: center;
-            letter-spacing: 0.03em;
+            font-weight: 800;
             line-height: 1.3;
         }
 
         .tracker-stop.done .tracker-city {
-            color: var(--sage);
+            color: var(--brand);
         }
 
         .tracker-stop.current .tracker-city {
-            color: var(--amber);
-            font-weight: 600;
+            color: var(--accent);
+            font-weight: 900;
         }
 
         .tracker-date {
-            font-size: 9px;
-            color: #555;
+            font-size: 10px;
+            color: rgba(16, 19, 20, 0.38);
             text-align: center;
             margin-top: 2px;
+            font-weight: 600;
         }
 
         .tracker-stop.current .tracker-date {
-            color: rgba(201, 125, 32, 0.7);
+            color: rgba(194, 103, 71, 0.65);
         }
 
-        .tracker-you {
+        .tracker-status {
+            margin-top: 22px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            margin-top: 20px;
-            background: rgba(201, 125, 32, 0.1);
-            border: 1px solid rgba(201, 125, 32, 0.25);
-            border-radius: 20px;
-            padding: 6px 14px;
-            font-size: 12px;
-            color: var(--amber);
-            font-weight: 500;
+            gap: 8px;
+            background: rgba(194, 103, 71, 0.08);
+            border: 1px solid rgba(194, 103, 71, 0.22);
+            border-radius: 999px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--accent);
         }
 
-        /* LEGS */
-        .legs {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 64px 40px;
+        /* ── SECTIONS ── */
+        .section {
+            padding: 52px 0;
         }
 
-        .leg-section {
-            margin-bottom: 64px;
+        .section--alt {
+            background: rgba(255, 255, 255, 0.62);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
         }
 
+        .section__header {
+            margin-bottom: 24px;
+        }
+
+        .section__header h2 {
+            margin: 0 0 6px;
+            font-size: 26px;
+            letter-spacing: -0.2px;
+            font-weight: 900;
+            color: color-mix(in srgb, var(--brand) 80%, black);
+        }
+
+        .section__header p {
+            margin: 0;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        /* ── LEG HEADERS ── */
         .leg-header {
             display: flex;
             align-items: baseline;
-            gap: 16px;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--rule);
+            gap: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--line);
         }
 
         .leg-tag {
-            font-size: 10px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 900;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: white;
-            background: var(--forest);
-            padding: 4px 10px;
-            border-radius: 3px;
+            color: #fff;
+            background: var(--brand);
+            padding: 5px 12px;
+            border-radius: 999px;
         }
 
         .leg-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 22px;
-            color: var(--charcoal);
-            letter-spacing: -0.01em;
+            font-size: 20px;
+            font-weight: 900;
+            color: color-mix(in srgb, var(--brand) 80%, black);
         }
 
-        /* DAY CARDS */
+        /* ── DAY CARDS ── */
         .day-card {
-            border: 1px solid var(--rule);
-            border-radius: 8px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
             margin-bottom: 12px;
-            background: white;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(16, 19, 20, 0.04);
             transition: box-shadow 0.15s;
         }
 
         .day-card:hover {
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 24px rgba(16, 19, 20, 0.09);
         }
 
         .day-card-head {
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 20px 24px;
+            gap: 18px;
+            padding: 18px 22px;
             cursor: pointer;
             user-select: none;
         }
 
         .day-date-col {
-            min-width: 80px;
+            min-width: 72px;
             flex-shrink: 0;
         }
 
         .day-date-label {
             font-size: 10px;
-            font-weight: 600;
+            font-weight: 900;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--forest);
+            color: var(--brand);
         }
 
         .day-date-val {
             font-size: 13px;
             color: var(--muted);
-            font-weight: 300;
+            font-weight: 600;
             margin-top: 1px;
         }
 
@@ -400,9 +548,9 @@
         }
 
         .day-route {
-            font-family: 'DM Serif Display', serif;
             font-size: 17px;
-            color: var(--charcoal);
+            font-weight: 900;
+            color: var(--ink);
             letter-spacing: -0.01em;
         }
 
@@ -410,11 +558,12 @@
             font-size: 12px;
             color: var(--muted);
             margin-top: 3px;
+            font-weight: 600;
         }
 
         .day-chevron {
-            color: var(--sage);
-            font-size: 16px;
+            color: var(--mutedBrand);
+            font-size: 15px;
             transition: transform 0.25s;
             flex-shrink: 0;
         }
@@ -425,23 +574,24 @@
 
         .day-body {
             display: none;
-            padding: 0 24px 24px;
-            border-top: 1px solid var(--rule);
-            margin-top: 0;
+            padding: 0 22px 22px;
+            border-top: 1px solid var(--line);
+            padding-top: 20px;
         }
 
         .day-card.open .day-body {
             display: block;
         }
 
-        /* STOPS */
+        /* ── STOPS ── */
         .stops {
-            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
         .stop {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             position: relative;
         }
 
@@ -449,7 +599,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 24px;
+            width: 20px;
             flex-shrink: 0;
         }
 
@@ -457,215 +607,176 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            border: 2px solid var(--rule);
-            background: white;
+            border: 2px solid var(--line);
+            background: var(--bg);
             flex-shrink: 0;
             margin-top: 5px;
             z-index: 1;
         }
 
         .stop-dot.hotel {
-            border-color: var(--forest);
-            background: var(--forest);
+            border-color: var(--brand);
+            background: var(--brand);
         }
 
         .stop-dot.food {
-            border-color: var(--amber);
-            background: var(--amber);
+            border-color: var(--accent);
+            background: var(--accent);
         }
 
         .stop-dot.attr {
-            border-color: var(--mid);
-            background: var(--pale);
+            border-color: var(--mutedBrand);
+            background: rgba(166, 201, 162, 0.3);
         }
 
         .stop-dot.depart {
-            border-color: var(--rule);
-            background: var(--rule);
+            border-color: var(--line);
+            background: var(--bg);
         }
 
         .stop-dot.arrive {
-            border-color: var(--forest);
-            background: var(--pale);
+            border-color: var(--brand);
+            background: rgba(166, 201, 162, 0.3);
         }
 
         .stop-connector {
             flex: 1;
             width: 1px;
-            background: var(--rule);
-            min-height: 20px;
+            background: var(--line);
+            min-height: 18px;
             margin: 3px 0;
         }
 
         .stop-content {
             flex: 1;
-            padding-bottom: 20px;
+            padding-bottom: 18px;
         }
 
         .stop-badge {
             display: inline-block;
             font-size: 9px;
-            font-weight: 600;
+            font-weight: 900;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            padding: 2px 7px;
-            border-radius: 3px;
-            margin-bottom: 4px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            margin-bottom: 5px;
         }
 
         .badge-hotel {
             background: rgba(45, 90, 39, 0.08);
-            color: var(--forest);
+            color: var(--brand);
+            border: 1px solid rgba(45, 90, 39, 0.15);
         }
 
         .badge-food {
-            background: rgba(201, 125, 32, 0.1);
-            color: var(--amber);
+            background: rgba(194, 103, 71, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(194, 103, 71, 0.18);
         }
 
         .badge-attr {
-            background: rgba(74, 124, 68, 0.08);
-            color: var(--mid);
+            background: rgba(166, 201, 162, 0.25);
+            color: color-mix(in srgb, var(--brand) 80%, black);
+            border: 1px solid rgba(45, 90, 39, 0.12);
         }
 
         .badge-arrive {
             background: rgba(45, 90, 39, 0.06);
-            color: var(--forest);
+            color: var(--brand);
             border: 1px solid rgba(45, 90, 39, 0.15);
         }
 
         .stop-name {
             font-size: 14px;
-            font-weight: 600;
-            color: var(--charcoal);
+            font-weight: 900;
+            color: var(--ink);
             margin-bottom: 3px;
             line-height: 1.4;
         }
 
         .stop-note {
             font-size: 13px;
-            color: var(--muted);
-            line-height: 1.6;
-            font-weight: 300;
+            color: rgba(16, 19, 20, 0.62);
+            line-height: 1.65;
+            font-weight: 600;
         }
 
         .stop-note a {
-            color: var(--forest);
+            color: var(--brand);
             text-decoration: underline;
             text-underline-offset: 2px;
         }
 
         .stop-note strong {
             color: var(--ink);
-            font-weight: 500;
+            font-weight: 900;
         }
 
-        /* AUSTIN INTERLUDE */
+        /* ── AUSTIN INTERLUDE ── */
         .interlude {
-            background: var(--forest);
-            border-radius: 8px;
-            padding: 32px;
+            background: var(--brand);
+            border-radius: var(--radius);
+            padding: 28px;
             margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
-            gap: 24px;
+            gap: 22px;
         }
 
         .interlude-icon {
-            font-size: 32px;
+            font-size: 30px;
             flex-shrink: 0;
-        }
-
-        .interlude-body h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 22px;
-            color: white;
-            margin-bottom: 6px;
-            letter-spacing: -0.01em;
-        }
-
-        .interlude-body p {
-            font-size: 13px;
-            color: var(--pale);
-            font-weight: 300;
-            line-height: 1.7;
+            margin-top: 2px;
         }
 
         .interlude-nights {
             font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-weight: 900;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--sage);
-            margin-bottom: 8px;
-        }
-
-        /* HOTEL TABLE */
-        .hotels-section {
-            background: var(--charcoal);
-            padding: 64px 40px;
-        }
-
-        .hotels-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .section-eyebrow {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--sage);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .section-eyebrow::before {
-            content: '';
-            width: 16px;
-            height: 1px;
-            background: var(--sage);
-        }
-
-        .hotels-section h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 28px;
-            color: white;
+            color: var(--mutedBrand);
             margin-bottom: 6px;
-            letter-spacing: -0.01em;
         }
 
-        .hotels-section .sub {
+        .interlude h3 {
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .interlude p {
             font-size: 13px;
-            color: #666;
-            margin-bottom: 36px;
-            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+            font-weight: 600;
+            line-height: 1.7;
         }
 
+        /* ── HOTELS TABLE ── */
         .htable {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 24px;
         }
 
         .htable thead th {
             font-size: 10px;
-            font-weight: 600;
+            font-weight: 900;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #555;
+            color: var(--muted);
             text-align: left;
-            padding: 10px 0;
-            border-bottom: 1px solid #333;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--line);
         }
 
         .htable tbody td {
-            padding: 14px 0;
+            padding: 14px 14px;
             font-size: 13px;
-            color: #ccc;
-            border-bottom: 1px solid #2A2A2A;
+            font-weight: 600;
+            color: var(--ink);
+            border-bottom: 1px solid var(--line);
             vertical-align: top;
         }
 
@@ -673,63 +784,47 @@
             border-bottom: none;
         }
 
+        .htable tbody tr:hover td {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
         .htable td:first-child {
-            color: #666;
+            color: var(--muted);
             font-size: 12px;
-            padding-right: 20px;
             white-space: nowrap;
         }
 
         .htable a {
-            color: var(--sage);
-            text-decoration: none;
+            color: var(--brand);
+            font-weight: 800;
         }
 
         .htable a:hover {
-            color: white;
+            color: color-mix(in srgb, var(--brand) 80%, black);
             text-decoration: underline;
-            text-underline-offset: 2px;
         }
 
         .htable .note {
             font-size: 11px;
-            color: #555;
-            margin-top: 3px;
-        }
-
-        /* MAP */
-        .map-section {
-            padding: 64px 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .map-section h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 28px;
-            color: var(--charcoal);
-            margin-bottom: 6px;
-            letter-spacing: -0.01em;
-        }
-
-        .map-section .sub {
-            font-size: 13px;
             color: var(--muted);
-            margin-bottom: 28px;
-            font-weight: 300;
+            margin-top: 3px;
+            font-weight: 600;
         }
 
-        #map {
+        /* ── MAP ── */
+        #tripmap {
             width: 100%;
             height: 480px;
-            border-radius: 8px;
+            border-radius: var(--radius);
             overflow: hidden;
-            border: 1px solid var(--rule);
+            border: 1px solid var(--line);
+            box-shadow: 0 8px 24px rgba(16, 19, 20, 0.08);
+            margin-top: 20px;
         }
 
         .map-legend {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             flex-wrap: wrap;
             margin-top: 16px;
         }
@@ -739,6 +834,7 @@
             align-items: center;
             gap: 7px;
             font-size: 12px;
+            font-weight: 700;
             color: var(--muted);
         }
 
@@ -755,93 +851,102 @@
             flex-shrink: 0;
         }
 
-        /* FOOTER */
-        footer {
-            border-top: 1px solid var(--rule);
-            padding: 32px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
+        /* ── FOOTER ── */
+        .footer {
+            border-top: 1px solid var(--line);
+            padding: 22px 0 40px;
         }
 
-        .footer-left {
+        .footer__social {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-logo {
-            width: 22px;
-            height: 22px;
-            background: var(--forest);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding: 0 20px 12px;
         }
 
-        .footer-text {
-            font-size: 12px;
+        .footer__social a {
+            font-size: 18px;
             color: var(--muted);
+            transition: color 0.15s;
         }
 
-        .footer-text a {
-            color: var(--forest);
-            text-decoration: none;
+        .footer__social a:hover {
+            color: var(--brand);
         }
 
-        .footer-text a:hover {
+        .footer__meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(16, 19, 20, 0.55);
+        }
+
+        .footer__meta a {
+            color: var(--brand);
+        }
+
+        .footer__meta a:hover {
             text-decoration: underline;
         }
 
-        .footer-right {
-            font-size: 12px;
-            color: var(--muted);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 640px) {
-            nav {
-                padding: 16px 20px;
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .hero__inner {
+                grid-template-columns: 1fr;
             }
 
-            .nav-links {
+            .hero__meta {
+                grid-template-columns: 1fr;
+            }
+
+            .nav__toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav__links {
+                position: absolute;
+                top: calc(100% + 10px);
+                right: 0;
+                width: min(320px, calc(100vw - 40px));
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+                padding: 12px;
+                border: 1px solid var(--line);
+                border-radius: 18px;
+                background: rgba(245, 245, 220, 0.98);
+                box-shadow: var(--shadow);
+                display: none;
+                z-index: 1001;
+            }
+
+            .nav__links.is-open {
+                display: flex;
+            }
+
+            .nav__links a,
+            .nav__links .btn {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .day-stats {
                 display: none;
             }
 
-            .hero {
-                padding: 48px 20px 40px;
-            }
-
-            .tracker {
-                padding: 28px 20px;
-            }
-
-            .legs {
-                padding: 48px 20px;
-            }
-
-            .hotels-section {
-                padding: 48px 20px;
-            }
-
-            .map-section {
-                padding: 48px 20px;
-            }
-
-            footer {
-                padding: 24px 20px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .hero-meta {
-                gap: 24px;
+            .htable thead th:nth-child(4),
+            .htable tbody td:nth-child(4) {
+                display: none;
             }
         }
     </style>
@@ -850,591 +955,611 @@
 <body>
 
     <!-- NAV -->
-    <nav>
-        <a href="https://naturallylogical.com" class="nav-logo" target="_blank">
-            <div class="nav-logo-mark">NL</div>
-            <span class="nav-logo-text">Naturally Logical</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#route">The Route</a></li>
-            <li><a href="#map">Map</a></li>
-            <li><a href="#hotels">Where We're Staying</a></li>
-            <li><a href="https://naturallylogical.com" target="_blank">Back to NL →</a></li>
-        </ul>
-    </nav>
+    <header class="nav">
+        <div class="container nav__inner">
+            <a class="brand" href="https://naturallylogical.com" target="_blank" aria-label="Naturally Logical home">
+                <span class="brand__mark" aria-hidden="true">
+                    <img src="https://naturallylogical.com/Images/logo.png" alt="" class="brand__logo" />
+                </span>
+                <span class="brand__text">
+                    <span class="brand__name">Naturally Logical</span>
+                    <span class="brand__tag">On the Road</span>
+                </span>
+            </a>
+            <nav class="nav__links" id="navLinks" aria-label="Primary">
+                <a href="#route"><i class="fa-solid fa-route"></i> The Route</a>
+                <a href="#hotels"><i class="fa-solid fa-bed"></i> Stays</a>
+                <a href="#map"><i class="fa-solid fa-map"></i> Map</a>
+                <a href="https://naturallylogical.com" target="_blank" class="btn--ghost">Back to NL <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </nav>
+            <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-eyebrow">Live Trip · Oct 28 – Nov 12, 2026</div>
-        <h1>We're on the road.<br><em>Follow along.</em></h1>
-        <p class="hero-desc">
-            Sarah and her travel companion are making their way from Amesbury, MA to Austin, TX and up to Menomonie, WI
-            — then looping back home through Racine and Buffalo. This page shows where we are, where we've been, and
-            what's next.
-        </p>
-        <div class="hero-meta">
-            <div class="meta-item">
-                <span class="meta-label">Total Distance</span>
-                <span class="meta-value">~4,400 miles</span>
+        <div class="container hero__inner">
+            <div class="hero__copy">
+                <div class="pill">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Live Trip · Oct 28 – Nov 12, 2026</span>
+                </div>
+                <h1>We're on the road.<br><span class="accent">Follow along.</span></h1>
+                <p class="lead">
+                    Sarah, Tyler, and Batty are making their way from Amesbury, MA to Austin, TX and
+                    Menomonie, WI - then looping back home through Racine and Buffalo. This page shows where they are,
+                    where they've been, and what's next.
+                </p>
+                <div class="hero__meta">
+                    <div class="metaItem metaItem--accent">
+                        <div class="metaItem__title metaItem__title--accent">Total Distance</div>
+                        <div class="metaItem__text metaItem__text--accent">~4,400 miles</div>
+                    </div>
+                    <div class="metaItem metaItem--accent">
+                        <div class="metaItem__title metaItem__title--accent">Driving Days</div>
+                        <div class="metaItem__text metaItem__text--accent">9 days on the road</div>
+                    </div>
+                    <div class="metaItem metaItem--accent">
+                        <div class="metaItem__title metaItem__title--accent">Austin Stay</div>
+                        <div class="metaItem__text metaItem__text--accent">7 nights · Airbnb</div>
+                    </div>
+                </div>
             </div>
-            <div class="meta-item">
-                <span class="meta-label">Driving Days</span>
-                <span class="meta-value">9 days on the road</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Austin Stay</span>
-                <span class="meta-value">7 nights (Airbnb)</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Legs</span>
-                <span class="meta-value">3 legs, 3 directions</span>
+
+            <div class="card card--glass">
+                <div class="card__kicker"><i class="fa-solid fa-compass"></i> Trip at a glance</div>
+                <ul class="bullets">
+                    <li><strong>Leg 1:</strong> Amesbury → Staunton → Paducah → Austin</li>
+                    <li><strong>Austin:</strong> Oct 30 – Nov 6 · 7 nights · Airbnb</li>
+                    <li><strong>Leg 2:</strong> Austin → Kansas City → Platteville → Lancaster → Menomonie</li>
+                    <li><strong>Menomonie:</strong> Nov 8 - Nove 10 · 2 nights · Hotel </li>
+                    <li><strong>Leg 3:</strong> Menomonie → Racine → Buffalo → Amesbury</li>
+                </ul>
+
             </div>
         </div>
     </section>
 
     <!-- PROGRESS TRACKER -->
-    <div class="tracker">
-        <div class="tracker-inner">
-            <div class="tracker-label">Where we are right now</div>
-            <div class="tracker-stops" id="tracker-stops">
-                <!-- populated by JS -->
-            </div>
-            <div class="tracker-you" id="tracker-status">Loading…</div>
+    <div class="tracker-section">
+        <div class="container">
+            <div class="tracker-eyebrow"><i class="fa-solid fa-location-dot"></i> &nbsp;Where we are right now</div>
+            <div class="tracker-stops" id="tracker-stops"><!-- JS --></div>
+            <div class="tracker-status" id="tracker-status">Loading…</div>
         </div>
     </div>
 
-    <!-- ROUTE DAYS -->
-    <section class="legs" id="route">
-
-        <!-- LEG 1 -->
-        <div class="leg-section">
-            <div class="leg-header">
-                <span class="leg-tag">Leg 1</span>
-                <span class="leg-title">Amesbury → Austin</span>
+    <!-- ROUTE -->
+    <section class="section" id="route">
+        <div class="container">
+            <div class="section__header">
+                <h2>The Full Route</h2>
+                <p>Every driving day, every stop, every overnight - in order.</p>
             </div>
 
-            <!-- Day 1 -->
-            <div class="day-card open">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 1</div>
-                        <div class="day-date-val">Oct 28</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Amesbury → Staunton, VA</div>
-                        <div class="day-stats">~550 miles · ~8.5 hrs · Stop: Harpers Ferry</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
+            <!-- LEG 1 -->
+            <div style="margin-bottom:48px;">
+                <div class="leg-header">
+                    <span class="leg-tag">Leg 1</span>
+                    <span class="leg-title">Amesbury → Austin</span>
                 </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-name">🏠 We leave Amesbury</div>
-                                <div class="stop-note">Early start south on I-95. The big trip begins.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot attr"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-attr">Stop</div>
-                                <div class="stop-name">Harpers Ferry National Historical Park, WV</div>
-                                <div class="stop-note">Where the Shenandoah meets the Potomac — three states visible
-                                    from one overlook. About 20 minutes off I-81. Open 9am–5pm.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot hotel"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-hotel">Overnight</div>
-                                <div class="stop-name">The Blackburn Inn — Staunton, VA</div>
-                                <div class="stop-note">A former 1828 asylum turned Michelin-listed boutique hotel on 80
-                                    acres of rolling Virginia hills. Spa, on-site restaurant, and a genuinely memorable
-                                    stay. <strong>★★★★½</strong> · Service animal welcome.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Day 2 -->
-            <div class="day-card">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 2</div>
-                        <div class="day-date-val">Oct 29</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Staunton → Paducah, KY</div>
-                        <div class="day-stats">~470 miles · ~7 hrs · Stop: National Quilt Museum</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
-                </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-name">Depart Blackburn Inn</div>
-                                <div class="stop-note">West on I-64 toward Lexington, KY.</div>
-                            </div>
+                <div class="day-card open">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 1</div>
+                            <div class="day-date-val">Oct 28</div>
                         </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot attr"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-attr">Stop</div>
-                                <div class="stop-name">National Quilt Museum — Paducah, KY</div>
-                                <div class="stop-note">Paducah is a UNESCO Creative City. The Quilt Museum is
-                                    extraordinary — one of the largest collections of contemporary quilts in the world.
-                                    Open Mon–Sat 10am–5pm. $12 adult. Budget 1.5 hrs.</div>
-                            </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Amesbury, MA → Staunton, VA</div>
+                            <div class="day-stats">~550 mi · ~8.5 hrs · Stop: Harpers Ferry</div>
                         </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot hotel"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-hotel">Overnight</div>
-                                <div class="stop-name">The 1857 Hotel — Paducah, KY</div>
-                                <div class="stop-note">Boutique rooms with rainfall showers and soaking tubs in the
-                                    heart of Paducah's historic downtown. <strong>9.6/10 Expedia</strong> · Service
-                                    animal welcome — no fee.</div>
-                            </div>
-                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Day 3 -->
-            <div class="day-card">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 3</div>
-                        <div class="day-date-val">Oct 30</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Paducah → Austin, TX via Memphis</div>
-                        <div class="day-stats">~650 miles · ~10 hrs · Big day — we leave early</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
-                </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">🏠 We leave Amesbury</div>
+                                    <div class="stop-note">Early start south on I-95. The big trip begins.</div>
+                                </div>
                             </div>
-                            <div class="stop-content">
-                                <div class="stop-name">Early departure from Paducah</div>
-                                <div class="stop-note">This is the long one. South on US-45 toward Memphis. We'll be on
-                                    the road by 7:30am.</div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot attr"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-attr">Stop</div>
+                                    <div class="stop-name">Harpers Ferry National Historical Park, WV</div>
+                                    <div class="stop-note">Where the Shenandoah meets the Potomac - three states visible
+                                        from one overlook. ~20 min off I-81. Open 9am–5pm.</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot food"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-food">Lunch</div>
-                                <div class="stop-name">Tonica — Memphis, TN</div>
-                                <div class="stop-note">Mediterranean small plates and tapas in downtown Memphis. We
-                                    wanted something light enough to keep moving — graze and go. 265 S Front St. Budget
-                                    1.5 hrs.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot arrive"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-arrive">We arrive 🎃</div>
-                                <div class="stop-name">Austin, TX — Halloween Night</div>
-                                <div class="stop-note">We pull in on Halloween. 6th Street goes all out. Airbnb
-                                    check-in, then straight into it.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Austin interlude -->
-            <div class="interlude">
-                <div class="interlude-icon">🤠</div>
-                <div class="interlude-body">
-                    <div class="interlude-nights">7 nights · Oct 30 – Nov 6</div>
-                    <h3>Austin, Texas</h3>
-                    <p>Airbnb stay — we're cooking, exploring, and staying put for a bit. South Congress, Barton
-                        Springs, live music, and whatever we find. This is the rest stop the trip is built around.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- LEG 2 -->
-        <div class="leg-section">
-            <div class="leg-header">
-                <span class="leg-tag">Leg 2</span>
-                <span class="leg-title">Austin → Menomonie</span>
-            </div>
-
-            <!-- Day 4 -->
-            <div class="day-card">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 4</div>
-                        <div class="day-date-val">Nov 6</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Austin → Kansas City, MO</div>
-                        <div class="day-stats">~8.5 hrs · Long haul north — early start</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
-                </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-name">We leave Austin</div>
-                                <div class="stop-note">I-35 northeast through Dallas, then north through Oklahoma. Long
-                                    day — coffee first.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot attr"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-attr">Museum</div>
-                                <div class="stop-name">National WWI Museum & Memorial — Kansas City</div>
-                                <div class="stop-note">One of the best museums in the country — stunning architecture,
-                                    world-class exhibits, panoramic views from the Liberty Memorial tower. Open
-                                    10am–5pm. Budget 2–3 hrs if we arrive with daylight.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot hotel"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-hotel">Overnight</div>
-                                <div class="stop-name">Kansas City, MO — Hotel TBD</div>
-                                <div class="stop-note">Choosing between <a href="https://www.thecherrykc.com/"
-                                        target="_blank">Cherry Warehouse Hotel</a> (boutique 1930 warehouse, Midwest
-                                    Living best new hotel 2026) and <a
-                                        href="https://www.marriott.com/en-us/hotels/mciun-fairfield-inn-kansas-city-downtown-union-hill/overview/"
-                                        target="_blank">Fairfield Inn KC Downtown</a> (~$120, free breakfast). Deciding
-                                    closer to the date.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Day 5 -->
-            <div class="day-card">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 5</div>
-                        <div class="day-date-val">Nov 7</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Kansas City → Lancaster, WI</div>
-                        <div class="day-stats">~490 miles · ~7 hrs · Dinner in Platteville</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
-                </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-name">North from Kansas City</div>
-                                <div class="stop-note">I-35 N into Iowa, then east across into Wisconsin.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot food"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-food">Dinner</div>
-                                <div class="stop-name">Steve's Pizza Palace — Platteville, WI</div>
-                                <div class="stop-note">A Platteville institution for over 50 years. Crispy crust,
-                                    homemade sausage, and onion rings that people drive hours for. Three full bars. 175
-                                    W Main St. Open until 10pm. <strong>#2 restaurant in Platteville.</strong></div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot hotel"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-hotel">Overnight</div>
-                                <div class="stop-name">Sleep Inn & Suites Lancaster-Platteville — Lancaster, WI</div>
-                                <div class="stop-note">14 miles from Platteville — just somewhere clean to sleep before
-                                    the final push to Menomonie. Free hot breakfast. <strong>4.4★ ·
-                                        ~$116/night.</strong></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Day 6 -->
-            <div class="day-card">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 6</div>
-                        <div class="day-date-val">Nov 8</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Lancaster → Menomonie, WI 🏁</div>
-                        <div class="day-stats">~3.5 hrs · Easy morning drive · We're almost there</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
-                </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-name">Depart Lancaster after breakfast</div>
-                                <div class="stop-note">US-61 N → WI-35 N → I-94 W. Easy morning with coffee from the
-                                    hotel.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot arrive"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-arrive">We arrive 🏁</div>
-                                <div class="stop-name">Menomonie, WI</div>
-                                <div class="stop-note">Pulling in around 1:30pm. Staying at the Hampton Inn & Suites UW
-                                    Stout — top-rated in town, free breakfast. This is the destination.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- LEG 3 -->
-        <div class="leg-section">
-            <div class="leg-header">
-                <span class="leg-tag">Leg 3</span>
-                <span class="leg-title">Menomonie → Home</span>
-            </div>
-
-            <!-- Day 7 -->
-            <div class="day-card">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 7</div>
-                        <div class="day-date-val">Nov 10</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Menomonie → Racine, WI</div>
-                        <div class="day-stats">~3.5 hrs · Short day · Optional Milwaukee stop</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
-                </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-name">Southeast on I-94</div>
-                                <div class="stop-note">Easy drive toward Milwaukee and then south to Racine along Lake
-                                    Michigan.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot attr"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-attr">Optional</div>
-                                <div class="stop-name">Milwaukee, WI</div>
-                                <div class="stop-note">30 minutes north of Racine — great for a lunch stop. Lakefront,
-                                    Milwaukee Art Museum, strong food scene.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot hotel"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-hotel">Overnight</div>
-                                <div class="stop-name">Hotel Verdant — Racine, WI</div>
-                                <div class="stop-note">LEED Gold certified boutique hotel right in downtown Racine, 5
-                                    minutes from Lake Michigan. Dinner at Marguerite (hearth-fired Italian), drinks at
-                                    rooftop bar Eave with panoramic lake views. <strong>#1 hotel in Racine ·
-                                        9.2/10.</strong> Service animal welcome.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Day 8 -->
-            <div class="day-card">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 8</div>
-                        <div class="day-date-val">Nov 11</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Racine → Buffalo, NY</div>
-                        <div class="day-stats">~7 hrs · Optional Presque Isle stop in Erie</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
-                </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-name">East on I-94, then I-90</div>
-                                <div class="stop-note">Through Chicago suburbs, into Indiana and Ohio along the Lake
-                                    Erie corridor.</div>
-                            </div>
-                        </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot attr"></div>
-                                <div class="stop-connector"></div>
-                            </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-attr">Optional Stop</div>
-                                <div class="stop-name">Presque Isle State Park — Erie, PA</div>
-                                <div class="stop-note">Right on I-90, no detour needed. A sandy peninsula jutting into
-                                    Lake Erie with beaches and a lighthouse. Striking in November. Good leg stretch.
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot hotel"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-hotel">Overnight</div>
+                                    <div class="stop-name">The Blackburn Inn - Staunton, VA</div>
+                                    <div class="stop-note">A former 1828 asylum turned Michelin-listed boutique hotel on
+                                        80 acres of rolling Virginia hills. Spa, on-site restaurant.
+                                        <strong>★★★★½</strong> · Service animal welcome.
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot hotel"></div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 2</div>
+                            <div class="day-date-val">Oct 29</div>
+                        </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Staunton, VA → Paducah, KY</div>
+                            <div class="day-stats">~470 mi · ~7 hrs · Stop: National Quilt Museum</div>
+                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">Depart Blackburn Inn</div>
+                                    <div class="stop-note">West on I-64 toward Lexington, KY.</div>
+                                </div>
                             </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-hotel">Overnight</div>
-                                <div class="stop-name">Hampton Inn & Suites Buffalo Downtown — Buffalo, NY</div>
-                                <div class="stop-note">Housed in the historic 1920 Jackson Building in downtown Buffalo.
-                                    Free breakfast, indoor pool and hot tub, walkable to restaurants. <strong>★★★★½ ·
-                                        1,527 reviews.</strong> Service animal welcome, no fee. Niagara Falls is 25
-                                    minutes away — worth a morning detour on Nov 12.</div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot attr"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-attr">Stop</div>
+                                    <div class="stop-name">National Quilt Museum - Paducah, KY</div>
+                                    <div class="stop-note">Paducah is a UNESCO Creative City. The Quilt Museum holds one
+                                        of the most extraordinary textile collections in the world. Mon–Sat 10am–5pm ·
+                                        $12 adult.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot hotel"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-hotel">Overnight</div>
+                                    <div class="stop-name">The 1857 Hotel - Paducah, KY</div>
+                                    <div class="stop-note">Boutique rooms with rainfall showers and soaking tubs in
+                                        historic downtown Paducah. <strong>9.6/10 Expedia</strong> · Service animal
+                                        welcome, no fee.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 3</div>
+                            <div class="day-date-val">Oct 30</div>
+                        </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Paducah, KY → Austin, TX via Memphis</div>
+                            <div class="day-stats">~650 mi · ~10 hrs · Big day - early start</div>
+                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">Early departure from Paducah</div>
+                                    <div class="stop-note">South on US-45 toward Memphis. On the road by 7:30am.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot food"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-food">Lunch</div>
+                                    <div class="stop-name">Tonica - Memphis, TN</div>
+                                    <div class="stop-note">Mediterranean small plates and tapas downtown - graze without
+                                        getting too full for more driving. 265 S Front St. Budget 1.5 hrs.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot arrive"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-arrive">We arrive 🎃</div>
+                                    <div class="stop-name">Austin, TX - Halloween Night</div>
+                                    <div class="stop-note">Pulling in on Halloween. 6th Street goes all out. Airbnb
+                                        check-in, then straight into it.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Austin interlude -->
+                <div class="interlude">
+                    <div class="interlude-icon">🤠</div>
+                    <div>
+                        <div class="interlude-nights">7 nights · Oct 30 – Nov 6</div>
+                        <h3>Austin, Texas</h3>
+                        <p>Airbnb stay - cooking, exploring, staying put for a bit. South Congress, Barton Springs, live
+                            music. This is the rest stop the whole trip is built around.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEG 2 -->
+            <div style="margin-bottom:48px;">
+                <div class="leg-header">
+                    <span class="leg-tag">Leg 2</span>
+                    <span class="leg-title">Austin → Menomonie</span>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 4</div>
+                            <div class="day-date-val">Nov 6</div>
+                        </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Austin, TX → Kansas City, MO</div>
+                            <div class="day-stats">~8.5 hrs · Long haul north - early start</div>
+                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">We leave Austin</div>
+                                    <div class="stop-note">I-35 NE through Dallas, then north through Oklahoma toward
+                                        Kansas City.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot attr"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-attr">Museum</div>
+                                    <div class="stop-name">National WWI Museum &amp; Memorial - Kansas City</div>
+                                    <div class="stop-note">One of the best museums in the country. Stunning architecture
+                                        and views from the Liberty Memorial tower. Open 10am–5pm. Budget 2–3 hrs if we
+                                        arrive with daylight.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot hotel"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-hotel">Overnight</div>
+                                    <div class="stop-name">Kansas City, MO - Hotel TBD</div>
+                                    <div class="stop-note">Deciding between <a href="https://www.thecherrykc.com/"
+                                            target="_blank">Cherry Warehouse Hotel</a> (boutique 1930 warehouse, Midwest
+                                        Living best new hotel 2026) and <a
+                                            href="https://www.marriott.com/en-us/hotels/mciun-fairfield-inn-kansas-city-downtown-union-hill/overview/"
+                                            target="_blank">Fairfield Inn KC Downtown</a> (~$120, free breakfast).
+                                        Confirming closer to the date.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 5</div>
+                            <div class="day-date-val">Nov 7</div>
+                        </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Kansas City, MO → Lancaster, WI</div>
+                            <div class="day-stats">~490 mi · ~7 hrs · Dinner in Platteville</div>
+                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">North from Kansas City</div>
+                                    <div class="stop-note">I-35 N into Iowa, then east across into Wisconsin.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot food"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-food">Dinner</div>
+                                    <div class="stop-name">Steve's Pizza Palace - Platteville, WI</div>
+                                    <div class="stop-note">A Platteville institution for over 50 years. Crispy crust,
+                                        homemade sausage, legendary onion rings. Three full bars. 175 W Main St · Open
+                                        until 10pm · <strong>#2 restaurant in Platteville.</strong></div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot hotel"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-hotel">Overnight</div>
+                                    <div class="stop-name">Sleep Inn &amp; Suites Lancaster-Platteville - Lancaster, WI
+                                    </div>
+                                    <div class="stop-note">14 miles from Platteville. Clean, easy overnight before the
+                                        final push to Menomonie. Free hot breakfast. <strong>4.4★ ·
+                                            ~$116/night.</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 6</div>
+                            <div class="day-date-val">Nov 8</div>
+                        </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Lancaster, WI → Menomonie, WI 🏁</div>
+                            <div class="day-stats">~3.5 hrs · Easy morning · Almost there</div>
+                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">Depart Lancaster after breakfast</div>
+                                    <div class="stop-note">US-61 N → WI-35 N → I-94 W. Coffee from the hotel, easy
+                                        drive.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot arrive"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-arrive">We arrive 🏁</div>
+                                    <div class="stop-name">Menomonie, WI - The Destination</div>
+                                    <div class="stop-note">Pulling in around 1:30pm. Hampton Inn &amp; Suites UW Stout -
+                                        top-rated in town, free breakfast. This is what the trip is for.</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Day 9 -->
-            <div class="day-card">
-                <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
-                    <div class="day-date-col">
-                        <div class="day-date-label">Day 9</div>
-                        <div class="day-date-val">Nov 12</div>
-                    </div>
-                    <div class="day-route-col">
-                        <div class="day-route">Buffalo → Amesbury, MA 🏠</div>
-                        <div class="day-stats">~6 hrs · Final day home · Optional Niagara detour</div>
-                    </div>
-                    <div class="day-chevron">▾</div>
+            <!-- LEG 3 -->
+            <div>
+                <div class="leg-header">
+                    <span class="leg-tag">Leg 3</span>
+                    <span class="leg-title">Menomonie → Home</span>
                 </div>
-                <div class="day-body">
-                    <div class="stops">
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot depart"></div>
-                                <div class="stop-connector"></div>
+
+                <div class="day-card">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 7</div>
+                            <div class="day-date-val">Nov 10</div>
+                        </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Menomonie, WI → Racine, WI</div>
+                            <div class="day-stats">~3.5 hrs · Easy · Optional Milwaukee lunch</div>
+                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">Southeast on I-94</div>
+                                    <div class="stop-note">Easy drive toward Milwaukee then south along Lake Michigan to
+                                        Racine.</div>
+                                </div>
                             </div>
-                            <div class="stop-content">
-                                <div class="stop-name">Depart Buffalo</div>
-                                <div class="stop-note">Optional: 25 minutes to Niagara Falls State Park first — free
-                                    entry, dramatically misty in November, less crowded than summer.</div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot attr"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-attr">Optional</div>
+                                    <div class="stop-name">Milwaukee, WI</div>
+                                    <div class="stop-note">30 min north of Racine - great lunch stop. Lakefront,
+                                        Milwaukee Art Museum, strong food scene.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot hotel"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-hotel">Overnight</div>
+                                    <div class="stop-name">Hotel Verdant - Racine, WI</div>
+                                    <div class="stop-note">LEED Gold certified boutique hotel downtown, 5 min from Lake
+                                        Michigan. Dinner at Marguerite (hearth-fired Italian), drinks at rooftop bar
+                                        Eave with panoramic lake views. <strong>#1 hotel in Racine · 9.2/10.</strong>
+                                        Service animal welcome.</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot attr"></div>
-                                <div class="stop-connector"></div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 8</div>
+                            <div class="day-date-val">Nov 11</div>
+                        </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Racine, WI → Buffalo, NY</div>
+                            <div class="day-stats">~7 hrs · Optional Presque Isle stop</div>
+                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">East on I-94, then I-90</div>
+                                    <div class="stop-note">Through Chicago suburbs, into Indiana and Ohio along the Lake
+                                        Erie corridor.</div>
+                                </div>
                             </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-attr">Optional</div>
-                                <div class="stop-name">Niagara Falls State Park, NY</div>
-                                <div class="stop-note">Free entry. Horseshoe Falls from Prospect Point. Budget 1.5 hrs.
-                                    Worth it.</div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot attr"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-attr">Optional Stop</div>
+                                    <div class="stop-name">Presque Isle State Park - Erie, PA</div>
+                                    <div class="stop-note">Right off I-90, no detour. A sandy peninsula into Lake Erie
+                                        with beaches and a lighthouse. Beautiful in November. Good leg stretch.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot hotel"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-hotel">Overnight</div>
+                                    <div class="stop-name">Hampton Inn &amp; Suites Buffalo Downtown - Buffalo, NY</div>
+                                    <div class="stop-note">Historic 1920 Jackson Building in downtown Buffalo. Free
+                                        breakfast, indoor pool &amp; hot tub, walkable to restaurants. <strong>★★★★½ ·
+                                            1,527 reviews.</strong> Service animal welcome, no fee. Niagara Falls is 25
+                                        min away - worth a morning detour.</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="stop">
-                            <div class="stop-line-col">
-                                <div class="stop-dot arrive"></div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-card-head" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="day-date-col">
+                            <div class="day-date-label">Day 9</div>
+                            <div class="day-date-val">Nov 12</div>
+                        </div>
+                        <div class="day-route-col">
+                            <div class="day-route">Buffalo, NY → Amesbury, MA 🏠</div>
+                            <div class="day-stats">~6 hrs · Final day · Optional Niagara detour</div>
+                        </div>
+                        <div class="day-chevron"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="day-body">
+                        <div class="stops">
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot depart"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-name">Depart Buffalo</div>
+                                    <div class="stop-note">Optional: 25 min to Niagara Falls State Park first - free
+                                        entry, dramatically misty in November.</div>
+                                </div>
                             </div>
-                            <div class="stop-content">
-                                <div class="stop-badge badge-arrive">Home 🏠</div>
-                                <div class="stop-name">Amesbury, MA — We made it.</div>
-                                <div class="stop-note">I-90 E through upstate New York → Albany → I-90 → I-495 → I-95 N.
-                                    ~4,400 miles. 16 days. One good dog. Done.</div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot attr"></div>
+                                    <div class="stop-connector"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-attr">Optional</div>
+                                    <div class="stop-name">Niagara Falls State Park, NY</div>
+                                    <div class="stop-note">Free entry · Horseshoe Falls from Prospect Point · Less
+                                        crowded in November · Budget 1.5 hrs.</div>
+                                </div>
+                            </div>
+                            <div class="stop">
+                                <div class="stop-line-col">
+                                    <div class="stop-dot arrive"></div>
+                                </div>
+                                <div class="stop-content">
+                                    <div class="stop-badge badge-arrive">Home 🏠</div>
+                                    <div class="stop-name">Amesbury, MA - We made it.</div>
+                                    <div class="stop-note">I-90 E → Albany → I-90 E → I-495 → I-95 N. ~4,400 miles. 16
+                                        days. Batty approved. Done.</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     <!-- HOTELS -->
-    <div class="hotels-section" id="hotels">
-        <div class="hotels-inner">
-            <div class="section-eyebrow">Where we're sleeping</div>
-            <h2>All the stays</h2>
-            <p class="sub">All hotels welcome service animals. Click any name to visit the property.</p>
-
+    <section class="section section--alt" id="hotels">
+        <div class="container">
+            <div class="section__header">
+                <h2>All the Stays</h2>
+                <p>Every overnight, in order. All properties welcome service animals. Click any name to visit the
+                    property.</p>
+            </div>
             <table class="htable">
                 <thead>
                     <tr>
                         <th>Date</th>
                         <th>City</th>
                         <th>Property</th>
-                        <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1444,9 +1569,7 @@
                         <td><a href="https://www.blackburn-inn.com/" target="_blank">The Blackburn Inn</a>
                             <div class="note">★★★★½ · Boutique · 80 acres · Michelin-listed</div>
                         </td>
-                        <td>
-                            <div class="note">Service animal welcome</div>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>Oct 29</td>
@@ -1454,9 +1577,7 @@
                         <td><a href="https://1857hotel.com/" target="_blank">The 1857 Hotel</a>
                             <div class="note">★★★★★ · 9.6/10 Expedia</div>
                         </td>
-                        <td>
-                            <div class="note">Service animal — no fee</div>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>Oct 30 – Nov 6</td>
@@ -1464,283 +1585,261 @@
                         <td><a href="https://www.airbnb.com/s/Austin--TX/homes" target="_blank">Airbnb</a>
                             <div class="note">7 nights · Kitchen a priority</div>
                         </td>
-                        <td>
-                            <div class="note">Booking in progress</div>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>Nov 6</td>
                         <td>Kansas City, MO</td>
-                        <td>
-                            <a href="https://www.thecherrykc.com/" target="_blank">Cherry Warehouse Hotel</a> <span
-                                style="color:#555;">or</span> <a
+                        <td><a href="https://www.thecherrykc.com/" target="_blank">Cherry Warehouse Hotel</a> or <a
                                 href="https://www.marriott.com/en-us/hotels/mciun-fairfield-inn-kansas-city-downtown-union-hill/overview/"
-                                target="_blank">Fairfield Inn KC Downtown</a>
-                            <div class="note">Deciding closer to the date</div>
+                                target="_blank">Fairfield Inn KC</a>
+                            <div class="note">Deciding closer to date</div>
                         </td>
-                        <td>
-                            <div class="note">Confirming service animal at Cherry</div>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>Nov 7</td>
                         <td>Lancaster, WI</td>
                         <td><a href="https://www.choicehotels.com/wisconsin/lancaster/sleep-inn-hotels/wi368"
-                                target="_blank">Sleep Inn & Suites Lancaster-Platteville</a>
+                                target="_blank">Sleep Inn &amp; Suites Lancaster-Platteville</a>
                             <div class="note">★★★★ · 4.4/5 · ~$116/night</div>
                         </td>
-                        <td>
-                            <div class="note">Free breakfast · Service animal welcome</div>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>Nov 8+</td>
                         <td>Menomonie, WI</td>
                         <td><a href="https://www.hilton.com/en/hotels/eaumnhx-hampton-suites-menomonie-uw-stout/"
-                                target="_blank">Hampton Inn & Suites Menomonie-UW Stout</a>
+                                target="_blank">Hampton Inn &amp; Suites Menomonie-UW Stout</a>
                             <div class="note">★★★★½ · Top-rated in Menomonie</div>
                         </td>
-                        <td>
-                            <div class="note">Free hot breakfast</div>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>Nov 10</td>
                         <td>Racine, WI</td>
                         <td><a href="https://www.hotelverdant.com/" target="_blank">Hotel Verdant</a>
-                            <div class="note">★★★★ · #1 in Racine · Boutique · LEED Gold</div>
+                            <div class="note">★★★★ · #1 in Racine · LEED Gold boutique</div>
                         </td>
-                        <td>
-                            <div class="note">Rooftop bar · On-site restaurant · Service animal welcome</div>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>Nov 11</td>
                         <td>Buffalo, NY</td>
                         <td><a href="https://www.hilton.com/en/hotels/bufdthx-hampton-suites-buffalo-downtown/"
-                                target="_blank">Hampton Inn & Suites Buffalo Downtown</a>
+                                target="_blank">Hampton Inn &amp; Suites Buffalo Downtown</a>
                             <div class="note">★★★★½ · 1,527 reviews · Historic 1920 building</div>
                         </td>
-                        <td>
-                            <div class="note">Free breakfast · Service animal — no fee</div>
-                        </td>
+
                     </tr>
                 </tbody>
             </table>
         </div>
-    </div>
+    </section>
 
     <!-- MAP -->
-    <div class="map-section" id="map">
-        <div class="section-eyebrow" style="color:var(--forest); margin-bottom:12px;">
-            <span style="width:16px;height:1px;background:var(--forest);display:inline-block;"></span>
-            Full route
+    <section class="section" id="map">
+        <div class="container">
+            <div class="section__header">
+                <h2>The Whole Thing, Mapped</h2>
+                <p>Click any pin for stop details. </p>
+            </div>
+            <div id="tripmap"></div>
+            <div class="map-legend">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#2D5A27;"></div> Hotel / Overnight
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#a6c9a2;border:1px solid #2D5A27;"></div> Attraction /
+                    Stop
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#C26747;"></div> Food
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#F5F5DC;border:1px solid #ccc;"></div> Start / Home
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background:#C26747;opacity:0.7;"></div> Leg 1
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background:#2D5A27;opacity:0.7;"></div> Leg 2
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background:#a6c9a2;opacity:0.9;"></div> Leg 3
+                </div>
+            </div>
         </div>
-        <h2>The whole thing, mapped</h2>
-        <p class="sub">Click any pin for details on that stop. Amber = Leg 1 · Sage = Leg 2 · Terracotta = Leg 3</p>
-        <div id="tripmap"></div>
-        <div class="map-legend">
-            <div class="legend-item">
-                <div class="legend-dot" style="background:#2D5A27;"></div> Hotel / Overnight
-            </div>
-            <div class="legend-item">
-                <div class="legend-dot" style="background:#4A7C44;border:1px solid #8FAB8A;"></div> Attraction / Stop
-            </div>
-            <div class="legend-item">
-                <div class="legend-dot" style="background:#C97D20;"></div> Food
-            </div>
-            <div class="legend-item">
-                <div class="legend-dot" style="background:#F7F5F0;border:1px solid #ccc;"></div> Start / Home
-            </div>
-            <div class="legend-item">
-                <div class="legend-line" style="background:#C97D20;opacity:0.7;"></div> Leg 1
-            </div>
-            <div class="legend-item">
-                <div class="legend-line" style="background:#4A7C44;opacity:0.7;"></div> Leg 2
-            </div>
-            <div class="legend-item">
-                <div class="legend-line" style="background:#8FAB8A;opacity:0.7;"></div> Leg 3
-            </div>
-        </div>
-    </div>
+    </section>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="footer-left">
-            <a href="https://naturallylogical.com" target="_blank" class="footer-logo">NL</a>
-            <span class="footer-text">A <a href="https://naturallylogical.com" target="_blank">Naturally Logical</a>
-                trip · Oct–Nov 2026</span>
+    <footer class="footer">
+        <div class="footer__social">
+            <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub"><i
+                    class="fa-brands fa-github"></i></a>
         </div>
-        <div class="footer-right">~4,400 miles · 3 legs · 9 driving days · 1 very good dog 🐾</div>
+        <div class="footer__meta">
+            <p>Roadtrip · Oct–Nov 2026</p>
+            <p>~4,400 miles · 3 legs · 9 driving days · 1 very good dog (Batty says hi🐾)</p>
+        </div>
     </footer>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <script>
-        // Cards — first open by default
-        document.querySelectorAll('.day-card').forEach((c, i) => {
-            if (i !== 0) c.classList.remove('open');
-        });
-
-        // MAP
-        const map = L.map('tripmap', { zoomControl: true, scrollWheelZoom: false }).setView([38.5, -90], 4);
-
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '© OpenStreetMap contributors © CARTO', maxZoom: 18
-        }).addTo(map);
-
-        // Inject popup styles
-        const s = document.createElement('style');
-        s.textContent = `
-    #tripmap { width:100%; height:480px; border-radius:8px; overflow:hidden; border:1px solid #E2DDD5; }
-    .nl-popup .leaflet-popup-content-wrapper {
-      background: #fff; color: #3D3D3D;
-      border: 1px solid #E2DDD5; border-radius: 8px;
-      font-family: 'DM Sans', sans-serif;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    .nl-popup .leaflet-popup-tip { background: #fff; }
-    .nl-popup .leaflet-popup-content { margin: 14px 16px; font-size: 13px; line-height: 1.5; }
-    .nl-popup .leaflet-popup-content b { color: #2D5A27; display:block; margin-bottom:4px; font-size:14px; font-weight:600; }
-    .nl-popup .leaflet-popup-close-button { color: #aaa !important; }
-    .nl-popup .pd { font-size:10px; color:#aaa; margin-bottom:5px; letter-spacing:0.08em; text-transform:uppercase; }
-  `;
-        document.head.appendChild(s);
-
-        function icon(color, size = 13) {
-            return L.divIcon({
-                className: '',
-                html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${color};border:2px solid rgba(255,255,255,0.9);box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>`,
-                iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -(size / 2 + 4)]
+        // ── NAV TOGGLE ──
+        const toggle = document.getElementById("navToggle");
+        const links = document.getElementById("navLinks");
+        if (toggle && links) {
+            toggle.addEventListener("click", e => {
+                e.stopPropagation();
+                const open = links.classList.toggle("is-open");
+                toggle.setAttribute("aria-expanded", String(open));
+            });
+            links.addEventListener("click", e => {
+                const a = e.target.closest("a");
+                if (a && a.getAttribute("href").startsWith("#")) {
+                    const el = document.querySelector(a.getAttribute("href"));
+                    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+                }
+                links.classList.remove("is-open");
+                toggle.setAttribute("aria-expanded", "false");
+            });
+            document.addEventListener("click", e => {
+                if (!links.classList.contains("is-open")) return;
+                if (!links.contains(e.target) && !toggle.contains(e.target)) {
+                    links.classList.remove("is-open");
+                    toggle.setAttribute("aria-expanded", "false");
+                }
             });
         }
 
-        function pop(date, name, note) {
-            return `<div class="pd">${date}</div><b>${name}</b>${note}`;
-        }
+        // ── OPEN FIRST CARD ──
+        document.querySelectorAll(".day-card").forEach((c, i) => { if (i !== 0) c.classList.remove("open"); });
 
-        const G = '#2D5A27', M = '#4A7C44', A = '#C97D20', W = '#F7F5F0', SA = '#8FAB8A';
-
-        const stops = [
-            { lt: 42.858, lg: -70.930, c: W, sz: 16, p: pop('Oct 28 · Departure', '🏠 Amesbury, MA', 'Where we start and where we end.') },
-            { lt: 39.318, lg: -77.758, c: M, sz: 11, p: pop('Oct 28 · Stop', 'Harpers Ferry NHP, WV', '3 states, 2 rivers, 1 overlook.') },
-            { lt: 38.145, lg: -79.067, c: G, sz: 13, p: pop('Oct 28 · Overnight', '🏨 Blackburn Inn — Staunton, VA', 'Boutique on 80 acres · Michelin-listed · ★★★★½') },
-            { lt: 37.089, lg: -88.597, c: M, sz: 11, p: pop('Oct 29 · Stop', 'National Quilt Museum — Paducah, KY', 'UNESCO Creative City · extraordinary collection') },
-            { lt: 37.086, lg: -88.595, c: G, sz: 13, p: pop('Oct 29 · Overnight', '🏨 The 1857 — Paducah, KY', '9.6/10 Expedia · soaking tub · service animal welcome') },
-            { lt: 35.140, lg: -90.057, c: A, sz: 11, p: pop('Oct 30 · Lunch', '🍽 Tonica — Memphis, TN', 'Mediterranean small plates · 265 S Front St') },
-            { lt: 30.270, lg: -97.743, c: G, sz: 18, p: pop('Oct 30 – Nov 6 · HERE NOW 📍', '🤠 Austin, TX', '7 nights Airbnb · Halloween on 6th Street · Barton Springs') },
-            { lt: 39.081, lg: -94.586, c: M, sz: 11, p: pop('Nov 6 · Museum', 'WWI Museum — Kansas City, MO', '4.9★ · one of the best in the country') },
-            { lt: 39.100, lg: -94.578, c: G, sz: 13, p: pop('Nov 6 · Overnight', '🏨 Kansas City, MO', 'Cherry Warehouse or Fairfield Inn KC — TBD') },
-            { lt: 42.739, lg: -90.478, c: A, sz: 11, p: pop("Nov 7 · Dinner", "🍕 Steve's Pizza Palace — Platteville, WI", '50+ yr institution · legendary onion rings · open till 10pm') },
-            { lt: 42.844, lg: -90.721, c: G, sz: 13, p: pop('Nov 7 · Overnight', '🏨 Sleep Inn Lancaster-Platteville', '4.4★ · free breakfast · ~$116/night') },
-            { lt: 44.906, lg: -91.930, c: G, sz: 16, p: pop('Nov 8 · Destination', '🏁 Menomonie, WI', 'Hampton Inn & Suites UW Stout · top-rated in town') },
-            { lt: 42.733, lg: -87.782, c: G, sz: 13, p: pop('Nov 10 · Overnight', '🏨 Hotel Verdant — Racine, WI', '#1 in Racine · LEED Gold boutique · rooftop bar Eave') },
-            { lt: 42.886, lg: -78.878, c: G, sz: 13, p: pop('Nov 11 · Overnight', '🏨 Hampton Inn Buffalo Downtown', 'Historic 1920 Jackson Building · free breakfast · Niagara 25 min') },
-            { lt: 42.858, lg: -70.930, c: W, sz: 14, p: pop('Nov 12 · Home', '🏠 Amesbury, MA', '~4,400 miles · 9 driving days · 1 very good dog. Done.') },
+        // ── DYNAMIC TRACKER ──
+        const STOPS = [
+            { city: "Amesbury", sub: "Home", start: null, end: "2026-10-27" },
+            { city: "Staunton", sub: "Oct 28", start: "2026-10-28", end: "2026-10-28" },
+            { city: "Paducah", sub: "Oct 29", start: "2026-10-29", end: "2026-10-29" },
+            { city: "Memphis", sub: "Oct 30", start: "2026-10-30", end: "2026-10-30" },
+            { city: "Austin", sub: "Oct 30–Nov 6", start: "2026-10-30", end: "2026-11-06" },
+            { city: "Kansas City", sub: "Nov 6", start: "2026-11-06", end: "2026-11-06" },
+            { city: "Platteville", sub: "Nov 7", start: "2026-11-07", end: "2026-11-07" },
+            { city: "Lancaster", sub: "Nov 7", start: "2026-11-07", end: "2026-11-07" },
+            { city: "Menomonie", sub: "Nov 8–9", start: "2026-11-08", end: "2026-11-09" },
+            { city: "Racine", sub: "Nov 10", start: "2026-11-10", end: "2026-11-10" },
+            { city: "Buffalo", sub: "Nov 11", start: "2026-11-11", end: "2026-11-11" },
+            { city: "Amesbury", sub: "Nov 12 · Home", start: "2026-11-12", end: null },
         ];
 
-        stops.forEach(s => L.marker([s.lt, s.lg], { icon: icon(s.c, s.sz) }).addTo(map).bindPopup(s.p, { className: 'nl-popup', maxWidth: 240 }));
+        function todayStr() {
+            const d = new Date();
+            return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+        }
+
+        function buildTracker() {
+            const today = todayStr();
+            let cur = 0;
+            if (today < "2026-10-28") { cur = 0; }
+            else if (today > "2026-11-12") { cur = STOPS.length - 1; }
+            else {
+                for (let i = 0; i < STOPS.length; i++) {
+                    const s = STOPS[i];
+                    const after = !s.start || today >= s.start;
+                    const before = !s.end || today <= s.end;
+                    if (after && before) cur = i;
+                }
+            }
+
+            const el = document.getElementById("tracker-stops");
+            el.innerHTML = STOPS.map((s, i) => {
+                const cls = i < cur ? "done" : i === cur ? "current" : "";
+                return `<div class="tracker-stop ${cls}">
+      <div class="tracker-dot"></div>
+      <div class="tracker-city">${s.city}${i === cur ? " ← here" : ""}</div>
+      <div class="tracker-date">${s.sub}</div>
+    </div>`;
+            }).join("");
+
+            const statusEl = document.getElementById("tracker-status");
+            const icon = today < "2026-10-28" ? "🏠" : today > "2026-11-12" ? "🏠" : "📍";
+            if (today < "2026-10-28") {
+                statusEl.innerHTML = icon + " Still home in Amesbury - trip starts Oct 28";
+            } else if (today > "2026-11-12") {
+                statusEl.innerHTML = icon + " Back home! Trip complete - ~4,400 miles done";
+            } else {
+                statusEl.innerHTML = icon + " Currently in <strong>" + STOPS[cur].city + "</strong> &nbsp;·&nbsp; " + STOPS[cur].sub;
+            }
+
+            // Connector colors
+            const sheet = document.createElement("style");
+            sheet.textContent = STOPS.map((_, i) => {
+                if (i < cur) return `.tracker-stops .tracker-stop:nth-child(${i + 1})::before{background:var(--mutedBrand);}`;
+                if (i === cur) return `.tracker-stops .tracker-stop:nth-child(${i + 1})::before{background:linear-gradient(90deg,var(--mutedBrand),var(--line));}`;
+                return "";
+            }).join("");
+            document.head.appendChild(sheet);
+        }
+        buildTracker();
+
+        // ── MAP ──
+        const map = L.map("tripmap", { zoomControl: true, scrollWheelZoom: false }).setView([38.5, -90], 4);
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+            attribution: "© OpenStreetMap contributors © CARTO", maxZoom: 18
+        }).addTo(map);
+
+        const ps = document.createElement("style");
+        ps.textContent = `
+  .nlp .leaflet-popup-content-wrapper{background:#fff;color:#152f12;border:1px solid rgba(16,19,20,0.10);border-radius:16px;font-family:Raleway,sans-serif;box-shadow:0 16px 40px rgba(16,19,20,0.12);}
+  .nlp .leaflet-popup-tip{background:#fff;}
+  .nlp .leaflet-popup-content{margin:14px 16px;font-size:13px;line-height:1.55;font-weight:600;}
+  .nlp .leaflet-popup-content b{color:#2D5A27;display:block;margin-bottom:4px;font-size:14px;font-weight:900;}
+  .nlp .leaflet-popup-close-button{color:#aaa!important;}
+  .nlp .pd{font-size:10px;color:#708090;margin-bottom:5px;letter-spacing:0.08em;text-transform:uppercase;font-weight:800;}
+`;
+        document.head.appendChild(ps);
+
+        function icon(c, sz = 13) {
+            return L.divIcon({
+                className: "",
+                html: `<div style="width:${sz}px;height:${sz}px;border-radius:50%;background:${c};border:2px solid rgba(255,255,255,0.9);box-shadow:0 2px 6px rgba(0,0,0,0.18);"></div>`,
+                iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2], popupAnchor: [0, -(sz / 2 + 4)]
+            });
+        }
+        function pop(d, n, t) { return `<div class="pd">${d}</div><b>${n}</b>${t}`; }
+
+        const G = "#2D5A27", M = "#a6c9a2", A = "#C26747", BG = "#F5F5DC";
+
+        [
+            { lt: 42.858, lg: -70.930, c: BG, sz: 16, p: pop("Oct 28 · Departure", "🏠 Amesbury, MA", "Where we start and where we end.") },
+            { lt: 39.318, lg: -77.758, c: M, sz: 11, p: pop("Oct 28 · Stop", "Harpers Ferry NHP, WV", "3 states, 2 rivers, 1 overlook.") },
+            { lt: 38.145, lg: -79.067, c: G, sz: 13, p: pop("Oct 28 · Overnight", "🏨 Blackburn Inn - Staunton, VA", "Boutique on 80 acres · Michelin-listed · ★★★★½") },
+            { lt: 37.089, lg: -88.597, c: M, sz: 11, p: pop("Oct 29 · Stop", "National Quilt Museum - Paducah, KY", "UNESCO Creative City · extraordinary collection") },
+            { lt: 37.086, lg: -88.595, c: G, sz: 13, p: pop("Oct 29 · Overnight", "🏨 The 1857 - Paducah, KY", "9.6/10 Expedia · soaking tub · service animal welcome") },
+            { lt: 35.140, lg: -90.057, c: A, sz: 11, p: pop("Oct 30 · Lunch", "🍽 Tonica - Memphis, TN", "Mediterranean small plates · 265 S Front St") },
+            { lt: 30.270, lg: -97.743, c: G, sz: 18, p: pop("Oct 30–Nov 6 · HERE NOW 📍", "🤠 Austin, TX", "7 nights Airbnb · Halloween on 6th Street · Barton Springs") },
+            { lt: 39.081, lg: -94.586, c: M, sz: 11, p: pop("Nov 6 · Museum", "WWI Museum - Kansas City, MO", "4.9★ · one of the best in the country") },
+            { lt: 39.100, lg: -94.578, c: G, sz: 13, p: pop("Nov 6 · Overnight", "🏨 Kansas City, MO", "Cherry Warehouse or Fairfield Inn KC - TBD") },
+            { lt: 42.739, lg: -90.478, c: A, sz: 11, p: pop("Nov 7 · Dinner", "🍕 Steve's Pizza Palace - Platteville, WI", "50+ yr institution · legendary onion rings · open till 10pm") },
+            { lt: 42.844, lg: -90.721, c: G, sz: 13, p: pop("Nov 7 · Overnight", "🏨 Sleep Inn Lancaster-Platteville", "4.4★ · free breakfast · ~$116/night") },
+            { lt: 44.906, lg: -91.930, c: G, sz: 16, p: pop("Nov 8 · Destination", "🏁 Menomonie, WI", "Hampton Inn & Suites UW Stout · top-rated in town") },
+            { lt: 42.733, lg: -87.782, c: G, sz: 13, p: pop("Nov 10 · Overnight", "🏨 Hotel Verdant - Racine, WI", "#1 in Racine · LEED Gold boutique · rooftop bar Eave") },
+            { lt: 42.886, lg: -78.878, c: G, sz: 13, p: pop("Nov 11 · Overnight", "🏨 Hampton Inn Buffalo Downtown", "Historic 1920 building · free breakfast · Niagara 25 min") },
+            { lt: 42.858, lg: -70.930, c: BG, sz: 14, p: pop("Nov 12 · Home", "🏠 Amesbury, MA", "~4,400 miles · 9 driving days · 1 very good dog. Done.") },
+        ].forEach(s => L.marker([s.lt, s.lg], { icon: icon(s.c, s.sz) }).addTo(map).bindPopup(s.p, { className: "nlp", maxWidth: 240 }));
 
         const l1 = [[42.858, -70.930], [39.318, -77.758], [38.145, -79.067], [37.089, -88.597], [37.086, -88.595], [35.140, -90.057], [30.270, -97.743]];
         const l2 = [[30.270, -97.743], [39.081, -94.586], [42.739, -90.478], [42.844, -90.721], [44.906, -91.930]];
         const l3 = [[44.906, -91.930], [42.733, -87.782], [42.886, -78.878], [42.858, -70.930]];
 
-        L.polyline(l1, { color: '#C97D20', weight: 2, opacity: 0.65, dashArray: '5 4' }).addTo(map);
-        L.polyline(l2, { color: '#4A7C44', weight: 2, opacity: 0.65, dashArray: '5 4' }).addTo(map);
-        L.polyline(l3, { color: '#8FAB8A', weight: 2, opacity: 0.65, dashArray: '5 4' }).addTo(map);
-
+        L.polyline(l1, { color: A, weight: 2.5, opacity: 0.7, dashArray: "5 4" }).addTo(map);
+        L.polyline(l2, { color: G, weight: 2.5, opacity: 0.7, dashArray: "5 4" }).addTo(map);
+        L.polyline(l3, { color: M, weight: 2.5, opacity: 0.8, dashArray: "5 4" }).addTo(map);
         map.fitBounds(L.latLngBounds([...l1, ...l2, ...l3]), { padding: [32, 32] });
-        // ── DYNAMIC TRACKER ──────────────────────────────────────────────
-        // Each stop: [label, date-start (YYYY-MM-DD), date-end or null, status-text]
-        const STOPS = [
-            { city: 'Amesbury', sub: 'Home', start: null, end: '2026-10-27' },
-            { city: 'Staunton', sub: 'Oct 28', start: '2026-10-28', end: '2026-10-28' },
-            { city: 'Paducah', sub: 'Oct 29', start: '2026-10-29', end: '2026-10-29' },
-            { city: 'Memphis', sub: 'Oct 30', start: '2026-10-30', end: '2026-10-30' },
-            { city: 'Austin', sub: 'Oct 30–Nov 6', start: '2026-10-30', end: '2026-11-06' },
-            { city: 'Kansas City', sub: 'Nov 6', start: '2026-11-06', end: '2026-11-06' },
-            { city: 'Platteville', sub: 'Nov 7', start: '2026-11-07', end: '2026-11-07' },
-            { city: 'Lancaster', sub: 'Nov 7', start: '2026-11-07', end: '2026-11-07' },
-            { city: 'Menomonie', sub: 'Nov 8–9', start: '2026-11-08', end: '2026-11-09' },
-            { city: 'Racine', sub: 'Nov 10', start: '2026-11-10', end: '2026-11-10' },
-            { city: 'Buffalo', sub: 'Nov 11', start: '2026-11-11', end: '2026-11-11' },
-            { city: 'Amesbury', sub: 'Nov 12 · Home', start: '2026-11-12', end: null },
-        ];
-
-        function toDateStr(d) {
-            // YYYY-MM-DD from local date
-            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-        }
-
-        function buildTracker() {
-            const today = toDateStr(new Date());
-            const stopsEl = document.getElementById('tracker-stops');
-            const statusEl = document.getElementById('tracker-status');
-
-            let currentIdx = -1;
-
-            // Find current stop: today falls within start..end (inclusive), or before first start
-            for (let i = 0; i < STOPS.length; i++) {
-                const s = STOPS[i];
-                const after = !s.start || today >= s.start;
-                const before = !s.end || today <= s.end;
-                if (after && before) { currentIdx = i; }
-            }
-
-            // If before the trip starts
-            if (today < '2026-10-28') currentIdx = 0;
-            // If after the trip ends
-            if (today > '2026-11-12') currentIdx = STOPS.length - 1;
-
-            let html = '';
-            for (let i = 0; i < STOPS.length; i++) {
-                const s = STOPS[i];
-                let cls = '';
-                if (i < currentIdx) cls = 'done';
-                else if (i === currentIdx) cls = 'current';
-
-                // connector state
-                let connCls = '';
-                if (i < currentIdx) connCls = 'done';
-                else if (i === currentIdx) connCls = 'current';
-
-                html += `<div class="tracker-stop ${cls}">
-        <div class="tracker-dot"></div>
-        <div class="tracker-city">${s.city}${i === currentIdx ? ' ← here' : ''}</div>
-        <div class="tracker-date">${s.sub}</div>
-      </div>`;
-            }
-
-            stopsEl.innerHTML = html;
-
-            // Status badge
-            const cur = STOPS[currentIdx];
-            if (today < '2026-10-28') {
-                statusEl.innerHTML = '🏠 We're still home in Amesbury & nbsp;·& nbsp; Trip starts Oct 28';
-            } else if (today > '2026-11-12') {
-                statusEl.innerHTML = '🏠 We're home! & nbsp;·& nbsp; Trip complete · ~4, 400 miles done';
-            } else {
-                statusEl.innerHTML = `📍 Currently in <strong>${cur.city}</strong> &nbsp;·&nbsp; ${cur.sub}`;
-            }
-
-            // Update connector colors via CSS — inject a small override
-            const sheet = document.createElement('style');
-            let connStyles = '';
-            for (let i = 0; i < STOPS.length; i++) {
-                if (i < currentIdx) {
-                    connStyles += `.tracker-stops .tracker-stop:nth-child(${i + 1})::before { background: var(--mid); }
-`;
-                } else if (i === currentIdx) {
-                    connStyles += `.tracker-stops .tracker-stop:nth-child(${i + 1})::before { background: linear-gradient(90deg, var(--mid), #3A3A3A); }
-`;
-                }
-            }
-            sheet.textContent = connStyles;
-            document.head.appendChild(sheet);
-        }
-
-        buildTracker();
-
     </script>
 </body>
 
