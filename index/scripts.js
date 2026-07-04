@@ -153,7 +153,7 @@ if (viewerImg) {
 
     const body = [message, "", name, email].join("\n");
     const mailto =
-      `mailto:sarah.brown@naturallylogical.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      `mailto:sarah@naturallylogical.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailto;
   }

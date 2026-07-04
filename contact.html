@@ -8,7 +8,7 @@
 
   <title>Contact | Naturally Logical</title>
   <meta name="description"
-    content="Book time with Sarah M. Brown of Naturally Logical for AI, automation, and strategy consulting." />
+    content="Tell Naturally Logical what you're trying to solve. One intake form routes every inquiry to the right engagement type, no individual booking links." />
   <link rel="canonical" href="https://naturallylogical.com/contact.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
 <body>
   <header class="nav">
     <div class="container nav__inner">
-      <a class="brand" href="about-sarah.html" aria-label="Naturally Logical home">
+      <a class="brand" href="index.html" aria-label="Naturally Logical home">
         <span class="brand__mark" aria-hidden="true">
           <img src="Images/logo.png" alt="" class="brand__logo" />
         </span>
@@ -38,7 +38,7 @@
         <a href="index.html#services">Services</a>
         <a href="index.html#proof">Proof</a>
         <a href="index.html#process">Process</a>
-        <a href="about-sarah.html">About</a>
+        <a href="index.html#about">About</a>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -52,47 +52,43 @@
       <div class="container hero__inner">
         <div class="hero__copy">
           <div class="pill">
-            <i class="fa-solid fa-envelope"></i>
-            <span>Contact + Scheduling</span>
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>Intake</span>
           </div>
 
           <h1>
-            Reach out or
-            <span class="accent">book time directly</span>.
+            Tell us what you're
+            <span class="accent">actually trying to solve</span>.
           </h1>
 
           <p class="lead">
-            For consulting, automation strategy, or system design support, choose a time that works for you and I’ll
-            follow up with the right next steps.
+            This is not a sales form. Answer a few direct questions about what's broken, unreliable, or unclear, and
+            we'll route you to the engagement type that fits. Every inquiry goes to the same inbox and gets a
+            straight answer, including when the answer is that we're not the right fit.
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" id="bookingLinkBtn" href="https://calendar.app.google/2r5d7oSBQ422ipMG9"
-              target="_blank" rel="noopener">
-              <i class="fa-solid fa-calendar"></i> Book on Google Calendar
+            <a class="btn btn--primary" href="#intake-form">
+              <i class="fa-solid fa-arrow-down"></i> Start the intake
             </a>
-            <a class="btn btn--ghost" href="mailto:sarah.brown@naturallylogical.com">
-              <i class="fa-solid fa-envelope"></i> Email Sarah
+            <a class="btn btn--ghost" href="mailto:connect@naturallylogical.com">
+              <i class="fa-solid fa-envelope"></i> Email connect@naturallylogical.com
             </a>
-            <button class="btn btn--ghost" id="copyLinkBtn" type="button">
-              <i class="fa-solid fa-copy"></i> Copy booking link
-            </button>
           </div>
-
-          <p class="lead" id="statusMsg" aria-live="polite" style="margin-top: 12px;"></p>
 
           <div class="hero__meta">
             <div class="metaItem">
               <div class="metaItem__title">What to expect</div>
-              <div class="metaItem__text">Pick a time, add context, receive an invite automatically.</div>
+              <div class="metaItem__text">A direct reply from Naturally Logical, not an automated sequence.</div>
             </div>
             <div class="metaItem">
-              <div class="metaItem__title">Meeting format</div>
-              <div class="metaItem__text">Virtual meeting details are included in the invite.</div>
+              <div class="metaItem__title">Routing</div>
+              <div class="metaItem__text">Every submission goes to connect@naturallylogical.com and is reviewed by
+                the team.</div>
             </div>
             <div class="metaItem">
               <div class="metaItem__title">Best for</div>
-              <div class="metaItem__text">Discovery calls, consulting intake, and project scoping.</div>
+              <div class="metaItem__text">Scoping a real problem before committing to an engagement.</div>
             </div>
           </div>
         </div>
@@ -111,11 +107,11 @@
               <li><i class="fa-solid fa-check"></i> What system or process is breaking down?</li>
               <li><i class="fa-solid fa-check"></i> Where are you seeing inconsistency or lack of trust?</li>
               <li><i class="fa-solid fa-check"></i> What has already been tried or implemented?</li>
-              <li><i class="fa-solid fa-check"></i> Who currently owns the system—and where is it unclear?</li>
+              <li><i class="fa-solid fa-check"></i> Who currently owns the system, and where is it unclear?</li>
             </ul>
 
             <div class="card__actions">
-              <a class="btn btn--primary btn--small" href="what-i-build.html">See examples</a>
+              <a class="btn btn--primary btn--small" href="index.html#proof">See proof</a>
               <a class="btn btn--ghost btn--small" href="index.html">Back to home</a>
             </div>
           </div>
@@ -125,18 +121,70 @@
       <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
-    <section class="section">
+    <section class="section" id="intake-form">
       <div class="container">
         <div class="section__header">
-          <h2>Book a 30 minute intro call</h2>
-          <p>Please attach any relevant docs or background information once the meeting is created.</p>
+          <h2>Intake</h2>
+          <p>Two minutes. Enough context for us to route you correctly the first time.</p>
         </div>
 
-        <div class="card" style="padding: 14px; overflow: hidden;">
-          <iframe id="bookingIframe" title="Google Calendar Booking" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" src="https://calendar.app.google/2r5d7oSBQ422ipMG9"
-            style="width: 100%; min-height: 780px; border: 0; border-radius: 14px; background: #fff; display: block;">
-          </iframe>
+        <div class="card" style="padding: 28px;">
+          <form class="intake-form" id="intakeForm" novalidate>
+            <div class="intake-row">
+              <div class="intake-field">
+                <label for="intakeName">Name</label>
+                <input type="text" id="intakeName" name="name" autocomplete="name" required />
+              </div>
+              <div class="intake-field">
+                <label for="intakeEmail">Email</label>
+                <input type="email" id="intakeEmail" name="email" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="intake-field">
+              <label for="intakeCompany">Company <span style="font-weight:400; color:rgba(16,19,20,0.5);">(optional)</span></label>
+              <input type="text" id="intakeCompany" name="company" autocomplete="organization" />
+            </div>
+
+            <div class="intake-field">
+              <label for="intakeProblem">What are you trying to solve?</label>
+              <p class="intake-field__hint">Describe the system, process, or decision that isn't working, as
+                specifically as you can.</p>
+              <textarea id="intakeProblem" name="problem" rows="5" required></textarea>
+            </div>
+
+            <div class="intake-field">
+              <label id="projectTypeLabel">Which sounds closer to what you need?</label>
+              <div class="project-type-grid" role="radiogroup" aria-labelledby="projectTypeLabel">
+                <label class="project-type-card" for="typeSmall">
+                  <input type="radio" id="typeSmall" name="projectType" value="Small Integration Project" required />
+                  <div class="project-type-card__title">Small Integration Project</div>
+                  <p class="project-type-card__text">A focused, self-contained engagement: one system, one
+                    failure point, a clear scope.</p>
+                </label>
+                <label class="project-type-card" for="typeEnterprise">
+                  <input type="radio" id="typeEnterprise" name="projectType" value="Enterprise Transformation" />
+                  <div class="project-type-card__title">Enterprise Transformation</div>
+                  <p class="project-type-card__text">A larger initiative spanning multiple systems or teams,
+                    requiring a full team to execute.</p>
+                </label>
+              </div>
+            </div>
+
+            <div class="hero__actions">
+              <button class="btn btn--primary" type="submit">
+                <i class="fa-solid fa-paper-plane"></i> Send to Naturally Logical
+              </button>
+            </div>
+
+            <p class="lead" id="statusMsg" aria-live="polite" style="margin-top: 4px; font-size: 14px;"></p>
+
+            <p class="intake-field__hint" style="margin-top: -8px;">
+              Submitting opens your email client with this addressed to
+              <a href="mailto:connect@naturallylogical.com">connect@naturallylogical.com</a>. Nothing is sent until
+              you do.
+            </p>
+          </form>
         </div>
       </div>
     </section>
@@ -149,7 +197,7 @@
         </div>
         <div class="footer__right">
           <a href="contact.html">Contact</a>
-          <a href="what-i-build.html">What we Build</a>
+          <a href="index.html#proof">Proof</a>
           <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
@@ -159,18 +207,46 @@
   <script src="New_assets/scripts.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const bookingUrl = "https://calendar.app.google/2r5d7oSBQ422ipMG9";
-      const copyBtn = document.getElementById("copyLinkBtn");
+      const form = document.getElementById("intakeForm");
       const statusMsg = document.getElementById("statusMsg");
 
-      if (copyBtn) {
-        copyBtn.addEventListener("click", async () => {
-          try {
-            await navigator.clipboard.writeText(bookingUrl);
-            if (statusMsg) statusMsg.textContent = "Booking link copied.";
-          } catch (err) {
-            if (statusMsg) statusMsg.textContent = "Could not copy the link. Please use the Book button instead.";
+      document.querySelectorAll(".project-type-card input[type=radio]").forEach((input) => {
+        input.addEventListener("change", () => {
+          document.querySelectorAll(".project-type-card").forEach((card) => card.classList.remove("is-selected"));
+          input.closest(".project-type-card").classList.add("is-selected");
+        });
+      });
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
           }
+
+          const name = form.name.value.trim();
+          const email = form.email.value.trim();
+          const company = form.company.value.trim();
+          const problem = form.problem.value.trim();
+          const projectType = form.projectType.value;
+
+          const subject = `Intake: ${projectType} - ${name}`;
+          const bodyLines = [
+            `Name: ${name}`,
+            `Email: ${email}`,
+            company ? `Company: ${company}` : null,
+            `Project type: ${projectType}`,
+            "",
+            "What they're trying to solve:",
+            problem
+          ].filter(Boolean);
+
+          const mailto = `mailto:connect@naturallylogical.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+          window.location.href = mailto;
+
+          if (statusMsg) statusMsg.textContent = "Opening your email client to send this to connect@naturallylogical.com.";
         });
       }
     });

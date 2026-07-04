@@ -1,0 +1,103 @@
+/* contact/styles.css */
+
+/* ===== Design tokens ===== */
+:root{
+  --brand: #00CDAC;
+  --ink: #1e1e1e;
+  --ink-muted: #5a5a5a;
+  --brand-strong: color-mix(in srgb, var(--brand) 85%, black);
+  --bg-soft: color-mix(in srgb, var(--brand) 6%, white);
+}
+
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  line-height: 1.8;
+  color: var(--ink);
+  background: var(--bg-soft);
+}
+
+/* Nav */
+.nav-brand{
+  background-color: var(--brand);
+}
+.nav-link{
+  color: #fff !important;
+}
+.w3-bar .w3-button{ padding: 16px; }
+
+/* Layout */
+.page{ padding-top: 80px; padding-left: 16px; padding-right: 16px; }
+.section{ padding: 24px 0; }
+
+.hero-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 26px 22px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.05);
+}
+.brand-heading{ color: var(--brand-strong); }
+.hero-title{ margin: 0 0 6px; font-weight: 800; }
+.hero-subtitle{ margin: 0; color: var(--ink-muted); }
+
+/* Grid */
+.grid{
+  display: grid;
+  gap: 18px;
+}
+@media (min-width: 800px){
+  .grid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Cards */
+.card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 20px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+.card-title{
+  margin: 0 0 6px;
+  font-weight: 800;
+}
+.contact-detail a{
+  font-size: 1rem;
+  font-weight: 600;
+}
+.muted{ color: var(--ink-muted); }
+
+.card-actions{ margin-top: 12px; }
+
+/* Buttons */
+.brand-btn{
+  background-color: var(--brand);
+  color: #fff !important;
+  border-radius: 999px;
+  padding: 10px 16px;
+}
+.brand-btn:hover{ filter: brightness(0.95); }
+
+/* Notes + status */
+.note-card{
+  background: rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.status{
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+/* Footer */
+.footer{
+  text-align: center;
+  padding: 26px 10px 34px;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+.footer p{ margin: 4px 0; }

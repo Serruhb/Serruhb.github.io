@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00CDAC" />
+
+  <title>Book Time | Sarah M. Brown | AI &amp; Automation Engineer</title>
+  <meta name="description" content="Schedule time with Sarah M. Brown via Google Calendar." />
+
+  <!-- W3CSS + Fonts + Icons -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <!-- Your booking page CSS -->
+  <link rel="stylesheet" href="booking/styles.css" />
+</head>
+
+<body>
+
+  <!-- Top Navbar (simple + matches your brand) -->
+  <div class="w3-top">
+    <div class="w3-bar w3-card nav-brand">
+      <a href="index.html" class="w3-bar-item w3-button nav-link">
+        <i class="fa fa-home"></i> HOME
+      </a>
+      <a href="what-i-build.html" class="w3-bar-item w3-button nav-link w3-hide-small">
+        <i class="fa fa-cubes"></i> WHAT I BUILD
+      </a>
+      <a href="resume.html" class="w3-bar-item w3-button nav-link w3-hide-small" target="_blank">
+        <i class="fa fa-user"></i> RESUME
+      </a>
+
+      <div class="w3-right w3-hide-small">
+        <a href="mailto:sarah.brown@naturallylogical.com" class="w3-bar-item w3-button nav-link">
+          <i class="fa fa-envelope"></i> CONTACT
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page w3-content" style="max-width: 1100px;">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card w3-card">
+        <h1 class="brand-heading hero-title">Book Time</h1>
+        <p class="hero-subtitle">
+          Choose a slot that works for you using my Google Calendar scheduling page.
+        </p>
+
+        <div class="hero-actions">
+          <!-- Primary CTA -->
+          <a class="w3-button brand-btn" id="bookingLinkBtn" href="https://calendar.app.google/2r5d7oSBQ422ipMG9" target="_blank" rel="noopener">
+            <i class="fa fa-calendar"></i> Book on Google Calendar
+          </a>
+
+          <!-- Secondary actions -->
+          <button class="w3-button w3-border" id="copyLinkBtn" type="button">
+            <i class="fa fa-copy"></i> Copy booking link
+          </button>
+        </div>
+
+        <p class="w3-small w3-text-grey status" id="statusMsg" aria-live="polite"></p>
+
+        <div class="tips">
+          <div class="tip">
+            <div class="tip-title"><i class="fa fa-clock-o"></i> What to expect</div>
+            <div class="tip-body">You’ll pick a time, add a short note, and get an invite automatically.</div>
+          </div>
+          <div class="tip">
+            <div class="tip-title"><i class="fa fa-video-camera"></i> Call format</div>
+            <div class="tip-body">Virtual hangouts meeting link will be included in the calendar invite.</div>
+          </div>
+          <div class="tip">
+            <div class="tip-title"><i class="fa fa-shield"></i> Privacy</div>
+            <div class="tip-body">This page doesn’t collect form data, booking happens directly in Google Calendar.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPTIONAL EMBED -->
+    <section class="section">
+      <div class="card">
+        <h2 class="brand-heading section-title">
+          <i class="fa fa-external-link"></i> Book a 30 min Intro Call
+        </h2>
+        <p class="muted" style="margin-top:6px;">
+          Please attach any relavent docs or information to the meeting once created. 
+        </p>
+
+        <div class="embed-wrap">
+          <iframe
+            id="bookingIframe"
+            title="Google Calendar Booking"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://calendar.app.google/2r5d7oSBQ422ipMG9">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2026 Naturally Logical</p>
+      <p class="muted">Scheduling powered by Google Calendar.</p>
+    </footer>
+  </main>
+
+  <script src="booking/scripts.js"></script>
+</body>
+</html>
