@@ -314,6 +314,7 @@ h3 {
   color: var(--amber-gold);
 }
 
+
 .hero__sub {
   margin-top: 28px;
   max-width: 500px;
@@ -480,6 +481,10 @@ h3 {
   background: var(--deep-bark);
   border-top: 1px solid var(--warm-lift);
   border-bottom: 1px solid var(--warm-lift);
+}
+.philosophy h2 strong {
+  font-weight: 700;
+  color: var(--amber-gold);
 }
 
 .philosophy__inner {
@@ -2390,6 +2395,7 @@ body.page-about-sarah .page-hero h1 strong {
   font-weight: 700;
   color: var(--accent);
 }
+
 
 body.page-about-sarah .page-hero__bio {
   color: var(--text-secondary);
