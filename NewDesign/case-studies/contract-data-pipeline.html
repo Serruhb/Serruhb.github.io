@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contract Data Pipeline | Naturally Logical</title>
+  <meta name="description"
+    content="A two-million-dollar, two-year integration between two acquired companies never worked. We delivered a working unified model in under five months, and left the business operations team able to run it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #0F0F0F;
+      --bg-secondary: #1A1A1A;
+      --surface: #111111;
+      --accent: #D4A853;
+      --text-primary: #F5F3F0;
+      --text-secondary: #888888;
+      --border: #2A2A2A;
+      --logo-green: #1E7A5F;
+      --logo-blue-leaf: #2C6FAA;
+      --logo-blue: #2C6FAA;
+      --logo-slate: #5A8AB0;
+      --logo-cream: #EAD9B0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 120px 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+
+    .section__header {
+      max-width: 720px;
+      margin-bottom: 56px;
+    }
+
+    .section__header h2 {
+      font-size: 40px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section__header p {
+      color: var(--text-secondary);
+      font-size: 17px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease;
+      font-family: inherit;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #0F0F0F;
+    }
+
+    .link-arrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.2s ease;
+    }
+
+    .link-arrow:hover {
+      gap: 12px;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      padding: 20px 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav.is-scrolled {
+      background: rgba(15, 15, 15, 0.94);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav__logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav__logo:hover img {
+      opacity: 0.85;
+    }
+
+    .nav__logo-text {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .nav__logo-text span {
+      color: var(--accent);
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 14px;
+      color: var(--text-primary);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav__links a:hover::after {
+      width: 100%;
+    }
+
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      position: relative;
+      padding: 200px 0 100px;
+      overflow: hidden;
+    }
+
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(212, 168, 83, 0.08), transparent 45%),
+        linear-gradient(155deg, #0F0F0F 0%, #171613 45%, #1A1A1A 75%, #0F0F0F 100%);
+    }
+
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero__eyebrow {
+      margin-bottom: 24px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(34px, 4.5vw, 54px);
+      font-weight: 300;
+      line-height: 1.15;
+      max-width: 900px;
+    }
+
+    .page-hero__outcome {
+      margin-top: 24px;
+      max-width: 640px;
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+
+    .page-hero__note {
+      margin-top: 32px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .page-hero__note::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    /* STAT GRID */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 64px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      padding: 32px 28px;
+      border-left: 3px solid transparent;
+      transition: border-left-color 0.25s ease;
+    }
+
+    .stat-card:hover {
+      border-left-color: var(--accent);
+    }
+
+    .stat-card__value {
+      font-size: 34px;
+      font-weight: 300;
+      color: var(--accent);
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    .stat-card__label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    /* CONTENT CARDS */
+    .content-card {
+      border: 1px solid var(--border);
+      border-left: 3px solid transparent;
+      background: var(--surface);
+      padding: 40px 44px;
+      transition: border-left-color 0.25s ease;
+    }
+
+    .content-card:hover {
+      border-left-color: var(--accent);
+    }
+
+    .content-card + .content-card {
+      margin-top: 24px;
+    }
+
+    .content-card__title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card-grid .content-card {
+      margin-top: 0;
+    }
+
+    .bullets {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .bullets li {
+      font-size: 15px;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .tags {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .tags li {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 8px 0 8px 28px;
+      margin: 48px 0 0;
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+
+    .actions--center {
+      text-align: center;
+      margin-top: 56px;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 72px 0 40px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 56px;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .footer-brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer-brand-text {}
+
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-tagline {
+      color: var(--text-secondary);
+      max-width: 34ch;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col__label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .footer-col a,
+    .footer-col p {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 72px 0;
+      }
+
+      .page-hero {
+        padding: 140px 0 64px;
+      }
+
+      .nav__links {
+        display: none;
+      }
+
+      .nav__toggle {
+        display: block;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-card {
+        padding: 28px 24px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="../index.html">
+        <img src="../assets/logo-leaf.png" alt="Naturally Logical leaf logo" />
+        <span class="nav__logo-text">Naturally<span> Logical</span></span>
+      </a>
+      <nav>
+        <ul class="nav__links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#insights">Insights</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
+      <div class="container page-hero__content">
+        <div class="eyebrow page-hero__eyebrow">Case Study &middot; Post-Merger Systems Recovery</div>
+        <h1>Contract Data Pipeline</h1>
+        <p class="page-hero__outcome">A two-million-dollar, two-year integration between two acquired
+          companies never worked. We delivered a working unified model in under five months, and left the
+          team able to run it without us.</p>
+        <p class="page-hero__note">Details are generalized; sensitive identifiers and client specifics are
+          redacted.</p>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-card__value">2 yrs</div>
+            <div class="stat-card__label">Prior attempt, failed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">&lt;5 mo</div>
+            <div class="stat-card__label">To a working baseline</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">$2M</div>
+            <div class="stat-card__label">Spent on the failed attempt</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">1</div>
+            <div class="stat-card__label">Single source of truth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="section" id="problem" style="padding-top:0;">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">The problem</div>
+          <h2>Two years and two million dollars produced two systems that still didn't recognize each
+            other.</h2>
+        </div>
+
+        <div class="content-card">
+          <div class="content-card__title">A merger integration that never actually merged anything</div>
+          <ul class="bullets">
+            <li>Two acquired companies had spent two years and two million dollars trying to integrate their
+              systems. It never worked.</li>
+            <li>The two systems were unrecognizable to each other: different starting points (customer vs.
+              account), different workflows, operating in complete conflict rather than in parallel.</li>
+            <li>Historical data had been scrapped along the way. Revenue and marketing couldn't trust the
+              numbers they were looking at.</li>
+            <li>Everything was half-done. Nothing was complete, and nobody could say with confidence what
+              state the data was actually in.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE APPROACH -->
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">The approach</div>
+          <h2>Not a rebuild from zero. A focused fix on what was actually broken.</h2>
+        </div>
+
+        <div class="card-grid">
+          <article class="content-card">
+            <div class="content-card__title">Fix what's broken, not everything</div>
+            <ul class="bullets">
+              <li>We left most of what the two-year effort had touched alone and went after what was
+                actually broken and fixable in the near term.</li>
+              <li>Aligned the product model as the single source of truth both systems could reconcile
+                against, rather than trying to force one legacy structure onto the other.</li>
+            </ul>
+          </article>
+
+          <article class="content-card">
+            <div class="content-card__title">A working baseline, not another two-year plan</div>
+            <ul class="bullets">
+              <li>Delivered a working baseline in less than five months that unified live, active contract
+                and product data, far faster than the previous two-year, two-million-dollar attempt.</li>
+              <li>Delivered something the previous effort never did: a team that actually understood the
+                system underneath it.</li>
+            </ul>
+            <ul class="tags" aria-label="Tech tags">
+              <li>Post-merger data unification</li>
+              <li>Single source of truth</li>
+              <li>Product model alignment</li>
+              <li>Contract data governance</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE RESULTS -->
+    <section class="section" id="results">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">The results</div>
+          <h2>Five months beat two years, and the bigger win wasn't even the speed.</h2>
+        </div>
+
+        <div class="content-card">
+          <div class="content-card__title">A working model, and a team that understands it</div>
+          <ul class="bullets">
+            <li>Went from a failed two-million-dollar, two-year integration to a working, unified contract
+              and product model in five months.</li>
+            <li>More importantly, the business operations team went from confused to empowered. They'd been
+              suffering in silence with a system they didn't understand; now they do.</li>
+            <li>Revenue and marketing regained a number they could actually trust, which is the entire point
+              of a single source of truth.</li>
+          </ul>
+        </div>
+
+        <blockquote>
+          &ldquo;We make ourselves unnecessary. By design.&rdquo;
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- WHAT THE TEAM OWNS NOW -->
+    <section class="section" id="ownership">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">What the team owns now</div>
+          <h2>We didn't just hand off a system. We leveled up the people who run it.</h2>
+        </div>
+
+        <div class="card-grid">
+          <article class="content-card">
+            <div class="content-card__title">Understanding they didn't have before</div>
+            <ul class="bullets">
+              <li>We taught the business operations team how the products actually work, how the data
+                flows, and how to make decisions based on that understanding, not on guesses about a system
+                they'd inherited.</li>
+              <li>They own the data model outright. Nobody has to call us when something looks wrong,
+                because they can see for themselves why it's happening.</li>
+            </ul>
+          </article>
+
+          <article class="content-card">
+            <div class="content-card__title">The next frontier, on their terms</div>
+            <ul class="bullets">
+              <li>They took ownership of the next phase themselves: evaluating and implementing a proper CPQ
+                system on top of the working foundation we left them.</li>
+              <li>The system was never really the deliverable. A team that can decide where it goes next
+                without us in the room is.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="actions--center">
+          <a class="btn" href="#top">&uarr; Back to top</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../assets/logo-leaf.png" alt="Naturally Logical" />
+          <div class="footer-brand-text">
+            <div class="footer-logo">Naturally<span> Logical</span></div>
+            <p class="footer-tagline">System Recovery, Automation, and Strategic Systems Leadership.</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col__label">Contact</div>
+            <a href="mailto:hello@naturallylogical.com">hello@naturallylogical.com</a>
+            <a href="https://www.linkedin.com/company/naturally-logical" target="_blank"
+              rel="noopener">LinkedIn</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col__label">Location</div>
+            <p>Merrimac, MA</p>
+            <p>(Boston Area)</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Naturally Logical, LLC</span>
+        <span>Systems recovery &middot; Automation &middot; AI governance</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 40);
+    });
+  </script>
+
+</body>
+
+</html>

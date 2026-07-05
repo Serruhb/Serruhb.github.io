@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salesforce Request Form Rebuild | Naturally Logical</title>
+  <meta name="description"
+    content="Rebuilt an undocumented, email-driven intake process into a governed Salesforce request form with hard and soft stops, cutting cycle time from a month to days." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #0F0F0F;
+      --bg-secondary: #1A1A1A;
+      --surface: #111111;
+      --accent: #D4A853;
+      --text-primary: #F5F3F0;
+      --text-secondary: #888888;
+      --border: #2A2A2A;
+      --logo-green: #1E7A5F;
+      --logo-blue-leaf: #2C6FAA;
+      --logo-blue: #2C6FAA;
+      --logo-slate: #5A8AB0;
+      --logo-cream: #EAD9B0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 120px 0;
+    }
+
+    .section--tight {
+      padding: 60px 0;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+
+    .section__header {
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .section__header h2 {
+      font-size: 40px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section__header p {
+      color: var(--text-secondary);
+      font-size: 17px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease;
+      font-family: inherit;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #0F0F0F;
+    }
+
+    .link-arrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.2s ease;
+    }
+
+    .link-arrow:hover {
+      gap: 12px;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      padding: 20px 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav.is-scrolled {
+      background: rgba(15, 15, 15, 0.94);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav__logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav__logo:hover img {
+      opacity: 0.85;
+    }
+
+    .nav__logo-text {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .nav__logo-text span {
+      color: var(--accent);
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 14px;
+      color: var(--text-primary);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav__links a:hover::after {
+      width: 100%;
+    }
+
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      position: relative;
+      padding: 200px 0 100px;
+      overflow: hidden;
+    }
+
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(212, 168, 83, 0.08), transparent 45%),
+        linear-gradient(155deg, #0F0F0F 0%, #171613 45%, #1A1A1A 75%, #0F0F0F 100%);
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero .eyebrow {
+      margin-bottom: 24px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      max-width: 820px;
+      line-height: 1.15;
+    }
+
+    .page-hero__outcome {
+      margin-top: 24px;
+      max-width: 68ch;
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+
+    .page-hero__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .page-hero__tags span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .page-hero__note {
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-left: 2px solid var(--border);
+      padding-left: 14px;
+    }
+
+    /* CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .info-card {
+      border: 1px solid var(--border);
+      border-left: 3px solid transparent;
+      background: var(--surface);
+      padding: 36px 40px;
+      transition: border-left-color 0.25s ease;
+    }
+
+    .info-card:hover {
+      border-left-color: var(--accent);
+    }
+
+    .info-card--featured {
+      border-left-color: var(--accent);
+    }
+
+    .info-card__title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .info-card__one-liner {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* BULLETS */
+    .bullets {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .bullets li {
+      font-size: 15px;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .bullets li strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* TAGS */
+    .tag-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .tag-list li {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+    }
+
+    /* STAT GRID */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .stat-card {
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      text-align: left;
+    }
+
+    .stat-card__label {
+      margin-bottom: 16px;
+    }
+
+    .stat-card__value {
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .stat-card__desc {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* BLOCKQUOTE */
+    blockquote.quote {
+      border-left: 3px solid var(--accent);
+      padding: 8px 0 8px 28px;
+      margin: 40px 0;
+      font-size: 19px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 72px 0 40px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 56px;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .footer-brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer-brand-text {}
+
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-tagline {
+      color: var(--text-secondary);
+      max-width: 34ch;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col__label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .footer-col a,
+    .footer-col p {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 72px 0;
+      }
+
+      .page-hero {
+        padding: 140px 0 64px;
+      }
+
+      .nav__links {
+        display: none;
+      }
+
+      .nav__toggle {
+        display: block;
+      }
+
+      .info-card {
+        padding: 28px 22px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="../index.html">
+        <img src="../assets/logo-leaf.png" alt="Naturally Logical leaf logo" />
+        <span class="nav__logo-text">Naturally<span> Logical</span></span>
+      </a>
+      <nav>
+        <ul class="nav__links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#insights">Insights</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
+      <div class="container page-hero__inner">
+        <div class="eyebrow">Case Study &middot; Systems Recovery + Process Design</div>
+        <h1>Salesforce Request Form Rebuild</h1>
+        <p class="page-hero__outcome">Replaced an undocumented, email-driven intake process with a governed
+          Salesforce request form that sequences work instead of blocking on it &mdash; cutting a roughly
+          month-long process down to days.</p>
+        <div class="page-hero__tags">
+          <span>Oracle &rarr; Salesforce</span>
+          <span>Governed intake</span>
+          <span>Hard / soft stops</span>
+          <span>Team-owned</span>
+        </div>
+        <p class="page-hero__note">Details are generalized; sensitive identifiers and client specifics are
+          redacted.</p>
+      </div>
+    </section>
+
+    <!-- EXEC SUMMARY -->
+    <section class="section" id="exec">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">Executive Summary</div>
+          <h2>What was actually happening, and what we built instead</h2>
+        </div>
+
+        <div class="card-grid">
+          <article class="info-card">
+            <div class="info-card__title">The problem</div>
+            <p class="info-card__one-liner">A manufacturing process was moving from Oracle to Salesforce with
+              no documented intake process behind it, just email.</p>
+            <ul class="bullets">
+              <li>Requests were tracked through back-and-forth Outlook threads, not a system.</li>
+              <li>Leadership's fix in progress was a set of redundant Excel sheets and archive folders: one
+                more copy for every new request type.</li>
+              <li>That approach was ungoverned and insecure, and it would have recreated the same problem
+                the moment a new request type showed up.</li>
+            </ul>
+          </article>
+
+          <article class="info-card info-card--featured">
+            <div class="info-card__title">The solution</div>
+            <p class="info-card__one-liner">A single, governed request form in Salesforce that sequences the
+              work instead of demanding every answer up front.</p>
+            <ul class="bullets">
+              <li>Pulls data directly from Salesforce and shared drives instead of manual re-entry.</li>
+              <li>Hard stops where the process genuinely cannot proceed without an answer; soft stops where
+                it can, with the field auto-populating once the information lands.</li>
+              <li>Transparent handoffs so the right person gets the right information at the right time,
+                instead of waiting on a single upfront intake.</li>
+            </ul>
+            <ul class="tag-list" aria-label="Tech tags">
+              <li>Salesforce</li>
+              <li>Governed intake</li>
+              <li>Hard / soft stops</li>
+              <li>Parallel workstreams</li>
+              <li>Auto-population</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="architecture" style="background:var(--bg-secondary); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">How It Works</div>
+          <h2>Sequenced, not linear</h2>
+          <p>Work starts before every answer is in.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="info-card">
+            <div class="info-card__title">Hard stops vs. soft stops</div>
+            <ul class="bullets">
+              <li><strong>Hard stop:</strong> the request cannot move forward without this; the form blocks
+                submission until it's answered.</li>
+              <li><strong>Soft stop:</strong> the request can proceed now; the field auto-populates once the
+                information becomes available elsewhere in the system.</li>
+              <li>Splitting these apart meant teams stopped waiting on information they didn't need yet just
+                to start work they could do today.</li>
+            </ul>
+          </article>
+
+          <article class="info-card">
+            <div class="info-card__title">Sourced data, transparent handoffs</div>
+            <ul class="bullets">
+              <li>Fields pull from Salesforce and shared drives directly, instead of asking requesters to
+                re-key what already exists somewhere.</li>
+              <li>Each handoff point is visible: who owns the request next, and what they're waiting on to
+                act.</li>
+              <li>Work can run in parallel across owners instead of queuing behind a single upfront intake.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="section" id="highlights">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">Key Highlights</div>
+          <h2>Scannable summary</h2>
+          <p>Impact at a glance, from cycle time to what got unblocked.</p>
+        </div>
+
+        <div class="stat-grid" style="margin-bottom:48px;">
+          <div class="stat-card">
+            <div class="eyebrow stat-card__label">Before</div>
+            <div class="stat-card__value">~1 month</div>
+            <p class="stat-card__desc">Typical request cycle time under the email-driven, ungoverned process.
+            </p>
+          </div>
+          <div class="stat-card">
+            <div class="eyebrow stat-card__label">After</div>
+            <div class="stat-card__value">Days</div>
+            <p class="stat-card__desc">Cycle time once work could run in parallel instead of waiting on a
+              single upfront intake.</p>
+          </div>
+          <div class="stat-card">
+            <div class="eyebrow stat-card__label">Workaround removed</div>
+            <div class="stat-card__value">0</div>
+            <p class="stat-card__desc">Redundant Excel sheets and archive folders left in place after the
+              rebuild.</p>
+          </div>
+        </div>
+
+        <article class="info-card info-card--featured">
+          <div class="info-card__title">Summary</div>
+          <p class="info-card__one-liner">Replaced an email-based intake process with a governed Salesforce
+            request form, cutting the process from roughly a month to a few days.</p>
+          <ul class="bullets">
+            <li>Eliminated the redundant Excel sheets and archive folders that leadership had been using to
+              patch the gap, closing an insecure, ungoverned workaround.</li>
+            <li>Reduced the request cycle from about a month to a few days by letting work start in parallel
+              instead of waiting on a single upfront intake.</li>
+            <li>Unblocked product releases that had been delayed by paperwork bottlenecks, not engineering
+              work.</li>
+          </ul>
+          <ul class="tag-list" aria-label="Tech tags">
+            <li>Salesforce process builder</li>
+            <li>Governed request intake</li>
+            <li>Hard / soft stop logic</li>
+            <li>Cross-source data pull</li>
+            <li>Modular knowledge base</li>
+          </ul>
+          <a class="link-arrow" href="../index.html#contact">Request details &rarr;</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- HANDOFF -->
+    <section class="section" id="handoff" style="background:var(--bg-secondary); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">Handoff &amp; Ownership</div>
+          <h2>What the team did with it after we left</h2>
+          <p>The measure of this engagement isn't the form.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="info-card">
+            <div class="info-card__title">They started changing it right away</div>
+            <ul class="bullets">
+              <li>The team didn't just operate the form: they extended it, using this build as a template to
+                create request forms for new use cases on their own.</li>
+              <li>They added and removed fields as their needs changed, without needing us back in the
+                system.</li>
+              <li>They enhanced the soft-stop logic themselves as they found new places it could help.</li>
+            </ul>
+          </article>
+
+          <article class="info-card">
+            <div class="info-card__title">Documentation that stayed alive</div>
+            <ul class="bullets">
+              <li>Delivery included a modular knowledge base, not a one-time handoff document.</li>
+              <li>The team has kept it updated and maintained since, which is the actual signal that
+                ownership transferred.</li>
+              <li>Every engagement aims at the same finish line: something the client can run and evolve
+                whether or not they ever need to call us again.</li>
+            </ul>
+          </article>
+        </div>
+
+        <blockquote class="quote">
+          &ldquo;We make ourselves unnecessary. By design.&rdquo;
+        </blockquote>
+
+        <div style="text-align:center;">
+          <a class="btn" href="#top">&uarr; Back to top</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../assets/logo-leaf.png" alt="Naturally Logical" />
+          <div class="footer-brand-text">
+            <div class="footer-logo">Naturally<span> Logical</span></div>
+            <p class="footer-tagline">System Recovery, Automation, and Strategic Systems Leadership.</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col__label">Contact</div>
+            <a href="mailto:hello@naturallylogical.com">hello@naturallylogical.com</a>
+            <a href="https://www.linkedin.com/company/naturally-logical" target="_blank"
+              rel="noopener">LinkedIn</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col__label">Location</div>
+            <p>Merrimac, MA</p>
+            <p>(Boston Area)</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Naturally Logical, LLC</span>
+        <span>Systems recovery &middot; Automation &middot; AI governance</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 40);
+    });
+  </script>
+
+</body>
+
+</html>
