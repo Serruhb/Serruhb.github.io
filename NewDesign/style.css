@@ -496,10 +496,26 @@ h3 {
   padding: 40px;
 }
 
-.philosophy__logo img {
-  width: 220px;
-  height: 220px;
-  object-fit: contain;
+/* Logo-Leaf.png has real alpha transparency but a lot of built-in
+   padding around the leaf (it only fills roughly the middle half of
+   the 1024x1024 canvas), so this crops in tight the same way the nav
+   logo does, just at a bigger size. */
+.philosophy__logo-mark {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  display: block;
+}
+
+.philosophy__logo-mark img {
+  position: absolute;
+  width: 512px;
+  height: 512px;
+  left: -97px;
+  top: -86px;
+  opacity: 0.67;
+  max-width: none;
   filter: drop-shadow(0 8px 32px rgba(226, 163, 75, 0.12));
 }
 
