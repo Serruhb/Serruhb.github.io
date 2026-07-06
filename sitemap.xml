@@ -7,15 +7,21 @@
     <loc>https://naturallylogical.com/resume.html</loc>
   </url>
   <url>
-    <loc>https://naturallylogical.com/about.html</loc>
+    <loc>https://naturallylogical.com/who-we-are.html</loc>
   </url>
   <url>
-    <loc>https://naturallylogical.com/SYNaTRA.html</loc>
+    <loc>https://naturallylogical.com/case-studies/synthetic-triage-agent.html</loc>
   </url>
   <url>
-    <loc>https://naturallylogical.com/ota-monitoring.html</loc>
+    <loc>https://naturallylogical.com/case-studies/ota-monitoring.html</loc>
   </url>
   <url>
-    <loc>https://naturallylogical.com/what-i-build.html</loc>
+    <loc>https://naturallylogical.com/case-studies/jira-sprint-manager.html</loc>
+  </url>
+  <url>
+    <loc>https://naturallylogical.com/case-studies/salesforce-request-form.html</loc>
+  </url>
+  <url>
+    <loc>https://naturallylogical.com/case-studies/subscription-self-serve.html</loc>
   </url>
 </urlset>
