@@ -824,6 +824,62 @@ h3 {
   min-height: 20px;
 }
 
+.field-hint {
+  font-size: 13px;
+  color: var(--driftwood);
+  margin-top: -8px;
+}
+
+.field-hint a {
+  color: var(--amber-gold);
+}
+
+.project-type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.project-type-card {
+  display: block;
+  position: relative;
+  background: var(--warm-lift);
+  border: 1px solid var(--amber-soil);
+  border-radius: 4px;
+  padding: 18px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.project-type-card input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.project-type-card:hover {
+  border-color: var(--driftwood);
+}
+
+.project-type-card.is-selected {
+  border-color: var(--amber-gold);
+  background: var(--tilled-earth);
+}
+
+.project-type-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--parchment);
+  margin-bottom: 8px;
+}
+
+.project-type-card__text {
+  font-size: 13px;
+  color: var(--aged-linen);
+  max-width: none;
+}
+
 /* FOOTER */
 .site-footer {
   background: var(--forest-floor);
@@ -986,6 +1042,10 @@ h3 {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+
+  .project-type-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer-top {

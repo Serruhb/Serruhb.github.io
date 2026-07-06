@@ -299,8 +299,28 @@
             </div>
             <div class="field"><label for="cMessage">Message</label><textarea id="cMessage" name="message"
                 required></textarea></div>
+            <div class="field">
+              <label id="projectTypeLabel">Which sounds closer to what you need?</label>
+              <div class="project-type-grid" role="radiogroup" aria-labelledby="projectTypeLabel">
+                <label class="project-type-card" for="typeSmall">
+                  <input type="radio" id="typeSmall" name="projectType" value="Small Integration Project" required />
+                  <div class="project-type-card__title">Small Integration Project</div>
+                  <p class="project-type-card__text">A focused, self-contained engagement: one system, one
+                    failure point, a clear scope.</p>
+                </label>
+                <label class="project-type-card" for="typeEnterprise">
+                  <input type="radio" id="typeEnterprise" name="projectType" value="Enterprise Transformation" />
+                  <div class="project-type-card__title">Enterprise Transformation</div>
+                  <p class="project-type-card__text">A larger initiative spanning multiple systems or teams,
+                    requiring a full team to execute.</p>
+                </label>
+              </div>
+            </div>
             <button class="btn" type="submit">Send message &rarr;</button>
             <p class="form-status" id="formStatus"></p>
+            <p class="field-hint">Submitting opens your email client with this addressed to
+              <a href="mailto:hello@naturallylogical.com">hello@naturallylogical.com</a>. Nothing is sent until
+              you do.</p>
           </form>
         </div>
       </div>
