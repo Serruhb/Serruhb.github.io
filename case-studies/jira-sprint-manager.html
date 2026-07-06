@@ -1,184 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#2D5A27" />
-
+  <link rel="icon" type="image/png" href="../assets/Logo-Leaf-Favicon.png" />
   <title>The Mediator | Naturally Logical</title>
   <meta name="description"
     content="An AI agent that lives in Slack and runs Jira ticket intake: rule-based ticket generation, follow-up suggestions, and mid-sprint risk alerts, with rules the team owns and can change." />
   <link rel="canonical" href="https://naturallylogical.com/case-studies/jira-sprint-manager.html" />
-
-  <!-- Social preview -->
-  <meta property="og:title" content="The Mediator - Naturally Logical Case Study" />
-  <meta property="og:description"
-    content="A Slack-native ticket manager that removed the scrum master bottleneck by applying consistent, rule-based logic to ticket creation, with a rules layer the team now owns." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://naturallylogical.com/case-studies/jira-sprint-manager.html" />
-  <meta name="twitter:card" content="summary" />
-
-  <!-- Fonts + Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Shared site CSS -->
-  <link rel="stylesheet" href="../New_assets/styles.css" />
-  <link rel="stylesheet" href="../New_assets/project-bridge.css" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="../Images/favicon-large.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
 </head>
 
-<body id="top" class="project-page">
-  <header class="nav">
+<body class="page-jira-sprint-manager">
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a class="brand" href="../index.html" aria-label="Naturally Logical home">
-        <span class="brand__mark" aria-hidden="true">
-          <img src="../Images/logo.png" alt="" class="brand__logo" />
-        </span>
-
-        <span class="brand__text">
-          <span class="brand__name">Naturally Logical</span>
-          <span class="brand__tag">Consulting</span>
-        </span>
+      <a class="nav__logo" href="../index.html">
+        <img src="../assets/logo-leaf.png" alt="Naturally Logical leaf logo" />
+        <span class="nav__logo-text">Naturally<span> Logical</span></span>
       </a>
-
-      <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="../index.html#proof">Proof</a>
-        <a href="#exec">Summary</a>
-        <a href="#architecture">How it works</a>
-        <a href="#handoff">Handoff</a>
-        <a class="btn btn--ghost" href="../about-sarah.html">About</a>
-        <a class="btn btn--ghost" href="../contact.html">Contact</a>
+      <nav>
+        <ul class="nav__links">
+          <li class="nav__item--dropdown">
+            <a href="../index.html#about">About</a>
+            <ul class="nav__dropdown">
+              <li><a href="../who-we-are.html">Who We Are</a></li>
+            </ul>
+          </li>
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#insights">Insights</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
       </nav>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      <button class="nav__toggle" aria-label="Open menu">&#9776;</button>
     </div>
   </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero project-hero" aria-label="The Mediator hero">
-      <div class="container hero__content">
-        <div class="brand-card">
+  <main id="top">
 
-          <!-- Pills -->
-          <div class="hero-eyebrow"
-            style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; margin-bottom:16px;">
-            <span
-              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-              <i class="fa-brands fa-slack" aria-hidden="true"></i> Slack-native
-            </span>
-            <span
-              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-              <i class="fa-solid fa-gavel" aria-hidden="true"></i> Rule-based tickets
-            </span>
-            <span
-              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-              <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Mid-sprint risk alerts
-            </span>
-            <span
-              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-              <i class="fa-solid fa-people-arrows" aria-hidden="true"></i> Team-owned rules
-            </span>
-          </div>
-
-          <div class="grid grid--2" style="margin-top:0; align-items:center;">
-            <!-- LEFT -->
-            <div style="text-align:left; min-width:0;">
-              <h1 class="hero__title" style="
-                  display:flex !important;
-                  flex-direction:row !important;
-                  align-items:flex-start;
-                  justify-content:flex-start;
-                  gap:12px;
-                  flex-wrap:nowrap !important;
-                  margin:0;
-                  max-width:100%;
-                  font-size:clamp(1.6rem, 3.2vw, 3rem);
-                  line-height:1.1;
-                ">
-                <i class="fa-solid fa-scale-balanced" aria-hidden="true" style="flex:0 0 auto; margin-top:0.12em;"></i>
-                <span style="flex:1 1 auto; min-width:0;">The Mediator</span>
-              </h1>
-
-              <p class="hero__tagline" style="margin-top:6px; text-align:left;">
-                <span style="opacity:0.95;">Case Study &middot; AI Agent Sprint &amp; Ticket Manager</span>
-              </p>
-            </div>
-
-            <!-- RIGHT -->
-            <div style="text-align:left; min-width:0;">
-              <p class="hero__subtag" style="margin-top:0; max-width:none;">
-                An AI agent that lives in Slack and does the ticket work scrum masters, PMs, and BSAs couldn't keep
-                up with manually, applying the same rules every time so the backlog stops depending on who happened
-                to write the ticket.
-              </p>
-            </div>
-          </div>
-
-          <!-- CTA buttons -->
-          <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
-            <a class="btn btn--ghost" href="#exec"
-              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
-              Executive summary
-            </a>
-            <a class="btn btn--ghost" href="#architecture"
-              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-              How it works
-            </a>
-            <a class="btn btn--ghost" href="#highlights"
-              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-              <i class="fa-solid fa-list-check" aria-hidden="true"></i>
-              Technical highlights
-            </a>
-            <a class="btn btn--ghost" href="#handoff"
-              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-              <i class="fa-solid fa-people-arrows" aria-hidden="true"></i>
-              Handoff
-            </a>
-          </div>
-
-          <p class="project-note"
-            style="width:100%; display:flex; justify-content:flex-end; color:rgba(255,255,255,0.65); font-size:0.82rem; margin:14px 0 0;">
-            <i class="fa-solid fa-shield-halved" aria-hidden="true" style="margin-right:8px;"></i>
-            Portfolio excerpt; operational details redacted.
-          </p>
-        </div>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
+      <div class="container page-hero__content">
+        <div class="eyebrow page-hero__eyebrow">Case Study &middot; AI Agent Jira Ticketing</div>
+        <h1>The Mediator</h1>
+        <p class="page-hero__outcome">
+          An AI agent that lives in Slack and does the ticket work scrum masters, PMs, and BSAs couldn't keep
+          up with manually, applying the same rules every time so the backlog stops depending on who happened
+          to write the ticket.
+        </p>
+        <ul class="page-hero__tags" aria-label="Highlights">
+          <li>Slack-native</li>
+          <li>Rule-based tickets</li>
+          <li>Mid-sprint risk alerts</li>
+          <li>Team-owned rules</li>
+        </ul>
+        <p class="page-hero__note">Portfolio excerpt; operational details redacted.</p>
       </div>
     </section>
 
     <!-- EXEC SUMMARY -->
     <section class="section" id="exec">
       <div class="container">
-        <div
-          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            Executive Summary
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            The rules existed. Applying them consistently, fast, at human speed, did not.
-          </p>
+        <div class="section-row">
+          <h2>Executive Summary</h2>
+          <p>The rules existed. Applying them consistently, fast, at human speed, did not.</p>
         </div>
 
-        <div class="grid grid--2">
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
-              The problem
-            </h3>
-            <p class="project-card__one-liner">
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card__title">The problem</h3>
+            <p class="card__lead">
               Ticket rules were too complex and chaotic for humans to apply consistently and fast enough.
             </p>
             <ul class="bullets">
@@ -191,12 +89,9 @@
             </ul>
           </article>
 
-          <article class="project-card project-card--featured">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-wand-magic-sparkles icon-accent" aria-hidden="true"></i>
-              The solution
-            </h3>
-            <p class="project-card__one-liner">
+          <article class="card">
+            <h3 class="card__title">The solution</h3>
+            <p class="card__lead">
               An AI agent in Slack that acts as ticket manager, applying the same rules every time so the humans
               can get back to the work the rules were slowing down.
             </p>
@@ -208,19 +103,13 @@
               <li>Works as a one-stop shop in Slack: create tickets, add comments, nudge teammates, and check
                 sprint health without leaving the conversation.</li>
             </ul>
-
-            <ul class="tags" aria-label="Tech tags">
+            <ul class="tag-list" aria-label="Tech tags">
               <li>Slack agent</li>
               <li>Rule-based ticket logic</li>
               <li>Dependency mapping</li>
               <li>Mid-sprint risk signals</li>
               <li>Modular rules file</li>
             </ul>
-
-            <div class="actions">
-              <a class="btn btn--primary" href="#highlights">Technical highlights</a>
-              <a class="btn btn--primary" href="#architecture">How it works</a>
-            </div>
           </article>
         </div>
       </div>
@@ -229,22 +118,14 @@
     <!-- HOW IT WORKS -->
     <section class="section" id="architecture">
       <div class="container">
-        <div
-          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            How It Works
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            The rules live outside the agent, not buried inside it.
-          </p>
+        <div class="section-row">
+          <h2>How It Works</h2>
+          <p>The rules live outside the agent, not buried inside it.</p>
         </div>
 
-        <div class="grid grid--2">
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-comments icon-accent" aria-hidden="true"></i>
-              What it does in Slack
-            </h3>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card__title">What it does in Slack</h3>
             <ul class="bullets">
               <li>Understands plain requests instead of requiring a form or a specific syntax.</li>
               <li>Generates tickets with consistent formatting and dependencies already attached, the same
@@ -256,11 +137,8 @@
             </ul>
           </article>
 
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-sitemap icon-accent" aria-hidden="true"></i>
-              Modular, not hardcoded
-            </h3>
+          <article class="card">
+            <h3 class="card__title">Modular, not hardcoded</h3>
             <ul class="bullets">
               <li>The agent reads its rules from an external context file. The logic isn't buried in code
                 nobody but us could touch.</li>
@@ -277,27 +155,33 @@
     <!-- HIGHLIGHTS -->
     <section class="section" id="highlights">
       <div class="container">
-        <div
-          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            Key Highlights
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            This was never about replacing scrum masters, PMs, or BSAs. It was about removing the bottleneck
-            so they could spend their time on judgment calls instead of ticket formatting.
-          </p>
+        <div class="section-row">
+          <h2>Key Highlights</h2>
+          <p>This was never about replacing scrum masters, PMs, or BSAs. It was about removing the bottleneck
+            so they could spend their time on judgment calls instead of ticket formatting.</p>
         </div>
 
-        <article class="project-card project-card--featured">
-          <h3 class="project-card__title">
-            <i class="fa-solid fa-list-check icon-accent" aria-hidden="true"></i>
-            Summary
-          </h3>
-          <p class="project-card__one-liner">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="eyebrow">Ticket intake</div>
+            <div class="stat-card__num">0 forms</div>
+          </div>
+          <div class="stat-card">
+            <div class="eyebrow">Rules ownership</div>
+            <div class="stat-card__num">Team-owned</div>
+          </div>
+          <div class="stat-card">
+            <div class="eyebrow">Sprint visibility</div>
+            <div class="stat-card__num">Whole team</div>
+          </div>
+        </div>
+
+        <article class="card">
+          <h3 class="card__title">Summary</h3>
+          <p class="card__lead">
             Replaced manual, inconsistent ticket creation with a Slack agent applying rule-based logic every
             time, freeing the people who used to be the bottleneck.
           </p>
-
           <ul class="bullets">
             <li>Natural language in, correctly formatted tickets with dependencies out, no training required
               for the person making the request.</li>
@@ -306,17 +190,15 @@
             <li>Sprint metrics are visible to the whole team, so "where do we actually stand" stops being a
               question only the scrum master can answer.</li>
           </ul>
-
-          <ul class="tags" aria-label="Tech tags">
+          <ul class="tag-list" aria-label="Tech tags">
             <li>Slack-native agent</li>
             <li>Natural language intake</li>
             <li>External rules file</li>
             <li>Dependency-aware tickets</li>
             <li>Sprint health visibility</li>
           </ul>
-
-          <div class="actions">
-            <a class="btn btn--ghost" href="../contact.html">Request details</a>
+          <div style="margin-top: 28px;">
+            <a class="btn" href="../index.html#contact">Request details</a>
           </div>
         </article>
       </div>
@@ -325,22 +207,14 @@
     <!-- HANDOFF -->
     <section class="section" id="handoff">
       <div class="container">
-        <div
-          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            Handoff &amp; Ownership
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            The team proved they owned the rules almost as soon as they had them.
-          </p>
+        <div class="section-row">
+          <h2>Handoff &amp; Ownership</h2>
+          <p>The team proved they owned the rules almost as soon as they had them.</p>
         </div>
 
-        <div class="grid grid--2">
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-graduation-cap icon-accent" aria-hidden="true"></i>
-              They changed it almost immediately
-            </h3>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card__title">They changed it almost immediately</h3>
             <ul class="bullets">
               <li>Added a new ticket type the agent didn't originally have.</li>
               <li>Removed a ticket type that wasn't working for them, without asking us to do it.</li>
@@ -350,11 +224,8 @@
             </ul>
           </article>
 
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-shield-halved icon-accent" aria-hidden="true"></i>
-              Still hands-on, on purpose
-            </h3>
+          <article class="card">
+            <h3 class="card__title">Still hands-on, on purpose</h3>
             <ul class="bullets">
               <li>The agent still requires human oversight and management. We built it that way on purpose:
                 the rules belong to the team, not to us.</li>
@@ -366,49 +237,52 @@
           </article>
         </div>
 
-        <div class="actions actions--center" style="margin-top:18px;">
-          <a class="btn btn--ghost" href="#top">Back to top</a>
+        <blockquote class="quote" style="margin-top: 40px;">
+          "We make ourselves unnecessary. By design."
+        </blockquote>
+
+        <div style="margin-top: 40px;">
+          <a class="btn" href="#top">&uarr; Back to top</a>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer__social">
-        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
-          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-        </a>
-        <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub">
-          <i class="fa-brands fa-github" aria-hidden="true"></i>
-        </a>
-      </div>
-
-      <div class="footer__meta">
-        <p>© 2026 Naturally Logical</p>
-        <p>Portfolio excerpt for demonstration; operational details redacted.</p>
-      </div>
-    </footer>
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "name": "The Mediator - AI Agent Sprint & Ticket Manager",
-      "description": "Case study describing a Slack-native AI ticket manager that replaced inconsistent manual ticket creation with rule-based logic the team owns and can evolve.",
-      "author": { "@type": "Person", "name": "Sarah Bechel", "url": "https://naturallylogical.com/about-sarah.html" },
-      "publisher": { "@type": "Organization", "name": "Naturally Logical", "url": "https://naturallylogical.com/" },
-      "url": "https://naturallylogical.com/case-studies/jira-sprint-manager.html",
-      "about": ["Slack agent", "Jira workflows", "Rule-based automation", "Sprint risk monitoring", "Knowledge transfer"]
-    }
-    </script>
   </main>
 
-  <!-- Shared site JS -->
-  <script defer src="../New_assets/scripts.js"></script>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../assets/logo-leaf.png" alt="Naturally Logical" />
+          <div class="footer-brand-text">
+            <div class="footer-logo">Naturally<span> Logical</span></div>
+            <p class="footer-tagline">System Recovery, Automation, and Strategic Systems Leadership.</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col__label">Contact</div>
+            <a href="mailto:hello@naturallylogical.com">hello@naturallylogical.com</a>
+            <a href="https://www.linkedin.com/company/naturally-logical" target="_blank"
+              rel="noopener">LinkedIn</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col__label">Location</div>
+            <p>Merrimac, MA</p>
+            <p>(Boston Area)</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Naturally Logical, LLC</span>
+        <span>Systems recovery &middot; Automation &middot; AI governance</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+
 </body>
 
 </html>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naturally Logical &mdash; System Recovery, Automation, and Strategic Systems Leadership</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-primary: #0D0D0D;
+      --bg-secondary: #1A1A1A;
+      --surface: #111111;
+      --accent: #C8A96E;
+      --text-primary: #F5F3F0;
+      --text-secondary: #888888;
+      --border: #2A2A2A;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 120px 0;
+    }
+
+    .section--tight {
+      padding: 60px 0;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+
+    .section__header {
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .section__header h2 {
+      font-size: 40px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section__header p {
+      color: var(--text-secondary);
+      font-size: 17px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease;
+      font-family: inherit;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #0D0D0D;
+    }
+
+    .link-arrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.2s ease;
+    }
+
+    .link-arrow:hover {
+      gap: 12px;
+    }
+
+    /* =========================
+       NAV
+       ========================= */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      padding: 26px 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav.is-scrolled {
+      background: rgba(13, 13, 13, 0.92);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      backdrop-filter: blur(6px);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .nav__logo span {
+      color: var(--accent);
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 14px;
+      color: var(--text-primary);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav__links a:hover::after {
+      width: 100%;
+    }
+
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+       ========================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(200, 169, 110, 0.10), transparent 45%),
+        linear-gradient(155deg, #0D0D0D 0%, #171613 45%, #1A1A1A 75%, #0D0D0D 100%);
+      background-size: 220% 220%;
+      animation: heroDrift 22s ease-in-out infinite;
+    }
+
+    @keyframes heroDrift {
+      0% {
+        background-position: 0% 30%;
+      }
+
+      50% {
+        background-position: 100% 70%;
+      }
+
+      100% {
+        background-position: 0% 30%;
+      }
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      padding-top: 90px;
+    }
+
+    .hero__eyebrow {
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    .hero h1 strong {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .hero__sub {
+      margin-top: 28px;
+      max-width: 560px;
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+
+    .hero__actions {
+      margin-top: 44px;
+    }
+
+    /* =========================
+       TRUST BAR
+       ========================= */
+    .trust-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 0;
+      text-align: center;
+    }
+
+    .trust-bar p {
+      font-style: italic;
+      font-size: clamp(18px, 2.6vw, 26px);
+      font-weight: 300;
+      color: var(--text-primary);
+    }
+
+    /* =========================
+       SERVICES
+       ========================= */
+    .service-card {
+      border: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      background: var(--surface);
+      padding: 36px 40px;
+      margin-bottom: -1px;
+      transition: border-left-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      border-left: 1px solid var(--accent);
+    }
+
+    .service-card__head {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      cursor: pointer;
+    }
+
+    .service-card__num {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      flex: 0 0 auto;
+    }
+
+    .service-card__title-wrap {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .service-card__title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .service-card__desc {
+      color: var(--text-secondary);
+      font-size: 15px;
+      max-width: 62ch;
+    }
+
+    .service-card__toggle {
+      flex: 0 0 auto;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .service-card__toggle::before,
+    .service-card__toggle::after {
+      content: "";
+      position: absolute;
+      background: var(--text-primary);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .service-card__toggle::before {
+      width: 12px;
+      height: 1px;
+    }
+
+    .service-card__toggle::after {
+      width: 1px;
+      height: 12px;
+    }
+
+    .service-card.is-open .service-card__toggle {
+      border-color: var(--accent);
+    }
+
+    .service-card.is-open .service-card__toggle::after {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+
+    .service-card__body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .service-card__body-inner {
+      padding: 28px 0 4px 62px;
+    }
+
+    .service-card__bullets {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .service-card__bullets li {
+      font-size: 15px;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .service-card__bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* =========================
+       FEATURED CASE STUDY
+       ========================= */
+    .case-feature {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 72px 56px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .case-feature__title {
+      font-size: 34px;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    .case-feature__outcome {
+      color: var(--text-secondary);
+      max-width: 56ch;
+      font-size: 16px;
+    }
+
+    /* =========================
+       INSIGHTS
+       ========================= */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .insight-card {
+      border: 1px solid var(--border);
+      padding: 32px;
+      transition: border-left-color 0.25s ease;
+      border-left: 1px solid var(--border);
+    }
+
+    .insight-card:hover {
+      border-left: 1px solid var(--accent);
+    }
+
+    .insight-card__tag {
+      margin-bottom: 20px;
+    }
+
+    .insight-card__title {
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 28px;
+    }
+
+    .insight-card__meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    /* =========================
+       CTA BANNER
+       ========================= */
+    .cta-banner {
+      background: var(--bg-secondary);
+      text-align: center;
+      padding: 140px 0;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 300;
+      max-width: 780px;
+      margin: 0 auto 24px;
+    }
+
+    .cta-banner p {
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto 44px;
+      font-size: 17px;
+    }
+
+    /* =========================
+       CONTACT
+       ========================= */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+    }
+
+    .contact-info h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      max-width: 40ch;
+    }
+
+    .field {
+      margin-bottom: 28px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 16px;
+      padding: 10px 2px;
+      transition: border-color 0.25s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-bottom-color: var(--accent);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-status {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--accent);
+      min-height: 20px;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 72px 0 40px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-tagline {
+      color: var(--text-secondary);
+      max-width: 34ch;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col__label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .footer-col a,
+    .footer-col p {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+    @media (max-width: 768px) {
+      .section {
+        padding: 72px 0;
+      }
+
+      .nav__links {
+        display: none;
+      }
+
+      .nav__toggle {
+        display: block;
+      }
+
+      .service-card {
+        padding: 28px 22px;
+      }
+
+      .service-card__head {
+        gap: 16px;
+      }
+
+      .service-card__body-inner {
+        padding-left: 0;
+      }
+
+      .case-feature {
+        padding: 44px 28px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="#top">Naturally<span> Logical</span></a>
+
+      <nav>
+        <ul class="nav__links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav__toggle" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <div class="eyebrow hero__eyebrow">System Recovery &middot; Automation &middot; Strategic Systems Leadership
+        </div>
+        <h1>Where clarity<br />meets <strong>complexity</strong>.</h1>
+        <p class="hero__sub">
+          We diagnose broken systems, stabilize automation, and build operating models your team can actually own.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href="#services">&rarr; See how we work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section class="trust-bar">
+      <div class="container">
+        <p>&ldquo;We make ourselves unnecessary. By design.&rdquo;</p>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom: 16px;">What we do</div>
+          <h2>Four ways in, depending on what's actually broken</h2>
+          <p>Every engagement ends the same way, with your team able to run the system without us. How we get there
+            depends on where things stand today.</p>
+        </div>
+
+        <div class="services-list">
+
+          <!-- CARD 1 -->
+          <article class="service-card" data-card>
+            <div class="service-card__head" data-toggle>
+              <div class="service-card__num">01</div>
+              <div class="service-card__title-wrap">
+                <div class="service-card__title">Systems Recovery &amp; Diagnosis</div>
+                <p class="service-card__desc">
+                  We find out how things actually work before we touch anything. Two to three sessions of honest
+                  assessment before any prescription.
+                </p>
+              </div>
+              <div class="service-card__toggle" aria-hidden="true"></div>
+            </div>
+            <div class="service-card__body" data-body>
+              <div class="service-card__body-inner">
+                <ul class="service-card__bullets">
+                  <li>Operational system audits</li>
+                  <li>Fragmented data diagnosis</li>
+                  <li>Stakeholder + SME interviews</li>
+                  <li>Gap analysis between leadership perception and operational reality</li>
+                  <li>Phased roadmap with realistic ROI</li>
+                </ul>
+                <a class="link-arrow" href="#contact">Learn more &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 2 -->
+          <article class="service-card" data-card>
+            <div class="service-card__head" data-toggle>
+              <div class="service-card__num">02</div>
+              <div class="service-card__title-wrap">
+                <div class="service-card__title">Automation &amp; Integration Stabilization</div>
+                <p class="service-card__desc">
+                  We stabilize what is broken and rebuild what cannot scale. No automation applied to a broken
+                  process and called solved.
+                </p>
+              </div>
+              <div class="service-card__toggle" aria-hidden="true"></div>
+            </div>
+            <div class="service-card__body" data-body>
+              <div class="service-card__body-inner">
+                <ul class="service-card__bullets">
+                  <li>Workflow redesign and data model reconstruction</li>
+                  <li>Salesforce, Workato, Jira, Snowflake integration</li>
+                  <li>AI agent design with governance and auditability</li>
+                  <li>Subscriptions, intake, and triage automation</li>
+                  <li>Edge case handling and human review layers</li>
+                </ul>
+                <a class="link-arrow" href="#contact">Learn more &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 3 -->
+          <article class="service-card" data-card>
+            <div class="service-card__head" data-toggle>
+              <div class="service-card__num">03</div>
+              <div class="service-card__title-wrap">
+                <div class="service-card__title">AI Implementation with Governance</div>
+                <p class="service-card__desc">
+                  Practical, responsible AI. We build intelligent systems that are deterministic where they need to
+                  be and agentic where they should be.
+                </p>
+              </div>
+              <div class="service-card__toggle" aria-hidden="true"></div>
+            </div>
+            <div class="service-card__body" data-body>
+              <div class="service-card__body-inner">
+                <ul class="service-card__bullets">
+                  <li>AI readiness assessment</li>
+                  <li>Agentic workflow architecture</li>
+                  <li>Confidence scoring and structured outputs</li>
+                  <li>Audit trails and output controls</li>
+                  <li>Documentation embedded in delivery, not bolted on after</li>
+                </ul>
+                <a class="link-arrow" href="#contact">Learn more &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 4 -->
+          <article class="service-card" data-card>
+            <div class="service-card__head" data-toggle>
+              <div class="service-card__num">04</div>
+              <div class="service-card__title-wrap">
+                <div class="service-card__title">Knowledge Transfer &amp; Operating Model Design</div>
+                <p class="service-card__desc">
+                  We build the understanding around the system, not just the system. Every engagement ends with
+                  your team able to run and evolve what we built.
+                </p>
+              </div>
+              <div class="service-card__toggle" aria-hidden="true"></div>
+            </div>
+            <div class="service-card__body" data-body>
+              <div class="service-card__body-inner">
+                <ul class="service-card__bullets">
+                  <li>Handoff documentation and knowledge base alignment</li>
+                  <li>Multi-stakeholder clarity sessions</li>
+                  <li>Leadership dashboards and KPI frameworks</li>
+                  <li>Training embedded throughout, not at the end</li>
+                  <li>We step back when the right person is trained or hired</li>
+                </ul>
+                <a class="link-arrow" href="#contact">Learn more &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED CASE STUDY -->
+    <section class="section section--tight" id="about">
+      <div class="container">
+        <div class="case-feature">
+          <div>
+            <div class="eyebrow" style="margin-bottom: 16px;">Featured case study</div>
+            <div class="case-feature__title">AI Agent Jira Ticketing</div>
+            <p class="case-feature__outcome">
+              Turned vague intake requests into Definition-of-Ready tickets using AI-assisted coaching and a
+              structured readiness score.
+            </p>
+          </div>
+          <a class="link-arrow" href="#contact" style="font-size: 16px;">View case study &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section class="section" id="insights">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom: 16px;">Insights</div>
+          <h2>Notes from the field.</h2>
+        </div>
+
+        <div class="insights-grid">
+          <article class="insight-card">
+            <div class="eyebrow insight-card__tag">Systems</div>
+            <div class="insight-card__title">Why your automation broke (and how to tell before it ships)</div>
+            <div class="insight-card__meta">
+              <span>June 2026</span>
+              <span>4 min read</span>
+            </div>
+          </article>
+
+          <article class="insight-card">
+            <div class="eyebrow insight-card__tag">AI</div>
+            <div class="insight-card__title">Deterministic vs agentic: choosing the right architecture for your
+              workflow</div>
+            <div class="insight-card__meta">
+              <span>May 2026</span>
+              <span>5 min read</span>
+            </div>
+          </article>
+
+          <article class="insight-card">
+            <div class="eyebrow insight-card__tag">Delivery</div>
+            <div class="insight-card__title">Knowledge transfer is not a handoff doc. Here is what it actually is.
+            </div>
+            <div class="insight-card__meta">
+              <span>April 2026</span>
+              <span>3 min read</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+      <div class="container">
+        <h2>Need a hand? Let's get to work.</h2>
+        <p>
+          Whether you are recovering a broken system, stabilizing automation, or building something that finally
+          scales, we are the team that solves hard problems and leaves you stronger.
+        </p>
+        <a class="btn" href="#contact">Get in touch &rarr;</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="eyebrow" style="margin-bottom: 16px;">Contact</div>
+            <h2>Tell us what's broken.</h2>
+            <p>
+              No sales pitch, just a direct read on what's happening and what it would take to fix it.
+            </p>
+          </div>
+
+          <form id="contactForm">
+            <div class="field">
+              <label for="cName">Name</label>
+              <input type="text" id="cName" name="name" required />
+            </div>
+            <div class="field">
+              <label for="cCompany">Company</label>
+              <input type="text" id="cCompany" name="company" />
+            </div>
+            <div class="field">
+              <label for="cEmail">Email</label>
+              <input type="email" id="cEmail" name="email" required />
+            </div>
+            <div class="field">
+              <label for="cMessage">Message</label>
+              <textarea id="cMessage" name="message" required></textarea>
+            </div>
+            <button class="btn" type="submit">Send message &rarr;</button>
+            <p class="form-status" id="formStatus"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">Naturally<span> Logical</span></div>
+          <p class="footer-tagline">System Recovery, Automation, and Strategic Systems Leadership.</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col__label">Contact</div>
+            <a href="mailto:hello@naturallylogical.com">hello@naturallylogical.com</a>
+            <a href="https://www.linkedin.com/company/naturally-logical" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col__label">Location</div>
+            <p>Merrimac, MA</p>
+            <p>(Boston Area)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Naturally Logical, LLC</span>
+        <span>Systems recovery &middot; Automation &middot; AI governance</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav background on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        nav.classList.add('is-scrolled');
+      } else {
+        nav.classList.remove('is-scrolled');
+      }
+    });
+
+    // Service card expand/collapse
+    document.querySelectorAll('[data-card]').forEach((card) => {
+      const toggle = card.querySelector('[data-toggle]');
+      const body = card.querySelector('[data-body]');
+
+      toggle.addEventListener('click', () => {
+        const isOpen = card.classList.contains('is-open');
+
+        if (isOpen) {
+          body.style.maxHeight = '0px';
+          card.classList.remove('is-open');
+        } else {
+          body.style.maxHeight = body.scrollHeight + 'px';
+          card.classList.add('is-open');
+        }
+      });
+    });
+
+    // Recalculate open card heights on resize (keeps expand state usable responsively)
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.service-card.is-open [data-body]').forEach((body) => {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      });
+    });
+
+    // Contact form (static mockup, no backend)
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formStatus.textContent = "Thanks. This is a design mockup, so nothing was actually sent.";
+    });
+  </script>
+
+</body>
+
+</html>

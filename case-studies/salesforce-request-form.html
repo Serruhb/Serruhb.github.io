@@ -1,460 +1,283 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#2D5A27" />
-
-    <title>Salesforce Request Form Rebuild | Naturally Logical</title>
-    <meta name="description"
-        content="Rebuilt an undocumented, email-driven intake process into a governed Salesforce request form with hard and soft stops, cutting cycle time from a month to days." />
-    <link rel="canonical" href="https://naturallylogical.com/case-studies/salesforce-request-form.html" />
-
-    <!-- Social preview -->
-    <meta property="og:title" content="Salesforce Request Form Rebuild - Naturally Logical Case Study" />
-    <meta property="og:description"
-        content="A governed, sequenced intake process that replaced email chains and redundant spreadsheets during an Oracle-to-Salesforce transition." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://naturallylogical.com/case-studies/salesforce-request-form.html" />
-    <meta name="twitter:card" content="summary" />
-
-    <!-- Fonts + Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-    <!-- Shared site CSS -->
-    <link rel="stylesheet" href="../New_assets/styles.css" />
-    <link rel="stylesheet" href="../New_assets/project-bridge.css" />
-    <!-- Favicon -->
-    <link rel="icon" href="../Images/favicon-large.ico" type="image/x-icon">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="../assets/Logo-Leaf-Favicon.png" />
+  <title>Salesforce Request Form Rebuild | Naturally Logical</title>
+  <meta name="description"
+    content="Rebuilt an undocumented, email-driven intake process into a governed Salesforce request form with hard and soft stops, cutting cycle time from a month to days." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
 </head>
 
-<body id="top" class="project-page">
+<body class="page-salesforce-request-form">
 
-    <header class="nav">
-        <div class="container nav__inner">
-            <a class="brand" href="../index.html" aria-label="Naturally Logical home">
-                <span class="brand__mark" aria-hidden="true">
-                    <img src="../Images/logo.png" alt="" class="brand__logo" />
-                </span>
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="../index.html">
+        <img src="../assets/logo-leaf.png" alt="Naturally Logical leaf logo" />
+        <span class="nav__logo-text">Naturally<span> Logical</span></span>
+      </a>
+      <nav>
+        <ul class="nav__links">
+          <li class="nav__item--dropdown">
+            <a href="../index.html#about">About</a>
+            <ul class="nav__dropdown">
+              <li><a href="../who-we-are.html">Who We Are</a></li>
+            </ul>
+          </li>
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#insights">Insights</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav__toggle" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
 
-                <span class="brand__text">
-                    <span class="brand__name">Naturally Logical</span>
-                    <span class="brand__tag">Consulting</span>
-                </span>
-            </a>
+  <main id="top">
 
-            <nav class="nav__links" id="navLinks" aria-label="Primary">
-                <a href="../index.html#proof">Proof</a>
-                <a href="#exec">Summary</a>
-                <a href="#architecture">How it works</a>
-                <a href="#handoff">Handoff</a>
-                <a class="btn btn--ghost" href="../about-sarah.html">About</a>
-                <a class="btn btn--ghost" href="../contact.html">Contact</a>
-            </nav>
-
-            <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"
-                aria-controls="navLinks">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
+      <div class="container page-hero__inner">
+        <div class="eyebrow">Case Study &middot; Systems Recovery + Process Design</div>
+        <h1>Salesforce Request Form Rebuild</h1>
+        <p class="page-hero__outcome">Replaced an undocumented, email-driven intake process with a governed
+          Salesforce request form that sequences work instead of blocking on it &mdash; cutting a roughly
+          month-long process down to days.</p>
+        <div class="page-hero__tags">
+          <span>Oracle &rarr; Salesforce</span>
+          <span>Governed intake</span>
+          <span>Hard / soft stops</span>
+          <span>Team-owned</span>
         </div>
-    </header>
+        <p class="page-hero__note">Details are generalized; sensitive identifiers and client specifics are
+          redacted.</p>
+      </div>
+    </section>
 
-    <main id="main">
-        <!-- HERO -->
-        <section class="hero project-hero" aria-label="Salesforce Request Form Rebuild hero">
-            <div class="container hero__content">
-                <div class="brand-card">
+    <!-- EXEC SUMMARY -->
+    <section class="section" id="exec">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">Executive Summary</div>
+          <h2>What was actually happening, and what we built instead</h2>
+        </div>
 
-                    <!-- Pills -->
-                    <div class="hero-eyebrow"
-                        style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; margin-bottom:16px;">
-                        <span
-                            style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-                            <i class="fa-solid fa-right-left" aria-hidden="true"></i> Oracle → Salesforce
-                        </span>
-                        <span
-                            style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-                            <i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Governed intake
-                        </span>
-                        <span
-                            style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-                            <i class="fa-solid fa-hand" aria-hidden="true"></i> Hard / soft stops
-                        </span>
-                        <span
-                            style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-                            <i class="fa-solid fa-people-arrows" aria-hidden="true"></i> Team-owned
-                        </span>
-                    </div>
+        <div class="card-grid">
+          <article class="info-card">
+            <div class="info-card__title">The problem</div>
+            <p class="info-card__one-liner">A manufacturing process was moving from Oracle to Salesforce with
+              no documented intake process behind it, just email.</p>
+            <ul class="bullets">
+              <li>Requests were tracked through back-and-forth Outlook threads, not a system.</li>
+              <li>Leadership's fix in progress was a set of redundant Excel sheets and archive folders: one
+                more copy for every new request type.</li>
+              <li>That approach was ungoverned and insecure, and it would have recreated the same problem
+                the moment a new request type showed up.</li>
+            </ul>
+          </article>
 
-                    <!-- Left / Right -->
-                    <div class="grid grid--2" style="margin-top:0; align-items:center;">
-                        <!-- LEFT -->
-                        <div style="text-align:left; min-width:0;">
-                            <h1 class="hero__title" style="
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:flex-start;
-    justify-content:flex-start;
-    gap:12px;
-    flex-wrap:nowrap !important;
-    margin:0;
-  ">
-                                <i class="fa-solid fa-diagram-project" aria-hidden="true"
-                                    style="flex:0 0 auto; margin-top:0.12em;"></i>
-                                <span style="flex:1 1 auto; min-width:0;">
-                                    Request Form Rebuild
-                                </span>
-                            </h1>
+          <article class="info-card info-card--featured">
+            <div class="info-card__title">The solution</div>
+            <p class="info-card__one-liner">A single, governed request form in Salesforce that sequences the
+              work instead of demanding every answer up front.</p>
+            <ul class="bullets">
+              <li>Pulls data directly from Salesforce and shared drives instead of manual re-entry.</li>
+              <li>Hard stops where the process genuinely cannot proceed without an answer; soft stops where
+                it can, with the field auto-populating once the information lands.</li>
+              <li>Transparent handoffs so the right person gets the right information at the right time,
+                instead of waiting on a single upfront intake.</li>
+            </ul>
+            <ul class="tag-list" aria-label="Tech tags">
+              <li>Salesforce</li>
+              <li>Governed intake</li>
+              <li>Hard / soft stops</li>
+              <li>Parallel workstreams</li>
+              <li>Auto-population</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                            <p class="hero__tagline" style="margin-top:6px; text-align:left;">
-                                <span style="opacity:0.95;">Case Study · Systems Recovery + Process Design</span>
-                            </p>
-                        </div>
+    <!-- HOW IT WORKS -->
+    <section class="section" id="architecture" style="background:var(--bg-secondary); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">How It Works</div>
+          <h2>Sequenced, not linear</h2>
+          <p>Work starts before every answer is in.</p>
+        </div>
 
-                        <!-- RIGHT -->
-                        <div style="text-align:left; min-width:0;">
-                            <p class="hero__subtag" style="margin-top:0; max-width:none;">
-                                Replaced an undocumented, email-driven intake process with a governed Salesforce
-                                request form that sequences work instead of blocking on it, cutting a
-                                roughly month-long process down to days.
-                            </p>
-                        </div>
-                    </div>
+        <div class="card-grid">
+          <article class="info-card">
+            <div class="info-card__title">Hard stops vs. soft stops</div>
+            <ul class="bullets">
+              <li><strong>Hard stop:</strong> the request cannot move forward without this; the form blocks
+                submission until it's answered.</li>
+              <li><strong>Soft stop:</strong> the request can proceed now; the field auto-populates once the
+                information becomes available elsewhere in the system.</li>
+              <li>Splitting these apart meant teams stopped waiting on information they didn't need yet just
+                to start work they could do today.</li>
+            </ul>
+          </article>
 
-                    <!-- CTA buttons -->
-                    <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
-                        <a class="btn btn--ghost" href="#exec"
-                            style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-                            <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
-                            Executive summary
-                        </a>
-                        <a class="btn btn--ghost" href="#architecture"
-                            style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-                            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-                            How it works
-                        </a>
-                        <a class="btn btn--ghost" href="#highlights"
-                            style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-                            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
-                            Technical highlights
-                        </a>
-                        <a class="btn btn--ghost" href="#handoff"
-                            style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-                            <i class="fa-solid fa-people-arrows" aria-hidden="true"></i>
-                            Handoff
-                        </a>
-                    </div>
+          <article class="info-card">
+            <div class="info-card__title">Sourced data, transparent handoffs</div>
+            <ul class="bullets">
+              <li>Fields pull from Salesforce and shared drives directly, instead of asking requesters to
+                re-key what already exists somewhere.</li>
+              <li>Each handoff point is visible: who owns the request next, and what they're waiting on to
+                act.</li>
+              <li>Work can run in parallel across owners instead of queuing behind a single upfront intake.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                    <!-- Note (right aligned) -->
-                    <p class="project-note"
-                        style="width:100%; display:flex; justify-content:flex-end; color:rgba(255,255,255,0.65); font-size:0.82rem; margin:14px 0 0;">
-                        <i class="fa-solid fa-shield-halved" aria-hidden="true" style="margin-right:8px;"></i>
-                        Details are generalized; sensitive identifiers and client specifics are redacted.
-                    </p>
-                </div>
-            </div>
-        </section>
+    <!-- HIGHLIGHTS -->
+    <section class="section" id="highlights">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">Key Highlights</div>
+          <h2>Scannable summary</h2>
+          <p>Impact at a glance, from cycle time to what got unblocked.</p>
+        </div>
 
-        <!-- EXEC SUMMARY -->
-        <section class="section" id="exec">
-            <div class="container">
-                <div
-                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-                        Executive Summary
-                    </h2>
-                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-                        What was actually happening, and what we built instead.
-                    </p>
-                </div>
+        <div class="stat-grid" style="margin-bottom:48px;">
+          <div class="stat-card">
+            <div class="eyebrow stat-card__label">Before</div>
+            <div class="stat-card__value">~1 month</div>
+            <p class="stat-card__desc">Typical request cycle time under the email-driven, ungoverned process.
+            </p>
+          </div>
+          <div class="stat-card">
+            <div class="eyebrow stat-card__label">After</div>
+            <div class="stat-card__value">Days</div>
+            <p class="stat-card__desc">Cycle time once work could run in parallel instead of waiting on a
+              single upfront intake.</p>
+          </div>
+          <div class="stat-card">
+            <div class="eyebrow stat-card__label">Workaround removed</div>
+            <div class="stat-card__value">0</div>
+            <p class="stat-card__desc">Redundant Excel sheets and archive folders left in place after the
+              rebuild.</p>
+          </div>
+        </div>
 
-                <div class="grid grid--2">
-                    <article class="project-card">
-                        <h3 class="project-card__title">
-                            <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
-                            The problem
-                        </h3>
-                        <p class="project-card__one-liner">
-                            A manufacturing process was moving from Oracle to Salesforce with no documented
-                            intake process behind it, just email.
-                        </p>
-                        <ul class="bullets">
-                            <li>Requests were tracked through back-and-forth Outlook threads, not a system.</li>
-                            <li>Leadership's fix in progress was a set of redundant Excel sheets and archive
-                                folders: one more copy for every new request type.</li>
-                            <li>That approach was ungoverned and insecure, and it would have recreated the same
-                                problem the moment a new request type showed up.</li>
-                        </ul>
-                    </article>
+        <article class="info-card info-card--featured">
+          <div class="info-card__title">Summary</div>
+          <p class="info-card__one-liner">Replaced an email-based intake process with a governed Salesforce
+            request form, cutting the process from roughly a month to a few days.</p>
+          <ul class="bullets">
+            <li>Eliminated the redundant Excel sheets and archive folders that leadership had been using to
+              patch the gap, closing an insecure, ungoverned workaround.</li>
+            <li>Reduced the request cycle from about a month to a few days by letting work start in parallel
+              instead of waiting on a single upfront intake.</li>
+            <li>Unblocked product releases that had been delayed by paperwork bottlenecks, not engineering
+              work.</li>
+          </ul>
+          <ul class="tag-list" aria-label="Tech tags">
+            <li>Salesforce process builder</li>
+            <li>Governed request intake</li>
+            <li>Hard / soft stop logic</li>
+            <li>Cross-source data pull</li>
+            <li>Modular knowledge base</li>
+          </ul>
+          <a class="link-arrow" href="../index.html#contact">Request details &rarr;</a>
+        </article>
+      </div>
+    </section>
 
-                    <article class="project-card project-card--featured">
-                        <h3 class="project-card__title">
-                            <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
-                            The solution
-                        </h3>
-                        <p class="project-card__one-liner">
-                            A single, governed request form in Salesforce that sequences the work instead of
-                            demanding every answer up front.
-                        </p>
-                        <ul class="bullets">
-                            <li>Pulls data directly from Salesforce and shared drives instead of manual
-                                re-entry.</li>
-                            <li>Hard stops where the process genuinely cannot proceed without an answer; soft
-                                stops where it can, with the field auto-populating once the information lands.</li>
-                            <li>Transparent handoffs so the right person gets the right information at the right
-                                time, instead of waiting on a single upfront intake.</li>
-                        </ul>
+    <!-- HANDOFF -->
+    <section class="section" id="handoff" style="background:var(--bg-secondary); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div class="section__header">
+          <div class="eyebrow" style="margin-bottom:16px;">Handoff &amp; Ownership</div>
+          <h2>What the team did with it after we left</h2>
+          <p>The measure of this engagement isn't the form.</p>
+        </div>
 
-                        <ul class="tags" aria-label="Tech tags">
-                            <li>Salesforce</li>
-                            <li>Governed intake</li>
-                            <li>Hard / soft stops</li>
-                            <li>Parallel workstreams</li>
-                            <li>Auto-population</li>
-                        </ul>
+        <div class="card-grid">
+          <article class="info-card">
+            <div class="info-card__title">They started changing it right away</div>
+            <ul class="bullets">
+              <li>The team didn't just operate the form: they extended it, using this build as a template to
+                create request forms for new use cases on their own.</li>
+              <li>They added and removed fields as their needs changed, without needing us back in the
+                system.</li>
+              <li>They enhanced the soft-stop logic themselves as they found new places it could help.</li>
+            </ul>
+          </article>
 
-                        <div class="actions">
-                            <a class="btn btn--primary" href="#highlights">Technical highlights</a>
-                            <a class="btn btn--primary" href="#architecture">How it works</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+          <article class="info-card">
+            <div class="info-card__title">Documentation that stayed alive</div>
+            <ul class="bullets">
+              <li>Delivery included a modular knowledge base, not a one-time handoff document.</li>
+              <li>The team has kept it updated and maintained since, which is the actual signal that
+                ownership transferred.</li>
+              <li>Every engagement aims at the same finish line: something the client can run and evolve
+                whether or not they ever need to call us again.</li>
+            </ul>
+          </article>
+        </div>
 
-        <!-- HOW IT WORKS -->
-        <section class="section" id="architecture">
-            <div class="container">
-                <div
-                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-                        How It Works
-                    </h2>
-                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-                        Sequenced, not linear: work starts before every answer is in.
-                    </p>
-                </div>
+        <blockquote class="quote">
+          &ldquo;We make ourselves unnecessary. By design.&rdquo;
+        </blockquote>
 
-                <div class="grid grid--2">
-                    <article class="project-card">
-                        <h3 class="project-card__title">
-                            <i class="fa-solid fa-hand icon-accent" aria-hidden="true"></i>
-                            Hard stops vs. soft stops
-                        </h3>
-                        <ul class="bullets">
-                            <li><strong>Hard stop:</strong> the request cannot move forward without this; the
-                                form blocks submission until it's answered.</li>
-                            <li><strong>Soft stop:</strong> the request can proceed now; the field auto-populates
-                                once the information becomes available elsewhere in the system.</li>
-                            <li>Splitting these apart meant teams stopped waiting on information they didn't
-                                need yet just to start work they could do today.</li>
-                        </ul>
-                    </article>
+        <div style="text-align:center;">
+          <a class="btn" href="#top">&uarr; Back to top</a>
+        </div>
+      </div>
+    </section>
 
-                    <article class="project-card">
-                        <h3 class="project-card__title">
-                            <i class="fa-solid fa-people-arrows icon-accent" aria-hidden="true"></i>
-                            Sourced data, transparent handoffs
-                        </h3>
-                        <ul class="bullets">
-                            <li>Fields pull from Salesforce and shared drives directly, instead of asking
-                                requesters to re-key what already exists somewhere.</li>
-                            <li>Each handoff point is visible: who owns the request next, and what they're
-                                waiting on to act.</li>
-                            <li>Work can run in parallel across owners instead of queuing behind a single
-                                upfront intake.</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
+  </main>
 
-        <!-- HIGHLIGHTS -->
-        <section class="section" id="highlights">
-            <div class="container">
-                <div
-                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-                        Key Highlights
-                    </h2>
-                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-                        Scannable summary: impact bullets + tech tags.
-                    </p>
-                </div>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../assets/logo-leaf.png" alt="Naturally Logical" />
+          <div class="footer-brand-text">
+            <div class="footer-logo">Naturally<span> Logical</span></div>
+            <p class="footer-tagline">System Recovery, Automation, and Strategic Systems Leadership.</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col__label">Contact</div>
+            <a href="mailto:hello@naturallylogical.com">hello@naturallylogical.com</a>
+            <a href="https://www.linkedin.com/company/naturally-logical" target="_blank"
+              rel="noopener">LinkedIn</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col__label">Location</div>
+            <p>Merrimac, MA</p>
+            <p>(Boston Area)</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Naturally Logical, LLC</span>
+        <span>Systems recovery &middot; Automation &middot; AI governance</span>
+      </div>
+    </div>
+  </footer>
 
-                <article class="project-card project-card--featured">
-                    <h3 class="project-card__title">
-                        <i class="fa-solid fa-list-check icon-accent" aria-hidden="true"></i>
-                        Summary
-                    </h3>
-                    <p class="project-card__one-liner">
-                        Replaced an email-based intake process with a governed Salesforce request form, cutting
-                        the process from roughly a month to a few days.
-                    </p>
+  <script src="../script.js"></script>
 
-                    <ul class="bullets">
-                        <li>Eliminated the redundant Excel sheets and archive folders that leadership had been
-                            using to patch the gap, closing an insecure, ungoverned workaround.</li>
-                        <li>Reduced the request cycle from about a month to a few days by letting work start in
-                            parallel instead of waiting on a single upfront intake.</li>
-                        <li>Unblocked product releases that had been delayed by paperwork bottlenecks, not
-                            engineering work.</li>
-                    </ul>
-
-                    <ul class="tags" aria-label="Tech tags">
-                        <li>Salesforce process builder</li>
-                        <li>Governed request intake</li>
-                        <li>Hard / soft stop logic</li>
-                        <li>Cross-source data pull</li>
-                        <li>Modular knowledge base</li>
-                    </ul>
-
-                    <div class="actions">
-                        <a class="btn btn--ghost" href="../contact.html">Request details</a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- HANDOFF -->
-        <section class="section" id="handoff">
-            <div class="container">
-                <div
-                    style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-                    <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-                        Handoff &amp; Ownership
-                    </h2>
-                    <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-                        The measure of this engagement isn't the form. It's what the team did with it after we
-                        left.
-                    </p>
-                </div>
-
-                <div class="grid grid--2">
-                    <article class="project-card">
-                        <h3 class="project-card__title">
-                            <i class="fa-solid fa-graduation-cap icon-accent" aria-hidden="true"></i>
-                            They started changing it right away
-                        </h3>
-                        <ul class="bullets">
-                            <li>The team didn't just operate the form: they extended it, using this build as a
-                                template to create request forms for new use cases on their own.</li>
-                            <li>They added and removed fields as their needs changed, without needing us back in
-                                the system.</li>
-                            <li>They enhanced the soft-stop logic themselves as they found new places it could
-                                help.</li>
-                        </ul>
-                    </article>
-
-                    <article class="project-card">
-                        <h3 class="project-card__title">
-                            <i class="fa-solid fa-book icon-accent" aria-hidden="true"></i>
-                            Documentation that stayed alive
-                        </h3>
-                        <ul class="bullets">
-                            <li>Delivery included a modular knowledge base, not a one-time handoff document.</li>
-                            <li>The team has kept it updated and maintained since, which is the actual signal
-                                that ownership transferred.</li>
-                            <li>Every engagement aims at the same finish line: something the client can run and
-                                evolve whether or not they ever need to call us again.</li>
-                        </ul>
-                    </article>
-                </div>
-
-                <div class="actions actions--center" style="margin-top:18px;">
-                    <a class="btn btn--ghost" href="#top">Back to top</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer__social">
-                <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub">
-                    <i class="fa-brands fa-github" aria-hidden="true"></i>
-                </a>
-            </div>
-
-            <div class="footer__meta">
-                <p>© 2026 Naturally Logical</p>
-                <p>Portfolio excerpt for demonstration; sensitive operational details redacted.</p>
-            </div>
-        </footer>
-
-        <!-- JSON-LD -->
-        <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "CreativeWork",
-          "name": "Salesforce Request Form Rebuild",
-          "headline": "Salesforce Request Form Rebuild",
-          "description": "Case study describing a governed Salesforce request form that replaced an undocumented, email-driven intake process during an Oracle-to-Salesforce transition.",
-          "url": "https://naturallylogical.com/case-studies/salesforce-request-form.html",
-          "author": {
-            "@type": "Person",
-            "name": "Sarah Bechel",
-            "url": "https://naturallylogical.com/about-sarah.html"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Naturally Logical",
-            "url": "https://naturallylogical.com/"
-          },
-          "about": [
-            "Salesforce",
-            "Process design",
-            "Systems recovery",
-            "Intake governance",
-            "Knowledge transfer"
-          ],
-          "inLanguage": "en-US"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Naturally Logical",
-              "item": "https://naturallylogical.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Proof & Case Studies",
-              "item": "https://naturallylogical.com/#proof"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Salesforce Request Form Rebuild",
-              "item": "https://naturallylogical.com/case-studies/salesforce-request-form.html"
-            }
-          ]
-        }
-      ]
-    }
-    </script>
-    </main>
-
-    <!-- Shared site JS -->
-    <script src="../New_assets/scripts.js"></script>
 </body>
 
 </html>

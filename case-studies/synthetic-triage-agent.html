@@ -1,232 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM5VZHXLCT"></script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#2D5A27" />
-
+  <link rel="icon" type="image/png" href="../assets/Logo-Leaf-Favicon.png" />
   <title>Synthetic Triage Agent (SYNaTRA) | Naturally Logical</title>
   <meta name="description"
     content="The client wanted in-call coaching but lacked the data foundation for it. We built synthetic triage from the resolution data they already had, then trained the team to scale it themselves." />
-  <link rel="canonical" href="https://naturallylogical.com/case-studies/synthetic-triage-agent.html" />
-
-  <!-- Social preview -->
-  <meta property="og:title" content="Synthetic Triage Agent (SYNaTRA) - Naturally Logical Case Study" />
-  <meta property="og:description"
-    content="Reframed a stalled in-call coaching ask into a phased build: synthetic triage first, in-call coaching next, on a foundation the team scaled themselves." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://naturallylogical.com/case-studies/synthetic-triage-agent.html" />
-  <meta name="twitter:card" content="summary" />
-
-  <!-- Fonts + Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Shared site CSS -->
-  <link rel="stylesheet" href="../New_assets/styles.css" />
-  <link rel="stylesheet" href="../New_assets/project-bridge.css" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="../Images/favicon-large.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
 </head>
 
-<body id="top" class="project-page">
+<body class="page-synthetic-triage-agent">
 
-  <header class="nav">
+  <!-- NAV -->
+  <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a class="brand" href="../index.html" aria-label="Naturally Logical home">
-        <span class="brand__mark" aria-hidden="true">
-          <img src="../Images/logo.png" alt="" class="brand__logo" />
-        </span>
-
-        <span class="brand__text">
-          <span class="brand__name">Naturally Logical</span>
-          <span class="brand__tag">Consulting</span>
-        </span>
+      <a class="nav__logo" href="../index.html">
+        <img src="../assets/logo-leaf.png" alt="Naturally Logical leaf logo" />
+        <span class="nav__logo-text">Naturally<span> Logical</span></span>
       </a>
-
-      <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="../index.html#proof">Proof</a>
-        <a href="#problem">Problem</a>
-        <a href="#approach">Approach</a>
-        <a href="#results">Results</a>
-        <a href="#ownership">Ownership</a>
-        <a class="btn btn--ghost" href="../about-sarah.html">About</a>
-        <a class="btn btn--ghost" href="../contact.html">Contact</a>
+      <nav>
+        <ul class="nav__links">
+          <li class="nav__item--dropdown">
+            <a href="../index.html#about">About</a>
+            <ul class="nav__dropdown">
+              <li><a href="../who-we-are.html">Who We Are</a></li>
+            </ul>
+          </li>
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#insights">Insights</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
       </nav>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      <button class="nav__toggle" aria-label="Open menu">&#9776;</button>
     </div>
   </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero project-hero" aria-label="SYNaTRA hero">
-      <div class="container hero__content">
-        <div class="brand-card">
+  <main id="top">
 
-          <!-- Pills -->
-          <div class="hero-eyebrow"
-            style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; margin-bottom:16px;">
-            <span
-              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Synthetic triage
-            </span>
-            <span
-              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-              <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Phased foundation
-            </span>
-            <span
-              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-              <i class="fa-solid fa-chart-line" aria-hidden="true"></i> 2 to 19 paths in a month
-            </span>
-            <span
-              style="flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25);">
-              <i class="fa-solid fa-people-arrows" aria-hidden="true"></i> Team-scaled
-            </span>
-          </div>
-
-          <!-- Left / Right -->
-          <div class="grid grid--2" style="margin-top:0; align-items:center;">
-            <!-- LEFT -->
-            <div style="text-align:left;">
-              <h1 class="hero__title" style="display:flex; align-items:center; justify-content:flex-start; gap:12px;">
-                <i class="fa-solid fa-robot" aria-hidden="true"></i>
-                <span>SYNaTRA</span>
-              </h1>
-
-              <p class="hero__tagline" style="margin-top:6px; text-align:left;">
-                <span style="opacity:0.95;">Case Study &middot; Synthetic Triage Agent</span>
-              </p>
-            </div>
-
-            <!-- RIGHT -->
-            <div style="text-align:left;">
-              <p class="hero__subtag" style="margin-top:0; max-width:none;">
-                The client wanted in-call coaching. They didn't have the data foundation to support it yet, so we
-                built synthetic triage first, on data they already had, and let the team prove they could scale
-                it before we built the harder thing on top.
-              </p>
-            </div>
-          </div>
-
-          <!-- CTA buttons -->
-          <div class="hero__cta" style="display:flex; flex-wrap:wrap; gap:12px; width:100%; margin-top:14px;">
-            <a class="btn btn--ghost" href="#problem"
-              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-              <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
-              The problem
-            </a>
-            <a class="btn btn--ghost" href="#approach"
-              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-              The approach
-            </a>
-            <a class="btn btn--ghost" href="#results"
-              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
-              The results
-            </a>
-            <a class="btn btn--ghost" href="#ownership"
-              style="flex:1 1 calc(50% - 12px); justify-content:center; text-align:center;">
-              <i class="fa-solid fa-people-arrows" aria-hidden="true"></i>
-              What they own now
-            </a>
-          </div>
-
-          <!-- Note (right aligned) -->
-          <p class="project-note"
-            style="width:100%; display:flex; justify-content:flex-end; color:rgba(255,255,255,0.65); font-size:0.82rem; margin:14px 0 0;">
-            <i class="fa-solid fa-shield-halved" aria-hidden="true" style="margin-right:8px;"></i>
-            Internal workflow tool; identifiers redacted.
-          </p>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="eyebrow page-hero__eyebrow">Case Study &middot; Synthetic Triage Agent</div>
+        <h1>SYNaTRA: Synthetic Triage Agent</h1>
+        <p class="page-hero__outcome">The client wanted in-call coaching. They didn't have the data foundation
+          to support it yet, so we built synthetic triage first, on data they already had, and let the team
+          prove they could scale it before we built the harder thing on top.</p>
+        <div class="page-hero__tags">
+          <span class="page-hero__tag">Synthetic triage</span>
+          <span class="page-hero__tag">Phased foundation</span>
+          <span class="page-hero__tag">2 to 19 paths in a month</span>
+          <span class="page-hero__tag">Team-scaled</span>
         </div>
+        <p class="page-hero__note">Internal workflow tool; identifiers redacted.</p>
       </div>
     </section>
 
     <!-- THE PROBLEM -->
     <section class="section" id="problem">
       <div class="container">
-        <div
-          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            The Problem
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            The ask was ahead of the data that would have to support it.
-          </p>
+        <div class="case-section__head">
+          <h2>The Problem</h2>
+          <p>The ask was ahead of the data that would have to support it.</p>
         </div>
 
-        <article class="project-card project-card--featured">
-          <h3 class="project-card__title">
-            <i class="fa-solid fa-triangle-exclamation icon-accent" aria-hidden="true"></i>
-            An in-call coaching agent with no foundation underneath it
-          </h3>
-          <ul class="bullets">
-            <li>The client wanted an in-call coaching agent, but they didn't have the data foundation to support
-              one yet.</li>
-            <li>Tickets weren't being categorized consistently, so the resolution data that did exist couldn't
-              actually be leveraged.</li>
-            <li>Without consistent categorization, there was no reliable signal to train a coaching agent on,
-              in-call coaching wasn't a data problem waiting to be solved, it was a data problem that hadn't
-              been created yet.</li>
+        <article class="case-card case-card--featured">
+          <h3 class="case-card__title">An in-call coaching agent with no foundation underneath it</h3>
+          <ul class="case-bullets">
+            <li>The client wanted an in-call coaching agent, but they didn't have the data foundation to
+              support one yet.</li>
+            <li>Tickets weren't being categorized consistently, so the resolution data that did exist
+              couldn't actually be leveraged.</li>
+            <li>Without consistent categorization, there was no reliable signal to train a coaching agent
+              on, in-call coaching wasn't a data problem waiting to be solved, it was a data problem that
+              hadn't been created yet.</li>
           </ul>
         </article>
       </div>
     </section>
 
     <!-- THE APPROACH -->
-    <section class="section" id="approach">
+    <section class="section" style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);" id="approach">
       <div class="container">
-        <div
-          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            The Approach
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            Not "that's not possible." What's possible now, and what it builds toward.
-          </p>
+        <div class="case-section__head">
+          <h2>The Approach</h2>
+          <p>Not "that's not possible." What's possible now, and what it builds toward.</p>
         </div>
 
-        <div class="grid grid--2">
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-route icon-accent" aria-hidden="true"></i>
-              Reframe, don't refuse
-            </h3>
-            <ul class="bullets">
-              <li>Instead of telling them in-call coaching wasn't possible yet, we reframed the problem: start
-                with synthetic triage using the resolution data they already had.</li>
-              <li>Built out the common resolution paths first, the patterns that already existed in the data,
-                just uncategorized.</li>
-              <li>Trained the team to add resolutions to tickets consistently, so the data feeding the system
-                would keep improving after we left.</li>
+        <div class="grid--2">
+          <article class="case-card">
+            <h3 class="case-card__title">Reframe, don't refuse</h3>
+            <ul class="case-bullets">
+              <li>Instead of telling them in-call coaching wasn't possible yet, we reframed the problem:
+                start with synthetic triage using the resolution data they already had.</li>
+              <li>Built out the common resolution paths first, the patterns that already existed in the
+                data, just uncategorized.</li>
+              <li>Trained the team to add resolutions to tickets consistently, so the data feeding the
+                system would keep improving after we left.</li>
             </ul>
           </article>
 
-          <article class="project-card project-card--featured">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-stairs icon-accent" aria-hidden="true"></i>
-              A phase they could stand on
-            </h3>
-            <ul class="bullets">
-              <li>Delivered real value on day one with triage, not a promise of value once the "real" project
-                started.</li>
+          <article class="case-card case-card--featured">
+            <h3 class="case-card__title">A phase they could stand on</h3>
+            <ul class="case-bullets">
+              <li>Delivered real value on day one with triage, not a promise of value once the "real"
+                project started.</li>
               <li>Positioned them for the next phase, in-call coaching, on a foundation that would actually
                 exist by the time we got there.</li>
               <li>Scaling the agent was tied directly to how much the data improved, which put the team in
                 control of the timeline instead of us.</li>
             </ul>
 
-            <ul class="tags" aria-label="Tech tags">
+            <ul class="case-tags" aria-label="Tech tags">
               <li>Synthetic triage</li>
               <li>Resolution path modeling</li>
               <li>Ticket categorization training</li>
@@ -240,53 +130,55 @@
     <!-- THE RESULTS -->
     <section class="section" id="results">
       <div class="container">
-        <div
-          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            The Results
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            Nineteen resolution paths in a month is not a small number.
-          </p>
+        <div class="case-section__head">
+          <h2>The Results</h2>
+          <p>Nineteen resolution paths in a month is not a small number.</p>
         </div>
 
-        <article class="project-card project-card--featured">
-          <h3 class="project-card__title">
-            <i class="fa-solid fa-chart-line icon-accent" aria-hidden="true"></i>
-            From manual categorization to a system the team scaled themselves
-          </h3>
-          <ul class="bullets">
-            <li>Moved from manual, inconsistent categorization to automated triage that freed up real time and
-              money that used to go into re-categorizing tickets after the fact.</li>
-            <li>In the first month alone, the team scaled from two common resolution paths to nineteen. Nobody
-              taught them how to add the other seventeen.</li>
-            <li>We came back to build the more complex in-call coaching agent on top of that foundation, the
-              phase the client originally asked for, now actually buildable.</li>
+        <article class="case-card case-card--featured">
+          <h3 class="case-card__title">From manual categorization to a system the team scaled themselves</h3>
+          <ul class="case-bullets">
+            <li>Moved from manual, inconsistent categorization to automated triage that freed up real time
+              and money that used to go into re-categorizing tickets after the fact.</li>
+            <li>In the first month alone, the team scaled from two common resolution paths to nineteen.
+              Nobody taught them how to add the other seventeen.</li>
+            <li>We came back to build the more complex in-call coaching agent on top of that foundation,
+              the phase the client originally asked for, now actually buildable.</li>
           </ul>
         </article>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-card__label">Starting resolution paths</div>
+            <div class="stat-card__value">2</div>
+            <div class="stat-card__desc">Common resolution paths identified at project start.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Resolution paths after 1 month</div>
+            <div class="stat-card__value">19</div>
+            <div class="stat-card__desc">Scaled by the team themselves, unprompted.</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__label">Growth timeframe</div>
+            <div class="stat-card__value">1 mo.</div>
+            <div class="stat-card__desc">Nearly tenfold increase in resolution paths in the first month.</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- WHAT THE TEAM OWNS NOW -->
-    <section class="section" id="ownership">
+    <section class="section" style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);" id="ownership">
       <div class="container">
-        <div
-          style="display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:16px;">
-          <h2 class="section__title brand-heading" style="text-align:left; margin:0; flex:0 0 auto;">
-            What the Team Owns Now
-          </h2>
-          <p class="section__subtitle" style="text-align:left; margin:0; flex:1 1 360px; max-width:70ch;">
-            The next phase was built on a foundation they understood, not one they were handed.
-          </p>
+        <div class="case-section__head">
+          <h2>What the Team Owns Now</h2>
+          <p>The next phase was built on a foundation they understood, not one they were handed.</p>
         </div>
 
-        <div class="grid grid--2">
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-diagram-project icon-accent" aria-hidden="true"></i>
-              The triage system, and the habit that feeds it
-            </h3>
-            <ul class="bullets">
+        <div class="grid--2">
+          <article class="case-card">
+            <h3 class="case-card__title">The triage system, and the habit that feeds it</h3>
+            <ul class="case-bullets">
               <li>The team owns the triage agent and the discipline of consistent ticket categorization that
                 keeps it accurate.</li>
               <li>They proved this by scaling resolution paths nearly tenfold in a single month, without
@@ -294,62 +186,63 @@
             </ul>
           </article>
 
-          <article class="project-card">
-            <h3 class="project-card__title">
-              <i class="fa-solid fa-layer-group icon-accent" aria-hidden="true"></i>
-              A real foundation for what comes next
-            </h3>
-            <ul class="bullets">
-              <li>The in-call coaching agent we're building now sits on data and categorization habits the team
-                built themselves, not on assumptions we made for them.</li>
+          <article class="case-card">
+            <h3 class="case-card__title">A real foundation for what comes next</h3>
+            <ul class="case-bullets">
+              <li>The in-call coaching agent we're building now sits on data and categorization habits the
+                team built themselves, not on assumptions we made for them.</li>
               <li>A vendor hands over a feature and moves on. A team that understands its own system grows
                 into the next phase without waiting for someone else to build it for them.</li>
             </ul>
           </article>
         </div>
 
-        <div class="actions actions--center" style="margin-top:18px;">
-          <a class="btn btn--ghost" href="#top">Back to top</a>
+        <blockquote class="case-quote">
+          &ldquo;We make ourselves unnecessary. By design.&rdquo;
+        </blockquote>
+
+        <div style="margin-top:40px;">
+          <a class="link-arrow" href="#top">&uarr; Back to top</a>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer__social">
-        <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.instagram.com/serruhb/" target="_blank" rel="noopener" aria-label="Instagram">
-          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-        </a>
-        <a href="https://github.com/Serruhb" target="_blank" rel="noopener" aria-label="GitHub">
-          <i class="fa-brands fa-github" aria-hidden="true"></i>
-        </a>
-      </div>
-
-      <div class="footer__meta">
-        <p>© 2026 Naturally Logical</p>
-        <p>Portfolio excerpt for demonstration; operational details redacted.</p>
-      </div>
-    </footer>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "name": "SYNaTRA - Synthetic Triage Agent",
-      "description": "Case study describing a phased build: synthetic ticket triage delivered first on existing resolution data, scaled by the client team, then extended into in-call coaching.",
-      "author": { "@type": "Person", "name": "Sarah Bechel", "url": "https://naturallylogical.com/about-sarah.html" },
-      "publisher": { "@type": "Organization", "name": "Naturally Logical", "url": "https://naturallylogical.com/" },
-      "url": "https://naturallylogical.com/case-studies/synthetic-triage-agent.html",
-      "about": ["Synthetic triage", "Ticket categorization", "Phased AI delivery", "Customer Success automation", "Knowledge transfer"]
-    }
-    </script>
   </main>
 
-  <!-- Shared site JS -->
-  <script src="../New_assets/scripts.js"></script>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../assets/logo-leaf.png" alt="Naturally Logical" />
+          <div class="footer-brand-text">
+            <div class="footer-logo">Naturally<span> Logical</span></div>
+            <p class="footer-tagline">System Recovery, Automation, and Strategic Systems Leadership.</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col__label">Contact</div>
+            <a href="mailto:hello@naturallylogical.com">hello@naturallylogical.com</a>
+            <a href="https://www.linkedin.com/company/naturally-logical" target="_blank"
+              rel="noopener">LinkedIn</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col__label">Location</div>
+            <p>Merrimac, MA</p>
+            <p>(Boston Area)</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Naturally Logical, LLC</span>
+        <span>Systems recovery &middot; Automation &middot; AI governance</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+
 </body>
 
 </html>

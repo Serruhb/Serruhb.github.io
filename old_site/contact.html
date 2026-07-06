@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2D5A27" />
+
+  <title>Contact | Naturally Logical</title>
+  <meta name="description"
+    content="Tell Naturally Logical what you're trying to solve. One intake form routes every inquiry to the right engagement type, no individual booking links." />
+  <link rel="canonical" href="https://naturallylogical.com/contact.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="Images/favicon-large.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="New_assets/styles.css" />
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Naturally Logical home">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="Images/logo.png" alt="" class="brand__logo" />
+        </span>
+
+        <span class="brand__text">
+          <span class="brand__name">Naturally Logical</span>
+          <span class="brand__tag">Consulting</span>
+        </span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#proof">Proof</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#about">About</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <div class="pill">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>Intake</span>
+          </div>
+
+          <h1>
+            Tell us what you're
+            <span class="accent">actually trying to solve</span>.
+          </h1>
+
+          <p class="lead">
+            This is not a sales form. Answer a few direct questions about what's broken, unreliable, or unclear, and
+            we'll route you to the engagement type that fits. Every inquiry goes to the same inbox and gets a
+            straight answer, including when the answer is that we're not the right fit.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#intake-form">
+              <i class="fa-solid fa-arrow-down"></i> Start the intake
+            </a>
+            <a class="btn btn--ghost" href="mailto:connect@naturallylogical.com">
+              <i class="fa-solid fa-envelope"></i> Email connect@naturallylogical.com
+            </a>
+          </div>
+
+          <div class="hero__meta">
+            <div class="metaItem">
+              <div class="metaItem__title">What to expect</div>
+              <div class="metaItem__text">A direct reply from Naturally Logical, not an automated sequence.</div>
+            </div>
+            <div class="metaItem">
+              <div class="metaItem__title">Routing</div>
+              <div class="metaItem__text">Every submission goes to connect@naturallylogical.com and is reviewed by
+                the team.</div>
+            </div>
+            <div class="metaItem">
+              <div class="metaItem__title">Best for</div>
+              <div class="metaItem__text">Scoping a real problem before committing to an engagement.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__card">
+          <div class="card card--glass">
+            <div class="card__header">
+              <div class="card__icon"><i class="fa-solid fa-comments"></i></div>
+              <div>
+                <div class="card__title">How to make this useful</div>
+                <div class="card__subtitle">Bring the real system, not the summary</div>
+              </div>
+            </div>
+
+            <ul class="checklist">
+              <li><i class="fa-solid fa-check"></i> What system or process is breaking down?</li>
+              <li><i class="fa-solid fa-check"></i> Where are you seeing inconsistency or lack of trust?</li>
+              <li><i class="fa-solid fa-check"></i> What has already been tried or implemented?</li>
+              <li><i class="fa-solid fa-check"></i> Who currently owns the system, and where is it unclear?</li>
+            </ul>
+
+            <div class="card__actions">
+              <a class="btn btn--primary btn--small" href="index.html#proof">See proof</a>
+              <a class="btn btn--ghost btn--small" href="index.html">Back to home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__bg" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" id="intake-form">
+      <div class="container">
+        <div class="section__header">
+          <h2>Intake</h2>
+          <p>Two minutes. Enough context for us to route you correctly the first time.</p>
+        </div>
+
+        <div class="card" style="padding: 28px;">
+          <form class="intake-form" id="intakeForm" novalidate>
+            <div class="intake-row">
+              <div class="intake-field">
+                <label for="intakeName">Name</label>
+                <input type="text" id="intakeName" name="name" autocomplete="name" required />
+              </div>
+              <div class="intake-field">
+                <label for="intakeEmail">Email</label>
+                <input type="email" id="intakeEmail" name="email" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="intake-field">
+              <label for="intakeCompany">Company <span style="font-weight:400; color:rgba(16,19,20,0.5);">(optional)</span></label>
+              <input type="text" id="intakeCompany" name="company" autocomplete="organization" />
+            </div>
+
+            <div class="intake-field">
+              <label for="intakeProblem">What are you trying to solve?</label>
+              <p class="intake-field__hint">Describe the system, process, or decision that isn't working, as
+                specifically as you can.</p>
+              <textarea id="intakeProblem" name="problem" rows="5" required></textarea>
+            </div>
+
+            <div class="intake-field">
+              <label id="projectTypeLabel">Which sounds closer to what you need?</label>
+              <div class="project-type-grid" role="radiogroup" aria-labelledby="projectTypeLabel">
+                <label class="project-type-card" for="typeSmall">
+                  <input type="radio" id="typeSmall" name="projectType" value="Small Integration Project" required />
+                  <div class="project-type-card__title">Small Integration Project</div>
+                  <p class="project-type-card__text">A focused, self-contained engagement: one system, one
+                    failure point, a clear scope.</p>
+                </label>
+                <label class="project-type-card" for="typeEnterprise">
+                  <input type="radio" id="typeEnterprise" name="projectType" value="Enterprise Transformation" />
+                  <div class="project-type-card__title">Enterprise Transformation</div>
+                  <p class="project-type-card__text">A larger initiative spanning multiple systems or teams,
+                    requiring a full team to execute.</p>
+                </label>
+              </div>
+            </div>
+
+            <div class="hero__actions">
+              <button class="btn btn--primary" type="submit">
+                <i class="fa-solid fa-paper-plane"></i> Send to Naturally Logical
+              </button>
+            </div>
+
+            <p class="lead" id="statusMsg" aria-live="polite" style="margin-top: 4px; font-size: 14px;"></p>
+
+            <p class="intake-field__hint" style="margin-top: -8px;">
+              Submitting opens your email client with this addressed to
+              <a href="mailto:connect@naturallylogical.com">connect@naturallylogical.com</a>. Nothing is sent until
+              you do.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <div class="footer__brand">Naturally Logical</div>
+          <div class="footer__sub">Consulting • AI • Automation • Decision Systems</div>
+        </div>
+        <div class="footer__right">
+          <a href="contact.html">Contact</a>
+          <a href="index.html#proof">Proof</a>
+          <a href="https://www.linkedin.com/in/serruhb/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="New_assets/scripts.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("intakeForm");
+      const statusMsg = document.getElementById("statusMsg");
+
+      document.querySelectorAll(".project-type-card input[type=radio]").forEach((input) => {
+        input.addEventListener("change", () => {
+          document.querySelectorAll(".project-type-card").forEach((card) => card.classList.remove("is-selected"));
+          input.closest(".project-type-card").classList.add("is-selected");
+        });
+      });
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          const name = form.name.value.trim();
+          const email = form.email.value.trim();
+          const company = form.company.value.trim();
+          const problem = form.problem.value.trim();
+          const projectType = form.projectType.value;
+
+          const subject = `Intake: ${projectType} - ${name}`;
+          const bodyLines = [
+            `Name: ${name}`,
+            `Email: ${email}`,
+            company ? `Company: ${company}` : null,
+            `Project type: ${projectType}`,
+            "",
+            "What they're trying to solve:",
+            problem
+          ].filter(Boolean);
+
+          const mailto = `mailto:connect@naturallylogical.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+          window.location.href = mailto;
+
+          if (statusMsg) statusMsg.textContent = "Opening your email client to send this to connect@naturallylogical.com.";
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
