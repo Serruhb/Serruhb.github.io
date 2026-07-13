@@ -1,7 +1,7 @@
 /**
- * Naturally Logical — site chat widget
+ * Naturally Logical - site chat widget
  *
- * Usage: drop this on any page —
+ * Usage: drop this on any page -
  *   <script src="nl-chat-widget.js" data-api="https://nl-chatbot.YOUR-SUBDOMAIN.workers.dev/api/chat"></script>
  *
  * No dependencies. Self-contained styles, scoped to #nl-chat-root.
@@ -18,42 +18,45 @@
   // ---------- styles ----------
   const css = `
   #nl-chat-root { all: initial; }
-  #nl-chat-root, #nl-chat-root * { box-sizing: border-box; font-family: -apple-system, "Inter", "Segoe UI", sans-serif; }
+  #nl-chat-root, #nl-chat-root * { box-sizing: border-box; font-family: "DM Sans", -apple-system, "Segoe UI", sans-serif; }
 
   #nl-chat-root .nl-launcher {
     position: fixed; bottom: 24px; right: 24px; z-index: 999999;
     width: 56px; height: 56px; border-radius: 10px;
-    background: #1D2126; color: #F6F5F2; border: none; cursor: pointer;
+    background: #1A261A; color: #FDFEFC; border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
     transition: transform 0.15s ease;
   }
   #nl-chat-root .nl-launcher:hover { transform: translateY(-2px); }
-  #nl-chat-root .nl-launcher:focus-visible { outline: 2px solid #4F7C82; outline-offset: 3px; }
+  #nl-chat-root .nl-launcher:focus-visible { outline: 2px solid #B8721C; outline-offset: 3px; }
   #nl-chat-root .nl-launcher svg { width: 24px; height: 24px; }
 
   #nl-chat-root .nl-panel {
     position: fixed; bottom: 24px; right: 24px; z-index: 999999;
     width: 368px; max-width: calc(100vw - 32px);
     height: 540px; max-height: calc(100vh - 48px);
-    background: #F6F5F2; border-radius: 12px; overflow: hidden;
+    background: #FDFEFC; border-radius: 12px; overflow: hidden;
     box-shadow: 0 12px 40px rgba(0,0,0,0.3);
     display: flex; flex-direction: column;
-    border: 1px solid #D8D6D0;
+    border: 1px solid #E8F2E5;
   }
 
   #nl-chat-root .nl-header {
-    background: #1D2126; color: #F6F5F2; padding: 14px 16px;
+    background: #1A261A; color: #FDFEFC; padding: 14px 16px;
     display: flex; align-items: center; justify-content: space-between;
     flex-shrink: 0;
   }
-  #nl-chat-root .nl-header-title { font-size: 14px; font-weight: 600; letter-spacing: 0.01em; }
+  #nl-chat-root .nl-header-title {
+    font-family: "Playfair Display", serif;
+    font-size: 15px; font-weight: 600; letter-spacing: 0.01em;
+  }
   #nl-chat-root .nl-header-sub {
-    font-family: "SF Mono", "Consolas", monospace; font-size: 11px;
-    color: #8FA9AC; margin-top: 2px;
+    font-family: "Courier New", Courier, monospace; font-size: 11px;
+    color: #B8721C; margin-top: 2px;
   }
   #nl-chat-root .nl-close {
-    background: none; border: none; color: #F6F5F2; cursor: pointer;
+    background: none; border: none; color: #FDFEFC; cursor: pointer;
     opacity: 0.7; padding: 4px; display: flex;
   }
   #nl-chat-root .nl-close:hover { opacity: 1; }
@@ -69,35 +72,35 @@
     font-size: 13.5px; line-height: 1.45; white-space: pre-wrap;
   }
   #nl-chat-root .nl-msg.bot {
-    align-self: flex-start; background: #FFFFFF; color: #1D2126;
-    border: 1px solid #E4E2DC; border-bottom-left-radius: 2px;
+    align-self: flex-start; background: #FDFEFC; color: #1A261A;
+    border: 1px solid #E8F2E5; border-bottom-left-radius: 2px;
   }
   #nl-chat-root .nl-msg.user {
-    align-self: flex-end; background: #1D2126; color: #F6F5F2;
+    align-self: flex-end; background: #2D5A27; color: #FDFEFC;
     border-bottom-right-radius: 2px;
   }
 
   #nl-chat-root .nl-typing {
-    align-self: flex-start; font-family: "SF Mono", "Consolas", monospace;
-    font-size: 13px; color: #8A8A85; padding: 2px 12px;
+    align-self: flex-start; font-family: "Courier New", Courier, monospace;
+    font-size: 13px; color: #4A5C47; padding: 2px 12px;
   }
 
   #nl-chat-root .nl-inputrow {
-    display: flex; gap: 8px; padding: 12px; border-top: 1px solid #E4E2DC;
-    background: #F6F5F2; flex-shrink: 0;
+    display: flex; gap: 8px; padding: 12px; border-top: 1px solid #E8F2E5;
+    background: #FDFEFC; flex-shrink: 0;
   }
   #nl-chat-root .nl-input {
-    flex: 1; border: 1px solid #D8D6D0; border-radius: 7px;
+    flex: 1; border: 1px solid #E8F2E5; border-radius: 7px;
     padding: 9px 11px; font-size: 13.5px; resize: none;
-    background: #FFFFFF; color: #1D2126;
+    background: #FDFEFC; color: #1A261A;
   }
-  #nl-chat-root .nl-input:focus-visible { outline: 2px solid #4F7C82; outline-offset: 1px; }
+  #nl-chat-root .nl-input:focus-visible { outline: 2px solid #B8721C; outline-offset: 1px; }
   #nl-chat-root .nl-send {
-    background: #1D2126; color: #F6F5F2; border: none; border-radius: 7px;
+    background: #2D5A27; color: #FDFEFC; border: none; border-radius: 7px;
     width: 38px; flex-shrink: 0; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
   }
-  #nl-chat-root .nl-send:hover { background: #2B3138; }
+  #nl-chat-root .nl-send:hover { background: #1A261A; }
   #nl-chat-root .nl-send:disabled { opacity: 0.4; cursor: default; }
   #nl-chat-root .nl-send svg { width: 16px; height: 16px; }
 
@@ -115,6 +118,12 @@
   const styleEl = document.createElement("style");
   styleEl.textContent = css;
   document.head.appendChild(styleEl);
+
+  // ---------- fonts (matches the rest of the NL site) ----------
+  const fontLink = document.createElement("link");
+  fontLink.rel = "stylesheet";
+  fontLink.href = "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@400;500;600&display=swap";
+  document.head.appendChild(fontLink);
 
   // ---------- DOM ----------
   const root = document.createElement("div");
@@ -163,7 +172,7 @@
   let open = false;
 
   const GREETING =
-    "Let's get to the root of it 😉. What's going on with your systems?";
+    "Let's get to the root of it. What's going on with your systems?";
 
   function addMessage(role, text) {
     const el = document.createElement("div");
@@ -179,7 +188,7 @@
     if (on && !el) {
       el = document.createElement("div");
       el.className = "nl-typing";
-      el.textContent = "…thinking";
+      el.textContent = "...thinking";
       messagesEl.appendChild(el);
       messagesEl.scrollTop = messagesEl.scrollHeight;
     } else if (!on && el) {
@@ -213,7 +222,7 @@
       setTyping(false);
 
       if (!res.ok || !data.reply) {
-        addMessage("bot", "Something went wrong on our end — mind trying again?");
+        addMessage("bot", "Something went wrong on our end. Mind trying again?");
         return;
       }
 
@@ -221,7 +230,7 @@
       history.push({ role: "assistant", content: data.reply });
     } catch (err) {
       setTyping(false);
-      addMessage("bot", "Couldn't reach the server — check your connection and try again.");
+      addMessage("bot", "Couldn't reach the server. Check your connection and try again.");
     }
   }
 
