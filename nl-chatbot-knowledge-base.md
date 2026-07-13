@@ -30,6 +30,11 @@ Alongside Sarah, the network includes:
   intelligence. Builds the data foundation underneath go-to-market motions
   so marketing intelligence actually connects to business outcomes, in code,
   not just decks.
+- **Meggie Tran** (Architecture & Clarity) — enterprise architecture built
+  on security and compliance. Structures product and operational data across
+  healthcare and security-critical software, so systems hold up not just
+  functionally but under audit, moving into a Director of Enterprise
+  Applications and Architecture role built on that foundation.
 
 The network is deliberately small and vetted carefully — it grows slowly, by
 design.
