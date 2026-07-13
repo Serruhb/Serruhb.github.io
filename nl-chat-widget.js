@@ -53,7 +53,7 @@
   }
   #nl-chat-root .nl-header-sub {
     font-family: "Courier New", Courier, monospace; font-size: 11px;
-    color: #B8721C; margin-top: 2px;
+    color: #E0A458; margin-top: 2px; opacity: 0.9;
   }
   #nl-chat-root .nl-close {
     background: none; border: none; color: #FDFEFC; cursor: pointer;
