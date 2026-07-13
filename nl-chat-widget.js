@@ -135,7 +135,7 @@
     <div class="nl-header">
       <div>
         <div class="nl-header-title">Naturally Logical</div>
-        <div class="nl-header-sub">// ask us anything</div>
+        <div class="nl-header-sub">Branch out and ask for more.</div>
       </div>
       <button class="nl-close" aria-label="Close chat">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -143,7 +143,7 @@
     </div>
     <div class="nl-messages" id="nl-messages"></div>
     <div class="nl-inputrow">
-      <textarea class="nl-input" id="nl-input" rows="1" placeholder="Ask about our approach, a project, anything…"></textarea>
+      <textarea class="nl-input" id="nl-input" rows="1" placeholder="Ask about the Empowerment Model"></textarea>
       <button class="nl-send" id="nl-send" aria-label="Send message" disabled>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
       </button>

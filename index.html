@@ -33,10 +33,19 @@
       </a>
       <nav>
         <ul class="nav__links">
-          <li><a href="#about">About</a></li>
-          <li><a href="who-we-are.html">Who We Are</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#insights">Insights</a></li>
+          <li class="nav__item--dropdown">
+            <a href="about.html">About</a>
+            <ul class="nav__dropdown">
+              <li><a href="who-we-are.html">Who We Are</a></li>
+            </ul>
+          </li>
+          <li><a href="services.html">Services</a></li>
+          <li class="nav__item--dropdown">
+            <a href="insights.html">Insights</a>
+            <ul class="nav__dropdown">
+              <li><a href="insights-this-month.html">This Month</a></li>
+            </ul>
+          </li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -64,211 +73,12 @@
         </div>
       </div>
     </section>
-
     <!-- TRUST BAR -->
     <section class="trust-bar">
       <div class="container">
         <p>&ldquo;We show up fully when you need us. We succeed when you no longer do.&rdquo;</p>
       </div>
     </section>
-
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section__header">
-          <div class="eyebrow" style="margin-bottom:16px;">What we do</div>
-          <h2>Where do you want to start?</h2>
-          <p>Every engagement ends the same way; with your team able to run the system without us. How we get
-            there depends on where things stand today.</p>
-        </div>
-        <div class="services-list">
-          <article class="service-card" data-card>
-            <div class="service-card__head" data-toggle>
-              <div class="service-card__num">01</div>
-              <div class="service-card__title-wrap">
-                <div class="service-card__title">Systems Recovery &amp; Diagnosis</div>
-                <p class="service-card__desc">We find out how things actually work before we touch
-                  anything. Two to three sessions of honest assessment before any prescription.</p>
-              </div>
-              <div class="service-card__toggle" aria-hidden="true"></div>
-            </div>
-            <div class="service-card__body" data-body>
-              <div class="service-card__body-inner">
-                <ul class="service-card__bullets">
-                  <li>Operational system audits</li>
-                  <li>Fragmented data diagnosis</li>
-                  <li>Stakeholder + SME interviews</li>
-                  <li>Gap analysis between leadership perception and operational reality</li>
-                  <li>Phased roadmap with realistic ROI</li>
-                </ul>
-                <a class="link-arrow" href="#contact">Learn more &rarr;</a>
-              </div>
-            </div>
-          </article>
-          <article class="service-card" data-card>
-            <div class="service-card__head" data-toggle>
-              <div class="service-card__num">02</div>
-              <div class="service-card__title-wrap">
-                <div class="service-card__title">Automation &amp; Integration Stabilization</div>
-                <p class="service-card__desc">We stabilize systems that aren't delivering what you envisioned and
-                  rebuild what cannot scale.
-                  No automation applied to a process that isn't delivering and called solved.</p>
-              </div>
-              <div class="service-card__toggle" aria-hidden="true"></div>
-            </div>
-            <div class="service-card__body" data-body>
-              <div class="service-card__body-inner">
-                <ul class="service-card__bullets">
-                  <li>Workflow redesign and data model reconstruction</li>
-                  <li>Salesforce, Workato, Jira, Snowflake integration</li>
-                  <li>AI agent design with governance and auditability</li>
-                  <li>Subscriptions, intake, and triage automation</li>
-                  <li>Edge case handling and human review layers</li>
-                </ul>
-                <a class="link-arrow" href="#contact">Learn more &rarr;</a>
-              </div>
-            </div>
-          </article>
-          <article class="service-card" data-card>
-            <div class="service-card__head" data-toggle>
-              <div class="service-card__num">03</div>
-              <div class="service-card__title-wrap">
-                <div class="service-card__title">AI Implementation with Governance</div>
-                <p class="service-card__desc">Practical, responsible AI. We build intelligent systems
-                  that are deterministic where they need to be and agentic where they should be.</p>
-              </div>
-              <div class="service-card__toggle" aria-hidden="true"></div>
-            </div>
-            <div class="service-card__body" data-body>
-              <div class="service-card__body-inner">
-                <ul class="service-card__bullets">
-                  <li>AI readiness assessment</li>
-                  <li>Agentic workflow architecture</li>
-                  <li>Confidence scoring and structured outputs</li>
-                  <li>Audit trails and output controls</li>
-                  <li>Documentation embedded in delivery, not bolted on after</li>
-                </ul>
-                <a class="link-arrow" href="#contact">Learn more &rarr;</a>
-              </div>
-            </div>
-          </article>
-          <article class="service-card" data-card>
-            <div class="service-card__head" data-toggle>
-              <div class="service-card__num">04</div>
-              <div class="service-card__title-wrap">
-                <div class="service-card__title">Knowledge Transfer &amp; Operating Model Design</div>
-                <p class="service-card__desc">We build the understanding around the system, not just the
-                  system. Every engagement ends with your team able to run and evolve what we built.
-                </p>
-              </div>
-              <div class="service-card__toggle" aria-hidden="true"></div>
-            </div>
-            <div class="service-card__body" data-body>
-              <div class="service-card__body-inner">
-                <ul class="service-card__bullets">
-                  <li>Handoff documentation and knowledge base alignment</li>
-                  <li>Multi-stakeholder clarity sessions</li>
-                  <li>Leadership dashboards and KPI frameworks</li>
-                  <li>Training embedded throughout, not at the end</li>
-                  <li>We step back when the right person is trained or hired</li>
-                </ul>
-                <a class="link-arrow" href="#contact">Learn more &rarr;</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PHILOSOPHY / ABOUT -->
-    <section class="section philosophy" id="about">
-      <div class="container">
-        <div class="philosophy__inner">
-          <div class="philosophy__logo">
-            <span class="philosophy__logo-mark">
-              <img src="assets/Logo-Leaf.png" alt="Naturally Logical" />
-            </span>
-          </div>
-          <div class="philosophy__content">
-            <div class="eyebrow" style="margin-bottom:16px;">Our approach</div>
-            <h2>We succeed when you <strong>no longer need</strong> us.</h2>
-            <p>We do not come in to replace what you have built. We come in to augment it. Your team built
-              something that works, even if it does not scale yet.</p>
-            <p>Our job is to recognize that expertise, identify where it breaks under pressure, bring in
-              specialized skills you do not have, and train your people so they can own and evolve it
-              themselves.</p>
-            <div class="philosophy__pillars">
-              <div class="pillar pillar--green">
-                <div class="pillar__label">Principle</div>
-                <div class="pillar__text">Clarity over complexity</div>
-              </div>
-              <div class="pillar pillar--red">
-                <div class="pillar__label">Principle</div>
-                <div class="pillar__text">Reliability over hype</div>
-              </div>
-              <div class="pillar pillar--blue">
-                <div class="pillar__label">Principle</div>
-                <div class="pillar__text">Systems people can own</div>
-              </div>
-              <div class="pillar pillar--slate">
-                <div class="pillar__label">Principle</div>
-                <div class="pillar__text">AI applied responsibly</div>
-              </div>
-            </div>
-            <a class="link-arrow philosophy__cta" href="who-we-are.html"
-              style="margin-top:32px; display:inline-flex;">Who We Are
-              &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED CASE STUDY -->
-    <section class="section section--tight">
-      <div class="container">
-        <div class="case-feature">
-          <div>
-            <div class="eyebrow" style="margin-bottom:16px;">Featured case study</div>
-            <div class="case-feature__title">AI Agent Jira Ticketing</div>
-            <p class="case-feature__outcome">Turned vague intake requests into Definition-of-Ready tickets
-              using AI-assisted coaching and a structured readiness score.</p>
-          </div>
-          <a class="link-arrow" href="case-studies/jira-sprint-manager.html" style="font-size:16px;">View case study
-            &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- INSIGHTS -->
-    <section class="section" id="insights">
-      <div class="container">
-        <div class="section__header">
-          <div class="eyebrow" style="margin-bottom:16px;">Insights</div>
-          <h2>Notes from the field.</h2>
-        </div>
-        <div class="insights-grid">
-          <article class="insight-card">
-            <div class="eyebrow insight-card__tag">Systems</div>
-            <div class="insight-card__title">Why your automation broke (and how to tell before it ships)
-            </div>
-            <div class="insight-card__meta"><span>June 2026</span><span>4 min read</span></div>
-          </article>
-          <article class="insight-card">
-            <div class="eyebrow insight-card__tag">AI</div>
-            <div class="insight-card__title">Deterministic vs agentic: choosing the right architecture for
-              your workflow</div>
-            <div class="insight-card__meta"><span>May 2026</span><span>5 min read</span></div>
-          </article>
-          <article class="insight-card">
-            <div class="eyebrow insight-card__tag">Delivery</div>
-            <div class="insight-card__title">Knowledge transfer is not a handoff doc. Here is what it
-              actually is.</div>
-            <div class="insight-card__meta"><span>April 2026</span><span>3 min read</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- CTA BANNER -->
     <section class="cta-banner">
       <div class="container">
@@ -299,28 +109,12 @@
             </div>
             <div class="field"><label for="cMessage">Message</label><textarea id="cMessage" name="message"
                 required></textarea></div>
-            <div class="field">
-              <label id="projectTypeLabel">Which sounds closer to what you need?</label>
-              <div class="project-type-grid" role="radiogroup" aria-labelledby="projectTypeLabel">
-                <label class="project-type-card" for="typeSmall">
-                  <input type="radio" id="typeSmall" name="projectType" value="Small Integration Project" required />
-                  <div class="project-type-card__title">Small Integration Project</div>
-                  <p class="project-type-card__text">A focused, self-contained engagement: one system, one
-                    failure point, a clear scope.</p>
-                </label>
-                <label class="project-type-card" for="typeEnterprise">
-                  <input type="radio" id="typeEnterprise" name="projectType" value="Enterprise Transformation" />
-                  <div class="project-type-card__title">Enterprise Transformation</div>
-                  <p class="project-type-card__text">A larger initiative spanning multiple systems or teams,
-                    requiring a full team to execute.</p>
-                </label>
-              </div>
-            </div>
             <button class="btn" type="submit">Send message &rarr;</button>
             <p class="form-status" id="formStatus"></p>
             <p class="field-hint">Submitting opens your email client with this addressed to
               <a href="mailto:hello@naturallylogical.com">hello@naturallylogical.com</a>. Nothing is sent until
-              you do.</p>
+              you do.
+            </p>
           </form>
         </div>
       </div>

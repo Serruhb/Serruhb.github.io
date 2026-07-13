@@ -45,13 +45,6 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   const formStatus = document.getElementById('formStatus');
 
-  contactForm.querySelectorAll('.project-type-card input[type=radio]').forEach((input) => {
-    input.addEventListener('change', () => {
-      contactForm.querySelectorAll('.project-type-card').forEach((card) => card.classList.remove('is-selected'));
-      input.closest('.project-type-card').classList.add('is-selected');
-    });
-  });
-
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -64,14 +57,12 @@ if (contactForm) {
     const company = contactForm.company.value.trim();
     const email = contactForm.email.value.trim();
     const message = contactForm.message.value.trim();
-    const projectType = contactForm.projectType.value;
 
-    const subject = `Contact: ${projectType} - ${name}`;
+    const subject = `Contact: ${name}`;
     const bodyLines = [
       `Name: ${name}`,
       `Email: ${email}`,
       company ? `Company: ${company}` : null,
-      `Project type: ${projectType}`,
       "",
       message
     ].filter(Boolean);
