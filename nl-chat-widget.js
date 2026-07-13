@@ -163,8 +163,7 @@
   let open = false;
 
   const GREETING =
-    "Hi — I can answer questions about how Naturally Logical works, or help " +
-    "you figure out if we're a fit for what you're dealing with. What's going on?";
+    "Let's get to the root of it 😉. What's going on with your systems?";
 
   function addMessage(role, text) {
     const el = document.createElement("div");
