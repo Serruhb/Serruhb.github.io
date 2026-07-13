@@ -1,0 +1,20 @@
+name = "nl-chatbot"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Raw URL to the knowledge base file in the Serruhb.github.io repo.
+# CONFIRM the default branch (main vs master) before deploying — adjust below if needed.
+# Editing that file on GitHub updates the bot's knowledge without a redeploy (cached 10 min).
+KB_URL = "https://raw.githubusercontent.com/Serruhb/Serruhb.github.io/master/nl-chatbot-knowledge-base.md"
+
+# Site origin — must match exactly (scheme + host, no trailing slash)
+ALLOWED_ORIGIN = "https://naturallylogical.com"
+
+# Where lead notification emails should go, and the verified Resend sender
+LEAD_EMAIL_TO = "info@naturallylogical.com"
+LEAD_EMAIL_FROM = "info@naturallylogical.com"
+
+# Secrets — do NOT put these here. Set them with:
+#   wrangler secret put ANTHROPIC_API_KEY
+#   wrangler secret put RESEND_API_KEY
